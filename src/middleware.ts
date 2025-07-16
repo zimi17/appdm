@@ -1,17 +1,14 @@
-// src/middleware.ts
+import type { APIContext } from 'astro';
+import type { Next } from 'astro:middleware';
 
-import { defineMiddleware } from 'astro:middleware';
+const MAINTENANCE_MODE = import.meta.env.MAINTENANCE_MODE === 'true' || import.meta.env.VERCEL_ENV === 'production';
 
-// Read the private environment variable instead
-const MAINTENANCE_MODE = import.meta.env.MAINTENANCE_MODE === 'true';
-
-export const onRequest = defineMiddleware(async (context, next) => {
-  if (MAINTENANCE_MODE) {
-    if (context.url.pathname === '/maintenance') {
-      return next();
-    }
-    // The rest of your code remains the same
-    return context.redirect('/maintenance', 307);
+export const onRequest = async (context: APIContext, next: Next) => {
+  // Allow access if maintenance mode is off OR if the user is already on the maintenance page
+  if (!MAINTENANCE_MODE || context.url.pathname === '/maintenance') {
+    return next();  // Continue the request
   }
-  return next();
-});
+
+  // Otherwise, redirect everyone else to the maintenance page
+  return context.redirect('/maintenance', 307);
+};

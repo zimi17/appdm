@@ -10,7 +10,9 @@
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
     "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
     "noEmit": true,
+    "jsx": "react-jsx",
     // Add type definitions for our Vite runtime.
     "types": ["vite/client", "astro/client"],
     "baseUrl": ".",
