@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "academics": "Academics",
+    "admissions": "Admissions",
+    "campus_life": "Campus Life",
+    "research": "Research",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Vision of STIE Dwimulya",
+      "description": "To become a leading College of Economics that produces professional graduates, globally competitive, and with noble character.",
+      "link": "/about"
+    },
+    "slide2": {
+      "title": "Excellent Study Programs",
+      "description": "Choose a study program that suits your interests and career in Management, Accounting, and Development Economics.",
+      "link": "/academics"
+    },
+    "slide3": {
+      "title": "Modern Facilities for Optimal Learning",
+      "description": "Enjoy a conducive learning environment with complete facilities and the latest technology.",
+      "link": "#"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+---
+import PageLayout from '@/components/layout/PageLayout.astro';
+import HeroBanner from '@/components/sections/HeroBanner/HeroBanner.astro';
+import StatsGrid from '@/components/sections/StatsGrid/StatsGrid.astro';
+import FeaturedPrograms from '@/components/sections/FeaturedPrograms/FeaturedPrograms.astro';
+import Testimonials from '@/components/sections/Testimonials/Testimonials.astro';
+import CtaSection from '@/components/sections/CtaSection/CtaSection.astro';
+
+// Placeholder data - to be replaced with Contentful data
+const heroData = {
+  title: "Transform Your Career with STIE Dwimulya",
+  subtitle: "Join our distinguished program in Accounting and Management to launch your professional journey.",
+  backgroundImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+  ctaConfig: {
+    text: "Explore Programs",
+    link: "/programs"
+  }
+};
+
+const statsData = [
+  { icon: "academic-cap", count: "50+", label: "Alumni Network" },
+  { icon: "globe-alt", count: "Global", label: "Opportunities" },
+  { icon: "beaker", count: "20+", label: "Research Centers" },
+  { icon: "briefcase", count: "150+", label: "Industry Partners" }
+];
+
+const featuredProgramsData = [
+  { imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop", title: "S1 Akuntansi", description: "Program studi yang menghasilkan akuntan profesional dan berintegritas.", link: "/programs/s1-akuntansi" },
+  { imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop", title: "S1 Manajemen", description: "Membentuk pemimpin bisnis yang inovatif dan strategis.", link: "/programs/s1-manajemen" },
+  { imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop", title: "S2 Magister Manajemen", description: "Program pascasarjana untuk para profesional yang ingin meningkatkan karir.", link: "/programs/s2-mm" }
+];
+
+const testimonialsData = [
+  { quote: "Pengalaman belajar yang luar biasa, dosen yang kompeten, dan fasilitas yang sangat memadai.", author: "Budi Santoso", title: "Alumni S1 Akuntansi", imageUrl: "https://randomuser.me/api/portraits/men/44.jpg" },
+  { quote: "STIE Dwimulya memberikan saya bekal yang kuat untuk bersaing di dunia kerja.", author: "Rina Dewi", title: "Alumni S1 Manajemen", imageUrl: "https://randomuser.me/api/portraits/women/32.jpg" }
+];
+
+const ctaData = {
+  title: "Siap Memulai Perjalanan Anda?",
+  text: "Temukan program yang tepat untuk Anda dan daftar hari ini.",
+  link: "/admissions"
+};
+---
+
+<MainLayout title="Beranda">
+  <HeroBanner {...heroData} />
+  <StatsGrid statsData={statsData} />
+  <FeaturedPrograms programs={featuredProgramsData} />
+  <Testimonials testimonials={testimonialsData} />
+  <CtaSection {...ctaData} />
+</MainLayout>
