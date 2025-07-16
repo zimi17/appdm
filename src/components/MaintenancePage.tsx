@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ExternalLink, Rocket, Star } from "lucide-react"
+import { ExternalLink } from "lucide-react" // Removed Rocket, Star for Swiss style
 
 interface TimeLeft {
   days: number
@@ -12,20 +12,76 @@ interface TimeLeft {
   seconds: number
 }
 
+const copyData = {
+  "sunda": {
+    "judul": "STIE Dwimulya",
+    "status": "Website keur diperbaiki",
+    "deskripsi": "Kami nuju nyiapkeun tampilan jeung fitur anyar nu leuwih matak resep. Sabar heula nya, sebentar deui anjeun bakal meunang pangalaman nu leuwih asyik jeung gampang.",
+    "peluncuran": "31 Poé · 10 Jam · 18 Menit · 30 Detik",
+    "akses": "Perlu aksés ka sistem akademik ayeuna? Pencét Portal SIAKAD",
+    "ucapan": "Hatur nuhun pikeun kasabaran anjeun. Kami komit pikeun terus ngaronjatkeun kualitas layanan.",
+    "copyright": "© 2025 STIE Dwimulya — Sadaya hak dilindungi",
+    "target": "Target Peluncuran: 17 Agustus 2025 — Poé Kamerdikaan Indonesia"
+  },
+  "jawa": {
+    "judul": "STIE Dwimulya",
+    "status": "Website Sedang Diperbaiki",
+    "deskripsi": "Kita lagi nyiapake pengalaman anyar sing luwih apik kanggo panjenengan. Monggo sabar sithik—sebentar maneh situs bakal bali online karo fitur anyar sing luwih menarik.",
+    "peluncuran": "31 Dina · 10 Jam · 18 Menit · 30 Detik",
+    "akses": "Butuh akses sistem akademik saiki? Klik Portal SIAKAD",
+    "ucapan": "Matur nuwun sanget atas kesabaran panjenengan. Kita tansah komit ngapikake layanan.",
+    "copyright": "© 2025 STIE Dwimulya — Kabeh hak dilindhungi",
+    "target": "Target Peluncuran: 17 Agustus 2025 — Dina Kamardikan Indonesia"
+  },
+  "minang": {
+    "judul": "STIE Dwimulya",
+    "status": "Website lagi dibenahi",
+    "deskripsi": "Kami lagi usaha keras untuak nyadiokan tampilan anyar yang lebih menarik. Sabar dulu yaa—sebentar lagi website bisa diakses kembali.",
+    "peluncuran": "31 Hari · 10 Jam · 18 Menit · 30 Detik",
+    "akses": "Perlu akses ke sistem akademik kini? Klik Portal SIAKAD",
+    "ucapan": "Terima kasih banyak atas kesabaran dek awak. Kami komit untuk terus maningkatkan kualitas layanan.",
+    "copyright": "© 2025 STIE Dwimulya — Hak cipta dilindungi",
+    "target": "Target Peluncuran: 17 Agustus 2025 — Hari Kemerdekaan Indonesia"
+  },
+  "palembang": {
+    "judul": "STIE Dwimulya",
+    "status": "Website lagi diperbaiki",
+    "deskripsi": "Kite lagi nyiapin tampilan baru yang lebih kece dan gampang digunain. Tunggu bentar, bentar lagi bisa dipake lagi.",
+    "peluncuran": "31 Hari · 10 Jam · 18 Menit · 30 Detik",
+    "akses": "Perlu akses ke sistem akademik sekarang? Klik Portal SIAKAD",
+    "ucapan": "Terima kasih banyak atas kesabaran kamu. Kite komit buat terus ningkatin layanan.",
+    "copyright": "© 2025 STIE Dwimulya — Semua hak dilindungi",
+    "target": "Target Peluncuran: 17 Agustus 2025 — Hari Kemerdekaan Indonesia"
+  },
+  "melayu": {
+    "judul": "STIE Dwimulya",
+    "status": "Laman web sedang dalam penyelenggaraan",
+    "deskripsi": "Kami sedang mempersiapkan pengalaman baru yang lebih menarik untuk anda. Terima kasih kerana sabar menanti—tidak lama lagi laman kami akan beroperasi semula.",
+    "peluncuran": "31 Hari · 10 Jam · 18 Minit · 30 Saat",
+    "akses": "Perlukan akses ke sistem akademik kami sekarang? Klik Portal SIAKAD",
+    "ucapan": "Terima kasih atas kesabaran anda. Kami berkomitmen untuk sentiasa memperbaiki mutu perkhidmatan.",
+    "copyright": "© 2025 STIE Dwimulya — Semua hak terpelihara",
+    "target": "Target Peluncuran: 17 Ogos 2025 — Hari Kemerdekaan Indonesia"
+  }
+};
+
+const langKeys = Object.keys(copyData);
+
 export default function MaintenancePage() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
-  })
+  });
+  const [currentLangIndex, setCurrentLangIndex] = useState(0);
 
   useEffect(() => {
-    const targetDate = new Date("2025-08-17T00:00:00").getTime()
+    const targetDate = new Date("2025-08-17T00:00:00").getTime();
 
     const timer = setInterval(() => {
-      const now = new Date().getTime()
-      const difference = targetDate - now
+      const now = new Date().getTime();
+      const difference = targetDate - now;
 
       if (difference > 0) {
         setTimeLeft({
@@ -33,94 +89,64 @@ export default function MaintenancePage() {
           hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        })
+        });
       } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
-    }, 1000)
+    }, 1000);
 
-    return () => clearInterval(timer)
-  }, [])
+    const langTransitionTimer = setInterval(() => {
+      setCurrentLangIndex((prevIndex) => (prevIndex + 1) % langKeys.length);
+    }, 3000); // Change language every 3 seconds
+
+    return () => {
+      clearInterval(timer);
+      clearInterval(langTransitionTimer);
+    };
+  }, []);
 
   const handlePortalClick = () => {
-    window.open("https://siakad.stiedwimulya.ac.id", "_blank")
-  }
+    window.open("https://siakad.stiedwimulya.ac.id", "_blank");
+  };
+
+  const currentCopy = copyData[langKeys[currentLangIndex]];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Animated Stars */}
-      <div className="absolute inset-0">
-        {[...Array(100)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`,
-            }}
-          >
-            <Star className="text-white opacity-60" size={Math.random() * 8 + 4} />
-          </div>
-        ))}
-      </div>
-
-      {/* Shooting Stars */}
-      <div className="absolute inset-0">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={`shooting-${i}`}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-80 animate-ping"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 50}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: "3s",
-            }}
-          />
-        ))}
-      </div>
-
+    <div className="min-h-screen bg-gray-100 text-gray-900 flex flex-col items-center justify-center p-4 font-sans">
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="mb-6">
-            <Rocket className="w-16 h-16 text-yellow-400 mx-auto mb-4 animate-bounce" />
-          </div>
+      <div className="w-full max-w-2xl text-center space-y-6">
+        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 transition-opacity duration-500" key={currentCopy.judul}>
+          {currentCopy.judul}
+        </h1>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            STIE Dwimulya
-          </h1>
+        <h2 className="text-3xl md:text-4xl font-semibold text-gray-700 transition-opacity duration-500" key={currentCopy.status}>
+          {currentCopy.status}
+        </h2>
 
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">Under Maintenance</h2>
-
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
-            We're working hard to bring you an amazing new experience. Our website will be back online soon with
-            exciting new features!
-          </p>
-        </div>
+        <p className="text-lg text-gray-600 max-w-xl mx-auto transition-opacity duration-500" key={currentCopy.deskripsi}>
+          {currentCopy.deskripsi}
+        </p>
 
         {/* Countdown Timer */}
-        <Card className="bg-black/30 backdrop-blur-md border-purple-500/30 mb-8 animate-pulse-slow">
+        <Card className="bg-white border border-gray-300 shadow-lg mx-auto max-w-md">
           <CardContent className="p-6">
-            <h3 className="text-xl font-semibold text-white text-center mb-4">Launching in:</h3>
+            <h3 className="text-xl font-semibold text-gray-800 text-center mb-4">Launching in:</h3>
             <div className="grid grid-cols-4 gap-4 text-center">
-              <div className="bg-gradient-to-b from-purple-600 to-purple-800 rounded-lg p-4">
-                <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.days}</div>
-                <div className="text-sm text-purple-200">Days</div>
+              <div className="bg-gray-200 rounded-lg p-4">
+                <div className="text-2xl md:text-3xl font-bold text-gray-900">{timeLeft.days}</div>
+                <div className="text-sm text-gray-600">Days</div>
               </div>
-              <div className="bg-gradient-to-b from-blue-600 to-blue-800 rounded-lg p-4">
-                <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.hours}</div>
-                <div className="text-sm text-blue-200">Hours</div>
+              <div className="bg-gray-200 rounded-lg p-4">
+                <div className="text-2xl md:text-3xl font-bold text-gray-900">{timeLeft.hours}</div>
+                <div className="text-sm text-gray-600">Hours</div>
               </div>
-              <div className="bg-gradient-to-b from-pink-600 to-pink-800 rounded-lg p-4">
-                <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.minutes}</div>
-                <div className="text-sm text-pink-200">Minutes</div>
+              <div className="bg-gray-200 rounded-lg p-4">
+                <div className="text-2xl md:text-3xl font-bold text-gray-900">{timeLeft.minutes}</div>
+                <div className="text-sm text-gray-600">Minutes</div>
               </div>
-              <div className="bg-gradient-to-b from-green-600 to-green-800 rounded-lg p-4">
-                <div className="text-2xl md:text-3xl font-bold text-white">{timeLeft.seconds}</div>
-                <div className="text-sm text-green-200">Seconds</div>
+              <div className="bg-gray-200 rounded-lg p-4">
+                <div className="text-2xl md:text-3xl font-bold text-gray-900">{timeLeft.seconds}</div>
+                <div className="text-sm text-gray-600">Seconds</div>
               </div>
             </div>
           </CardContent>
@@ -128,10 +154,12 @@ export default function MaintenancePage() {
 
         {/* Portal Button */}
         <div className="text-center">
-          <p className="text-gray-400 mb-4">Need to access our academic system?</p>
+          <p className="text-gray-600 mb-4 transition-opacity duration-500" key={currentCopy.akses}>
+            {currentCopy.akses}
+          </p>
           <Button
             onClick={handlePortalClick}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-8 rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+            className="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300"
           >
             <ExternalLink className="w-5 h-5 mr-2" />
             Access SIAKAD Portal
@@ -139,32 +167,18 @@ export default function MaintenancePage() {
         </div>
 
         {/* Footer */}
-        <div className="mt-12 text-center text-gray-500">
-          <p className="text-sm">© 2025 STIE Dwimulya. All rights reserved.</p>
-          <p className="text-xs mt-2">Target Launch: August 17th, 2025 - Indonesia Independence Day</p>
+        <div className="mt-12 text-center text-gray-500 space-y-2">
+          <p className="text-base transition-opacity duration-500" key={currentCopy.ucapan}>
+            {currentCopy.ucapan}
+          </p>
+          <p className="text-sm transition-opacity duration-500" key={currentCopy.copyright}>
+            {currentCopy.copyright}
+          </p>
+          <p className="text-xs transition-opacity duration-500" key={currentCopy.target}>
+            {currentCopy.target}
+          </p>
         </div>
       </div>
-
-      {/* Additional CSS for custom animations */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
-        }
-        
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-        
-        .animate-pulse-slow {
-          animation: pulse-slow 3s ease-in-out infinite;
-        }
-      `}</style>
     </div>
-  )
+  );
 }
