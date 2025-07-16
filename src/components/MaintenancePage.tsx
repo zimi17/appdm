@@ -1,9 +1,15 @@
-"use client"
-
-import { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ExternalLink, Bell, Mail, Coffee, Search, Menu } from "lucide-react"
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { Flip } from "gsap/Flip";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, Flip, SplitText);
 
 interface TimeLeft {
   days: number
@@ -123,7 +129,6 @@ const copyData = {
     "footer_address_line2": "Jakarta, Indonesia",
     "footer_phone": "Telepon: +62 21 1234567",
     "footer_email": "Email: info@stiedwimulya.ac.id",
-    "footer_copyright_bottom": "© 2024 STIE Dwimulya. Semua hak dilindungi.",
     "notification_updates_soon": "Pembaruan akan segera diumumkan",
     "notification_social_media": "Pembaruan akan diumumkan di saluran media sosial kami",
     "notification_emergency_contact": "Kontak darurat: admin@stiedwimulya.ac.id",
@@ -162,7 +167,6 @@ const copyData = {
     "footer_address_line2": "Jakarta, Indonesia",
     "footer_phone": "Telepon: +62 21 1234567",
     "footer_email": "Email: info@stiedwimulya.ac.id",
-    "footer_copyright_bottom": "© 2024 STIE Dwimulya. Semua hak dilindungi.",
     "notification_updates_soon": "Pembaruan akan segera diumumkan",
     "notification_social_media": "Pembaruan akan diumumkan di saluran media sosial kami",
     "notification_emergency_contact": "Kontak darurat: admin@stiedwimulya.ac.id",
@@ -201,7 +205,6 @@ const copyData = {
     "footer_address_line2": "Jakarta, Indonesia",
     "footer_phone": "Telefon: +62 21 1234567",
     "footer_email": "E-mel: info@stiedwimulya.ac.id",
-    "footer_copyright_bottom": "© 2024 STIE Dwimulya. Hak cipta terpelihara.",
     "notification_updates_soon": "Kemas kini akan diumumkan tidak lama lagi",
     "notification_social_media": "Kemas kini akan diumumkan di saluran media sosial kami",
     "notification_emergency_contact": "Hubungan kecemasan: admin@stiedwimulya.ac.id",
@@ -223,6 +226,17 @@ export default function MaintenancePage() {
   const [showNotificationToast, setShowNotificationToast] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState("");
 
+  // Refs for GSAP animations
+  const mainHeadingRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const cardsSectionRef = useRef<HTMLElement>(null);
+  const progressSectionRef = useRef<HTMLElement>(null);
+  const errorNumberRef = useRef<HTMLDivElement>(null);
+
+  // SplitText instances
+  let splitMainHeading: SplitText | null = null;
+  let splitDescription: SplitText | null = null;
+
   useEffect(() => {
     const targetDate = new Date("2025-08-17T00:00:00").getTime();
 
@@ -242,23 +256,121 @@ export default function MaintenancePage() {
       }
     }, 1000);
 
+    // GSAP Animations
+    // Initial load animation for header and main content
+    gsap.from("header", { y: -100, opacity: 0, duration: 0.8, ease: "power3.out" });
+    gsap.from(".left-content > *", { opacity: 0, y: 50, duration: 0.8, ease: "power3.out", stagger: 0.1, delay: 0.3 });
+    gsap.from(".geometric-cross, .geometric-circle", { opacity: 0, scale: 0.5, duration: 1, ease: "elastic.out(1, 0.5)", delay: 0.5 });
+
+    // ScrollTrigger for cards section
+    if (cardsSectionRef.current) {
+      gsap.from(cardsSectionRef.current.children, {
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: cardsSectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    // ScrollTrigger for progress section
+    if (progressSectionRef.current) {
+      gsap.from(progressSectionRef.current.children, {
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: progressSectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Animate progress bar fill with ScrollTrigger
+      gsap.to(".progress-fill", {
+        width: "65%",
+        duration: 2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".progress-bar",
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    // DrawSVG for icons (assuming they are SVG paths)
+    // This will target the paths inside the lucide-react SVG components
+    gsap.from(".card-icon svg path", {
+      drawSVG: "0%",
+      duration: 1,
+      stagger: 0.1,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".cards-section",
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    return () => {
+      clearInterval(timer);
+      // Kill all GSAP tweens and ScrollTriggers on unmount
+      gsap.globalTimeline.clear();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      if (splitMainHeading) splitMainHeading.revert();
+      if (splitDescription) splitDescription.revert();
+    };
+  }, []);
+
+  // Effect for language transition with SplitText
+  useEffect(() => {
+    // Clean up previous SplitText instances
+    if (splitMainHeading) splitMainHeading.revert();
+    if (splitDescription) splitDescription.revert();
+
+    const currentMainHeading = mainHeadingRef.current;
+    const currentDescription = descriptionRef.current;
+
+    if (currentMainHeading) {
+      splitMainHeading = new SplitText(currentMainHeading, { type: "words,chars" });
+      gsap.from(splitMainHeading.chars, {
+        opacity: 0,
+        y: 20,
+        rotationX: -90,
+        stagger: 0.02,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
+
+    if (currentDescription) {
+      splitDescription = new SplitText(currentDescription, { type: "words" });
+      gsap.from(splitDescription.words, {
+        opacity: 0,
+        y: 20,
+        stagger: 0.05,
+        duration: 0.5,
+        ease: "power1.out",
+        delay: 0.2,
+      });
+    }
+
     const langTransitionTimer = setInterval(() => {
       setCurrentLangIndex((prevIndex) => (prevIndex + 1) % langKeys.length);
     }, 3000); // Change language every 3 seconds
 
-    // Animate progress bar on load
-    const progressFill = document.querySelector('.progress-fill') as HTMLElement;
-    if (progressFill) {
-      setTimeout(() => {
-        progressFill.style.width = '65%';
-      }, 500);
-    }
-
     return () => {
-      clearInterval(timer);
       clearInterval(langTransitionTimer);
     };
-  }, []);
+  }, [currentLangIndex]); // Re-run this effect when currentLangIndex changes
 
   const handlePortalClick = () => {
     window.open("https://siakad.stiedwimulya.ac.id", "_blank");
@@ -273,14 +385,24 @@ export default function MaintenancePage() {
   };
 
   const animateNumber = () => {
-    const number = document.querySelector('.error-code') as HTMLElement;
+    const number = errorNumberRef.current;
     if (number) {
-      number.style.transform = 'scale(1.2) rotate(5deg)';
-      number.style.color = 'rgba(255, 255, 255, 0.8)';
-      setTimeout(() => {
-        number.style.transform = 'scale(1) rotate(0deg)';
-        number.style.color = 'white';
-      }, 300);
+      gsap.to(number, {
+        scale: 1.2,
+        rotation: 5,
+        color: "rgba(255, 255, 255, 0.8)",
+        duration: 0.3,
+        ease: "power1.out",
+        onComplete: () => {
+          gsap.to(number, {
+            scale: 1,
+            rotation: 0,
+            color: "white",
+            duration: 0.3,
+            ease: "power1.out",
+          });
+        },
+      });
     }
   };
 
@@ -314,10 +436,10 @@ export default function MaintenancePage() {
       <main>
         <div className="content-wrapper">
           <div className="left-content">
-            <div className="error-code" onClick={animateNumber}>418</div>
-            <h1 className="main-heading">{currentCopy.main_heading}</h1>
+            <div className="error-code" onClick={animateNumber} ref={errorNumberRef}>418</div>
+            <h1 className="main-heading" ref={mainHeadingRef}>{currentCopy.main_heading}</h1>
             <div className="subtitle">{currentCopy.subtitle_system_status}</div>
-            <p className="description">
+            <p className="description" ref={descriptionRef}>
               {currentCopy.deskripsi}
             </p>
             <a href="#" className="cta-button" onClick={() => showNotification(currentCopy.notification_updates_soon)}>
@@ -333,7 +455,7 @@ export default function MaintenancePage() {
       </main>
 
       {/* Interactive Cards Section */}
-      <section className="cards-section">
+      <section className="cards-section" ref={cardsSectionRef}>
         <div className="cards-container">
           <div className="interactive-card" onClick={() => showNotification(currentCopy.notification_social_media)}>
             <div className="card-icon">
@@ -362,7 +484,7 @@ export default function MaintenancePage() {
       </section>
 
       {/* Progress Section */}
-      <section className="progress-section">
+      <section className="progress-section" ref={progressSectionRef}>
         <div className="progress-container">
           <div className="progress-info">
             <h2>{currentCopy.progress_section_title}</h2>
