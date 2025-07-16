@@ -1,17 +1,8 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-
-import react from '@astrojs/react';
-import tailwind from "@astrojs/tailwind";
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind()],
-  i18n: {
-    defaultLocale: 'id',
-    locales: ['id', 'en', 'su'],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
+  // Enable React to support React JSX components.
+  integrations: [react()],
 });

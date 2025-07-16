@@ -1,51 +1,20 @@
 {
-<<<<<<< HEAD
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "target": "ES6",
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    // Enable top-level await, and other modern ESM features.
+    "target": "ESNext",
+    "module": "ESNext",
+    // Enable node-style module resolution, for things like npm package imports.
+    "moduleResolution": "node",
+    // Enable JSON imports.
     "resolveJsonModule": true,
+    // Enable stricter transpilation for better output.
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
-}
-=======
-  "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist"
-  ],
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
+    // Add type definitions for our Vite runtime.
+    "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
       "@/lib/*": ["src/lib/*"],
-      "@/components/*": ["src/components/*"],
-      "@/layouts/*": ["src/layouts/*"],
-      "@/hooks/*": ["src/hooks/*"],
-      "@/utils/*": ["src/utils/*"]
+      "@/components/*": ["src/components/*"]
     }
   }
 }
->>>>>>> 5689779 (Initial commit)
