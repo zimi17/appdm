@@ -1,0 +1,43 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS variables for colors if needed, though Tailwind config is preferred */
+:root {
+  --oxford-blue: #002147;
+  --brand-black: #1E1E1E;
+  --brand-gold: #D4AF37;
+  --sky-blue: #A9D6E5;
+  --slate-grey: #8996A0;
+  --light-grey: #F5F5F5;
+
+  /* Spacing variables */
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 1.5rem;   /* 24px */
+  --spacing-lg: 2rem;     /* 32px */
+  --spacing-xl: 3rem;     /* 48px */
+  --spacing-2xl: 4rem;    /* 64px */
+  --spacing-3xl: 6rem;    /* 96px */
+}
+
+/* Typography styles based on IDENTITAS_VISUAL.md */
+.text-display { font-family: 'Merriweather', serif; font-weight: 700; font-size: 3rem; color: var(--oxford-blue); }
+.text-title { font-family: 'Merriweather', serif; font-weight: 700; font-size: 2.25rem; color: var(--oxford-blue); }
+.text-subtitle { font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.75rem; color: var(--oxford-blue); }
+
+.text-body-large { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 1.125rem; color: var(--brand-black); }
+.text-body { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 1rem; color: var(--brand-black); }
+.text-body-bold { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--brand-black); }
+.text-caption { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 1rem; color: var(--slate-grey); }
+.text-overline { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--slate-grey); text-transform: uppercase; }
+
+/* Background rhythm system */
+.bg-white { background-color: #FFFFFF; }
+.bg-light-grey { background-color: var(--light-grey); }
+.bg-brand-black { background-color: var(--brand-black); }
+
+/* Custom classes for colors used in components */
+.text-gold { color: var(--brand-gold); }

@@ -1,0 +1,104 @@
+@import "../../../styles/base/abstracts";
+
+.hbs-supporting-details {
+  .hbs-supporting-details__content {
+    @include grid-parent($offset: true);
+
+    @include mq($bp-desktop) {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  .hbs-supporting-details__list {
+    @include list-reset;
+    @include grid-child;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include mq($bp-tablet) {
+      @include padding(x 0);
+    }
+
+    @include mq($bp-desktop) {
+      width: $col-10;
+    }
+  }
+
+  .hbs-supporting-details__list-item.hbs-supporting-details__list-item {
+    align-items: baseline;
+    display: flex;
+    gap: $grid-padding-mobile * 2;
+    padding-bottom: $spacing-lg;
+    position: relative;
+
+    &::before {
+      @include pseudo;
+      @include size(calc(#{$col-2} - #{$grid-padding-mobile * 1.5}), 0);
+      border-top: $border;
+      border-color: $c-spot;
+      flex-shrink: 0;
+      transform: translateY(-0.25em);
+    }
+
+    @include mq($bp-tablet) {
+      @include grid-child;
+      gap: $grid-padding * 2;
+      width: 50%;
+
+      &::before {
+        width: calc(#{$col-2} - #{$grid-padding * 1.85});
+      }
+    }
+
+    @include mq($bp-desktop) {
+      width: 100%;
+
+      &::before {
+        width: calc(#{$col-2} - #{$grid-padding * 3.35});
+      }
+    }
+
+    @include mq($bp-desktop-lg) {
+      width: 50%;
+
+      &::before {
+        width: calc(#{$col-4} - #{$grid-padding * 3});
+      }
+    }
+  }
+
+  .hbs-supporting-details__list-item-content {
+    width: 100%;
+  }
+
+  .hbs-supporting-details__item-title {
+    @include body-text($ff-sans, $fw-semibold);
+    line-height: $lh-base;
+  }
+
+  .hbs-supporting-details__item-subtitle {
+    display: block;
+    @include baseline-text;
+    color: $c-text-light;
+  }
+
+  .hbs-supporting-details__media {
+    @include grid-child;
+
+    @include mq($bp-desktop) {
+      width: $col-6;
+    }
+
+    @include mq($bp-desktop-xl) {
+      margin-left: auto;
+      width: $col-5;
+    }
+
+    .hbs-media-asset__caption-text {
+      @include padding($spacing-sm 0);
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

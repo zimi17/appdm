@@ -1,28 +1,54 @@
 ---
+import { SiteHeader } from '../components/site-header/site-header';
+import homepageLocalMenu from '../data/homepageLocalMenu';
+import globalMenuData from '../data/globalMenuData';
+import { PagePropsProvider } from '../context/PagePropsContext';
+import type { PageProps } from '../context/PagePropsContext';
+import { PageTitle } from '../components/PageTitle';
+
 export interface Props {
   title?: string;
   description?: string;
   className?: string;
+  // Anda bisa menambahkan 'pageProps' di sini nanti
+  // pageProps?: PageProps;
 }
 
 const { title = "STIE Dwimulya - Sekolah Tinggi Ilmu Ekonomi", description = "STIE Dwimulya - Excellence in Economic Education", className = "" } = Astro.props;
 
-// Adapted menu items from creative data
-const menuItems = [
-  'home',
-  'about-us',
-  's1-akuntansi',
-  's1-manajemen',
-  'admissions',
-  'news',
-  'contact',
-];
+// Membuat objek pageProps palsu (mock) untuk pengembangan.
+// Ganti ini dengan data asli dari halaman Astro Anda.
+const mockPageProps: PageProps = {
+  map: [],
+  errors: [],
+  fetches: [],
+  singletons: {},
+  contentful: {},
+  includes: { Asset: [], Entry: [] },
+  entry: {
+    fields: {
+      title: title,
+      description: description,
+    }
+  },
+  request: {
+    method: "get",
+    path: Astro.url.pathname,
+    query: {},
+    cookies: {},
+    headers: {},
+    host: Astro.url.host,
+    domain: "www",
+    env: "development",
+    search: "",
+  },
+  locale: "id",
+  defaultLocale: "id",
+  supportedLocales: ["id"],
+  hasTranslations: false,
+};
 
-// Adapted landing pages data (simplified for example)
-const landingPages = [
-    { name: 'Creative', link: '/aero/AeroPage/TS/src/app/landing/creative' },
-    // Add other landing pages if needed
-];
+// Removed menuItems and landingPages as they are now handled by imported data
 ---
 
 <!DOCTYPE html>
@@ -84,150 +110,23 @@ const landingPages = [
     <!-- Container -->
     <div class="container">
         
-        <!-- Header - Adapted from TopNavBar.tsx -->
-        <header id="navbar" class="header sticky inset-x-0 top-0 z-[60] w-full border-b border-transparent bg-white transition-all duration-300 dark:bg-default-50 lg:bg-transparent">
-            <div class="flex h-full items-center py-4">
-                <div class="container">
-                    <nav class="flex flex-wrap items-center justify-between gap-4 lg:flex-nowrap">
-                        <div class="flex w-full items-center justify-between lg:w-auto">
-                            <a href="/">
-                                <img src="/logo/logo.png" alt="logo" height="40" width="147" class="flex h-10 dark:hidden"/>
-                                <!-- Add dark mode logo if available -->
-                            </a>
-                            <div class="flex items-center gap-2">
-                                <!-- Download Button (optional) -->
-                                <div class="inline-flex shrink gap-2 lg:hidden">
-                                    <a href="#" class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-1.5 text-base text-white transition-all hover:bg-primary-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download-cloud h-4 w-4 fill-white/40"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></svg>
-                                        <span class="hidden sm:block">Download</span>
-                                    </a>
-                                </div>
-                                <!-- Mobile Menu Trigger -->
-                                <button
-                                    class="hs-collapse-toggle inline-block lg:hidden"
-                                    data-hs-overlay="#mobile-menu"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu h-7 w-7 text-default-600 hover:text-default-900"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Desktop Menu -->
-                        <ul class="menu relative mx-auto hidden grow items-center justify-center lg:flex">
-                            {menuItems.map((item) => (
-                                <li class="menu-item mx-2 text-default-800 transition-all duration-300 hover:text-primary">
-                                    <a
-                                        class="inline-flex items-center rounded-full px-2 py-0.5 text-sm font-medium capitalize lg:text-base"
-                                        href={`#${item}`}
-                                    >
-                                        {item.replace('-', ' ')}
-                                    </a>
-                                </li>
-                            ))}
-                            <!-- Landing Pages Dropdown (simplified) -->
-                            <li class="menu-item group">
-                                <div class="hs-dropdown relative inline-flex [--trigger:hover] [--placement:bottom]">
-                                    <a
-                                        class="hs-dropdown-toggle inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-default-700 after:absolute after:inset-0 hover:text-primary group-hover:after:-bottom-16 lg:text-base"
-                                        href="#"
-                                    >
-                                        Landing <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down ms-2 h-4 w-4"><path d="m6 9 6 6 6-6"></path></svg>
-                                    </a>
-                                    <div class="hs-dropdown-menu z-10 mt-4 hidden min-w-48 rounded-lg border border-default-100 bg-white p-1.5 opacity-0 shadow-lg transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50">
-                                        <ul class="flex flex-col gap-1">
-                                            {landingPages.map((item) => (
-                                                <li>
-                                                    <a
-                                                        class="flex items-center rounded px-3 py-2 text-sm font-medium text-default-600 transition-all hover:bg-default-400/10 hover:text-default-700"
-                                                        href={item.link}
-                                                    >
-                                                        {item.name}
-                                                    </a>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <!-- Download Button (Desktop) -->
-                        <div class="ms-auto hidden shrink gap-2 lg:inline-flex">
-                            <a
-                                href="#"
-                                class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-1.5 text-base text-white transition-all hover:bg-primary-700"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download-cloud h-4 w-4 fill-white/40"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></svg>
-                                <span class="hidden sm:block">Download</span>
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-
-        <!-- Mobile Menu - Adapted from TopNavBar.tsx -->
-        <div
-            id="mobile-menu"
-            class="hs-overlay fixed bottom-0 left-0 top-0 z-[61] hidden h-screen w-full max-w-[270px] -translate-x-full transform border-r border-default-200 bg-white transition-all [--body-scroll:true] [--overlay-backdrop:false] hs-overlay-open:translate-x-0 dark:bg-default-50"
-            tabindex="-1"
-        >
-            <div class="flex h-[74px] items-center justify-between border-b border-dashed border-default-200 px-4 transition-all duration-300">
-                <a href="/">
-                    <img src="/logo/logo.png" alt="logo" height="40" width="147" class="flex h-10 dark:hidden"/>
-                    <!-- Add dark mode logo if available -->
-                </a>
-                <div data-hs-overlay="#mobile-menu" class="hs-collapse-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x size-6"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
-                </div>
-            </div>
-            <div class="h-[calc(100%-4rem)] overflow-y-auto">
-                <nav class="hs-accordion-group flex h-full w-full flex-col flex-wrap p-4">
-                    <ul class="space-y-1">
-                        {menuItems.map((item) => (
-                            <li class="rounded text-sm font-medium capitalize text-default-900 transition-all duration-300 hover:bg-default-100 hover:text-primary">
-                                <a class="block w-full px-4 py-2.5" href={`#${item}`}>
-                                    {item.replace('-', ' ')}
-                                </a>
-                            </li>
-                        ))}
-                        <!-- Landing Pages Dropdown (simplified) -->
-                        <li class="hs-accordion" id="landing-accordion">
-                            <a
-                                class="hs-accordion-toggle flex items-center rounded px-4 py-2.5 text-sm font-medium capitalize text-default-900 transition-all duration-300 hover:bg-default-100 hover:text-primary hs-accordion-active:bg-default-400/10"
-                                href="#"
-                            >
-                                Landing
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down ms-auto size-5 transition-all hs-accordion-active:-rotate-180"><path d="m6 9 6 6 6-6"></path></svg>
-                            </a>
-                            <div
-                                id="landing-accordion"
-                                class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                            >
-                                <ul class="ps-2 pt-2">
-                                    {landingPages.map((item) => (
-                                        <li>
-                                            <a
-                                                class="flex items-center rounded px-3 py-2 text-sm font-medium text-default-600 transition-all hover:bg-default-400/10 hover:text-default-700"
-                                                href={item.link}
-                                            >
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <!-- SiteHeader Component -->
+        <SiteHeader client:load
+          localNavigationItems={homepageLocalMenu}
+          globalMenu={{ items: globalMenuData, open: false }} // open will be controlled by SiteHeader internal state
+          isHomepage={true} // Assuming this layout is for homepage
+          logoLink="/"
+          // Add other props as needed based on SiteHeaderProps interface
+        />
 
         <!-- Wrapper -->
         <div id="page-wrapper" class="wrapper">
             <div class="page-wrapper__content">
                 <!-- Main Content Slot -->
-                <slot />
+                <PagePropsProvider {...mockPageProps}>
+                    <PageTitle client:load />
+                    <slot />
+                </PagePropsProvider>
             </div>
         </div>
         
@@ -271,10 +170,10 @@ const landingPages = [
                 initHoverMasks();
             }
             
-            // Initialize GSAP animations if available
-            if (typeof gsap !== 'undefined') {
-                gsap.from('.header', {duration: 1, y: -100, opacity: 0, ease: 'power2.out'});
-            }
+            // GSAP animations related to header height are now handled by SiteHeader's internal logic
+            // if (typeof gsap !== 'undefined') {
+            //     gsap.from('.header', {duration: 1, y: -100, opacity: 0, ease: 'power2.out'});
+            // }
 
             // Adapted Scroll Spy for navigation
             const sections = document.querySelectorAll('section');
@@ -297,12 +196,12 @@ const landingPages = [
                     }
                 });
 
-                // Add/remove nav-sticky class
-                const navbar = document.getElementById('navbar');
-                if (navbar) {
-                    if (window.scrollY >= 80) navbar.classList.add('nav-sticky');
-                    else navbar.classList.remove('nav-sticky');
-                }
+                // Sticky nav class is now handled by SiteHeader's internal logic
+                // const navbar = document.getElementById('navbar');
+                // if (navbar) {
+                //     if (window.scrollY >= 80) navbar.classList.add('nav-sticky');
+                //     else navbar.classList.remove('nav-sticky');
+                // }
             });
 
              // Smooth scrolling for anchor links
@@ -315,7 +214,7 @@ const landingPages = [
                 });
             });
 
-            // Initialize HS Overlay for mobile menu
+            // Initialize HS Overlay for mobile menu (if still needed, otherwise remove)
             if (typeof HSOverlay !== 'undefined') {
                 HSOverlay.autoInit();
             }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ExternalLink, Bell, Mail, Coffee, Search, Menu } from "lucide-react";
+import { ExternalLink, Bell, Mail, Coffee, Search } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
@@ -21,7 +21,7 @@ interface TimeLeft {
 const langKeys = Object.keys(copyData);
 
 export default function MaintenancePage() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+  const [, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
     minutes: 0,
@@ -38,8 +38,8 @@ export default function MaintenancePage() {
   const progressSectionRef = useRef<HTMLElement>(null);
   const errorNumberRef = useRef<HTMLDivElement>(null);
 
-  let splitMainHeading: SplitText | null = null;
-  let splitDescription: SplitText | null = null;
+  const splitMainHeading = useRef<SplitText | null>(null);
+  const splitDescription = useRef<SplitText | null>(null);
 
   useEffect(() => {
     const targetDate = new Date("2025-08-17T00:00:00").getTime();
@@ -51,7 +51,9 @@ export default function MaintenancePage() {
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          hours: Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          ),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
@@ -62,9 +64,27 @@ export default function MaintenancePage() {
 
     // GSAP Animations
     // Initial load animation for header and main content
-    gsap.from("header", { y: -100, opacity: 0, duration: 0.8, ease: "power3.out" });
-    gsap.from(".left-content > *", { opacity: 0, y: 50, duration: 0.8, ease: "power3.out", stagger: 0.1, delay: 0.3 });
-    gsap.from(".geometric-cross, .geometric-circle", { opacity: 0, scale: 0.5, duration: 1, ease: "elastic.out(1, 0.5)", delay: 0.5 });
+    gsap.from("header", {
+      y: -100,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+    });
+    gsap.from(".left-content > *", {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: 0.1,
+      delay: 0.3,
+    });
+    gsap.from(".geometric-cross, .geometric-circle", {
+      opacity: 0,
+      scale: 0.5,
+      duration: 1,
+      ease: "elastic.out(1, 0.5)",
+      delay: 0.5,
+    });
 
     // ScrollTrigger for cards section
     if (cardsSectionRef.current) {
@@ -126,24 +146,26 @@ export default function MaintenancePage() {
     return () => {
       clearInterval(timer);
       gsap.globalTimeline.clear();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      if (splitMainHeading) splitMainHeading.revert();
-      if (splitDescription) splitDescription.revert();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      if (splitMainHeading.current) splitMainHeading.current.revert();
+      if (splitDescription.current) splitDescription.current.revert();
     };
   }, []);
 
   useEffect(() => {
     // Clean up previous SplitText instances
-    if (splitMainHeading) splitMainHeading.revert();
-    if (splitDescription) splitDescription.revert();
+    if (splitMainHeading.current) splitMainHeading.current.revert();
+    if (splitDescription.current) splitDescription.current.revert();
 
     const currentMainHeading = mainHeadingRef.current;
     const currentDescription = descriptionRef.current;
 
     document.fonts.ready.then(() => {
       if (currentMainHeading) {
-        splitMainHeading = new SplitText(currentMainHeading, { type: "words,chars" });
-        gsap.from(splitMainHeading.chars, {
+        splitMainHeading.current = new SplitText(currentMainHeading, {
+          type: "words,chars",
+        });
+        gsap.from(splitMainHeading.current.chars, {
           opacity: 0,
           y: 20,
           rotationX: -90,
@@ -154,8 +176,10 @@ export default function MaintenancePage() {
       }
 
       if (currentDescription) {
-        splitDescription = new SplitText(currentDescription, { type: "words" });
-        gsap.from(splitDescription.words, {
+        splitDescription.current = new SplitText(currentDescription, {
+          type: "words",
+        });
+        gsap.from(splitDescription.current.words, {
           opacity: 0,
           y: 20,
           stagger: 0.05,
@@ -174,10 +198,6 @@ export default function MaintenancePage() {
       clearInterval(langTransitionTimer);
     };
   }, [currentLangIndex]);
-
-  const handlePortalClick = () => {
-    window.open("https://siakad.stiedwimulya.ac.id", "_blank");
-  };
 
   const showNotification = (message: string) => {
     setNotificationMessage(message);
@@ -216,24 +236,32 @@ export default function MaintenancePage() {
       {/* Header */}
       <header>
         <div className="header-content">
-          <a href="#" className="logo">{currentCopy.judul}</a>
+          <a href="/" className="logo">
+            {currentCopy.judul}
+          </a>
           <nav className="nav-links">
-            <a href="#">Beranda</a>
-            <a href="#">Tentang</a>
-            <a href="#">Katalog</a>
-            <a href="#">Kontak</a>
+            <a href="/">Beranda</a>
+            <a href="/about">Tentang</a>
+            <a href="/catalog">Katalog</a>
+            <a href="/contact">Kontak</a>
           </nav>
           <div className="header-actions">
-            <div className="header-icon"><Search size={20} /></div>
-            <div className="header-icon"><ExternalLink size={20} /></div>
+            <div className="header-icon">
+              <Search size={20} />
+            </div>
+            <div className="header-icon">
+              <ExternalLink size={20} />
+            </div>
             <button
               className="menu-toggle"
               aria-label="Open menu"
-              onClick={() => showNotification(currentCopy.notification_menu_functionality)}
+              onClick={() =>
+                showNotification(currentCopy.notification_menu_functionality)
+              }
             >
-              <span></span>
-              <span></span>
-              <span></span>
+              <span />
+              <span />
+              <span />
             </button>
           </div>
         </div>
@@ -243,20 +271,37 @@ export default function MaintenancePage() {
       <main>
         <div className="content-wrapper">
           <div className="left-content">
-            <div className="error-code" onClick={animateNumber} ref={errorNumberRef}>418</div>
-            <h1 className="main-heading" ref={mainHeadingRef}>{currentCopy.main_heading}</h1>
+            <div
+              className="error-code"
+              onClick={animateNumber}
+              onKeyDown={animateNumber}
+              role="button"
+              tabIndex={0}
+              ref={errorNumberRef}
+            >
+              418
+            </div>
+            <h1 className="main-heading" ref={mainHeadingRef}>
+              {currentCopy.main_heading}
+            </h1>
             <div className="subtitle">{currentCopy.subtitle_system_status}</div>
             <p className="description" ref={descriptionRef}>
               {currentCopy.deskripsi}
             </p>
-            <a href="#" className="cta-button" onClick={() => showNotification(currentCopy.notification_updates_soon)}>
+            <button
+              type="button"
+              className="cta-button"
+              onClick={() =>
+                showNotification(currentCopy.notification_updates_soon)
+              }
+            >
               {currentCopy.read_more}
-            </a>
+            </button>
           </div>
 
           <div className="right-content">
-            <div className="geometric-cross"></div>
-            <div className="geometric-circle"></div>
+            <div className="geometric-cross" />
+            <div className="geometric-circle" />
           </div>
         </div>
       </main>
@@ -264,28 +309,68 @@ export default function MaintenancePage() {
       {/* Interactive Cards Section */}
       <section className="cards-section" ref={cardsSectionRef}>
         <div className="cards-container">
-          <div className="interactive-card" onClick={() => showNotification(currentCopy.notification_social_media)}>
+          <div
+            className="interactive-card"
+            onClick={() =>
+              showNotification(currentCopy.notification_social_media)
+            }
+            onKeyDown={() =>
+              showNotification(currentCopy.notification_social_media)
+            }
+            role="button"
+            tabIndex={0}
+          >
             <div className="card-icon">
               <Bell size={24} color="white" />
             </div>
-            <div className="card-title">{currentCopy.card_stay_updated_title}</div>
-            <div className="card-description">{currentCopy.card_stay_updated_desc}</div>
+            <div className="card-title">
+              {currentCopy.card_stay_updated_title}
+            </div>
+            <div className="card-description">
+              {currentCopy.card_stay_updated_desc}
+            </div>
           </div>
 
-          <div className="interactive-card" onClick={() => showNotification(currentCopy.notification_emergency_contact)}>
+          <div
+            className="interactive-card"
+            onClick={() =>
+              showNotification(currentCopy.notification_emergency_contact)
+            }
+            onKeyDown={() =>
+              showNotification(currentCopy.notification_emergency_contact)
+            }
+            role="button"
+            tabIndex={0}
+          >
             <div className="card-icon">
               <Mail size={24} color="white" />
             </div>
             <div className="card-title">{currentCopy.card_need_help_title}</div>
-            <div className="card-description">{currentCopy.card_need_help_desc}</div>
+            <div className="card-description">
+              {currentCopy.card_need_help_desc}
+            </div>
           </div>
 
-          <div className="interactive-card" onClick={() => showNotification(currentCopy.notification_brewing_status)}>
+          <div
+            className="interactive-card"
+            onClick={() =>
+              showNotification(currentCopy.notification_brewing_status)
+            }
+            onKeyDown={() =>
+              showNotification(currentCopy.notification_brewing_status)
+            }
+            role="button"
+            tabIndex={0}
+          >
             <div className="card-icon">
               <Coffee size={24} color="white" />
             </div>
-            <div className="card-title">{currentCopy.card_brewing_status_title}</div>
-            <div className="card-description">{currentCopy.card_brewing_status_desc}</div>
+            <div className="card-title">
+              {currentCopy.card_brewing_status_title}
+            </div>
+            <div className="card-description">
+              {currentCopy.card_brewing_status_desc}
+            </div>
           </div>
         </div>
       </section>
@@ -298,7 +383,7 @@ export default function MaintenancePage() {
           </div>
           <div className="progress-details">
             <div className="progress-bar">
-              <div className="progress-fill"></div>
+              <div className="progress-fill" />
             </div>
             <div className="progress-text">{currentCopy.progress_text}</div>
           </div>
@@ -314,10 +399,22 @@ export default function MaintenancePage() {
           </div>
           <div className="footer-section">
             <h3>{currentCopy.footer_quick_links_title}</h3>
-            <p><a href="#">{currentCopy.footer_academic_programs}</a></p>
-            <p><a href="#">{currentCopy.footer_student_portal}</a></p>
-            <p><a href="#">{currentCopy.footer_faculty}</a></p>
-            <p><a href="#">{currentCopy.footer_contact}</a></p>
+            <p>
+              <a href="/academic-programs">
+                {currentCopy.footer_academic_programs}
+              </a>
+            </p>
+            <p>
+              <a href="/student-portal">
+                {currentCopy.footer_student_portal}
+              </a>
+            </p>
+            <p>
+              <a href="/faculty">{currentCopy.footer_faculty}</a>
+            </p>
+            <p>
+              <a href="/contact">{currentCopy.footer_contact}</a>
+            </p>
           </div>
           <div className="footer-section">
             <h3>{currentCopy.footer_contact_info_title}</h3>
@@ -333,7 +430,10 @@ export default function MaintenancePage() {
       </footer>
 
       {/* Notification Toast */}
-      <div id="notification" className={`notification ${showNotificationToast ? 'show' : ''}`}>
+      <div
+        id="notification"
+        className={`notification ${showNotificationToast ? "show" : ""}`}
+      >
         <span id="notification-text">{notificationMessage}</span>
       </div>
     </div>

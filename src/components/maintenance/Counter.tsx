@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import "./Counter.css";
 
-export default function Counter({ children, count: initialCount }) {
+interface CounterProps {
+  children: ReactNode;
+  count: number;
+}
+
+export default function Counter({
+  children,
+  count: initialCount,
+}: CounterProps) {
   const [count, setCount] = useState(initialCount);
   const add = () => setCount((i) => i + 1);
   const subtract = () => setCount((i) => i - 1);

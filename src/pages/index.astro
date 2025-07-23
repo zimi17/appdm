@@ -1,28 +1,22 @@
 ---
 import KinseyLayout from '../components/layouts/KinseyLayout.astro';
-import HeroUtama from '../components/sections/HeroUtama.astro';
+import HeroSlider from '../components/interactive/HeroSlider.tsx';
+import InfiniteTicker from '../components/interactive/InfiniteTicker.tsx';
 import KeunggulanProgramStudi from '../components/sections/KeunggulanProgramStudi.astro';
 import InisiatifKampus from '../components/sections/InisiatifKampus.astro';
 import TestimoniCivitas from '../components/sections/TestimoniCivitas.astro';
 import PertanyaanUmum from '../components/sections/PertanyaanUmum.astro';
 import BeritaTerbaru from '../components/sections/BeritaTerbaru.astro';
-import StatistikKampus from '../components/sections/StatistikKampus.astro';
-import FormulirKontak from '../components/sections/FormulirKontak.astro';
-import MitraKerjasama from '../components/sections/MitraKerjasama.astro';
-import TentangSection from '../components/sections/TentangSection.astro';
-import AjakanBergabung from '../components/sections/AjakanBergabung.astro';
 ---
 
 <KinseyLayout title="STIE Dwimulya - Beranda">
-  <HeroUtama />
+  <HeroSlider client:load />
+  <section>
+    <InfiniteTicker client:load keywords={['Ekonomi', 'Manajemen', 'Akuntansi', 'Bisnis', 'Inovasi', 'Kewirausahaan']} />
+  </section>
   <KeunggulanProgramStudi />
-  <TentangSection />
   <InisiatifKampus />
-  <StatistikKampus />
-  <BeritaTerbaru />
   <TestimoniCivitas />
   <PertanyaanUmum />
-  <MitraKerjasama />
-  <FormulirKontak />
-  <AjakanBergabung />
+  <BeritaTerbaru />
 </KinseyLayout>
