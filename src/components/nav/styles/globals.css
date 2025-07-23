@@ -1,0 +1,995 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  /* STIE Dwimulya Brand Colors */
+  --oxford-blue: #002147;
+  --brand-black: #1E1E1E;
+  --brand-gold: #D4AF37;
+  --sky-blue: #A9D6E5;
+  --slate-grey: #8996A0;
+  --light-grey: #F5F5F5;
+  --white: #FFFFFF;
+  
+  /* Validation Colors */
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  
+  /* Animation Durations - sesuai panduan STIE Dwimulya */
+  --duration-fast: 200ms;
+  --duration-standard: 350ms;
+  --duration-slow: 500ms;
+  
+  /* Updated color system menggunakan STIE Dwimulya brand palette */
+  --background: var(--white);
+  --foreground: var(--brand-black);
+  --card: var(--white);
+  --card-foreground: var(--brand-black);
+  --popover: var(--white);
+  --popover-foreground: var(--brand-black);
+  --primary: var(--oxford-blue);
+  --primary-foreground: var(--white);
+  --secondary: var(--light-grey);
+  --secondary-foreground: var(--oxford-blue);
+  --muted: var(--light-grey);
+  --muted-foreground: var(--slate-grey);
+  --accent: var(--sky-blue);
+  --accent-foreground: var(--oxford-blue);
+  --destructive: #dc2626;
+  --destructive-foreground: var(--white);
+  --border: rgba(0, 33, 71, 0.15);
+  --input: transparent;
+  --input-background: var(--light-grey);
+  --switch-background: var(--slate-grey);
+  --font-weight-medium: 600;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --ring: var(--oxford-blue);
+  --chart-1: var(--oxford-blue);
+  --chart-2: var(--brand-gold);
+  --chart-3: var(--sky-blue);
+  --chart-4: var(--slate-grey);
+  --chart-5: var(--brand-black);
+  --radius: 0.625rem;
+  --sidebar: var(--light-grey);
+  --sidebar-foreground: var(--brand-black);
+  --sidebar-primary: var(--oxford-blue);
+  --sidebar-primary-foreground: var(--white);
+  --sidebar-accent: var(--sky-blue);
+  --sidebar-accent-foreground: var(--oxford-blue);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--oxford-blue);
+
+  /* Font families - sesuai panduan merek STIE Dwimulya */
+  --font-merriweather: 'Merriweather', Georgia, serif;
+  --font-montserrat: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dark {
+  --background: var(--brand-black);
+  --foreground: var(--white);
+  --card: #2a2a2a;
+  --card-foreground: var(--white);
+  --popover: #2a2a2a;
+  --popover-foreground: var(--white);
+  --primary: var(--sky-blue);
+  --primary-foreground: var(--oxford-blue);
+  --secondary: #3a3a3a;
+  --secondary-foreground: var(--white);
+  --muted: #3a3a3a;
+  --muted-foreground: var(--slate-grey);
+  --accent: var(--brand-gold);
+  --accent-foreground: var(--oxford-blue);
+  --destructive: #ef4444;
+  --destructive-foreground: var(--white);
+  --border: rgba(255, 255, 255, 0.15);
+  --input: #3a3a3a;
+  --ring: var(--sky-blue);
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: var(--white);
+  --sidebar-primary: var(--sky-blue);
+  --sidebar-primary-foreground: var(--oxford-blue);
+  --sidebar-accent: #3a3a3a;
+  --sidebar-accent-foreground: var(--white);
+  --sidebar-border: rgba(255, 255, 255, 0.15);
+  --sidebar-ring: var(--sky-blue);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Brand Color Utilities */
+  --color-oxford-blue: var(--oxford-blue);
+  --color-brand-black: var(--brand-black);
+  --color-brand-gold: var(--brand-gold);
+  --color-sky-blue: var(--sky-blue);
+  --color-slate-grey: var(--slate-grey);
+  --color-light-grey: var(--light-grey);
+  
+  /* Animation Duration Utilities */
+  --duration-fast: var(--duration-fast);
+  --duration-standard: var(--duration-standard);
+  --duration-slow: var(--duration-slow);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+    outline-offset: 2px;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-montserrat);
+  }
+}
+
+/**
+ * STIE Dwimulya Brand Typography System
+ * - Primary: Merriweather (serif) untuk judul utama & teks penting
+ * - Secondary: Montserrat (sans serif) untuk teks isi & antarmuka
+ * - Minimum font size: 1rem (16px browser default)
+ * - Left alignment untuk text blocks dan headings
+ * - Compliant dengan Harvard Graphic Design Standards
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: var(--font-merriweather);
+      font-size: 2.5rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      text-align: left;
+      color: var(--oxford-blue);
+    }
+
+    h2 {
+      font-family: var(--font-merriweather);
+      font-size: 2rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      text-align: left;
+      color: var(--oxford-blue);
+    }
+
+    h3 {
+      font-family: var(--font-merriweather);
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      text-align: left;
+      color: var(--oxford-blue);
+    }
+
+    h4 {
+      font-family: var(--font-merriweather);
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      text-align: left;
+      color: var(--oxford-blue);
+    }
+
+    h5 {
+      font-family: var(--font-merriweather);
+      font-size: 1.125rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+      text-align: left;
+      color: var(--oxford-blue);
+    }
+
+    h6 {
+      font-family: var(--font-merriweather);
+      font-size: 1rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.4;
+      text-align: left;
+      color: var(--oxford-blue);
+    }
+
+    p {
+      font-family: var(--font-montserrat);
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      text-align: left;
+      color: var(--brand-black);
+    }
+
+    label {
+      font-family: var(--font-montserrat);
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      letter-spacing: 0.005em;
+    }
+
+    button {
+      font-family: var(--font-montserrat);
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+
+    input {
+      font-family: var(--font-montserrat);
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      letter-spacing: 0.005em;
+    }
+
+    nav {
+      font-family: var(--font-montserrat);
+    }
+
+    /* Wayfinding elements menggunakan Montserrat (sans serif) */
+    nav, [role="navigation"], [role="menu"], [role="menubar"] {
+      font-family: var(--font-montserrat);
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-montserrat);
+}
+
+/* Brand Font utility classes */
+.font-merriweather {
+  font-family: var(--font-merriweather);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+/* STIE Dwimulya Typography Scale */
+.text-display {
+  font-family: var(--font-merriweather);
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--oxford-blue);
+}
+
+.text-title {
+  font-family: var(--font-merriweather);
+  font-size: 2.25rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--oxford-blue);
+}
+
+.text-subtitle {
+  font-family: var(--font-merriweather);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--oxford-blue);
+}
+
+.text-body-large {
+  font-family: var(--font-montserrat);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--brand-black);
+}
+
+.text-body {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--brand-black);
+}
+
+.text-body-bold {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--brand-black);
+}
+
+.text-caption {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.4;
+  letter-spacing: 0.015em;
+  color: var(--slate-grey);
+}
+
+.text-overline {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate-grey);
+}
+
+/* Wayfinding typography - Montserrat untuk semua elemen navigasi */
+.nav-text {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.005em;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--brand-black);
+}
+
+.nav-title {
+  font-family: var(--font-montserrat);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--oxford-blue);
+}
+
+/* Alert dan announcement typography */
+.alert-text {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+}
+
+.control-text {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+}
+
+/* Brand Color Utilities */
+.text-oxford-blue { color: var(--oxford-blue); }
+.text-brand-black { color: var(--brand-black); }
+.text-brand-gold { color: var(--brand-gold); }
+.text-sky-blue { color: var(--sky-blue); }
+.text-slate-grey { color: var(--slate-grey); }
+.text-light-grey { color: var(--light-grey); }
+
+.bg-oxford-blue { background-color: var(--oxford-blue); }
+.bg-brand-black { background-color: var(--brand-black); }
+.bg-brand-gold { background-color: var(--brand-gold); }
+.bg-sky-blue { background-color: var(--sky-blue); }
+.bg-slate-grey { background-color: var(--slate-grey); }
+.bg-light-grey { background-color: var(--light-grey); }
+
+.border-oxford-blue { border-color: var(--oxford-blue); }
+.border-brand-gold { border-color: var(--brand-gold); }
+.border-sky-blue { border-color: var(--sky-blue); }
+
+/* Alignment utilities - sesuai dengan guidelines */
+.text-left-aligned {
+  text-align: left;
+}
+
+.text-right-aligned {
+  text-align: right;
+}
+
+/* Override center alignment untuk compliance */
+.text-block {
+  text-align: left;
+}
+
+.heading-block {
+  text-align: left;
+}
+
+/* Ensure no special effects on typography */
+* {
+  text-shadow: none;
+}
+
+/* Link styling - hanya link yang boleh underline */
+a {
+  text-decoration: underline;
+}
+
+:not(a) {
+  text-decoration: none;
+}
+
+/* Reading-optimized paragraph styling */
+.reading-text {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-align: left;
+  margin-right: 0;
+  color: var(--brand-black);
+  /* Ragged right margin untuk kemudahan membaca */
+}
+
+/* Typography yang aman untuk semua ukuran minimum */
+.safe-text {
+  font-size: max(1rem, 16px);
+  line-height: 1.5;
+}
+
+/* Brand-specific component styles */
+.brand-gradient {
+  background: linear-gradient(135deg, var(--oxford-blue) 0%, var(--sky-blue) 100%);
+}
+
+.brand-accent-gradient {
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--sky-blue) 100%);
+}
+
+.brand-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 33, 71, 0.1), 0 2px 4px -1px rgba(0, 33, 71, 0.06);
+}
+
+.brand-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 33, 71, 0.1), 0 4px 6px -2px rgba(0, 33, 71, 0.05);
+}
+
+/**
+ * =============================================
+ * STIE Dwimulya Microinteractions & Animations
+ * =============================================
+ * Sesuai dengan panduan animasi yang fungsional, halus, dan profesional
+ */
+
+/* Base Transition Settings */
+.transition-micro {
+  transition-duration: var(--duration-fast);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out */
+  transition-property: background-color, color, transform, box-shadow, border-color;
+}
+
+.transition-standard {
+  transition-duration: var(--duration-standard);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+  transition-property: all;
+}
+
+.transition-slow {
+  transition-duration: var(--duration-slow);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+  transition-property: all;
+}
+
+/* 1. Button & Link Microinteractions */
+.btn-micro {
+  transition-duration: var(--duration-fast);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-property: background-color, color, transform, box-shadow;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-medium);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.btn-micro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 33, 71, 0.15), 0 4px 6px -2px rgba(0, 33, 71, 0.1);
+}
+
+.btn-micro:active {
+  transform: translateY(0);
+  transition-duration: 100ms;
+}
+
+.btn-micro:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background-color: var(--oxford-blue);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #001a38;
+}
+
+.btn-secondary {
+  background-color: var(--sky-blue);
+  color: var(--oxford-blue);
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #8fc1d4;
+}
+
+.btn-accent {
+  background-color: var(--brand-gold);
+  color: var(--oxford-blue);
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-accent:hover:not(:disabled) {
+  background-color: #c49b2f;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--oxford-blue);
+  border: 2px solid var(--oxford-blue);
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--oxford-blue);
+  color: var(--white);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--oxford-blue);
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: rgba(0, 33, 71, 0.1);
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-md {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.link-micro {
+  transition-duration: var(--duration-fast);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-property: color, text-decoration-color;
+  color: var(--oxford-blue);
+}
+
+.link-micro:hover {
+  color: #c49b2f;
+  text-decoration-color: var(--brand-gold);
+}
+
+/* 2. Form Input Microinteractions */
+.input-micro {
+  transition-duration: var(--duration-standard);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: border-color, box-shadow, background-color;
+  border: 2px solid rgba(137, 150, 160, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-montserrat);
+  background-color: var(--white);
+  width: 100%;
+}
+
+.input-micro:focus {
+  border-color: var(--oxford-blue);
+  box-shadow: 0 0 0 3px rgba(0, 33, 71, 0.1);
+  outline: none;
+}
+
+.input-label {
+  transition-duration: var(--duration-standard);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform, color;
+  transform-origin: left top;
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  color: var(--slate-grey);
+  font-family: var(--font-montserrat);
+  pointer-events: none;
+}
+
+.input-label-focused {
+  transform: translateY(-1.5rem) scale(0.85);
+  color: var(--oxford-blue);
+}
+
+.input-label-icon {
+  left: 2.75rem;
+}
+
+/* Input Validation States */
+.input-valid {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.input-invalid {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* 3. Navigation Menu Microinteractions */
+.nav-slide-in {
+  animation: slideInFromLeft var(--duration-standard) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-slide-out {
+  animation: slideOutToLeft var(--duration-standard) cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutToLeft {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+.nav-item-micro {
+  transition-duration: var(--duration-fast);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-property: background-color, color, padding-left;
+}
+
+.nav-item-micro:hover {
+  background-color: rgba(0, 33, 71, 0.05);
+  padding-left: 1.75rem;
+}
+
+/* 4. Loading States */
+.skeleton-loader {
+  background: linear-gradient(90deg, var(--light-grey) 25%, rgba(245, 245, 245, 0.5) 50%, var(--light-grey) 75%);
+  background-size: 200% 100%;
+  animation: loading-pulse 2s infinite;
+}
+
+@keyframes loading-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--light-grey);
+  border-top: 2px solid var(--oxford-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-sm {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.spinner-md {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.spinner-lg {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+.spinner-primary {
+  border-color: rgba(0, 33, 71, 0.2);
+  border-top-color: var(--oxford-blue);
+}
+
+.spinner-secondary {
+  border-color: rgba(169, 214, 229, 0.2);
+  border-top-color: var(--sky-blue);
+}
+
+.spinner-white {
+  border-color: rgba(255, 255, 255, 0.2);
+  border-top-color: var(--white);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 5. Notification & Alert Microinteractions */
+.notification-slide-in {
+  animation: notificationSlideIn var(--duration-standard) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.notification-slide-out {
+  animation: notificationSlideOut var(--duration-standard) cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+@keyframes notificationSlideIn {
+  0% { 
+    transform: translateX(100%); 
+    opacity: 0; 
+  }
+  100% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes notificationSlideOut {
+  0% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(100%); 
+    opacity: 0; 
+  }
+}
+
+.alert-success {
+  background-color: #f0fdf4;
+  border-left: 4px solid #22c55e;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #065f46;
+}
+
+.alert-error {
+  background-color: #fef2f2;
+  border-left: 4px solid #ef4444;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #991b1b;
+}
+
+.alert-warning {
+  background-color: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #92400e;
+}
+
+/* 6. Card & Content Microinteractions */
+.card-micro {
+  transition-duration: var(--duration-standard);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform, box-shadow;
+}
+
+.card-micro:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 33, 71, 0.1), 0 10px 10px -5px rgba(0, 33, 71, 0.04);
+}
+
+/* 7. Modal & Overlay Microinteractions */
+.modal-backdrop {
+  transition-duration: var(--duration-standard);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: opacity, backdrop-filter;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  backdrop-filter: blur(4px);
+}
+
+.modal-backdrop.closed {
+  opacity: 0;
+  backdrop-filter: blur(0px);
+}
+
+.modal-content {
+  transition-duration: var(--duration-standard);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform, opacity;
+}
+
+.modal-content.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-content.closed {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
+}
+
+/* 8. Progress & Status Indicators */
+.progress-bar {
+  transition-duration: var(--duration-slow);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: width, background-color;
+}
+
+.status-indicator {
+  transition-duration: var(--duration-fast);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-property: background-color, transform;
+}
+
+.status-indicator.active {
+  background-color: var(--success-color);
+  transform: scale(1.1);
+}
+
+.status-indicator.inactive {
+  background-color: var(--slate-grey);
+  transform: scale(1);
+}
+
+/* 9. Interactive Elements */
+.interactive-scale {
+  transition-duration: var(--duration-fast);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-property: transform;
+}
+
+.interactive-scale:hover {
+  transform: scale(1.05);
+}
+
+.interactive-scale:active {
+  transform: scale(0.98);
+}
+
+/* 10. Focus States - Accessibility */
+.focus-ring {
+  transition-duration: var(--duration-fast);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-property: box-shadow, outline;
+}
+
+.focus-ring:focus {
+  outline: 2px solid var(--oxford-blue);
+  outline-offset: 2px;
+}
+
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 33, 71, 0.3);
+}
+
+/* Animation Utilities */
+.animate-fade-in {
+  animation: fadeIn var(--duration-standard) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-fade-out {
+  animation: fadeOut var(--duration-standard) cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-slide-up {
+  animation: slideUp var(--duration-standard) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Professional Polish */
+.micro-interaction-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.micro-interaction-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.micro-interaction-container:hover::before {
+  left: 100%;
+}

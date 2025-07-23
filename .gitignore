@@ -124,6 +124,3 @@ pnpm_build_output.log
 pnpm_dev_error.log
 pnpm_dev_output.log
 
-
-/src/components/site
-/src/components/nav
