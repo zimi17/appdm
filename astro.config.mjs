@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
+import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   // You can likely remove this line to let Astro's CLI handle the mode
@@ -9,5 +10,5 @@ export default defineConfig({
   site: import.meta.env.SITE_URL || "https://stiedwimulya.ac.id",
   output: "server",
   adapter: node({ mode: "standalone" }),
-  integrations: [react()],
+  integrations: [react(), tailwind()],
 });

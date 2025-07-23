@@ -1,0 +1,42 @@
+---
+import { faqItems } from '../../data/faq.ts';
+import Accordion from '../ui/Accordion.astro';
+---
+
+<section id="faq" class="section-padding bg-light-grey">
+  <div class="container mx-auto px-4">
+    <div class="mb-spacing-lg flex items-end justify-between">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="text-overline text-primary">
+          FAQ
+        </span>
+        <h2 class="text-title text-brand-black my-spacing-sm">
+          Pertanyaan yang Sering Diajukan
+        </h2>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="grid grid-cols-1 items-center gap-spacing-lg lg:grid-cols-2">
+        <div class="lg:pb-spacing-xl">
+          <div class="space-y-spacing-sm">
+            {faqItems.map((faq) => (
+              <Accordion title={faq.question}>
+                <p class="text-body">{faq.answer}</p>
+              </Accordion>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div class="relative -z-10">
+            <img alt="faqImg" src="/images/faq/faq-1.jpg" width="432" height="288" class="h-full rounded-md lg:h-72" />
+          </div>
+          <div class="-mt-spacing-xl hidden text-end xl:block">
+            <div class="ms-auto inline-block rounded-md bg-white p-spacing-sm">
+              <img alt="faqImg" src="/images/faq/faq-2.jpg" class="ms-auto rounded" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

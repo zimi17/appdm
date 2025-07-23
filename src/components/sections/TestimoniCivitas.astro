@@ -1,0 +1,62 @@
+---
+import Section from '../ui/Section.astro';
+import GridContainer from '../ui/GridContainer.astro';
+import Grid from '../ui/Grid.astro';
+import GridItem from '../ui/GridItem.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import Card from '../ui/Card.astro';
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  role: string;
+  image: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote: 'STIE Dwimulya memberikan fondasi ilmu ekonomi yang kuat dan relevan dengan dunia kerja. Saya sangat terbantu dalam karir saya.',
+    author: 'Budi Santoso',
+    role: 'Alumni, Manajer Keuangan',
+    image: '/assets/avatar-1.jpg',
+  },
+  {
+    quote: 'Lingkungan belajar yang suportif dan dosen-dosen yang berdedikasi membuat pengalaman kuliah saya sangat berkesan.',
+    author: 'Siti Aminah',
+    role: 'Mahasiswa Aktif',
+    image: '/assets/avatar-2.jpg',
+  },
+  {
+    quote: 'Sebagai dosen, saya bangga menjadi bagian dari institusi yang terus berinovasi dan menghasilkan lulusan berkualitas.',
+    author: 'Dr. Ahmad Yani',
+    role: 'Dosen Ekonomi',
+    image: '/assets/avatar-3.jpg',
+  },
+];
+---
+
+<Section backgroundColor="light-grey">
+  <GridContainer>
+    <div class="text-center mb-12">
+      <Heading variant="title" className="mb-4">Apa Kata Mereka?</Heading>
+      <Text variant="body-large">Testimoni dari civitas akademika STIE Dwimulya.</Text>
+    </div>
+    <Grid>
+      {testimonials.map((testimonial) => (
+        <GridItem span={4} spanMd={6} spanSm={12}>
+          <Card shadow={true}>
+            <div class="flex items-center mb-4">
+              <img src={testimonial.image} alt={testimonial.author} class="w-16 h-16 rounded-full mr-4 object-cover" />
+              <div>
+                <Text variant="body-bold">{testimonial.author}</Text>
+                <Text variant="caption">{testimonial.role}</Text>
+              </div>
+            </div>
+            <Text variant="body" className="italic">"{testimonial.quote}"</Text>
+          </Card>
+        </GridItem>
+      ))}
+    </Grid>
+  </GridContainer>
+</Section>

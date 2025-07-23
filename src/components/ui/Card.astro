@@ -1,0 +1,23 @@
+---
+interface Props {
+  border?: boolean;
+  shadow?: boolean;
+  padding?: string;
+}
+
+const { border = false, shadow = false, padding = 'p-6' } = Astro.props;
+
+let baseClass = `bg-white rounded-lg ${padding}`;
+
+if (border) {
+  baseClass += ' border border-gray-200';
+}
+
+if (shadow) {
+  baseClass += ' shadow-md';
+}
+---
+
+<div class={`${baseClass}`}>
+  <slot />
+</div>

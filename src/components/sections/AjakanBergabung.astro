@@ -1,0 +1,19 @@
+---
+import Section from '../ui/Section.astro';
+import GridContainer from '../ui/GridContainer.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import Button from '../ui/Button.astro';
+---
+
+<Section backgroundColor="brand-black">
+  <GridContainer>
+    <div class="text-center py-12">
+      <Heading variant="title" className="text-white mb-4">Siap Bergabung dengan STIE Dwimulya?</Heading>
+      <Text variant="body-large" className="text-white mb-8">
+        Jadilah bagian dari komunitas akademik yang dinamis dan raih masa depan cerah Anda bersama kami.
+      </Text>
+      <Button href="/penerimaan" variant="primary">Daftar Sekarang</Button>
+    </div>
+  </GridContainer>
+</Section>

@@ -1,0 +1,20 @@
+---
+import MainLayout from '../../components/layout/MainLayout.astro';
+import NewsCard from '../../components/common/NewsCard.astro';
+import { newsArticles } from '../../data/news.ts';
+---
+
+<MainLayout title="Berita & Acara - STIE Dwimulya">
+  <section class="py-10 lg:py-20">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold text-default-950 mb-8">Berita & Acara</h1>
+      <p class="text-lg text-gray-700 mb-8">Ikuti perkembangan terbaru dan acara-acara menarik dari STIE Dwimulya.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {newsArticles.map(article => (
+          <NewsCard article={article} />
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -16,10 +16,10 @@ const Features = () => {
         <div className="mb-10 flex items-end justify-between">
           <div className="mx-auto max-w-2xl text-center">
             <span className="rounded-md border border-primary bg-primary/20 px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary">
-              Featureo Features
+              Fitur Akademik
             </span>
             <h2 className="mt-4 text-4xl font-medium capitalize text-default-950">
-              Our Features
+              Keunggulan Program Studi
             </h2>
           </div>
         </div>
@@ -30,14 +30,13 @@ const Features = () => {
                 <LuComponent className="h-14 w-14 text-default-950" />
               </span>
               <h2 className="mb-4 mt-8 text-2xl font-medium text-default-950">
-                Developer
+                S1 Akuntansi: Pengelolaan Keuangan
               </h2>
               <p className="mb-6 text-base">
-                Lorem ipsum dummy text are usually use in these section. Lorem
-                ipsum dummy text are used in this design
+                Fokus pada pengelolaan keuangan dan analisis laporan keuangan yang mendalam.
               </p>
               <Link href="" className="text-lg text-default-950">
-                Read More
+                Selengkapnya
                 <LuMoveRight className="inline-block h-6 w-6 opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-2 group-hover:opacity-100" />
               </Link>
             </div>
@@ -48,15 +47,13 @@ const Features = () => {
                 <LuMonitor className="h-14 w-14 text-default-950" />
               </span>
               <h2 className="mb-4 mt-8 text-2xl font-medium text-default-950">
-                Web Design
+                S1 Akuntansi: Perpajakan & Audit
               </h2>
               <p className="mb-6  text-base">
-                {' '}
-                In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-                Nullam dictum felis eu pede mollis pretium.
+                Mempelajari perpajakan, audit, dan pemahaman sistem keuangan secara komprehensif.
               </p>
               <Link href="" className="text-lg text-default-950">
-                Read More
+                Selengkapnya
                 <LuMoveRight className="inline-block h-6 w-6 opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-2 group-hover:opacity-100" />
               </Link>
             </div>
@@ -67,14 +64,13 @@ const Features = () => {
                 <LuLayers className="h-14 w-14 text-default-950" />
               </span>
               <h2 className="mb-4 mt-8 text-2xl font-medium text-default-950">
-                Digital Product Design
+                S1 Manajemen: Strategi Bisnis
               </h2>
               <p className="mb-6  text-base">
-                Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien
-                ut libero venenatis faucibus.
+                Mengembangkan strategi bisnis dan kepemimpinan untuk menghadapi tantangan pasar.
               </p>
               <Link href="" className="text-lg text-default-950">
-                Read More
+                Selengkapnya
                 <LuMoveRight className="inline-block h-6 w-6 opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-2 group-hover:opacity-100" />
               </Link>
             </div>
@@ -85,14 +81,13 @@ const Features = () => {
                 <LuLayoutGrid className="h-14 w-14 text-default-950" />
               </span>
               <h2 className="mb-4 mt-8 text-2xl font-medium text-default-950">
-                Branding &amp; Design
+                S1 Manajemen: Pengelolaan Tim
               </h2>
               <p className="mb-6  text-base">
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere Curae; In ac dui quis mi consectetuer lacinia.
+                Fokus pada pengelolaan tim dan pengambilan keputusan yang efektif dalam bisnis.
               </p>
               <Link href="" className="text-lg text-default-950">
-                Read More
+                Selengkapnya
                 <LuMoveRight className="inline-block h-6 w-6 opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-2 group-hover:opacity-100" />
               </Link>
             </div>
@@ -103,14 +98,13 @@ const Features = () => {
                 <LuFigma className="h-14 w-14 text-default-950" />
               </span>
               <h2 className="mb-4 mt-8 text-2xl font-medium text-default-950">
-                Ui/Ux &amp; Design
+                S1 Akuntansi: Keahlian Profesional
               </h2>
               <p className="mb-6  text-base">
-                Maecenas malesuada. Praesent congue erat at massa. Sed cursus
-                turpis vitae tortor. Donec posuere vulputate arcu.
+                Mempersiapkan mahasiswa dengan keahlian profesional untuk menjadi akuntan yang kompeten.
               </p>
               <Link href="" className="text-lg text-default-950">
-                Read More
+                Selengkapnya
                 <LuMoveRight className="inline-block h-6 w-6 opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-2 group-hover:opacity-100" />
               </Link>
             </div>
@@ -121,14 +115,13 @@ const Features = () => {
                 <LuPaintbrush className="h-14 w-14 text-default-950" />
               </span>
               <h2 className="mb-4 mt-8 text-2xl font-medium text-default-950">
-                Graphic Design
+                S1 Manajemen: Inovasi & Kewirausahaan
               </h2>
               <p className="mb-6  text-base">
-                Aenean posuere, tortor sed cursus feugiat, nunc augue blandit
-                nunc, eu sollicitudin urna dolor sagittis lacus.
+                Mendorong inovasi dan semangat kewirausahaan di kalangan mahasiswa manajemen.
               </p>
               <Link href="" className="text-lg text-default-950">
-                Read More
+                Selengkapnya
                 <LuMoveRight className="inline-block h-6 w-6 opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-2 group-hover:opacity-100" />
               </Link>
             </div>

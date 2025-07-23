@@ -19,11 +19,12 @@ const Creative = () => {
       <TopNavBar
         menuItems={[
           'home',
-          'features',
-          'portfolio',
-          'testimonial',
-          'faq',
-          'blog',
+          'about-us',
+          's1-akuntansi',
+          's1-manajemen',
+          'admissions',
+          'news',
+          'contact',
         ]}
         position="sticky"
         hasDownloadButton
@@ -35,16 +36,20 @@ const Creative = () => {
         <ServicesMarquee />
       </section>
 
+      {/* Academic Programs (Features + Services) */}
       <Features />
-
-      <ProjectSlider />
-
       <Services />
 
+      {/* Program Initiatives */}
+      <ProjectSlider />
+
+      {/* Program Testimonials */}
       <TestimonialSlider />
 
+      {/* FAQs */}
       <FAQs />
 
+      {/* Alumni Success Stories */}
       <Blogs />
     </>
   )

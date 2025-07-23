@@ -1,0 +1,39 @@
+---
+interface Props {
+  article: {
+    day: string;
+    month: string;
+    title: string;
+    description: string;
+    image: string;
+    url: string;
+  };
+}
+
+const { article } = Astro.props;
+---
+
+<div class="overflow-hidden rounded-lg border border-default-200">
+  <div class="group p-6">
+    <div class="relative overflow-hidden rounded-md">
+      <img src={article.image} alt="blog" class="rounded-md" />
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div class="mt-6 flex gap-5">
+      <div>
+        <h2 class="text-3xl font-medium text-default-950">{article.day}</h2>
+        <p class="text-lg uppercase text-default-800">{article.month}</p>
+      </div>
+      <div>
+        <h2 class="text-2xl font-medium text-default-950">
+          {article.title}
+        </h2>
+        <p class="mb-5 mt-3 text-base">{article.description}</p>
+        <a href={article.url} class="text-lg font-medium text-default-950">
+          Selengkapnya
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block h-6 w-6 opacity-0 transition-all duration-500 will-change-transform group-hover:translate-x-2 group-hover:opacity-100"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+---
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import Button from '../ui/Button.astro';
+import Section from '../ui/Section.astro';
+import GridContainer from '../ui/GridContainer.astro';
+import Grid from '../ui/Grid.astro';
+import GridItem from '../ui/GridItem.astro';
+
+interface Slide {
+  image: string;
+  tagline: string;
+  subtitle: string;
+  ctaText: string;
+  ctaLink: string;
+}
+
+const slides: Slide[] = [
+  {
+    image: '/assets/hero-1.jpg',
+    tagline: 'Masa Depan Cerah Dimulai di Sini',
+    subtitle: 'Jadilah Pemimpin Ekonomi Berintegritas dan Berdaya Saing Global.',
+    ctaText: 'Daftar Sekarang',
+    ctaLink: '/penerimaan',
+  },
+  {
+    image: '/assets/hero-2.jpg',
+    tagline: 'Pendidikan Berkualitas, Karir Gemilang',
+    subtitle: 'Temukan Potensi Terbaikmu Bersama Kami.',
+    ctaText: 'Pelajari Lebih Lanjut',
+    ctaLink: '/program-studi',
+  },
+  // Add more slides as needed
+];
+---
+
+<Section backgroundColor="white" paddingTop="0" paddingBottom="0">
+  <Swiper
+    modules={[Pagination, Navigation, Autoplay]}
+    spaceBetween={0}
+    slidesPerView={1}
+    navigation
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 5000, disableOnInteraction: false }}
+    loop={true}
+    class="hero-swiper"
+  >
+    {slides.map((slide) => (
+      <SwiperSlide>
+        <div class="hero-slide" style={{ backgroundImage: `url(${slide.image})` }}>
+          <div class="overlay"></div>
+          <GridContainer>
+            <Grid>
+              <GridItem span={7} spanSm={12}>
+                <div class="hero-content">
+                  <Heading variant="display" className="text-white mb-4">{slide.tagline}</Heading>
+                  <Text variant="body-large" className="text-white mb-8">{slide.subtitle}</Text>
+                  <Button href={slide.ctaLink} variant="primary">{slide.ctaText}</Button>
+                </div>
+              </GridItem>
+            </Grid>
+          </GridContainer>
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</Section>
+
+<style>
+  .hero-swiper {
+    width: 100%;
+    height: 600px; /* Adjust height as needed */
+  }
+
+  .hero-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 33, 71, 0.7), rgba(0, 33, 71, 0.2)); /* Oxford Blue overlay */
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    color: white; /* Ensure text is visible */
+  }
+
+  /* Swiper navigation and pagination custom styles */
+  .swiper-button-next, .swiper-button-prev {
+    color: white !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: white !important;
+  }
+</style>

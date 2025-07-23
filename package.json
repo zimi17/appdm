@@ -12,11 +12,15 @@
     "@astrojs/react": "^4.3.0",
     "@types/node": "^24.0.14",
     "astro": "^5.11.2",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.0.24",
     "vite": "^7.0.4"
   },
   "dependencies": {
     "18": "^0.0.0",
     "@astrojs/node": "^9.3.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@radix-ui/react-accordion": "1.2.3",
     "@radix-ui/react-alert-dialog": "1.1.6",
     "@radix-ui/react-aspect-ratio": "1.1.2",
@@ -48,7 +52,6 @@
     "class-variance-authority": "0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.1.1",
-    "demo-astro-react": "link:",
     "dotenv": "^17.2.0",
     "embla-carousel-react": "8.6.0",
     "gsap": "^3.13.0",
@@ -62,6 +65,7 @@
     "react-resizable-panels": "2.1.7",
     "recharts": "2.15.2",
     "sonner": "2.0.3",
+    "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.1",
     "vaul": "1.1.2"
   }

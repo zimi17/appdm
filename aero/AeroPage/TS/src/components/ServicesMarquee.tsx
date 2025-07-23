@@ -4,27 +4,42 @@ const ServicesMarquee = () => {
       <div className="marquee__group flex min-w-full flex-shrink-0 items-center justify-around gap-28">
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            UI-UX Experience
+            Laporan Keuangan
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Web Development
+            Perpajakan
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Digital Marketing
+            Audit Internal
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Product Design
+            Manajemen Keuangan
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Mobile Solutions
+            Strategi Bisnis
+          </h2>
+        </div>
+        <div className="py-2">
+          <h2 className="text-4xl font-medium text-default-950">
+            Kepemimpinan
+          </h2>
+        </div>
+        <div className="py-2">
+          <h2 className="text-4xl font-medium text-default-950">
+            Manajemen Proyek
+          </h2>
+        </div>
+        <div className="py-2">
+          <h2 className="text-4xl font-medium text-default-950">
+            Pengelolaan Sumber Daya Manusia
           </h2>
         </div>
       </div>
@@ -34,27 +49,42 @@ const ServicesMarquee = () => {
       >
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            UI-UX Experience
+            Laporan Keuangan
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Web Development
+            Perpajakan
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Digital Marketing
+            Audit Internal
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Product Design
+            Manajemen Keuangan
           </h2>
         </div>
         <div className="py-2">
           <h2 className="text-4xl font-medium text-default-950">
-            Mobile Solutions
+            Strategi Bisnis
+          </h2>
+        </div>
+        <div className="py-2">
+          <h2 className="text-4xl font-medium text-default-950">
+            Kepemimpinan
+          </h2>
+        </div>
+        <div className="py-2">
+          <h2 className="text-4xl font-medium text-default-950">
+            Manajemen Proyek
+          </h2>
+        </div>
+        <div className="py-2">
+          <h2 className="text-4xl font-medium text-default-950">
+            Pengelolaan Sumber Daya Manusia
           </h2>
         </div>
       </div>

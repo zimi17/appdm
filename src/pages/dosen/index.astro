@@ -1,0 +1,25 @@
+---
+import MainLayout from '../../components/layout/MainLayout.astro';
+import { dosen } from '../../data/dosen.ts';
+---
+
+<MainLayout title="Dosen - STIE Dwimulya">
+  <section class="py-10 lg:py-20">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold text-default-950 mb-8">Profil Dosen STIE Dwimulya</h1>
+      <p class="text-lg text-gray-700 mb-8">Dosen-dosen STIE Dwimulya adalah para ahli di bidangnya dengan pengalaman akademik dan praktis yang luas, siap membimbing Anda meraih kesuksesan.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {dosen.map(d => (
+          <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            {d.photo && <img src={d.photo} alt={d.name} class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />}
+            <h2 class="text-xl font-bold text-default-950 mb-2">{d.name}</h2>
+            <p class="text-primary mb-2">{d.jabatan}</p>
+            <p class="text-gray-600 text-sm">Bidang Keahlian: {d.bidangKeahlian}</p>
+            <a href={`/dosen/${d.slug}`} class="mt-4 inline-block text-blue-600 hover:underline">Lihat Profil Lengkap</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>

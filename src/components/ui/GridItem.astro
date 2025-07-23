@@ -1,0 +1,43 @@
+---
+interface Props {
+  span?: number;
+  spanSm?: number;
+  spanMd?: number;
+  spanLg?: number;
+}
+
+const { span = 12, spanSm, spanMd, spanLg } = Astro.props;
+
+const colSpanClass = `col-span-${span}`;
+const colSpanSmClass = spanSm ? `sm:col-span-${spanSm}` : '';
+const colSpanMdClass = spanMd ? `md:col-span-${spanMd}` : '';
+const colSpanLgClass = spanLg ? `lg:col-span-${spanLg}` : '';
+---
+
+<div class={`${colSpanClass} ${colSpanSmClass} ${colSpanMdClass} ${colSpanLgClass}`}>
+  <slot />
+</div>
+
+<style>
+  /* Default to full width on small screens if not specified */
+  .col-span-12 { grid-column: span 12; }
+  .col-span-11 { grid-column: span 11; }
+  .col-span-10 { grid-column: span 10; }
+  .col-span-9 { grid-column: span 9; }
+  .col-span-8 { grid-column: span 8; }
+  .col-span-7 { grid-column: span 7; }
+  .col-span-6 { grid-column: span 6; }
+  .col-span-5 { grid-column: span 5; }
+  .col-span-4 { grid-column: span 4; }
+  .col-span-3 { grid-column: span 3; }
+  .col-span-2 { grid-column: span 2; }
+  .col-span-1 { grid-column: span 1; }
+
+  /* Responsive Breakpoints (Tailwind-like classes for simplicity) */
+  @media (max-width: 768px) {
+    .sm\:col-span-12 { grid-column: span 12; }
+    .sm\:col-span-6 { grid-column: span 6; }
+    .sm\:col-span-4 { grid-column: span 4; }
+    /* Add more as needed */
+  }
+</style>

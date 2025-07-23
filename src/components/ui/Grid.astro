@@ -1,0 +1,24 @@
+---
+interface Props {
+  gap?: string;
+}
+
+const { gap = '2rem' } = Astro.props;
+---
+
+<div class="grid-cols-12" style={{ gap }}>
+  <slot />
+</div>
+
+<style>
+  .grid-cols-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    .grid-cols-12 {
+      grid-template-columns: repeat(1, 1fr); /* On small screens, stack items */
+    }
+  }
+</style>

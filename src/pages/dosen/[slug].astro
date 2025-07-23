@@ -1,0 +1,86 @@
+---
+import MainLayout from '../../components/layout/MainLayout.astro';
+import { dosen } from '../../data/dosen.ts';
+
+export async function getStaticPaths() {
+  return dosen.map(d => ({
+    params: { slug: d.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const selectedDosen = dosen.find(d => d.slug === slug);
+
+if (!selectedDosen) {
+  return Astro.redirect('/404'); // Redirect to 404 if dosen not found
+}
+
+export const prerender = true;
+---
+
+<MainLayout title={selectedDosen.name + ' - STIE Dwimulya'}>
+  <section class="py-10 lg:py-20">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-12">
+        {selectedDosen.photo && <img src={selectedDosen.photo} alt={selectedDosen.name} class="w-48 h-48 rounded-full object-cover shadow-lg" />}
+        <div>
+          <h1 class="text-4xl font-bold text-default-950 mb-2">{selectedDosen.name}</h1>
+          <p class="text-primary text-2xl mb-4">{selectedDosen.jabatan}</p>
+          <p class="text-gray-700 text-lg"><strong>Bidang Keahlian:</strong> {selectedDosen.bidangKeahlian}</p>
+          {selectedDosen.kontak && <p class="text-gray-700 text-lg"><strong>Email:</strong> <a href={`mailto:${selectedDosen.kontak}`} class="text-blue-600 hover:underline">{selectedDosen.kontak}</a></p>}
+        </div>
+      </div>
+
+      <div class="prose lg:prose-lg max-w-none">
+        {selectedDosen.pendidikan && (
+          <>
+            <h2 class="text-3xl font-bold text-default-950 mb-4">Pendidikan</h2>
+            <p>{selectedDosen.pendidikan}</p>
+          </>
+        )}
+
+        {selectedDosen.sertifikat && selectedDosen.sertifikat.length > 0 && (
+          <>
+            <h2 class="text-3xl font-bold text-default-950 mb-4">Sertifikat & Pelatihan</h2>
+            <ul>
+              {selectedDosen.sertifikat.map(item => <li>{item}</li>)}
+            </ul>
+          </>
+        )}
+
+        {selectedDosen.publikasi && selectedDosen.publikasi.length > 0 && (
+          <>
+            <h2 class="text-3xl font-bold text-default-950 mb-4">Publikasi Terpilih</h2>
+            <ul>
+              {selectedDosen.publikasi.map(item => <li>{item}</li>)}
+            </ul>
+          </>
+        )}
+
+        {selectedDosen.kegiatanPengabdian && selectedDosen.kegiatanPengabdian.length > 0 && (
+          <>
+            <h2 class="text-3xl font-bold text-default-950 mb-4">Kegiatan Pengabdian</h2>
+            <ul>
+              {selectedDosen.kegiatanPengabdian.map(item => <li>{item}</li>)}
+            </ul>
+          </>
+        )}
+
+        {selectedDosen.mataKuliah && selectedDosen.mataKuliah.length > 0 && (
+          <>
+            <h2 class="text-3xl font-bold text-default-950 mb-4">Mata Kuliah yang Diampu</h2>
+            <ul>
+              {selectedDosen.mataKuliah.map(item => <li>{item}</li>)}
+            </ul>
+          </>
+        )}
+      </div>
+
+      <div class="mt-12">
+        <a href="/dosen" class="inline-block bg-gray-200 text-gray-800 text-lg font-bold py-2 px-6 rounded-lg hover:bg-gray-300 transition duration-300">
+          &larr; Kembali ke Daftar Dosen
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
