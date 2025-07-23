@@ -1,0 +1,150 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  className?: string;
+}
+
+const { title = "STIE Dwimulya - Sekolah Tinggi Ilmu Ekonomi", description = "STIE Dwimulya - Excellence in Economic Education", className = "" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    
+    <!-- Kinsey Theme CSS -->
+    <link rel="stylesheet" href="/assets/css/vendor.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <!-- Additional meta tags -->
+    <meta name="author" content="STIE Dwimulya">
+    <meta name="keywords" content="ekonomi, pendidikan, stie, dwimulya, kuliah">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body class={`${className} is-menu-hover`}>
+    
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="centrize full-width">
+            <div class="vertical-center">
+                <div class="spinner-logo">
+                    <img src="/logo/logo.png" alt="STIE Dwimulya" />
+                    <div class="spinner-dot">
+                        <div class="spinner-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Container -->
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="header">
+            <div class="head-top">
+                
+                <!-- Menu Trigger -->
+                <a href="#" class="menu-trigger">
+                    <span></span>
+                </a>
+                
+                <!-- Logo -->
+                <div class="logo hover-masks-logo">
+                    <a href="/">
+                        <span class="mask-lnk">STIE <strong>Dwimulya</strong></span>
+                    </a>
+                </div>
+                
+                <!-- Top Menu -->
+                <div class="top-menu hover-masks">
+                    <div class="top-menu-nav">	
+                        <div class="menu-topmenu-container">
+                            <ul class="menu">
+                                <li class="menu-item current-menu-item">
+                                    <a href="/">Beranda</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/tentang">Tentang</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/program-studi">Program Studi</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/layanan">Layanan</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/kontak">Kontak</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </header>
+        
+        <!-- Wrapper -->
+        <div id="page-wrapper" class="wrapper">
+            <div class="page-wrapper__content">
+                <!-- Main Content Slot -->
+                <slot />
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="copy">
+                    <p>&copy; 2025 STIE Dwimulya. All rights reserved.</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
+        
+    </div>
+    
+    <!-- Scripts -->
+    <script is:inline src="/assets/js/vendor.js"></script>
+    <script is:inline src="/assets/js/components.js"></script>
+    
+    <!-- Custom initialization script -->
+    <script>
+        // Initialize Kinsey theme features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize preloader
+            if (typeof initPreloader === 'function') {
+                initPreloader();
+            }
+            
+            // Initialize menu
+            if (typeof initMenu === 'function') {
+                initMenu();
+            }
+            
+            // Initialize hover effects
+            if (typeof initHoverMasks === 'function') {
+                initHoverMasks();
+            }
+            
+            // Initialize GSAP animations if available
+            if (typeof gsap !== 'undefined') {
+                gsap.from('.header', {duration: 1, y: -100, opacity: 0, ease: 'power2.out'});
+            }
+        });
+    </script>
+    
+</body>
+</html>
