@@ -6,7 +6,7 @@ import Link from 'next/link'
 import type { Swiper as SwiperType } from 'swiper'
 import { Thumbs, Controller, Autoplay, EffectFade } from 'swiper/modules'
 
-import { homeSwiperSlides } from '../data'
+import { heroSwiperSlides } from '../data'
 
 import bgLineImg from '@/assets/images/other/bg-lines-1.svg'
 
@@ -46,7 +46,7 @@ const Home = () => {
                 loop
                 className="mySwiper2 relative"
               >
-                {homeSwiperSlides.map((item, idx) => {
+                {heroSwiperSlides.map((item: any, idx: number) => {
                   return (
                     <SwiperSlide key={idx}>
                       <div className="flex flex-col items-start justify-end xl:h-full">

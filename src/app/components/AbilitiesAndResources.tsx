@@ -19,13 +19,14 @@ const AbilitiesAndResources = () => {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-6">
-          {resources.map((resource, idx) => {
-            const Icon = resource.icon
+          {resources.map((resource: any, idx: number) => {
             return (
               <div key={idx} className="mx-auto text-center">
                 <div className="flex h-44 w-44 items-center justify-center rounded-full border border-primary/20 bg-primary/10">
                   <div className="text-center">
-                    <Icon className="size-10 text-default-950" />
+                    <div className="size-10 text-default-950 text-2xl">
+                      {resource.icon === 'code' ? '💻' : resource.icon === 'palette' ? '🎨' : '📈'}
+                    </div>
                     <h3 className="mt-4 text-2xl font-medium text-default-950">
                       {resource.percentage}%
                     </h3>

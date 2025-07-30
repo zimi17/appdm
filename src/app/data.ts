@@ -6,6 +6,8 @@ import type {
   TestimonialSliderType,
 } from './types'
 
+
+
 import company2 from '@/assets/images/landing/creative/img-2.jpg'
 import company4 from '@/assets/images/landing/creative/img-4.jpg'
 import company5 from '@/assets/images/landing/creative/img-5.jpg'
@@ -223,15 +225,13 @@ const pricingPlans = [
 const projectSlides = [
   {
     title: 'Proyek Web Development',
-    description: 'Pengembangan website modern dengan teknologi terkini',
+    subTitle: 'Pengembangan website modern dengan teknologi terkini',
     image: creative6,
-    category: 'Web Development',
   },
   {
     title: 'Aplikasi Mobile',
-    description: 'Pembuatan aplikasi mobile untuk Android dan iOS',
+    subTitle: 'Pembuatan aplikasi mobile untuk Android dan iOS',
     image: creative8,
-    category: 'Mobile Development',
   },
 ]
 
@@ -253,6 +253,24 @@ const investmentSteps = [
   },
 ]
 
+const resources = [
+  {
+    name: 'Development',
+    percentage: 95,
+    icon: 'code',
+  },
+  {
+    name: 'Design',
+    percentage: 90,
+    icon: 'palette',
+  },
+  {
+    name: 'Marketing',
+    percentage: 85,
+    icon: 'trending-up',
+  },
+]
+
 export {
   heroSwiperSlides,
   portfolioSlides,
@@ -268,4 +286,5 @@ export {
   pricingPlans,
   projectSlides,
   investmentSteps,
+  resources,
 }
