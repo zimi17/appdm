@@ -292,14 +292,33 @@ const experts = [
   {
     name: 'Dr. Ahmad Santoso',
     title: 'Dosen Akuntansi',
+    position: 'Dosen Senior',
     description: 'Ahli dalam bidang akuntansi keuangan dan audit',
     image: avatar2,
   },
   {
     name: 'Prof. Sari Wijaya',
     title: 'Dosen Manajemen',
+    position: 'Profesor',
     description: 'Spesialis manajemen strategis dan kepemimpinan',
     image: avatar3,
+  },
+]
+
+const allCourse = [
+  {
+    title: 'S1 Akuntansi',
+    description: 'Program studi yang mempersiapkan mahasiswa menjadi akuntan profesional',
+    duration: '4 tahun',
+    credits: 144,
+    image: company2,
+  },
+  {
+    title: 'S1 Manajemen',
+    description: 'Program studi yang fokus pada pengembangan kemampuan manajerial',
+    duration: '4 tahun',
+    credits: 144,
+    image: company4,
   },
 ]
 
@@ -321,4 +340,5 @@ export {
   resources,
   allCauses,
   experts,
+  allCourse,
 }

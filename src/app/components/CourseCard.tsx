@@ -18,7 +18,7 @@ const CourseCard = ({ course }: { course: CourseType }) => {
           <div className="mt-5 flex items-center justify-between">
             <p className="text-base text-default-950">{date}</p>
             <div className="flex items-center gap-4">
-              {icons.map((icon, idx) => {
+              {icons.map((icon: any, idx: number) => {
                 const Icon = icon
                 return (
                   <Link href="" key={idx}>

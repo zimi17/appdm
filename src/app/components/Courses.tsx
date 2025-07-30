@@ -26,7 +26,7 @@ const Courses = () => {
               sagittis est. phasellus dignissim dui et ipsum elementum, et
               auctor risus posuere.
             </p>
-            {allCourse.map((course, idx) => (
+            {allCourse.map((course: any, idx: number) => (
               <CourseCard course={course} key={idx} />
             ))}
           </div>

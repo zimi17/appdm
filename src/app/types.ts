@@ -46,7 +46,23 @@ export type ReviewType = {
 
 export type PricingType = {
   name: string
-  price: number
-  day: number
+  price: string
+  day: string
   features: string[]
+}
+
+export type ExpertType = {
+  name: string
+  title: string
+  position: string
+  description: string
+  image: any
+}
+
+export type CourseType = {
+  title: string
+  description: string
+  duration: string
+  credits: number
+  image: any
 }
