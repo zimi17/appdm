@@ -1,7 +1,7 @@
 import { ComponentContainerCard } from '@/components'
 import {
-  LuOctagonAlert,
-  LuTriangleAlert,
+  LuCircle,
+  LuTriangle,
   LuCheck,
   LuCircleDotDashed,
   LuSkull,
@@ -261,7 +261,7 @@ const AlertWithIcon = () => {
           className="inline-flex w-full items-center rounded-md border border-yellow-600/20 bg-yellow-600/10 px-4 py-3 text-sm text-yellow-600"
           role="alert"
         >
-          <LuTriangleAlert className="me-2 size-4" />
+          <LuTriangle className="me-2 size-4" />
           <span>
             <b>Yellow</b> alert! You should check in on some of those fields
             below.
@@ -271,7 +271,7 @@ const AlertWithIcon = () => {
           className="inline-flex w-full items-center rounded-md border border-sky-600/20 bg-sky-600/10 px-4 py-3 text-sm text-sky-600"
           role="alert"
         >
-          <LuOctagonAlert className="me-2 size-4" />
+          <LuCircle className="me-2 size-4" />
           <span>
             <b>Sky</b> alert! You should check in on some of those fields below.
           </span>

@@ -1,7 +1,7 @@
 'use client'
 import { DetailedHTMLProps, InputHTMLAttributes, useState } from 'react'
 import { FieldPath, FieldValues, Controller, PathValue } from 'react-hook-form'
-import { LuCircleAlert, LuEye, LuEyeOff } from 'react-icons/lu'
+import { LuCircle, LuEye, LuEyeOff } from 'react-icons/lu'
 import { cn } from '@/utils'
 import { FormInputProps } from './TextFormInput'
 
@@ -64,7 +64,7 @@ const PasswordFormInput = <
 
               {!noValidate && fieldState.error?.message && (
                 <div className="pointer-events-none absolute inset-y-0 end-4 flex items-center">
-                  <LuCircleAlert size={20} className="text-red-500" />
+                  <LuCircle size={20} className="text-red-500" />
                 </div>
               )}
             </div>

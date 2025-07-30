@@ -4,7 +4,7 @@ import {
   LuCog,
   LuLogOut,
   LuMic,
-  LuEllipsisVertical,
+  LuMenu,
   LuUser,
 } from 'react-icons/lu'
 import Link from 'next/link'
@@ -343,7 +343,7 @@ const DropdownVariants = () => {
         </div>
         <div className="hs-dropdown">
           <button className="hs-dropdown-toggle inline-flex size-10 items-center justify-center rounded-md bg-primary text-white transition-all duration-500 hover:bg-primary-700">
-            <LuEllipsisVertical className="size-4" />
+            <LuMenu className="size-4" />
           </button>
           <div className="hs-dropdown-menu z-10 mt-4 hidden min-w-[200px] rounded-lg border border-default-100 bg-white opacity-0 shadow-lg transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50">
             <ul className="flex flex-col gap-1 py-1.5">

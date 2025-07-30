@@ -134,7 +134,7 @@ const ChatArea = ({ selectedUser }: { selectedUser: ChatUser }) => {
     newMessage: yup.string().required('Please enter your message'),
   })
 
-  const { control, handleSubmit, reset } = useForm({
+  const { control, handleSubmit, reset } = useForm<{ newMessage: string }>({
     resolver: yupResolver(schemaResolver),
   })
 

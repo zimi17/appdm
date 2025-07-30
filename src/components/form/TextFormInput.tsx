@@ -7,7 +7,7 @@ import {
   Controller,
   PathValue,
 } from 'react-hook-form'
-import { LuCircleAlert } from 'react-icons/lu'
+import { LuCircle } from 'react-icons/lu'
 import { cn } from '@/utils'
 
 type BaseInputProps = DetailedHTMLProps<
@@ -106,7 +106,7 @@ const TextFormInput = <
                   endButton ? 'end-20' : 'end-4'
                 )}
               >
-                <LuCircleAlert size={20} className="text-red-500" />
+                <LuCircle size={20} className="text-red-500" />
               </div>
             )}
           </div>
