@@ -76,9 +76,9 @@ export default function RootLayout({
         <div id="splash-screen">
           <Image
             alt="Logo"
-            width={355}
-            height={83}
-            src={'/logo-dark.png'}
+            width={80}
+            height={80}
+            src={'/assets/images/logo_primary.png'}
             style={{ height: '10%', width: 'auto' }}
           />
         </div>

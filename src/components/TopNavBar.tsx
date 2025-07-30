@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { LuChevronDown, LuDownloadCloud, LuMenu, LuX } from 'react-icons/lu';
-import { landingPages } from '@/assets/data';
 
 import logoDark from '@/assets/images/logo-dark.png';
 import logoLight from '@/assets/images/logo-light.png';
@@ -129,35 +128,6 @@ const TopNavBar = ({
                     </li>
                   );
                 })}
-                <li className="menu-item group">
-                  <div className="hs-dropdown relative inline-flex [--trigger:hover] [--placement:bottom]">
-                    <Link
-                      className="hs-dropdown-toggle inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-default-700 after:absolute after:inset-0 hover:text-primary group-hover:after:-bottom-16 lg:text-base"
-                      href=""
-                    >
-                      Landing <LuChevronDown className="ms-2 h-4 w-4" />
-                    </Link>
-                    <div className="hs-dropdown-menu z-10 mt-4 hidden min-w-48 rounded-lg border border-default-100 bg-white p-1.5 opacity-0 shadow-lg transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50">
-                      <ul className="flex flex-col gap-1">
-                        {landingPages.map((item, idx) => {
-                          return (
-                            <li key={idx}>
-                              <Link
-                                className={cn(
-                                  'flex items-center rounded px-3 py-2 text-sm font-medium text-default-600 transition-all hover:bg-default-400/10 hover:text-default-700 [&.active]:text-primary',
-                                  pathname === item.link && 'active'
-                                )}
-                                href={item.link}
-                              >
-                                {item.name}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  </div>
-                </li>
               </ul>
               <div className="ms-auto hidden shrink gap-2 lg:inline-flex">
                 <Link
@@ -218,38 +188,6 @@ const TopNavBar = ({
                   </li>
                 );
               })}
-
-              <li className="hs-accordion" id="landing-accordion">
-                <Link
-                  className="hs-accordion-toggle flex items-center rounded px-4 py-2.5 text-sm font-medium capitalize text-default-900 transition-all duration-300 hover:bg-default-100 hover:text-primary hs-accordion-active:bg-default-400/10 [&.active]:bg-default-100 [&.active]:text-primary"
-                  href=""
-                >
-                  Landing
-                  <LuChevronDown className="ms-auto size-5 transition-all hs-accordion-active:rotate-180" />
-                </Link>
-                <div
-                  id="landing-accordion"
-                  className="hs-accordion-content hidden w-full overflow-hidden transition-[height]"
-                >
-                  <ul className="ps-2 pt-2">
-                    {landingPages.map((item, idx) => {
-                      return (
-                        <li key={idx}>
-                          <Link
-                            className={cn(
-                              'flex items-center rounded px-3 py-2 text-sm font-medium text-default-600 transition-all hover:bg-default-400/10 hover:text-default-700 [&.active]:text-primary',
-                              pathname === item.link && 'active'
-                            )}
-                            href={item.link}
-                          >
-                            {item.name}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </li>
             </ul>
           </nav>
         </div>

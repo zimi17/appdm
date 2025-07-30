@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
             alt="Logo"
             width={355}
             height={83}
-            src={"/logo-dark.png"}
+            src={"/src/assets/images/logo_primary.png"}
             style={{ height: "10%", width: "auto" }}
           />
         </div>

@@ -1,5 +1,5 @@
 import ServicesMarquee from '@/components/ServicesMarquee'
-import TopNavBar from '@/components/TopNavBar'
+import Header from '@/components/Header'
 import type { Metadata } from 'next'
 import Blogs from './components/Blogs'
 import FAQs from './components/FAQs'
@@ -10,25 +10,28 @@ import Services from './components/Services'
 import TestimonialSlider from './components/TestimonialSlider'
 
 export const metadata: Metadata = {
-  title: 'Creative',
+  title: 'STIE Dwimulya',
 }
 
 const Creative = () => {
   return (
     <>
+
+      <Header />
+
+      { /*
       <TopNavBar
         menuItems={[
-          'home',
           'about-us',
           's1-akuntansi',
           's1-manajemen',
-          'admissions',
-          'news',
-          'contact',
+          'admissions'
         ]}
         position="sticky"
         hasDownloadButton
       />
+
+      */ }
 
       <HeroSwiper />
 
