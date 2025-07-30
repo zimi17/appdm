@@ -20,7 +20,7 @@ const HighlightedCauses = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {allCauses.map((item, idx) => {
+          {allCauses.map((item: any, idx: number) => {
             return (
               <div
                 key={idx}

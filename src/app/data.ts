@@ -271,6 +271,38 @@ const resources = [
   },
 ]
 
+const allCauses = [
+  {
+    title: 'Program Beasiswa',
+    description: 'Bantuan pendidikan untuk mahasiswa berprestasi',
+    image: company2,
+    raised: 75,
+    goal: 100,
+  },
+  {
+    title: 'Fasilitas Laboratorium',
+    description: 'Pengembangan fasilitas praktikum modern',
+    image: company4,
+    raised: 60,
+    goal: 100,
+  },
+]
+
+const experts = [
+  {
+    name: 'Dr. Ahmad Santoso',
+    title: 'Dosen Akuntansi',
+    description: 'Ahli dalam bidang akuntansi keuangan dan audit',
+    image: avatar2,
+  },
+  {
+    name: 'Prof. Sari Wijaya',
+    title: 'Dosen Manajemen',
+    description: 'Spesialis manajemen strategis dan kepemimpinan',
+    image: avatar3,
+  },
+]
+
 export {
   heroSwiperSlides,
   portfolioSlides,
@@ -287,4 +319,6 @@ export {
   projectSlides,
   investmentSteps,
   resources,
+  allCauses,
+  experts,
 }

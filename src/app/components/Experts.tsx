@@ -17,7 +17,7 @@ const Experts = () => {
           </div>
         </div>
         <div className="grid gap-px overflow-hidden rounded-xl lg:grid-cols-2">
-          {experts.map((expert, idx) => (
+          {experts.map((expert: any, idx: number) => (
             <ExpertCard expert={expert} key={idx} />
           ))}
         </div>
