@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import {
   LuDownload,
   LuPaperclip,
@@ -141,7 +141,7 @@ const ChatArea = ({ selectedUser }: { selectedUser: ChatUser }) => {
   /**
    * sends the chat message
    */
-  const sendChatMessage = (values: { newMessage: string }) => {
+  const sendChatMessage: SubmitHandler<{ newMessage: string }> = (values) => {
     const newUserMessages = [...userMessages]
     newUserMessages.push({
       id: userMessages.length + 1,
