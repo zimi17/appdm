@@ -22,7 +22,7 @@ const Testimonial = () => {
         <div>
           <div className="relative m-auto flex gap-8 overflow-hidden">
             <div className="marquee__group flex min-w-full flex-shrink-0 justify-around gap-8">
-              {clients.map((client, idx) => (
+              {clients.map((client: any, idx: number) => (
                 <ClientCard client={client} key={idx} />
               ))}
             </div>
@@ -30,7 +30,7 @@ const Testimonial = () => {
               aria-hidden="true"
               className="marquee__group flex min-w-full flex-shrink-0 justify-around gap-8"
             >
-              {clients.map((client, idx) => (
+              {clients.map((client: any, idx: number) => (
                 <ClientCard client={client} key={idx} />
               ))}
             </div>

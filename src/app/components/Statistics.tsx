@@ -19,7 +19,7 @@ const Statistics = () => {
           <div className="relative">
             <div className="rounded-md p-6">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-                {statistics.map((item, idx) => {
+                {statistics.map((item: any, idx: number) => {
                   return (
                     <div
                       key={idx}

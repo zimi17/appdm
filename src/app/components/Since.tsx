@@ -38,7 +38,7 @@ const Since = () => {
             <div className="marquee">
               <div className="relative m-auto flex flex-col gap-6 overflow-hidden">
                 <div className="marquee-hero flex min-h-full flex-shrink-0 flex-col items-center justify-around gap-6">
-                  {allReviews.map((review, idx) => (
+                  {allReviews.map((review: any, idx: number) => (
                     <ReviewCard key={idx} review={review} />
                   ))}
                 </div>
@@ -46,7 +46,7 @@ const Since = () => {
                   aria-hidden="true"
                   className="marquee-hero flex min-h-full flex-shrink-0 flex-col items-center justify-around gap-6"
                 >
-                  {allReviews.map((review, idx) => (
+                  {allReviews.map((review: any, idx: number) => (
                     <ReviewCard key={idx} review={review} />
                   ))}
                 </div>

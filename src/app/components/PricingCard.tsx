@@ -15,7 +15,7 @@ const PricingCard = ({ pricingPlan }: { pricingPlan: PricingType }) => {
         </div>
         <p>{day} days free</p>
         <ul role="list" className="text-default-white -ms-3 mb-5 mt-4 text-sm">
-          {features.map((feature, idx) => (
+          {features.map((feature: string, idx: number) => (
             <li key={idx} className="flex items-center gap-2 py-1">
               <LuDot className="inline-block h-8 w-8 stroke-primary" />
               <span className="text-base text-default-950">{feature}</span>

@@ -21,7 +21,7 @@ const Stories = () => {
         </div>
 
         <div>
-          {stories.map((story, idx) => {
+          {stories.map((story: any, idx: number) => {
             return (
               <div
                 key={idx}

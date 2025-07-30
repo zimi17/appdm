@@ -117,10 +117,104 @@ const blogs: BlogType[] = [
     image: creative8,
   },
 ]
+// Mock data for missing exports
+const statistics = [
+  { state: '150+', title: 'Mahasiswa Aktif' },
+  { state: '95%', title: 'Tingkat Kelulusan' },
+  { state: '20+', title: 'Dosen Berpengalaman' },
+  { state: '5+', title: 'Program Unggulan' },
+]
+
+const stories = [
+  {
+    title: 'Kisah Sukses Alumni',
+    description: 'Cerita inspiratif dari alumni yang berhasil di dunia kerja',
+    image: creative6,
+    date: '15 Jan 2024',
+    backgroundImage: creative6,
+  },
+  {
+    title: 'Prestasi Mahasiswa',
+    description: 'Pencapaian luar biasa mahasiswa dalam berbagai kompetisi',
+    image: creative8,
+    date: '20 Feb 2024',
+    backgroundImage: creative8,
+  },
+]
+
+const clients = [
+  {
+    name: 'PT. Maju Bersama',
+    description: 'Partner industri terpercaya dalam pengembangan kurikulum',
+    image: avatar2,
+  },
+  {
+    name: 'Bank Nasional',
+    description: 'Mitra dalam program magang dan rekrutmen lulusan',
+    image: avatar3,
+  },
+]
+
+const valuableAssets = [
+  {
+    title: 'Laboratorium Akuntansi',
+    description: 'Fasilitas modern untuk praktik akuntansi',
+    icon: '📊',
+  },
+  {
+    title: 'Pusat Bisnis',
+    description: 'Ruang simulasi bisnis dan manajemen',
+    icon: '🏢',
+  },
+  {
+    title: 'Perpustakaan Digital',
+    description: 'Akses ke ribuan jurnal dan referensi',
+    icon: '📚',
+  },
+]
+
+const works = [
+  {
+    title: 'Proyek Analisis Keuangan',
+    description: 'Studi kasus analisis laporan keuangan perusahaan',
+    image: company2,
+    date: '15 Jan 2024',
+    category: ['Web-Design'],
+  },
+  {
+    title: 'Strategi Bisnis Digital',
+    description: 'Pengembangan strategi bisnis untuk era digital',
+    image: company4,
+    date: '20 Feb 2024',
+    category: ['Graphic-Design'],
+  },
+]
+
+const allReviews = [
+  {
+    name: 'Sarah Johnson',
+    review: 'Program S1 Akuntansi sangat membantu karier saya',
+    rating: 5,
+    image: avatar2,
+  },
+  {
+    name: 'Michael Chen',
+    review: 'Dosen-dosen berpengalaman dan kurikulum yang relevan',
+    rating: 5,
+    image: avatar3,
+  },
+]
+
 export {
   heroSwiperSlides,
   portfolioSlides,
   testimonialSlides,
   faqContent,
   blogs,
+  statistics,
+  stories,
+  clients,
+  valuableAssets,
+  works,
+  allReviews,
 }

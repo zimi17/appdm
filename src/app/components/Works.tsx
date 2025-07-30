@@ -16,7 +16,7 @@ const Works = () => {
       const workAlbums =
         category === 'all'
           ? works
-          : works.filter((album) => album.category?.includes(category))
+          : works.filter((item: WorkType) => item.category?.includes(category))
       setWork(workAlbums)
     }, 300)
   }
@@ -71,7 +71,7 @@ const Works = () => {
           </div>
         </div>
         <div id="gallery-wrapper" className="flex flex-wrap items-center">
-          {work.map((item, idx) => {
+          {work.map((item: WorkType, idx: number) => {
             return (
               <div className="picture-item w-full p-3 xl:w-1/2" key={idx}>
                 <div className="group w-full space-y-6 overflow-hidden rounded-lg bg-default-200 p-3">
