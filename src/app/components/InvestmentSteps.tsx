@@ -17,7 +17,7 @@ const InvestmentSteps = () => {
                     Achieving Success in Three Simple Investment Steps
                   </h2>
                   <div className="mt-10 grid grid-cols-1 gap-6">
-                    {investmentSteps.map((step, idx) => {
+                    {investmentSteps.map((step: any, idx: number) => {
                       const Icon = step.icon
                       return (
                         <div

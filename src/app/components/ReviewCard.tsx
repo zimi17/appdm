@@ -16,7 +16,7 @@ const ReviewCard = ({ review }: { review: ReviewType }) => {
             {review.name}
           </h3>
         </div>
-        <p className="my-5 text-xl text-default-600">{review.description}</p>
+        <p className="my-5 text-xl text-default-600">{review.review}</p>
         <div className="flex items-center gap-1">
           <LuStar className="h-5 w-5 stroke-yellow-400" />
           <LuStar className="h-5 w-5 stroke-yellow-400" />

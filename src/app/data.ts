@@ -205,6 +205,54 @@ const allReviews = [
   },
 ]
 
+const pricingPlans = [
+  {
+    name: 'Basic',
+    price: 29,
+    day: 30,
+    features: ['5 Projects', '10GB Storage', 'Email Support', 'Basic Analytics'],
+  },
+  {
+    name: 'Pro',
+    price: 59,
+    day: 30,
+    features: ['25 Projects', '100GB Storage', 'Priority Support', 'Advanced Analytics', 'Custom Domain'],
+  },
+]
+
+const projectSlides = [
+  {
+    title: 'Proyek Web Development',
+    description: 'Pengembangan website modern dengan teknologi terkini',
+    image: creative6,
+    category: 'Web Development',
+  },
+  {
+    title: 'Aplikasi Mobile',
+    description: 'Pembuatan aplikasi mobile untuk Android dan iOS',
+    image: creative8,
+    category: 'Mobile Development',
+  },
+]
+
+const investmentSteps = [
+  {
+    title: 'Analisis Pasar',
+    description: 'Melakukan riset mendalam tentang kondisi pasar dan peluang investasi',
+    icon: 'LuTrendingUp',
+  },
+  {
+    title: 'Strategi Investasi',
+    description: 'Menyusun strategi investasi yang sesuai dengan profil risiko',
+    icon: 'LuTarget',
+  },
+  {
+    title: 'Eksekusi & Monitoring',
+    description: 'Melaksanakan rencana investasi dan memantau perkembangannya',
+    icon: 'LuBarChart',
+  },
+]
+
 export {
   heroSwiperSlides,
   portfolioSlides,
@@ -217,4 +265,7 @@ export {
   valuableAssets,
   works,
   allReviews,
+  pricingPlans,
+  projectSlides,
+  investmentSteps,
 }
