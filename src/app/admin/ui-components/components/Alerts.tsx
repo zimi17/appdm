@@ -1,8 +1,8 @@
 import { ComponentContainerCard } from '@/components'
 import {
-  LuAlertOctagon,
-  LuAlertTriangle,
-  LuCheckCircle,
+  LuOctagonAlert,
+  LuTriangleAlert,
+  LuCheck,
   LuCircleDotDashed,
   LuSkull,
 } from 'react-icons/lu'
@@ -242,7 +242,7 @@ const AlertWithIcon = () => {
           className="inline-flex w-full items-center rounded-md border border-emerald-600/20 bg-emerald-600/10 px-4 py-3 text-sm text-emerald-600"
           role="alert"
         >
-          <LuCheckCircle className="me-2 size-4" />
+          <LuCheck className="me-2 size-4" />
           <span>
             <b>Emerald</b> alert! You should check in on some of those fields
             below.
@@ -261,7 +261,7 @@ const AlertWithIcon = () => {
           className="inline-flex w-full items-center rounded-md border border-yellow-600/20 bg-yellow-600/10 px-4 py-3 text-sm text-yellow-600"
           role="alert"
         >
-          <LuAlertTriangle className="me-2 size-4" />
+          <LuTriangleAlert className="me-2 size-4" />
           <span>
             <b>Yellow</b> alert! You should check in on some of those fields
             below.
@@ -271,7 +271,7 @@ const AlertWithIcon = () => {
           className="inline-flex w-full items-center rounded-md border border-sky-600/20 bg-sky-600/10 px-4 py-3 text-sm text-sky-600"
           role="alert"
         >
-          <LuAlertOctagon className="me-2 size-4" />
+          <LuOctagonAlert className="me-2 size-4" />
           <span>
             <b>Sky</b> alert! You should check in on some of those fields below.
           </span>

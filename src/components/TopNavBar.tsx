@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { LuChevronDown, LuDownloadCloud, LuMenu, LuX } from 'react-icons/lu';
+import { LuChevronDown, LuDownload, LuMenu, LuX } from 'react-icons/lu';
 
 import logoDark from '@/assets/images/logo-dark.png';
 import logoLight from '@/assets/images/logo-light.png';
@@ -96,7 +96,7 @@ const TopNavBar = ({
                   {hasDownloadButton && (
                     <div className="inline-flex shrink gap-2 lg:hidden">
                       <Link href="" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-1.5 text-base text-white transition-all hover:bg-primary-700">
-                        <LuDownloadCloud className="h-4 w-4 fill-white/40" />
+                        <LuDownload className="h-4 w-4 fill-white/40" />
                         <span className="hidden sm:block">Download</span>
                       </Link>
                     </div>
@@ -134,7 +134,7 @@ const TopNavBar = ({
                   href=""
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-1.5 text-base text-white transition-all hover:bg-primary-700"
                 >
-                  <LuDownloadCloud className="h-4 w-4 fill-white/40" />
+                  <LuDownload className="h-4 w-4 fill-white/40" />
                   <span className="hidden sm:block">Download</span>
                 </Link>
               </div>

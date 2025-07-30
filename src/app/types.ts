@@ -51,18 +51,42 @@ export type PricingType = {
   features: string[]
 }
 
+export type ResourceType = {
+  name: string
+  icon: any
+  percentage: number
+}
+
+export type AccoladeType = {
+  title: string
+  subTitle: string
+  divider?: boolean
+}
+
 export type ExpertType = {
   name: string
-  title: string
   position: string
   description: string
   image: any
 }
 
 export type CourseType = {
+  courseName: string
+  name: string
+  date: string
+  image: any
+  icons: any[]
+}
+
+export type TestimonialType = {
+  name: string
+  position: string
+  description: string
+  image: any
+}
+
+export type AssetType = {
   title: string
   description: string
-  duration: string
-  credits: number
   image: any
 }

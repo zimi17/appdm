@@ -4,12 +4,12 @@ import {
   LuFeather,
   LuFigma,
   LuFileText,
-  LuGlobe2,
+  LuGlobe,
   LuMove,
   LuPackage,
   LuStar,
   LuSunMoon,
-  LuUser2,
+  LuUser,
 } from 'react-icons/lu'
 
 import { type IconType } from 'react-icons'
@@ -304,7 +304,7 @@ const allFeatures: FeatureType[] = [
     title: 'Multi Browser Support',
     description:
       'Our e-commerce store is rigorously tested and optimized to work flawlessly on all major web browsers, offering a consistent shopping experience to all our customers.',
-    icon: LuGlobe2,
+    icon: LuGlobe,
   },
   {
     title: 'Well Documented',
@@ -316,7 +316,7 @@ const allFeatures: FeatureType[] = [
     title: 'Great Support',
     description:
       "Our support team is always ready to help. Whether you have questions, encounter issues, or need guidance, we're just a message or call away.",
-    icon: LuUser2,
+    icon: LuUser,
   },
   {
     title: 'Highly Customizable',

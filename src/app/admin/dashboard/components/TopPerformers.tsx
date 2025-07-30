@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { topPerformers } from '../data'
-import { LuLogOut, LuMoreVertical, LuPencil, LuTrash2 } from 'react-icons/lu'
+import { LuLogOut, LuEllipsisVertical, LuPencil, LuTrash2 } from 'react-icons/lu'
 
 const TopPerformers = () => {
   return (
@@ -27,7 +27,7 @@ const TopPerformers = () => {
               <div className="h-4">
                 <div className="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
                   <button type="button" className="hs-dropdown-toggle rounded">
-                    <LuMoreVertical className="size-4" />
+                    <LuEllipsisVertical className="size-4" />
                   </button>
                   <div className="hs-dropdown-menu z-10 mt-4 hidden min-w-[200px] rounded-lg border border-default-100 bg-white py-1.5 opacity-0 shadow-lg transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-default-50">
                     <Link

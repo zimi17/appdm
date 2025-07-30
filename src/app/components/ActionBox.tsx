@@ -1,5 +1,5 @@
 import marketing10 from '@/assets/images/landing/marketing-2/img-10.jpg'
-import { LuCheckCircle2 } from 'react-icons/lu'
+import { LuCheck } from 'react-icons/lu'
 import Link from 'next/link'
 
 const ActionBox = () => {
@@ -30,25 +30,25 @@ const ActionBox = () => {
               </Link>
               <div className="mt-10 grid gap-5 md:grid-cols-2">
                 <div className="flex items-center gap-4">
-                  <LuCheckCircle2 className="h-6 w-6 text-primary" />
+                  <LuCheck className="h-6 w-6 text-primary" />
                   <p className="text-base text-zinc-300">
                     Business-to-Business
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <LuCheckCircle2 className="h-6 w-6 text-primary" />
+                  <LuCheck className="h-6 w-6 text-primary" />
                   <p className="text-base text-zinc-300">
                     Business-to-Customer
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <LuCheckCircle2 className="h-6 w-6 text-primary" />
+                  <LuCheck className="h-6 w-6 text-primary" />
                   <p className="text-base text-zinc-300">
                     Nonprofit Organization
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <LuCheckCircle2 className="h-6 w-6 text-primary" />
+                  <LuCheck className="h-6 w-6 text-primary" />
                   <p className="text-base text-zinc-300">Ecommerce</p>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import creative2 from '@/assets/images/landing/creative/img-2.jpg'
 import creative7 from '@/assets/images/landing/creative/img-7.jpg'
 import { faqContent } from '../data'
-import { LuChevronUp, LuHelpCircle } from 'react-icons/lu'
+import { LuChevronUp, LuCircleHelp } from 'react-icons/lu'
 import { cn } from '@/utils'
 import Image from 'next/image'
 
@@ -62,7 +62,7 @@ const FAQs = () => {
                         aria-controls="faq-2"
                       >
                         <h5 className="flex text-base font-medium">
-                          <LuHelpCircle className="me-3 h-5 w-5 stroke-default-950 align-middle" />
+                          <LuCircleHelp className="me-3 h-5 w-5 stroke-default-950 align-middle" />
                           {faq.title}
                         </h5>
                         <LuChevronUp className="h-4 w-4 transition-all duration-500 hs-accordion-active:-rotate-180" />

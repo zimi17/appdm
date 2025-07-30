@@ -1,5 +1,5 @@
 import {
-  LuAlertOctagon,
+  LuOctagonAlert,
   LuComponent,
   LuMessagesSquare,
   LuRadar,
@@ -49,7 +49,7 @@ const messages: MessageType[] = [
     title: 'Check this out!',
     description: ' Please review this file.',
     variant: 'primary',
-    icon: LuAlertOctagon,
+    icon: LuOctagonAlert,
   },
   {
     title: 'Congratulations!',

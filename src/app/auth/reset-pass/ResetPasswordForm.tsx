@@ -10,6 +10,7 @@ const ResetPasswordForm = () => {
     newPassword: yup.string().required('Please enter your new password'),
     confirmPassword: yup
       .string()
+      .required('Please confirm your password')
       .oneOf([yup.ref('newPassword')], 'Passwords must match'),
   })
   const { control, handleSubmit } = useForm({

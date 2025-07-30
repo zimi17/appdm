@@ -19,7 +19,7 @@ const BusinessSolutions = () => {
         </div>
         <div className="relative m-auto flex gap-8 overflow-hidden">
           <div className="marquee__group flex min-w-full flex-shrink-0 items-center justify-around gap-8">
-            {services.map((item, idx) => {
+            {services.map((item: any, idx: number) => {
               const Icon = item.icon
               return (
                 <div key={idx} className="w-60 py-5">
@@ -39,7 +39,7 @@ const BusinessSolutions = () => {
             aria-hidden="true"
             className="marquee__group flex min-w-full flex-shrink-0 items-center justify-around gap-8"
           >
-            {services.map((item, idx) => {
+            {services.map((item: any, idx: number) => {
               const Icon = item.icon
               return (
                 <div key={idx} className="w-60 py-5">

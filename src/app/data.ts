@@ -5,6 +5,7 @@ import type {
   PortfolioSlideType,
   TestimonialSliderType,
 } from './types'
+import { LuTrendingUp, LuCode, LuTarget, LuPalette } from 'react-icons/lu'
 
 
 
@@ -249,7 +250,7 @@ const investmentSteps = [
   {
     title: 'Eksekusi & Monitoring',
     description: 'Melaksanakan rencana investasi dan memantau perkembangannya',
-    icon: 'LuBarChart',
+    icon: 'LuTrendingUp',
   },
 ]
 
@@ -307,19 +308,71 @@ const experts = [
 
 const allCourse = [
   {
-    title: 'S1 Akuntansi',
-    description: 'Program studi yang mempersiapkan mahasiswa menjadi akuntan profesional',
-    duration: '4 tahun',
-    credits: 144,
+    courseName: 'S1 Akuntansi',
+    name: 'Program studi yang mempersiapkan mahasiswa menjadi akuntan profesional',
+    date: '2024-01-15',
     image: company2,
+    icons: ['LuCalculator', 'LuTrendingUp']
   },
   {
-    title: 'S1 Manajemen',
-    description: 'Program studi yang fokus pada pengembangan kemampuan manajerial',
-    duration: '4 tahun',
-    credits: 144,
+    courseName: 'S1 Manajemen',
+    name: 'Program studi yang fokus pada pengembangan kemampuan manajerial',
+    date: '2024-02-01',
     image: company4,
+    icons: ['LuUsers', 'LuBarChart']
   },
+]
+
+const accolades = [
+  {
+    title: 'Akreditasi A',
+    subTitle: 'Terakreditasi A oleh BAN-PT',
+    divider: true
+  },
+  {
+    title: 'ISO 9001:2015',
+    subTitle: 'Sertifikat Sistem Manajemen Mutu',
+    divider: false
+  },
+  {
+    title: 'Top University',
+    subTitle: 'Ranking 10 Besar Universitas Swasta',
+    divider: true
+  },
+  {
+    title: 'Excellence Award',
+    subTitle: 'Penghargaan Keunggulan Akademik',
+    divider: false
+  },
+  {
+    title: 'Green Campus',
+    subTitle: 'Kampus Ramah Lingkungan',
+    divider: true
+  },
+  {
+    title: 'Digital Innovation',
+    subTitle: 'Inovasi Pembelajaran Digital',
+    divider: false
+  }
+]
+
+const services = [
+  {
+    title: 'Pendidikan Berkualitas',
+    icon: LuTrendingUp
+  },
+  {
+    title: 'Penelitian Inovatif',
+    icon: LuCode
+  },
+  {
+    title: 'Pengabdian Masyarakat',
+    icon: LuTarget
+  },
+  {
+    title: 'Design',
+    icon: LuPalette
+  }
 ]
 
 export {
@@ -341,4 +394,6 @@ export {
   allCauses,
   experts,
   allCourse,
+  accolades,
+  services,
 }

@@ -4,7 +4,7 @@ import {
   LuLayers,
   LuMoveRight,
   LuShield,
-  LuUserCheck2,
+  LuUserCheck,
 } from 'react-icons/lu'
 
 import ebook1 from '@/assets/images/landing/ebook/img-1.jpg'
@@ -112,7 +112,7 @@ const Benefits = () => {
             <div>
               <div className="group rounded-xl bg-white p-6 drop-shadow-md dark:bg-default-50">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <LuUserCheck2 className="size-7 text-primary" />
+                  <LuUserCheck className="size-7 text-primary" />
                 </div>
                 <h2 className="mt-5 text-2xl font-medium text-default-950">
                   Enhanced Convenience

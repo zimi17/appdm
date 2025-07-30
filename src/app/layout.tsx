@@ -9,8 +9,7 @@ import { Toaster } from 'sonner'
 import '@/assets/css/style.css'
 
 const AppProvidersWrapper = dynamic(
-  () => import('@/components/AppsProviderWrapper'),
-  { ssr: false }
+  () => import('@/components/AppsProviderWrapper')
 )
 const BackToTop = dynamic(() => import('@/components/BackToTop'))
 

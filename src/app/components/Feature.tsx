@@ -1,4 +1,4 @@
-import { LuActivitySquare, LuDot } from 'react-icons/lu'
+import { LuActivity, LuDot } from 'react-icons/lu'
 
 import marketing4 from '@/assets/images/landing/marketing-3/img-4.svg'
 import Image from 'next/image'
@@ -9,7 +9,7 @@ const Feature = () => {
       <div className="container">
         <div className="grid items-center gap-6 lg:grid-cols-2">
           <div>
-            <LuActivitySquare className="h-12 w-12 text-default-950" />
+            <LuActivity className="h-12 w-12 text-default-950" />
             <h2 className="mt-5 text-4xl font-medium text-default-950">
               Flexibility and Expansion.
             </h2>

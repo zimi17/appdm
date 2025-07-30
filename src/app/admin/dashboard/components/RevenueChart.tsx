@@ -71,14 +71,6 @@ const RevenueChart = () => {
         },
       },
     },
-    states: {
-      normal: { filter: { type: 'none', value: 0 } },
-      hover: { filter: { type: 'none', value: 0 } },
-      active: {
-        allowMultipleDataPointsSelection: !1,
-        filter: { type: 'none', value: 0 },
-      },
-    },
     colors: ['#f97316'],
     grid: {
       borderColor: '#f97316',

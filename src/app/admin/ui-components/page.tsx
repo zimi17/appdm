@@ -1,7 +1,4 @@
-import type { Metadata } from 'next'
-const FloatingMenu = dynamic(() => import('./components/FloatingMenu'), {
-  ssr: false,
-})
+'use client'
 import AdminBreadcrumb from '@/components/AdminBreadcrumb'
 import Buttons from './components/Buttons'
 import Badges from './components/Badges'
@@ -15,9 +12,9 @@ import Popovers from './components/Popovers'
 import Tooltips from './components/Tooltips'
 import dynamic from 'next/dynamic'
 
-export const metadata: Metadata = {
-  title: 'Ui Components',
-}
+const FloatingMenu = dynamic(() => import('./components/FloatingMenu'), {
+  ssr: false,
+})
 
 const UIComponents = () => {
   return (

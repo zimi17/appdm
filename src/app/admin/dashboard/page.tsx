@@ -1,20 +1,17 @@
-const RevenueChart = dynamic(() => import('./components/RevenueChart'), {
-  ssr: false,
-})
-const Statistics = dynamic(() => import('./components/Statistics'), {
-  ssr: false,
-})
+'use client'
 import AdminBreadcrumb from '@/components/AdminBreadcrumb'
 import ProgressCard from './components/ProgressCard'
 import RecentOrders from './components/RecentOrders'
 import Sources from './components/Sources'
 import TopPerformers from './components/TopPerformers'
 import dynamic from 'next/dynamic'
-import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'Dashboard',
-}
+const RevenueChart = dynamic(() => import('./components/RevenueChart'), {
+  ssr: false,
+})
+const Statistics = dynamic(() => import('./components/Statistics'), {
+  ssr: false,
+})
 
 const Dashboard = () => {
   return (

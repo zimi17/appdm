@@ -1,4 +1,4 @@
-import { LuLineChart, LuMail, LuPhone, LuSave } from 'react-icons/lu'
+import { LuTrendingUp, LuMail, LuPhone, LuSave } from 'react-icons/lu'
 
 const Contact = () => {
   return (
@@ -25,7 +25,7 @@ const Contact = () => {
           </div>
           <div className="text-center">
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-md border border-default-200 bg-white/5 text-default-950">
-              <LuLineChart className="h-10 w-10" />
+              <LuTrendingUp className="h-10 w-10" />
             </div>
             <h4 className="mt-5 text-xl font-medium text-default-950">
               Flow Me
