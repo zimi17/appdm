@@ -1,61 +1,18 @@
-import ServicesMarquee from '@/components/ServicesMarquee'
-import Header from '@/components/Header'
-import type { Metadata } from 'next'
-import Blogs from './components/Blogs'
-import FAQs from './components/FAQs'
-import Features from './components/Features'
-import HeroSwiper from './components/HeroSwiper'
-import ProjectSlider from './components/ProjectSlider'
-import Services from './components/Services'
-import TestimonialSlider from './components/TestimonialSlider'
+import { Suspense } from 'react';
+import Hero from './components/Hero';
+import Navigation from './components/Navigation';
+import Programs from './components/Programs';
+import Faculty from './components/Faculty';
+import Footer from './components/Footer';
 
-export const metadata: Metadata = {
-  title: 'STIE Dwimulya',
-}
-
-const Creative = () => {
+export default function Home() {
   return (
-    <>
-
-      <Header />
-
-      { /*
-      <TopNavBar
-        menuItems={[
-          'about-us',
-          's1-akuntansi',
-          's1-manajemen',
-          'admissions'
-        ]}
-        position="sticky"
-        hasDownloadButton
-      />
-
-      */ }
-
-      <HeroSwiper />
-
-      <section>
-        <ServicesMarquee />
-      </section>
-
-      {/* Academic Programs (Features + Services) */}
-      <Features />
-      <Services />
-
-      {/* Program Initiatives */}
-      <ProjectSlider />
-
-      {/* Program Testimonials */}
-      <TestimonialSlider />
-
-      {/* FAQs */}
-      <FAQs />
-
-      {/* Alumni Success Stories */}
-      <Blogs />
-    </>
-  )
+    <main className="min-h-screen bg-white">
+      <Navigation />
+      <Hero />
+      <Programs />
+      <Faculty />
+      <Footer />
+    </main>
+  );
 }
-
-export default Creative

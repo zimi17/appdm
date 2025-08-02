@@ -22,13 +22,11 @@ const rem = REM({
 
 export const metadata: Metadata = {
   title: {
-    default:
-      'AeroPage Next - Tailwind CSS Multipurpose One Page Landing Template',
-    template:
-      '%s | AeroPage Next - Tailwind CSS Multipurpose One Page Landing Template',
+    default: 'University Business School - Educating Leaders Who Make a Difference',
+    template: '%s | University Business School',
   },
   description:
-    'AeroPage - a cutting-edge, one-page template designed for unparalleled performance and seamless user experiences. This versatile template, initially released as AeroPage One Page Template, serves as the perfect starting point for your next project, showcasing expertise in building real websites with Tailwind CSS. The AeroPage Template epitomizes flexibility, user-friendliness, and responsiveness, delivering a seamless browsing experience across various devices, be it desktops, tablets, or mobiles. This template boasts an immaculately organized folder structure, clean code, and comprehensive comments, simplifying the process of customization. Built on the Tailwind CSS, AeroPage ensures compatibility across all devices, and its codebase is fully documented and W3C validated. Elevate your digital presence and captivate your audience with the AeroPage Template today.',
+    'University Business School combines bold ideas, powerful pedagogy, and collaborative cohort-based learning to deliver unparalleled management education and foster lifelong learning networks.',
 }
 
 const splashScreenStyles = `
