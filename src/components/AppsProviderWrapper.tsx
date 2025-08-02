@@ -8,8 +8,7 @@ const handleChangeTitle = () => {
   if (document.visibilityState == 'hidden')
     document.title = 'Please come back :-('
   else
-    document.title =
-      'AeroPage NextJs - Tailwind CSS Multipurpose One Page Landing Template'
+    document.title = 'University Business School - Educating Leaders Who Make a Difference'
 }
 
 const AppsProviderWrapper = ({
@@ -28,7 +27,7 @@ const AppsProviderWrapper = ({
       })
     }
 
-    import('preline/preline')
+    // import('preline/preline') // Removed to fix VanillaCalendarPro dependency issue
 
     document.addEventListener('visibilitychange', handleChangeTitle)
     return () => {
@@ -36,11 +35,11 @@ const AppsProviderWrapper = ({
     }
   }, [])
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (window.HSStaticMethods) window.HSStaticMethods.autoInit()
-    }, 400)
-  }, [pathname])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (window.HSStaticMethods) window.HSStaticMethods.autoInit()
+  //   }, 400)
+  // }, [pathname])
 
   return (
     <SessionProvider>
