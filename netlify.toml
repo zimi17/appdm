@@ -1,0 +1,28 @@
+[build]
+  publish = "."
+  command = "echo 'Static site - no build needed'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"]}
+
+# Handle WordPress-style URLs
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/index.html"
+  status = 404
+
+[[redirects]]
+  from = "/wp-content/*"
+  to = "/wp-content/:splat"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

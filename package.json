@@ -1,0 +1,13 @@
+{
+  "name": "appdm-static-site",
+  "version": "1.0.0",
+  "description": "Static WordPress site for APPDM",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "start": "echo 'Static site - serve files directly'",
+    "dev": "echo 'Static site - serve files directly'"
+  },
+  "keywords": ["static", "wordpress", "university"],
+  "author": "APPDM",
+  "license": "MIT"
+}
