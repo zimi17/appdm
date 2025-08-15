@@ -11,17 +11,17 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const NewsCard = ({ item, theme }: { item: any, theme?: 'bright' | 'dark' }) => (
+const NewsCard = ({ item }: { item: any }) => (
   <motion.div 
-    className={cn("flex flex-col h-full group", theme === 'bright' ? 'bg-[#e3e5e5]' : 'bg-gray-800')}
+    className="flex flex-col h-full group bg-[#e3e5e5]"
     variants={cardVariants}
   >
     <div className="relative aspect-[4/3] overflow-hidden">
       <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.hint} />
     </div>
     <div className="p-8 flex flex-col flex-grow">
-      <h3 className={cn("font-headline text-2xl mb-4", theme === 'dark' ? 'text-white' : 'text-black')}>{item.title}</h3>
-      <p className={cn("text-lg mb-6 flex-grow", theme === 'dark' ? 'text-gray-300' : 'text-gray-700')}>{item.description}</p>
+      <h3 className="font-headline text-2xl mb-4 text-black">{item.title}</h3>
+      <p className="text-lg mb-6 flex-grow text-gray-700">{item.description}</p>
       <Link href={item.href} className="text-[#a51c30] font-bold self-start hover:underline">
         {item.linkText}
       </Link>
@@ -29,7 +29,7 @@ const NewsCard = ({ item, theme }: { item: any, theme?: 'bright' | 'dark' }) => 
   </motion.div>
 );
 
-const Section = ({ title, children, className = "", theme }: { title?: string, children: React.ReactNode, className?: string, theme?:'bright' | 'dark' }) => (
+const Section = ({ title, children, className = "" }: { title?: string, children: React.ReactNode, className?: string }) => (
   <motion.section 
     className={`py-16 md:py-24 ${className}`}
     initial="hidden"
@@ -46,8 +46,8 @@ const Section = ({ title, children, className = "", theme }: { title?: string, c
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
          >
-            <h2 className={cn("font-headline text-4xl md:text-5xl",  theme === 'dark' ? 'text-white' : 'text-black')}>{title}</h2>
-            <hr className={cn("mt-4 border-b-4  w-24", theme === 'dark' ? 'border-white' : 'border-black')} />
+            <h2 className="font-headline text-4xl md:text-5xl text-black">{title}</h2>
+            <hr className="mt-4 border-b-4 border-black w-24" />
          </motion.div>
       )}
       {children}
@@ -55,7 +55,7 @@ const Section = ({ title, children, className = "", theme }: { title?: string, c
   </motion.section>
 );
 
-export function ContentSection({ theme = 'bright' }: { theme?: 'bright' | 'dark' }) {
+export function ContentSection() {
 
   const mentorshipCards = [
     { image: "https://placehold.co/645x430.png", hint: "student portrait", title: "Mentorship fuels big ideas", description: "As part of a mentee-mentor pair, Olúmídé Fagboyegun was awarded a fellowship to support his dissertation research...", href: "#", linkText: "Learn more about his work" },
@@ -71,15 +71,15 @@ export function ContentSection({ theme = 'bright' }: { theme?: 'bright' | 'dark'
   return (
     <div className="t-sink l-sink [container:layout_/_inline-size] relative z-[1]">
       <motion.section 
-        className={cn("py-12", theme === 'bright' ? 'bg-white' : 'bg-gray-900')}
+        className="py-12 bg-white"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-8 border-t border-b border-gray-300 py-8">
-            <h2 className={cn("font-headline text-4xl md:w-1/3", theme === 'dark' ? 'text-white' : 'text-black')}>Educational inspiration begins at home</h2>
-            <p className={cn("text-lg md:w-2/3", theme === 'dark' ? 'text-gray-300' : 'text-gray-700')}>In this <a href="#" className="text-[#a51c30] font-bold hover:underline">free online Harvard course</a>, learn how successful collaborations between families and educators can lead to improved outcomes for students and schools.</p>
+            <h2 className="font-headline text-4xl text-black md:w-1/3">Educational inspiration begins at home</h2>
+            <p className="text-lg text-gray-700 md:w-2/3">In this <a href="#" className="text-[#a51c30] font-bold hover:underline">free online Harvard course</a>, learn how successful collaborations between families and educators can lead to improved outcomes for students and schools.</p>
         </div>
       </motion.section>
 
@@ -95,10 +95,10 @@ export function ContentSection({ theme = 'bright' }: { theme?: 'bright' | 'dark'
             <motion.div className="md:w-1/2" variants={cardVariants}>
               <blockquote className="relative pl-16">
                  <motion.div className="absolute top-0 left-0 text-[12rem] text-[#a51c30] font-serif opacity-20 leading-none -mt-8" initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 0.2 }} viewport={{once: true}} transition={{ duration: 0.5}}>“</motion.div>
-                <p className={cn("font-headline text-4xl md:text-5xl leading-tight", theme==='dark' ? 'text-white' : 'text-black')}>When you mentor people, they mentor people, then they mentor people, and it has a huge exponential impact.”</p>
+                <p className="font-headline text-4xl md:text-5xl text-black leading-tight">When you mentor people, they mentor people, then they mentor people, and it has a huge exponential impact.”</p>
                 <cite className="mt-6 block">
-                  <span className={cn("block font-bold text-lg", theme === 'dark' ? 'text-white' : 'text-black')}>Judith Hochman</span>
-                  <span className={cn("block", theme === 'dark' ? 'text-gray-400' : 'text-gray-600')}>Harvard Medical School alum</span>
+                  <span className="block font-bold text-lg text-black">Judith Hochman</span>
+                  <span className="block text-gray-600">Harvard Medical School alum</span>
                 </cite>
                  <Button asChild className="mt-8 bg-[#1e1e1e] text-white hover:bg-black rounded-full px-6 py-3">
                     <Link href="#">Read more about her work</Link>
@@ -112,15 +112,15 @@ export function ContentSection({ theme = 'bright' }: { theme?: 'bright' | 'dark'
         </div>
       </motion.section>
 
-      <Section title="Mentorship in health and medicine" theme={theme}>
+      <Section title="Mentorship in health and medicine">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mentorshipCards.map(item => <NewsCard key={item.title} item={item} theme={theme} />)}
+            {mentorshipCards.map(item => <NewsCard key={item.title} item={item} />)}
         </div>
       </Section>
       
-      <Section title="Supporting scientists" theme={theme}>
+      <Section title="Supporting scientists">
         <div className="grid md:grid-cols-2 gap-8">
-            {scienceCards.map(item => <NewsCard key={item.title} item={item} theme={theme} />)}
+            {scienceCards.map(item => <NewsCard key={item.title} item={item} />)}
         </div>
       </Section>
 
