@@ -196,20 +196,20 @@ const navLinks = [
 ];
 
 const NavColumn = ({ items, onItemClick, activeItem, parentItem, level, onBackClick }: any) => (
-  <div className="h-full overflow-y-auto w-full border-r border-gray-700 p-6">
+  <div className="h-full overflow-y-auto w-full p-6">
     {(level > 1 && parentItem) && (
       <div className="mb-6">
-        {level > 1 && onBackClick && (
+        {onBackClick && (
           <button onClick={onBackClick} className="flex items-center text-sm text-gray-400 hover:text-white mb-4">
             <ChevronLeft className="h-4 w-4 mr-1" /> Back
           </button>
         )}
         <Link href={parentItem.href || '#'} className="hover:underline">
           <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal flex items-center">
-            {parentItem.title} <ArrowRight className="ml-2 h-4 w-4" />
+            {parentItem.title}
           </strong>
         </Link>
-        <span className="block text-sm leading-normal mt-2 text-gray-400">{parentItem.description}</span>
+        {parentItem.description && <span className="block text-sm leading-normal mt-2 text-gray-400">{parentItem.description}</span>}
       </div>
     )}
     <ol className={parentItem ? 'border-t border-gray-700' : ''}>
@@ -223,8 +223,8 @@ const NavColumn = ({ items, onItemClick, activeItem, parentItem, level, onBackCl
               activeItem?.title === link.title ? 'text-white' + (parentItem ? ' bg-black/20' : '') : 'text-slate-400 hover:text-white'
             )}
           >
-            <span>{link.title}</span>
-            {link.sublinks && <ChevronRight className="h-5 w-5" />}
+            <span className="flex-grow">{link.title}</span>
+            {link.sublinks && <ChevronRight className="h-5 w-5 flex-shrink-0" />}
           </button>
         </li>
       ))}
@@ -297,7 +297,6 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
-                  <SheetTitle className="hidden">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center px-6 h-[90px] absolute top-0 left-0 right-0 z-10">
                       <Link href="/" onClick={resetNav}>
                         <Logo theme="dark" className="h-12 w-auto"/>
@@ -310,13 +309,13 @@ export function Header() {
                   </div>
                   
                   <div className="h-full flex w-full pt-[90px]">
-                      <div className="w-4/12 md:w-3/12 lg:w-2/16">
+                      <div className="w-full md:w-1/3 border-r border-gray-700">
                         <NavColumn items={navLinks} onItemClick={handleL1Click} activeItem={activeL1} level={1} />
                       </div>
-                      <div className="w-5/12 md:w-4/12 lg:w-3/16">
+                      <div className="w-full md:w-1/3 border-r border-gray-700">
                         {activeL1?.sublinks && <NavColumn items={activeL1.sublinks} onItemClick={handleL2Click} activeItem={activeL2} parentItem={activeL1} level={2} onBackClick={() => setActiveL1(null)} />}
                       </div>
-                      <div className="w-7/12 md:w-5/12 lg:w-11/16">
+                      <div className="w-full md:w-1/3">
                          {activeL2?.sublinks && <NavColumn items={activeL2.sublinks} onItemClick={(link:any) => resetNav()} activeItem={null} parentItem={activeL2} level={3} onBackClick={() => setActiveL2(null)} />}
                       </div>
                   </div>
