@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Search, Menu, X, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -166,6 +166,7 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
+                  <SheetTitle className="hidden">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center px-6 h-[70px] md:h-[75px] min-[960px]:h-[90px] absolute top-0 left-0 right-0 z-10">
                       <Link href="/" onClick={resetNav} className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
                         <Image src="/logo-white.svg" alt="Dwimulya Hub" fill className="object-contain"/>
@@ -175,15 +176,12 @@ export function Header() {
                       </SheetTrigger>
                   </div>
                   
-                  <div className="h-full flex w-full md:w-[200%] lg:w-[300%] transition-transform duration-300" style={{ transform: `translateX(-${(navState.level - 1) * 100 / (history.length + 1) }%)` }}>
-                     <div className="h-full w-full md:w-1/3 md:shrink-0 border-r border-gray-700">
+                  <div className="h-full flex w-full md:w-full lg:w-[200%] transition-transform duration-300" style={{ transform: `translateX(-${(navState.level - 1) * 100 / (history.length + 1) }%)` }}>
+                     <div className="h-full w-full md:w-1/2 md:shrink-0 border-r border-gray-700">
                         <NavColumn links={navLinks} onLinkClick={handleLinkClick} currentItem={null} />
                      </div>
-                     <div className="h-full w-full md:w-1/3 md:shrink-0 border-r border-gray-700">
+                     <div className="h-full w-full md:w-1/2 md:shrink-0">
                        { navState.level > 1 && navState.menu.sublinks && <NavColumn links={navState.menu.sublinks} onLinkClick={handleLinkClick} onBack={handleBackClick} parentTitle={history[history.length-1]?.menu.title} currentItem={navState.menu} depth={2} />}
-                     </div>
-                      <div className="h-full w-full md:w-1/3 md:shrink-0">
-                        { navState.level > 2 && navState.menu.sublinks && <NavColumn links={navState.menu.sublinks} onLinkClick={handleLinkClick} onBack={handleBackClick} parentTitle={history[history.length-1]?.menu.title} currentItem={navState.menu} depth={3} />}
                      </div>
                   </div>
                   
