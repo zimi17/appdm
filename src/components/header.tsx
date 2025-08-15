@@ -216,8 +216,6 @@ const NavColumn = ({
   depth?: number,
   className?: string
 }) => {
-  const currentDisplayItem = depth === 2 ? parentItem : activeItem;
-
   return (
     <div className={cn("h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px]", className)}>
       {depth > 1 && parentItem && (
@@ -225,14 +223,14 @@ const NavColumn = ({
            <div className="nav-primary__back mb-9">
               <button onClick={() => onLinkClick({ parent: true, depth }, depth)} className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium">
               <span className="icon bg-[#656f77] rounded-full text-white inline-block text-[11px] h-4 left-0 leading-[17px] absolute text-center w-4 top-0.5"><ChevronLeft className="w-4 h-4" /></span>
-              {parentItem.title}
+              {parentItem.parentTitle || 'Back'}
               </button>
           </div>
 
-          <strong className="block font-headline text-xl tracking-[-0.1px] leading-normal">{currentDisplayItem?.title}</strong>
-          {currentDisplayItem?.description && <span className="block text-lg tracking-[-0.1px] leading-normal mt-2">{currentDisplayItem.description}</span>}
-          {currentDisplayItem?.href && (
-            <Link href={currentDisplayItem.href} className="inline-flex items-center text-lg leading-normal mt-2 font-medium hover:underline">
+          <strong className="block font-headline text-xl tracking-[-0.1px] leading-normal">{parentItem?.title}</strong>
+          {parentItem?.description && <span className="block text-lg tracking-[-0.1px] leading-normal mt-2">{parentItem.description}</span>}
+          {parentItem?.href && (
+            <Link href={parentItem.href} className="inline-flex items-center text-lg leading-normal mt-2 font-medium hover:underline">
               Explore more <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           )}
@@ -303,14 +301,14 @@ export function Header() {
       }
       if (depth === 1) {
           if (link.sublinks) {
-              setActiveL1(link);
+              setActiveL1({...link, parentTitle: 'Main Menu'});
               setActiveL2(null);
           } else {
               resetNav();
           }
       } else if (depth === 2) {
           if (link.sublinks) {
-              setActiveL2(link);
+              setActiveL2({...link, parentTitle: activeL1.title});
           } else {
               resetNav();
           }
@@ -344,7 +342,6 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
-                  <SheetClose className="hidden" />
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center px-6 h-[70px] md:h-[75px] min-[960px]:h-[90px] absolute top-0 left-0 right-0 z-10">
                       <Link href="/" onClick={resetNav} className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
@@ -358,10 +355,10 @@ export function Header() {
                   </div>
                   
                   <div className="h-full flex w-full">
-                     <div className="h-full w-full md:w-4/12 lg:w-[320px] shrink-0 md:border-r border-gray-700">
+                     <div className="h-full w-full md:w-2/12 lg:w-[320px] shrink-0 md:border-r border-gray-700">
                         <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} />
                      </div>
-                     <div className={cn("h-full w-full md:w-5/12 lg:w-[420px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL1 ? "translate-x-0" : "translate-x-full md:hidden")}>
+                     <div className={cn("h-full w-full md:w-3/12 lg:w-[420px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL1 ? "translate-x-0" : "translate-x-full md:hidden")}>
                        { activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={2}/>}
                      </div>
                      <div className={cn("h-full w-full md:w-7/12 lg:w-auto grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL2 ? "translate-x-0" : "translate-x-full md:hidden")}>
