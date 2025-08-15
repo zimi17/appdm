@@ -1,31 +1,80 @@
 import Link from 'next/link';
-import { School, Facebook, Twitter, Instagram } from 'lucide-react';
+import Image from 'next/image';
+import { Facebook, Twitter, Instagram, Youtube, Linkedin, Rss } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const socialLinks = [
+    { href: "#", icon: Instagram, label: "Instagram" },
+    { href: "#", icon: Rss, label: "TikTok" }, // Using RSS as placeholder for TikTok
+    { href: "#", icon: Linkedin, label: "LinkedIn" },
+    { href: "#", icon: Facebook, label: "Facebook" },
+    { href: "#", icon: Youtube, label: "YouTube" },
+  ];
+
+  const footerSections = [
+    {
+      title: "Security & Brand",
+      links: [
+        { label: "Report Copyright Infringement", href: "#" },
+        { label: "Report Security Issue", href: "#" },
+        { label: "Trademark Notice", href: "#" },
+      ],
+    },
+    {
+      title: "Website",
+      links: [
+        { label: "Accessibility", href: "#" },
+        { label: "Digital Accessibility", href: "#" },
+        { label: "Privacy Statement", href: "#" },
+      ],
+    },
+    {
+      title: "Get In Touch",
+      links: [
+        { label: "Contact Harvard", href: "#" },
+        { label: "Maps & Directions", href: "#" },
+        { label: "Jobs", href: "#" },
+      ],
+    },
+  ];
+
   return (
-    <footer className="bg-accent text-accent-foreground">
-      <div className="container mx-auto px-4 md:px-6 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <School className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold font-headline">Dwimulya Hub</span>
-          </div>
-          <div className="flex gap-4">
-            <Link href="#" aria-label="Facebook">
-                <Facebook className="h-6 w-6 hover:text-primary transition-colors" />
-            </Link>
-            <Link href="#" aria-label="Twitter">
-                <Twitter className="h-6 w-6 hover:text-primary transition-colors" />
-            </Link>
-            <Link href="#" aria-label="Instagram">
-                <Instagram className="h-6 w-6 hover:text-primary transition-colors" />
-            </Link>
-          </div>
+    <footer className="bg-[#0e0e0e] text-[#8996a0] py-16">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-center text-center md:text-left gap-8">
+          {footerSections.map((section) => (
+            <div key={section.title} className="md:w-1/3">
+              <h2 className="text-lg font-bold text-white pb-4">{section.title}</h2>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-lg text-[#8996a0] hover:text-white border-b border-transparent hover:border-white transition">
+                        {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div className="mt-6 border-t border-accent-foreground/20 pt-6 text-center text-sm text-accent-foreground/80">
-          <p>&copy; {currentYear} STIE Dwimulya. All rights reserved.</p>
+        <div className="mt-12 pt-12 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between">
+            <p className="text-sm text-center md:text-left order-3 md:order-1 mt-8 md:mt-0">Copyright © {currentYear} The President and Fellows of Harvard College</p>
+            <div className="order-1 md:order-2">
+                <Link href="/">
+                    <div className="relative h-20 w-40">
+                         <Image src="/logo-white.svg" alt="Harvard University" fill className="object-contain" />
+                    </div>
+                </Link>
+            </div>
+             <div className="flex gap-4 order-2 md:order-3 mt-8 md:mt-0">
+                {socialLinks.map((social) => (
+                    <Link key={social.label} href={social.href} aria-label={social.label}>
+                       <social.icon className="h-6 w-6 text-gray-400 hover:text-white transition-colors" />
+                    </Link>
+                ))}
+            </div>
         </div>
       </div>
     </footer>

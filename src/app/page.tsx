@@ -1,23 +1,15 @@
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
-import { CoreValuesSection } from "@/components/core-values-section";
-import { ProgramsSection } from "@/components/programs-section";
-import { AdmissionsSection } from "@/components/admissions-section";
-import { NewsSection } from "@/components/news-section";
-import { ContactSection } from "@/components/contact-section";
+import { ContentSection } from "@/components/content-section";
 import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-[#f3f4f4]">
       <Header />
-      <main className="flex-grow">
+      <main id="main-content">
         <HeroSection />
-        <CoreValuesSection />
-        <ProgramsSection />
-        <AdmissionsSection />
-        <NewsSection />
-        <ContactSection />
+        <ContentSection />
       </main>
       <Footer />
     </div>
