@@ -1,21 +1,13 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-  SheetTitle,
-} from "@/components/ui/sheet";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Search, Menu, X, ChevronRight, ChevronLeft, ArrowRight, Bell } from "lucide-react";
+import { ChevronRight, ChevronLeft, ArrowRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Logo } from "./logo";
-
+import { Logo } from "@/components/logo";
 
 const navLinks = [
     {
@@ -218,32 +210,34 @@ const NavColumn = ({
   depth?: number,
   className?: string
 }) => {
-  const columnTitle = depth > 1 ? parentItem?.title : 'Main Menu';
-  const headerInfo = depth > 1 ? parentItem : null;
 
+  const handleBackClick = () => {
+    onLinkClick({ parent: true, depth }, depth);
+  };
+  
   return (
     <div className={cn("h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px] nav-scrollbar", className)}>
       {depth > 1 && parentItem && (
          <div className="nav-primary__subsec--top pt-[30px] mb-6 md:mb-[41px]">
            <div className="nav-primary__back mb-9 md:hidden">
-             <button onClick={() => onLinkClick({ parent: true, depth }, depth)} className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium">
+             <button onClick={handleBackClick} className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium">
                <span className="icon bg-[#656f77] rounded-full text-white inline-block text-[11px] h-4 left-0 leading-[17px] absolute text-center w-4 top-0.5"><ChevronLeft className="w-4 h-4" /></span>
                {parentItem.parentTitle || 'Back'}
              </button>
            </div>
-           {headerInfo?.href ? (
-             <Link href={headerInfo.href} className="hover:underline group">
+           {parentItem?.href ? (
+             <Link href={parentItem.href} className="hover:underline group">
               <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal flex items-center">
-                {headerInfo?.title}
+                {parentItem?.title}
                 <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
               </strong>
             </Link>
            ) : (
             <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal">
-              {headerInfo?.title}
+              {parentItem?.title}
             </strong>
            )}
-           {headerInfo?.description && <span className="block text-sm leading-normal mt-2 text-gray-400">{headerInfo.description}</span>}
+           {parentItem?.description && <span className="block text-base leading-normal mt-2 text-gray-400">{parentItem.description}</span>}
          </div>
        )}
 
@@ -264,8 +258,8 @@ const NavColumn = ({
                     activeItem?.title === link.title && 'bg-[length:100%_1px]'
                   )}>{link.title}</span>
                 ) : (
-                    <span className="flex items-center w-full">
-                    <strong className="text-lg font-bold transition-colors duration-150">{link.title}</strong>
+                  <span className="flex items-center w-full">
+                    <strong className="text-lg font-bold transition-colors duration-150 group-hover:text-white">{link.title}</strong>
                     {link.sublinks && (
                       <ChevronRight className="h-5 w-5 text-gray-500 ml-auto flex-shrink-0 group-hover:text-white transition-colors duration-150" />
                     )}
@@ -280,23 +274,12 @@ const NavColumn = ({
   )
 };
 
-export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isNavOpen, setIsNavOpen] = useState(false);
+export function GlobalMenu({ isOpen, onOpenChange }: { isOpen: boolean, onOpenChange: (open: boolean) => void }) {
   const [activeL1, setActiveL1] = useState<any | null>(null);
   const [activeL2, setActiveL2] = useState<any | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const resetNav = () => {
-    setIsNavOpen(false);
+    onOpenChange(false);
     setTimeout(() => {
       setActiveL1(null);
       setActiveL2(null);
@@ -332,113 +315,44 @@ export function Header() {
   }
 
   return (
-    <>
-      <header className={cn("site-header sticky top-0 z-[12000] transition-all duration-300 h-[90px]", isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-background")}>
-        <div className="flex h-full justify-between items-center px-6">
-          <div className="flex items-center flex-1">
-            <Link href="/" className="inline-block relative">
-              <Logo className="h-12 w-[190px]" />
-            </Link>
-             <nav className="ml-8 hidden md:block">
-              <ol>
-                <li>
-                  <a href="#" className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors before:content-[''] before:h-1.5 before:w-1.5 before:rounded-full before:bg-[#df072e]">
-                    Learn about our lawsuits to protect our students and researchers
-                  </a>
-                </li>
-              </ol>
-            </nav>
-          </div>
-
-          <div className="flex items-center gap-2">
-             <div className="md:hidden">
-              <Popover>
-                <PopoverTrigger asChild>
-                   <Button variant="ghost" size="icon" className="relative">
-                    <Bell className="h-6 w-6"/>
-                    <span className="absolute top-2 right-2 flex h-2 w-2">
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#a51c30]">
-                         <span className="absolute inline-flex h-full w-full rounded-full bg-[#df072e] opacity-75 animate-ping"></span>
-                      </span>
-                    </span>
-                    <span className="sr-only">Important Alerts</span>
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-80 mr-4">
-                  <div className="grid gap-4">
-                    <div className="space-y-2">
-                      <h4 className="font-medium leading-none">Alerts</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Important announcements and updates.
-                      </p>
-                    </div>
-                    <div>
-                      <Link href="#" className="text-sm font-medium text-primary hover:underline">
-                        Learn about our lawsuits to protect our students and researchers
-                      </Link>
-                    </div>
-                  </div>
-                </PopoverContent>
-              </Popover>
-            </div>
-            
-            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
-              <Search className="h-6 w-6 text-foreground" />
+    <Sheet open={isOpen} onOpenChange={onOpenChange}>
+      <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
+        <div className="absolute top-0 left-0 right-0 h-[90px] flex justify-between items-center px-6 z-10">
+          <Link href="/" onClick={resetNav} className="inline-block relative">
+            <Logo theme="dark" className="h-12 w-[190px]" />
+          </Link>
+          <SheetClose asChild>
+            <Button variant="ghost" size="icon">
+              <X className="h-6 w-6 text-white" />
             </Button>
-            <Sheet open={isNavOpen} onOpenChange={(open) => !open && resetNav()}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" onClick={() => setIsNavOpen(true)}>
-                  <Menu className="h-6 w-6 text-foreground" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
-                 <SheetTitle className="sr-only">Primary Navigation</SheetTitle>
-                <div className="absolute top-0 left-0 right-0 h-[90px] flex justify-between items-center px-6 z-10">
-                    <Link href="/" onClick={resetNav} className="inline-block relative">
-                       <Logo theme="dark" className="h-12 w-[190px]" />
-                    </Link>
-                     <SheetClose asChild>
-                        <Button variant="ghost" size="icon">
-                            <X className="h-6 w-6 text-white" />
-                        </Button>
-                    </SheetClose>
-                </div>
-                
-                <div className="h-full flex w-full">
-                  <div className="h-full w-full md:w-[25%] lg:w-[22%] shrink-0 md:border-r border-gray-700">
-                     <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} depth={1} />
-                  </div>
-                  <div className={cn("h-full w-full md:w-[35%] lg:w-[32%] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out", activeL1 ? "translate-x-0" : "translate-x-full md:translate-x-0")}>
-                    {activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={2} />}
-                  </div>
-                  <div className={cn("h-full w-full md:w-[40%] lg:w-[46%] grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out", activeL2 ? "translate-x-0" : "translate-x-full md:translate-x-0")}>
-                    {activeL2?.sublinks && <NavColumn links={activeL2.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL2} activeItem={null} depth={3} />}
-                  </div>
-                </div>
+          </SheetClose>
+        </div>
 
-              </SheetContent>
-            </Sheet>
+        <div className="h-full flex w-full">
+          <div className="h-full md:w-[25%] lg:w-[22%] shrink-0 md:border-r border-gray-700 hidden md:block">
+            <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} depth={1} />
+          </div>
+          <div className={cn("h-full md:w-[35%] lg:w-[32%] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out", activeL1 ? "translate-x-0" : "translate-x-full", "md:translate-x-0")}>
+             <div className="md:hidden">
+              <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} depth={1}/>
+             </div>
+             <div className="hidden md:block">
+              {activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={2} />}
+             </div>
+          </div>
+           <div className={cn("h-full grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out", activeL2 ? "translate-x-0" : "translate-x-full", "md:translate-x-0")}>
+            <div className="md:hidden">
+              {activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={2} />}
+            </div>
+            <div className="hidden md:block">
+              {activeL2?.sublinks && <NavColumn links={activeL2.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL2} activeItem={null} depth={3} />}
+            </div>
+          </div>
+          <div className={cn("h-full grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out", !activeL1 && !activeL2 ? "translate-x-0" : "translate-x-full", "md:hidden")}>
+             <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} depth={1}/>
           </div>
         </div>
-      </header>
-
-      {/* Search Overlay */}
-      <div className={cn("fixed inset-0 bg-black/90 z-[12001] p-8 transition-transform duration-300", isSearchOpen ? "translate-y-0" : "-translate-y-full")}>
-        <div className="flex justify-end">
-          <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(false)}>
-            <X className="h-8 w-8 text-white" />
-          </Button>
-        </div>
-        <div className="flex flex-col items-center justify-center h-full -mt-16">
-          <input type="text" placeholder="Search Dwimulya Hub" className="bg-transparent border-b-2 border-white text-white text-3xl w-full max-w-2xl text-center placeholder-gray-400 outline-none pb-2" />
-          <div className="mt-8 text-center">
-            <h4 className="text-gray-400 mb-4">Quick Links</h4>
-            <Link href="#" className="text-white text-lg font-semibold hover:text-primary">A to Z index</Link>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+      </SheetContent>
+    </Sheet>
+  )
 }
-
-    

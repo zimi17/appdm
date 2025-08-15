@@ -1,8 +1,9 @@
+
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Youtube, Linkedin, Rss } from 'lucide-react';
-import { Logo } from './logo';
+import { Logo } from '../logo';
 
-export function Footer() {
+export function SiteFooter() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
