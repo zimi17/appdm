@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetClose, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft, ArrowRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -168,6 +168,12 @@ export function GlobalMenu({
         side="top"
         className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0"
       >
+        <span className="sr-only">
+          <SheetTitle>Main Menu</SheetTitle>
+          <SheetDescription>
+            Site navigation menu. Use the tab key to navigate through the links.
+          </SheetDescription>
+        </span>
         <div className="absolute top-0 left-0 right-0 h-[90px] flex justify-between items-center px-6 z-10">
           <Link href="/" onClick={resetNav} className="inline-block relative">
             <Logo theme="dark" className="h-12 w-[190px]" />
@@ -267,3 +273,5 @@ export function GlobalMenu({
     </Sheet>
   );
 }
+
+    
