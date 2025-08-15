@@ -20,7 +20,7 @@ export function HeroSection() {
           priority
           data-ai-hint="people progress"
         />
-        <div className="absolute inset-0 bg-[rgba(224,224,224,0.7)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-30% to-[#f3f4f4]" />
       </motion.div>
       <div className="relative z-10 p-4 max-w-4xl mx-auto">
         <motion.h1
