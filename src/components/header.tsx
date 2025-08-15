@@ -135,7 +135,7 @@ export function Header() {
                   <Menu className="h-6 w-6 text-gray-800" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
+              <SheetContent side="top" className="w-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
                   <div className="flex justify-between items-center px-6 h-[70px] md:h-[75px] min-[960px]:h-[90px] absolute top-0 left-0 right-0 z-10">
                       <Link href="/" className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
                         <Image src="/logo-white.svg" alt="Dwimulya Hub" fill className="object-contain"/>

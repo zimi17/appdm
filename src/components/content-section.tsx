@@ -1,9 +1,19 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const NewsCard = ({ item }: { item: any }) => (
-  <div className="bg-[#e3e5e5] flex flex-col h-full group">
+  <motion.div 
+    className="bg-[#e3e5e5] flex flex-col h-full group"
+    variants={cardVariants}
+  >
     <div className="relative aspect-[4/3] overflow-hidden">
       <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.hint} />
     </div>
@@ -14,21 +24,33 @@ const NewsCard = ({ item }: { item: any }) => (
         {item.linkText}
       </Link>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Section = ({ title, children, className = "" }: { title?: string, children: React.ReactNode, className?: string }) => (
-  <section className={`py-16 md:py-24 ${className}`}>
+  <motion.section 
+    className={`py-16 md:py-24 ${className}`}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ staggerChildren: 0.2 }}
+  >
     <div className="container mx-auto px-6">
       {title && (
-         <div className="mb-12">
+         <motion.div 
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+         >
             <h2 className="font-headline text-4xl md:text-5xl text-black">{title}</h2>
             <hr className="mt-4 border-b-4 border-black w-24" />
-         </div>
+         </motion.div>
       )}
       {children}
     </div>
-  </section>
+  </motion.section>
 );
 
 export function ContentSection() {
@@ -46,19 +68,31 @@ export function ContentSection() {
   
   return (
     <div className="t-sink l-sink [container:layout_/_inline-size] relative z-[1]">
-      <section className="bg-white py-12">
+      <motion.section 
+        className="bg-white py-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-8 border-t border-b border-gray-300 py-8">
             <h2 className="font-headline text-4xl text-black md:w-1/3">Educational inspiration begins at home</h2>
             <p className="text-lg text-gray-700 md:w-2/3">In this <a href="#" className="text-[#a51c30] font-bold hover:underline">free online Harvard course</a>, learn how successful collaborations between families and educators can lead to improved outcomes for students and schools.</p>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="py-16 md:py-24">
+      <motion.section 
+        className="py-16 md:py-24"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ staggerChildren: 0.3 }}
+      >
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="md:w-1/2">
+            <motion.div className="md:w-1/2" variants={cardVariants}>
               <blockquote className="relative pl-16">
-                 <div className="absolute top-0 left-0 text-[12rem] text-[#a51c30] font-serif opacity-20 leading-none -mt-8">“</div>
+                 <motion.div className="absolute top-0 left-0 text-[12rem] text-[#a51c30] font-serif opacity-20 leading-none -mt-8" initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 0.2 }} viewport={{once: true}} transition={{ duration: 0.5}}>“</motion.div>
                 <p className="font-headline text-4xl md:text-5xl text-black leading-tight">When you mentor people, they mentor people, then they mentor people, and it has a huge exponential impact.”</p>
                 <cite className="mt-6 block">
                   <span className="block font-bold text-lg">Judith Hochman</span>
@@ -68,13 +102,13 @@ export function ContentSection() {
                     <Link href="#">Read more about her work</Link>
                  </Button>
               </blockquote>
-            </div>
-            <div className="md:w-1/2">
+            </motion.div>
+            <motion.div className="md:w-1/2" variants={cardVariants}>
               <Image src="https://placehold.co/624x624.png" alt="Judith Hochman" width={624} height={624} className="rounded-full" data-ai-hint="professional woman portrait" />
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <Section title="Mentorship in health and medicine">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
