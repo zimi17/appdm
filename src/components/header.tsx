@@ -3,17 +3,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-  SheetTitle,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Search, Menu, X, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "./logo";
 
 const navLinks = [
   {
@@ -201,71 +195,42 @@ const navLinks = [
   }
 ];
 
-const NavColumn = ({
-  links,
-  onLinkClick,
-  parentItem,
-  activeItem,
-  depth = 1,
-  className
-}: {
-  links: any[],
-  onLinkClick: (link: any, depth: number) => void,
-  parentItem?: any,
-  activeItem?: any,
-  depth?: number,
-  className?: string
-}) => {
-  return (
-    <div className={cn("h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px]", className)}>
-      {depth > 1 && parentItem && (
-        <div className="nav-primary__subsec--top mb-6 md:mb-[41px]">
-           <div className="nav-primary__back mb-9">
-              <button onClick={() => onLinkClick({ parent: true, depth }, depth)} className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium">
-              <span className="icon bg-[#656f77] rounded-full text-white inline-block text-[11px] h-4 left-0 leading-[17px] absolute text-center w-4 top-0.5"><ChevronLeft className="w-4 h-4" /></span>
-              {parentItem.parentTitle || 'Back'}
-              </button>
-          </div>
-          <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal">
-            <Link href={parentItem.href || '#'} className="hover:underline flex items-center">
-              {parentItem?.title}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+const NavColumn = ({ items, onItemClick, activeItem, parentItem, level, onBackClick }: any) => (
+  <div className="h-full overflow-y-auto w-full border-r border-gray-700 p-6">
+    {(level > 1 && parentItem) && (
+      <div className="mb-6">
+        {level > 1 && onBackClick && (
+          <button onClick={onBackClick} className="flex items-center text-sm text-gray-400 hover:text-white mb-4">
+            <ChevronLeft className="h-4 w-4 mr-1" /> Back
+          </button>
+        )}
+        <Link href={parentItem.href || '#'} className="hover:underline">
+          <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal flex items-center">
+            {parentItem.title} <ArrowRight className="ml-2 h-4 w-4" />
           </strong>
-          {parentItem?.description && <span className="block text-sm leading-normal mt-2 text-gray-400">{parentItem.description}</span>}
-        </div>
-      )}
-
-      <ol className={cn(depth > 1 && "border-t border-gray-700")}>
-        {links.map((link) => (
-          <li key={link.title} className={cn("nav-primary__item", depth > 1 ? "border-b border-gray-700" : "mt-6")}>
-             <button
-             onClick={() => onLinkClick(link, depth)}
-             className={cn(
-                "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out hover:text-white w-full",
-                activeItem?.title === link.title ? 'text-white' : 'text-slate-400'
-             )}
-            >
-              <div className="flex justify-between items-center py-2">
-                {depth === 1 ? (
-                  <span className={cn(
-                      "text-4xl font-headline tracking-[-0.1px] leading-[1.15] md:text-5xl min-[1260px]:text-[56px] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] hover:bg-[length:100%_1px]",
-                      activeItem?.title === link.title && 'bg-[length:100%_1px]'
-                  )}>{link.title}</span>
-                ) : (
-                   <span className="flex items-center justify-between w-full">
-                    <strong className="text-lg font-bold">{link.title}</strong>
-                    {link.sublinks && <ChevronRight className="h-5 w-5 text-gray-500" />}
-                   </span>
-                )}
-              </div>
-            </button>
-          </li>
-        ))}
-      </ol>
-    </div>
-  )
-};
+        </Link>
+        <span className="block text-sm leading-normal mt-2 text-gray-400">{parentItem.description}</span>
+      </div>
+    )}
+    <ol className={parentItem ? 'border-t border-gray-700' : ''}>
+      {items.map((link: any) => (
+        <li key={link.title} className={parentItem ? "border-b border-gray-700" : "mt-1"}>
+          <button
+            onClick={() => onItemClick(link)}
+            className={cn(
+              "w-full text-left p-2 transition-colors duration-150 ease-in-out flex justify-between items-center",
+              parentItem ? "text-slate-300 hover:text-white hover:bg-black/10 text-lg font-bold py-4" : "text-4xl font-headline tracking-[-0.1px] leading-[1.15]",
+              activeItem?.title === link.title ? 'text-white' + (parentItem ? ' bg-black/20' : '') : 'text-slate-400 hover:text-white'
+            )}
+          >
+            <span>{link.title}</span>
+            {link.sublinks && <ChevronRight className="h-5 w-5" />}
+          </button>
+        </li>
+      ))}
+    </ol>
+  </div>
+);
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -284,69 +249,58 @@ export function Header() {
 
   const resetNav = () => {
     setIsNavOpen(false);
-    setTimeout(() => {
-      setActiveL1(null);
-      setActiveL2(null);
-    }, 300);
-  }
+    setActiveL1(null);
+    setActiveL2(null);
+  };
   
-  const handleNavLinkClick = (link: any, depth: number) => {
-      if (link.parent) {
-          if(link.depth === 2){
-            setActiveL1(null);
-            setActiveL2(null);
-          } else if (link.depth === 3){
-            setActiveL2(null);
-          }
-          return;
-      }
-      if (depth === 1) {
-          if (link.sublinks) {
-              setActiveL1({...link, parentTitle: 'Main Menu'});
-              setActiveL2(null);
-          } else {
-              resetNav();
-          }
-      } else if (depth === 2) {
-          if (link.sublinks) {
-              setActiveL2({...link, parentTitle: activeL1.title});
-          } else {
-              resetNav();
-          }
-      } else {
-          resetNav();
-      }
-  }
+  const handleL1Click = (link: any) => {
+    if (activeL1?.title === link.title) {
+        setActiveL1(null);
+        setActiveL2(null);
+    } else {
+        setActiveL1(link);
+        setActiveL2(null);
+    }
+  };
+
+  const handleL2Click = (link: any) => {
+    if (activeL2?.title === link.title) {
+        setActiveL2(null);
+    } else {
+        setActiveL2(link);
+    }
+  };
+
 
   return (
     <>
       <header className={cn("site-header sticky top-0 z-[12000] transition-all duration-300", isScrolled ? "bg-white/80 backdrop-blur-sm shadow-md" : "bg-white")}>
-        <div className="flex h-[70px] justify-between items-center px-6 md:h-[75px] min-[960px]:h-[90px]">
+        <div className="flex h-[90px] justify-between items-center px-6">
           <div className="flex items-center">
-            <Link href="/" className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
-               <Image src="/logo.svg" alt="Dwimulya Hub" fill className="object-contain" />
+            <Link href="/">
+              <Logo className="h-12 w-auto" />
             </Link>
           </div>
 
           <div className="flex items-center gap-2">
             <div className="hidden md:flex items-center gap-2 mr-4">
-                <a href="#" className="text-sm font-semibold text-gray-700 hover:text-[#a51c30]">Hot Links</a>
-                <span className="bg-[#a51c30] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">1</span>
+                <a href="#" className="text-sm font-semibold text-gray-700 hover:text-primary">Hot Links</a>
+                <span className="bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">1</span>
             </div>
             <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
               <Search className="h-6 w-6 text-gray-800" />
             </Button>
-             <Sheet open={isNavOpen} onOpenChange={(open) => !open && resetNav()}>
+            <Sheet open={isNavOpen} onOpenChange={setIsNavOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" onClick={() => setIsNavOpen(true)}>
+                <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6 text-gray-800" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
-                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                  <div className="flex justify-between items-center px-6 h-[70px] md:h-[75px] min-[960px]:h-[90px] absolute top-0 left-0 right-0 z-10">
-                      <Link href="/" onClick={resetNav} className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
-                        <Image src="/logo-white.svg" alt="Dwimulya Hub" fill className="object-contain"/>
+                  <SheetTitle className="hidden">Navigation Menu</SheetTitle>
+                  <div className="flex justify-between items-center px-6 h-[90px] absolute top-0 left-0 right-0 z-10">
+                      <Link href="/" onClick={resetNav}>
+                        <Logo theme="dark" className="h-12 w-auto"/>
                       </Link>
                       <SheetTrigger asChild>
                         <Button variant="ghost" size="icon" onClick={resetNav}>
@@ -355,16 +309,16 @@ export function Header() {
                       </SheetTrigger>
                   </div>
                   
-                  <div className="h-full flex w-full">
-                     <div className="h-full w-full md:w-2/12 lg:w-[320px] shrink-0 md:border-r border-gray-700">
-                        <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} />
-                     </div>
-                     <div className={cn("h-full w-full md:w-3/12 lg:w-[420px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL1 ? "translate-x-0" : "translate-x-full md:hidden")}>
-                       { activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={2}/>}
-                     </div>
-                     <div className={cn("h-full w-full md:w-7/12 lg:w-auto grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL2 ? "translate-x-0" : "translate-x-full md:hidden")}>
-                       { activeL2?.sublinks && <NavColumn links={activeL2.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL2} activeItem={null} depth={3}/>}
-                     </div>
+                  <div className="h-full flex w-full pt-[90px]">
+                      <div className="w-4/12 md:w-3/12 lg:w-2/16">
+                        <NavColumn items={navLinks} onItemClick={handleL1Click} activeItem={activeL1} level={1} />
+                      </div>
+                      <div className="w-5/12 md:w-4/12 lg:w-3/16">
+                        {activeL1?.sublinks && <NavColumn items={activeL1.sublinks} onItemClick={handleL2Click} activeItem={activeL2} parentItem={activeL1} level={2} onBackClick={() => setActiveL1(null)} />}
+                      </div>
+                      <div className="w-7/12 md:w-5/12 lg:w-11/16">
+                         {activeL2?.sublinks && <NavColumn items={activeL2.sublinks} onItemClick={(link:any) => resetNav()} activeItem={null} parentItem={activeL2} level={3} onBackClick={() => setActiveL2(null)} />}
+                      </div>
                   </div>
               </SheetContent>
             </Sheet>
@@ -383,7 +337,7 @@ export function Header() {
             <input type="text" placeholder="Search Dwimulya Hub" className="bg-transparent border-b-2 border-white text-white text-3xl w-full max-w-2xl text-center placeholder-gray-400 outline-none pb-2"/>
             <div className="mt-8 text-center">
                 <h4 className="text-gray-400 mb-4">Quick Links</h4>
-                <Link href="#" className="text-white text-lg font-semibold hover:text-[#a51c30]">A to Z index</Link>
+                <Link href="#" className="text-white text-lg font-semibold hover:text-primary">A to Z index</Link>
             </div>
         </div>
       </div>

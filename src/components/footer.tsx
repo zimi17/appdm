@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Facebook, Twitter, Instagram, Youtube, Linkedin, Rss } from 'lucide-react';
+import { Logo } from './logo';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -63,9 +63,7 @@ export function Footer() {
             <p className="text-sm text-center md:text-left order-3 md:order-1 mt-8 md:mt-0">Copyright © {currentYear} The President and Fellows of Harvard College</p>
             <div className="order-1 md:order-2">
                 <Link href="/">
-                    <div className="relative h-20 w-40">
-                         <Image src="/logo-white.svg" alt="Harvard University" fill className="object-contain" />
-                    </div>
+                    <Logo theme="dark" className="h-20 w-40"/>
                 </Link>
             </div>
              <div className="flex gap-4 order-2 md:order-3 mt-8 md:mt-0">
