@@ -9,13 +9,15 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
+  SheetTitle,
 } from "@/components/ui/sheet";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Search, Menu, X, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 
 const navLinks = [
-  {
+    {
     title: "Academics",
     description: "Learning at Harvard can happen for every type of learner, at any phase of life.",
     href: "/academics",
@@ -258,12 +260,12 @@ const NavColumn = ({
                     activeItem?.title === link.title && 'bg-[length:100%_1px]'
                   )}>{link.title}</span>
                 ) : (
-                  <span className="flex items-center w-full">
+                    <span className="flex items-center w-full">
                     <strong className="text-lg font-bold group-hover:text-white transition-colors duration-150">
                       {link.title}
                     </strong>
                     {link.sublinks && (
-                      <ChevronRight className="h-5 w-5 text-gray-500 ml-2 flex-shrink-0 group-hover:text-white transition-colors duration-150" />
+                      <ChevronRight className="h-5 w-5 text-gray-500 ml-auto flex-shrink-0 group-hover:text-white transition-colors duration-150" />
                     )}
                   </span>
                 )}
@@ -314,6 +316,7 @@ export function Header() {
         setActiveL1({ ...link, parentTitle: 'Main Menu' });
         setActiveL2(null);
       } else {
+        // It's a direct link, so we close the nav
         resetNav();
       }
     } else if (depth === 2) {
@@ -338,6 +341,37 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2 mr-4">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="ghost" size="icon" className="relative">
+                    <span className="absolute top-1 right-1 flex h-3 w-3">
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-[#a51c30]">
+                         <span className="absolute inline-flex h-full w-full rounded-full bg-[#df072e] opacity-75 animate-ping"></span>
+                      </span>
+                    </span>
+                    <span className="sr-only">Site Notifications</span>
+                     <span className="rounded-full inline-block font-bold text-xs h-5 leading-5 min-w-5 text-center transition-all duration-150 ease-in-out text-white bg-[#a51c30]">1</span>
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 mr-4">
+                  <div className="grid gap-4">
+                    <div className="space-y-2">
+                      <h4 className="font-medium leading-none">Notifications</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Latest updates and announcements.
+                      </p>
+                    </div>
+                    <div>
+                      <Link href="#" className="text-sm font-medium text-primary hover:underline">
+                        Learn about our lawsuits to protect our students and researchers
+                      </Link>
+                    </div>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </div>
+            
             <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
               <Search className="h-6 w-6 text-foreground" />
             </Button>
@@ -348,6 +382,7 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
+                <SheetTitle className="sr-only">Primary Navigation</SheetTitle>
                 <SheetClose asChild>
                   <div className="flex justify-between items-center px-6 h-[90px] absolute top-0 left-0 right-0 z-10">
                     <Link href="/" onClick={resetNav} className="inline-block relative">
@@ -358,18 +393,19 @@ export function Header() {
                     </Button>
                   </div>
                 </SheetClose>
-
+                
                 <div className="h-full flex w-full">
                   <div className="h-full w-full md:w-4/12 lg:w-[320px] shrink-0 md:border-r border-gray-700">
-                    <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} />
+                     <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} depth={1} />
                   </div>
-                  <div className={cn("h-full w-full md:w-5/12 lg:w-[420px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-all duration-300 ease-in-out", activeL1 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 md:hidden")}>
+                  <div className={cn("h-full w-full md:w-5/12 lg:w-[420px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-all duration-300 ease-in-out", activeL1 ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0 md:hidden")}>
                     {activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={2} />}
                   </div>
-                  <div className={cn("h-full w-full md:w-7/12 lg:w-auto grow absolute md:relative inset-0 bg-[#292c2f] transition-all duration-300 ease-in-out", activeL2 ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 md:hidden")}>
+                  <div className={cn("h-full w-full md:w-7/12 lg:w-auto grow absolute md:relative inset-0 bg-[#292c2f] transition-all duration-300 ease-in-out", activeL2 ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0 md:hidden")}>
                     {activeL2?.sublinks && <NavColumn links={activeL2.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL2} activeItem={null} depth={3} />}
                   </div>
                 </div>
+
               </SheetContent>
             </Sheet>
           </div>
@@ -394,3 +430,4 @@ export function Header() {
     </>
   );
 }
+
