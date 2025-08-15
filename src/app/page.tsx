@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-[#f3f4f4]">
       <Header />
       <main id="main-content">
-        <HeroSection />
+        <HeroSection theme="bright" />
         <ContentSection />
       </main>
       <Footer />
