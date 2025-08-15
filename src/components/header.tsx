@@ -13,16 +13,16 @@ const navLinks = [
   {
     title: "Academics",
     description: "Learning at Harvard can happen for every type of learner, at any phase of life.",
-    href: "#",
+    href: "/academics",
     sublinks: [
       { 
         title: "Degree programs", 
         description: "Browse all of our undergraduate concentrations and graduate degrees.",
-        href: "#",
+        href: "/academics/degree-programs",
         sublinks: [
-          { title: "Undergraduate Degrees", href: "#"},
-          { title: "Graduate Degrees", href: "#" },
-          { title: "Other", href: "#" }
+          { title: "Undergraduate Degrees", href: "/academics/degree-programs/undergraduate"},
+          { title: "Graduate Degrees", href: "/academics/degree-programs/graduate" },
+          { title: "Other", href: "/academics/degree-programs/other" }
         ] 
       },
       { title: "Professional and Lifelong Learning", href: "#" },
@@ -30,13 +30,13 @@ const navLinks = [
       { 
         title: "Harvard Schools", 
         description: "Visit each School for information on admissions and financial aid.", 
-        href: "#",
+        href: "/schools",
         sublinks: [
-          { title: "Harvard College", href: "#"},
-          { title: "Harvard Business School", href: "#"},
-          { title: "Harvard Divinity School", href: "#"},
-          { title: "Harvard Faculty of Arts and Sciences", href: "#"},
-          { title: "Harvard Graduate School of Design", href: "#"}
+          { title: "Harvard College", href: "/schools/college"},
+          { title: "Harvard Business School", href: "/schools/hbs"},
+          { title: "Harvard Divinity School", href: "/schools/hds"},
+          { title: "Harvard Faculty of Arts and Sciences", href: "/schools/fas"},
+          { title: "Harvard Graduate School of Design", href: "/schools/gsd"}
         ] 
       }
     ]
@@ -48,13 +48,19 @@ const navLinks = [
   { title: "News", description: "Official news from Harvard University about science, medicine, art, campus life, University issues, and broader national and global concerns.", href: "#"},
 ];
 
-const NavColumn = ({ links, onLinkClick, onBack, title, description, href, depth = 1 }: { links: any[], onLinkClick: (link: any) => void, onBack?: () => void, title?: string, description?: string, href?: string, depth?: number }) => (
+const NavColumn = ({ links, onLinkClick, onBack, parentTitle, currentItem, depth = 1 }: { links: any[], onLinkClick: (link: any) => void, onBack?: () => void, parentTitle?: string, currentItem: any, depth?: number }) => {
+
+    const title = depth > 1 ? currentItem?.title : parentTitle;
+    const description = depth > 1 ? currentItem?.description : "";
+    const href = depth > 1 ? currentItem?.href : "";
+
+    return (
     <div className={cn("h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px]", depth > 1 && "md:w-full")}>
       {onBack && (
          <div className="nav-primary__back mb-9 md:mb-10 min-[1260px]:mb-[60px]">
             <button onClick={onBack} className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium">
               <span className="icon bg-[#656f77] rounded-full text-white inline-block text-[11px] h-4 left-0 leading-[17px] absolute text-center w-4 top-0.5"><ChevronLeft className="w-4 h-4" /></span>
-              {title}
+              {parentTitle}
             </button>
         </div>
       )}
@@ -71,8 +77,8 @@ const NavColumn = ({ links, onLinkClick, onBack, title, description, href, depth
        )}
 
       <ol className={cn(depth > 1 && "border-t border-[#464a4f]")}>
-        {links.map((link, index) => (
-          <li key={link.title} className={cn("nav-primary__item", depth > 1 && "border-b border-[#464a4f] py-4")}>
+        {links.map((link) => (
+          <li key={link.title} className={cn("nav-primary__item", depth > 1 ? "border-b border-[#464a4f] py-4" : "mt-6")}>
             <button
               onClick={() => onLinkClick(link)}
               className="nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out text-slate-400 hover:text-white w-full"
@@ -90,14 +96,14 @@ const NavColumn = ({ links, onLinkClick, onBack, title, description, href, depth
         ))}
       </ol>
     </div>
-  );
+  )};
   
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [navState, setNavState] = useState<{ level: number, menu: any }>({ level: 1, menu: navLinks });
+  const [navState, setNavState] = useState<{ level: number, menu: any }>({ level: 1, menu: { sublinks: navLinks, title: "Main Menu" } });
   const [history, setHistory] = useState<{ level: number, menu: any }[]>([]);
 
 
@@ -115,8 +121,7 @@ export function Header() {
       setNavState({ level: navState.level + 1, menu: link });
     } else {
       setIsNavOpen(false);
-      setNavState({ level: 1, menu: navLinks });
-      setHistory([]);
+      resetNav();
     }
   };
 
@@ -131,7 +136,7 @@ export function Header() {
   const resetNav = () => {
     setIsNavOpen(false);
     setTimeout(() => {
-        setNavState({ level: 1, menu: navLinks });
+        setNavState({ level: 1, menu: { sublinks: navLinks, title: "Main Menu" }});
         setHistory([]);
     }, 300);
   }
@@ -154,7 +159,7 @@ export function Header() {
             <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
               <Search className="h-6 w-6 text-gray-800" />
             </Button>
-             <Sheet open={isNavOpen} onOpenChange={resetNav}>
+             <Sheet open={isNavOpen} onOpenChange={(open) => !open && resetNav()}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" onClick={() => setIsNavOpen(true)}>
                   <Menu className="h-6 w-6 text-gray-800" />
@@ -165,20 +170,20 @@ export function Header() {
                       <Link href="/" onClick={resetNav} className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
                         <Image src="/logo-white.svg" alt="Dwimulya Hub" fill className="object-contain"/>
                       </Link>
-                      <SheetTrigger>
+                      <SheetTrigger onClick={resetNav}>
                           <X className="h-6 w-6 text-white" />
                       </SheetTrigger>
                   </div>
                   
-                  <div className="h-full flex w-full transition-transform duration-300" style={{ transform: `translateX(-${(navState.level - 1) * 100 / 3}%)` }}>
+                  <div className="h-full flex w-full md:w-[200%] lg:w-[300%] transition-transform duration-300" style={{ transform: `translateX(-${(navState.level - 1) * 100 / (history.length + 1) }%)` }}>
                      <div className="h-full w-full md:w-1/3 md:shrink-0 border-r border-gray-700">
-                        <NavColumn links={navLinks} onLinkClick={handleLinkClick}/>
+                        <NavColumn links={navLinks} onLinkClick={handleLinkClick} currentItem={null} />
                      </div>
                      <div className="h-full w-full md:w-1/3 md:shrink-0 border-r border-gray-700">
-                       { navState.level > 1 && navState.menu.sublinks && <NavColumn links={navState.menu.sublinks} onLinkClick={handleLinkClick} onBack={handleBackClick} title={navState.menu.title} description={navState.menu.description} href={navState.menu.href} depth={2} />}
+                       { navState.level > 1 && navState.menu.sublinks && <NavColumn links={navState.menu.sublinks} onLinkClick={handleLinkClick} onBack={handleBackClick} parentTitle={history[history.length-1]?.menu.title} currentItem={navState.menu} depth={2} />}
                      </div>
                       <div className="h-full w-full md:w-1/3 md:shrink-0">
-                        { navState.level > 2 && navState.menu.sublinks && <NavColumn links={navState.menu.sublinks} onLinkClick={handleLinkClick} onBack={handleBackClick} title={navState.menu.title} description={navState.menu.description} href={navState.menu.href} depth={3} />}
+                        { navState.level > 2 && navState.menu.sublinks && <NavColumn links={navState.menu.sublinks} onLinkClick={handleLinkClick} onBack={handleBackClick} parentTitle={history[history.length-1]?.menu.title} currentItem={navState.menu} depth={3} />}
                      </div>
                   </div>
                   
