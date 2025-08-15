@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Youtube, Linkedin, Rss } from 'lucide-react';
 import { Logo } from '../logo';
+import { footerSections } from '@/lib/data';
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -12,33 +13,6 @@ export function SiteFooter() {
     { href: "#", icon: Linkedin, label: "LinkedIn" },
     { href: "#", icon: Facebook, label: "Facebook" },
     { href: "#", icon: Youtube, label: "YouTube" },
-  ];
-
-  const footerSections = [
-    {
-      title: "Security & Brand",
-      links: [
-        { label: "Report Copyright Infringement", href: "#" },
-        { label: "Report Security Issue", href: "#" },
-        { label: "Trademark Notice", href: "#" },
-      ],
-    },
-    {
-      title: "Website",
-      links: [
-        { label: "Accessibility", href: "#" },
-        { label: "Digital Accessibility", href: "#" },
-        { label: "Privacy Statement", href: "#" },
-      ],
-    },
-    {
-      title: "Get In Touch",
-      links: [
-        { label: "Contact Harvard", href: "#" },
-        { label: "Maps & Directions", href: "#" },
-        { label: "Jobs", href: "#" },
-      ],
-    },
   ];
 
   return (
