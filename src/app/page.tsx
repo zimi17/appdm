@@ -25,7 +25,7 @@ export default function Home() {
           </Button>
         </div>
         <HeroSection theme={theme} />
-        <ContentSection />
+        <ContentSection theme={theme} />
       </main>
       <Footer />
     </div>
