@@ -37,8 +37,8 @@ const NavColumn = ({
       )}
     >
       {depth > 1 && parentItem && (
-        <div className="nav-primary__subsec--top pt-[30px] mb-6 md:mb-[41px]">
-          <div className="nav-primary__back mb-9">
+        <div className="nav-primary__subsec--top pt-[8px] mb-6 md:mb-[41px]">
+          <div className="nav-primary__back mb-9 md:hidden">
             <button
               onClick={handleBackClick}
               className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium"
@@ -62,7 +62,7 @@ const NavColumn = ({
             </strong>
           )}
           {parentItem?.description && (
-            <span className="block text-base leading-normal mt-2 text-gray-400">
+            <span className="block text-sm leading-normal mt-2 text-gray-400">
               {parentItem.description}
             </span>
           )}
@@ -103,7 +103,7 @@ const NavColumn = ({
                       {link.title}
                     </strong>
                     {link.sublinks && (
-                      <ChevronRight className="h-5 w-5 text-gray-500 ml-auto flex-shrink-0 group-hover:text-white transition-colors duration-150" />
+                      <ChevronRight className="h-5 w-5 text-gray-500 ml-2 flex-shrink-0 group-hover:text-white transition-colors duration-150" />
                     )}
                   </span>
                 )}
@@ -186,7 +186,7 @@ export function GlobalMenu({
         </div>
 
         <div className="h-full flex w-full">
-          <div className="h-full md:w-[25%] lg:w-[22%] shrink-0 md:border-r border-gray-700 hidden md:block">
+          <div className="h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 hidden md:block">
             <NavColumn
               links={navLinks}
               onLinkClick={handleNavLinkClick}
@@ -196,7 +196,7 @@ export function GlobalMenu({
           </div>
           <div
             className={cn(
-              "h-full md:w-[35%] lg:w-[32%] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
+              "h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
               activeL1 ? "translate-x-0" : "translate-x-full",
               "md:translate-x-0"
             )}
