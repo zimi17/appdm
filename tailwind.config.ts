@@ -19,8 +19,8 @@ const config = {
     },
     extend: {
        fontFamily: {
-        body: ['"GT America Standard Regular"', 'sans-serif'],
-        headline: ['"Canela Deck Web"', 'serif'],
+        body: ['"PT Sans"', 'sans-serif'],
+        headline: ['"Playfair Display"', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
