@@ -5,7 +5,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Search, Menu, X, ChevronRight, ChevronLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -48,64 +54,80 @@ const navLinks = [
   { title: "News", description: "Official news from Harvard University about science, medicine, art, campus life, University issues, and broader national and global concerns.", href: "#"},
 ];
 
-const NavColumn = ({ links, onLinkClick, onBack, parentTitle, currentItem, depth = 1 }: { links: any[], onLinkClick: (link: any) => void, onBack?: () => void, parentTitle?: string, currentItem: any, depth?: number }) => {
-
-    const title = depth > 1 ? currentItem?.title : parentTitle;
-    const description = depth > 1 ? currentItem?.description : "";
-    const href = depth > 1 ? currentItem?.href : "";
+const NavColumn = ({ 
+    links, 
+    onLinkClick,
+    parentTitle, 
+    activeItem,
+    depth = 1,
+    className
+}: { 
+    links: any[], 
+    onLinkClick: (link: any, depth: number) => void,
+    parentTitle?: string, 
+    activeItem: any,
+    depth?: number,
+    className?: string
+}) => {
+    
+    const description = activeItem?.description;
+    const href = activeItem?.href;
+    const title = activeItem?.title;
 
     return (
-    <div className={cn("h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px]", depth > 1 && "md:w-full")}>
-      {onBack && (
-         <div className="nav-primary__back mb-9 md:mb-10 min-[1260px]:mb-[60px]">
-            <button onClick={onBack} className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium">
-              <span className="icon bg-[#656f77] rounded-full text-white inline-block text-[11px] h-4 left-0 leading-[17px] absolute text-center w-4 top-0.5"><ChevronLeft className="w-4 h-4" /></span>
-              {parentTitle}
-            </button>
-        </div>
-      )}
-       { description && (
-         <div className="mb-[37px] md:mb-10 min-[1260px]:mb-[60px]">
-           <strong className="block font-headline text-xl tracking-[-0.1px] leading-normal">{title}</strong>
-           <span className="block text-lg tracking-[-0.1px] leading-normal mt-2">{description}</span>
-            { href && (
-              <a href={href} className="inline-flex items-center text-lg leading-normal mt-2 font-medium hover:underline">
-                 Explore more <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            )}
-         </div>
-       )}
-
-      <ol className={cn(depth > 1 && "border-t border-[#464a4f]")}>
-        {links.map((link) => (
-          <li key={link.title} className={cn("nav-primary__item", depth > 1 ? "border-b border-[#464a4f] py-4" : "mt-6")}>
-            <button
-              onClick={() => onLinkClick(link)}
-              className="nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out text-slate-400 hover:text-white w-full"
-            >
-             <div className="flex justify-between items-center">
-                {depth === 1 ? (
-                    <span className="text-4xl font-headline tracking-[-0.1px] leading-[1.15] md:text-5xl min-[1260px]:text-[56px] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] hover:bg-[length:100%_1px]">{link.title}</span>
-                ) : (
-                    <strong className="text-lg font-bold">{link.title}</strong>
+    <div className={cn("h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px]", className)}>
+        {depth > 1 && parentTitle && (
+            <div className="nav-primary__back mb-9 md:mb-10 min-[1260px]:mb-[60px]">
+                <button onClick={() => onLinkClick({ parent: true, depth }, depth)} className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium">
+                <span className="icon bg-[#656f77] rounded-full text-white inline-block text-[11px] h-4 left-0 leading-[17px] absolute text-center w-4 top-0.5"><ChevronLeft className="w-4 h-4" /></span>
+                {parentTitle}
+                </button>
+            </div>
+        )}
+        { description && (
+            <div className="mb-[37px] md:mb-10 min-[1260px]:mb-[60px]">
+              <strong className="block font-headline text-xl tracking-[-0.1px] leading-normal">{title}</strong>
+              <span className="block text-lg tracking-[-0.1px] leading-normal mt-2">{description}</span>
+                { href && (
+                <a href={href} className="inline-flex items-center text-lg leading-normal mt-2 font-medium hover:underline">
+                    Explore more <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
                 )}
-                {link.sublinks && <ChevronRight className="h-5 w-5 text-gray-500" />}
-             </div>
-            </button>
-          </li>
-        ))}
-      </ol>
+            </div>
+        )}
+
+        <ol className={cn(depth > 1 && "border-t border-[#464a4f]")}>
+            {links.map((link) => (
+            <li key={link.title} className={cn("nav-primary__item", depth > 1 ? "border-b border-[#464a4f] py-4" : "mt-6")}>
+                <button
+                 onClick={() => onLinkClick(link, depth)}
+                 className={cn(
+                    "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out hover:text-white w-full",
+                    activeItem?.title === link.title ? 'text-white' : 'text-slate-400'
+                 )}
+                >
+                <div className="flex justify-between items-center">
+                    {depth === 1 ? (
+                        <span className="text-4xl font-headline tracking-[-0.1px] leading-[1.15] md:text-5xl min-[1260px]:text-[56px] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] hover:bg-[length:100%_1px]">{link.title}</span>
+                    ) : (
+                        <strong className="text-lg font-bold">{link.title}</strong>
+                    )}
+                    {link.sublinks && <ChevronRight className="h-5 w-5 text-gray-500" />}
+                </div>
+                </button>
+            </li>
+            ))}
+        </ol>
     </div>
-  )};
+)};
   
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [navState, setNavState] = useState<{ level: number, menu: any }>({ level: 1, menu: { sublinks: navLinks, title: "Main Menu" } });
-  const [history, setHistory] = useState<{ level: number, menu: any }[]>([]);
-
+  const [activeL1, setActiveL1] = useState<any | null>(null);
+  const [activeL2, setActiveL2] = useState<any | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,30 +137,39 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = (link: any) => {
-    if (link.sublinks) {
-      setHistory([...history, navState]);
-      setNavState({ level: navState.level + 1, menu: link });
-    } else {
-      setIsNavOpen(false);
-      resetNav();
-    }
-  };
-
-  const handleBackClick = () => {
-    const previousState = history.pop();
-    if(previousState){
-        setNavState(previousState);
-        setHistory([...history]);
-    }
-  };
-
   const resetNav = () => {
     setIsNavOpen(false);
     setTimeout(() => {
-        setNavState({ level: 1, menu: { sublinks: navLinks, title: "Main Menu" }});
-        setHistory([]);
+      setActiveL1(null);
+      setActiveL2(null);
     }, 300);
+  }
+  
+  const handleNavLinkClick = (link: any, depth: number) => {
+    if (depth === 1) {
+        if(link.sublinks){
+            setActiveL1(link);
+            setActiveL2(null);
+        } else {
+            resetNav();
+        }
+    } else if (depth === 2) {
+        if (link.parent) {
+            setActiveL1(null);
+            setActiveL2(null);
+        }
+        else if(link.sublinks){
+            setActiveL2(link);
+        } else {
+            resetNav();
+        }
+    } else {
+        if (link.parent) {
+            setActiveL2(null);
+        } else {
+            resetNav();
+        }
+    }
   }
 
   return (
@@ -166,7 +197,8 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="top" className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0">
-                  <SheetTitle className="hidden">Navigation Menu</SheetTitle>
+                  <SheetClose className="hidden" />
+                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                   <div className="flex justify-between items-center px-6 h-[70px] md:h-[75px] min-[960px]:h-[90px] absolute top-0 left-0 right-0 z-10">
                       <Link href="/" onClick={resetNav} className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
                         <Image src="/logo-white.svg" alt="Dwimulya Hub" fill className="object-contain"/>
@@ -176,12 +208,15 @@ export function Header() {
                       </SheetTrigger>
                   </div>
                   
-                  <div className="h-full flex w-full md:w-full lg:w-[200%] transition-transform duration-300" style={{ transform: `translateX(-${(navState.level - 1) * 100 / (history.length + 1) }%)` }}>
-                     <div className="h-full w-full md:w-1/2 md:shrink-0 border-r border-gray-700">
-                        <NavColumn links={navLinks} onLinkClick={handleLinkClick} currentItem={null} />
+                  <div className="h-full flex w-full">
+                     <div className="h-full w-full md:w-4/12 lg:w-[320px] shrink-0 md:border-r border-gray-700">
+                        <NavColumn links={navLinks} onLinkClick={handleNavLinkClick} activeItem={activeL1} />
                      </div>
-                     <div className="h-full w-full md:w-1/2 md:shrink-0">
-                       { navState.level > 1 && navState.menu.sublinks && <NavColumn links={navState.menu.sublinks} onLinkClick={handleLinkClick} onBack={handleBackClick} parentTitle={history[history.length-1]?.menu.title} currentItem={navState.menu} depth={2} />}
+                     <div className={cn("h-full w-full md:w-5/12 lg:w-[420px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL1 ? "translate-x-0" : "translate-x-full")}>
+                       { activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentTitle={activeL1.title} activeItem={activeL2} depth={2}/>}
+                     </div>
+                     <div className={cn("h-full w-full md:w-7/12 lg:w-auto grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL2 ? "translate-x-0" : "translate-x-full")}>
+                       { activeL2?.sublinks && <NavColumn links={activeL2.sublinks} onLinkClick={handleNavLinkClick} parentTitle={activeL1?.title} activeItem={activeL2} depth={3}/>}
                      </div>
                   </div>
                   
