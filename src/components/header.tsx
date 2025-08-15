@@ -123,7 +123,7 @@ const navLinks = [
       { title: "Commencement", href: "/commencement" }
     ]
   },
-  {
+    {
     title: "In Focus",
     description: "Explore a curated examination of Harvard's research, scholarly work, and community.",
     href: "/in-focus",
@@ -155,7 +155,7 @@ const navLinks = [
       { title: "Tour Providers", href: "/visit/tour-providers" }
     ]
   },
-  {
+    {
     title: "About",
     description: "Learn how Harvard is structured, explore our long history, and discover our extended community.",
     href: "/about",
@@ -226,37 +226,38 @@ const NavColumn = ({
               {parentItem.parentTitle || 'Back'}
               </button>
           </div>
-
-          <strong className="block font-headline text-xl tracking-[-0.1px] leading-normal">{parentItem?.title}</strong>
-          {parentItem?.description && <span className="block text-lg tracking-[-0.1px] leading-normal mt-2">{parentItem.description}</span>}
-          {parentItem?.href && (
-            <Link href={parentItem.href} className="inline-flex items-center text-lg leading-normal mt-2 font-medium hover:underline">
-              Explore more <ArrowRight className="ml-2 h-4 w-4" />
+          <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal">
+            <Link href={parentItem.href || '#'} className="hover:underline flex items-center">
+              {parentItem?.title}
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-          )}
+          </strong>
+          {parentItem?.description && <span className="block text-sm leading-normal mt-2 text-gray-400">{parentItem.description}</span>}
         </div>
       )}
 
-      <ol className={cn(depth > 1 && "border-t border-[#464a4f]")}>
+      <ol className={cn(depth > 1 && "border-t border-gray-700")}>
         {links.map((link) => (
-          <li key={link.title} className={cn("nav-primary__item", depth > 1 ? "border-b border-[#464a4f] py-4" : "mt-6")}>
-            <button
+          <li key={link.title} className={cn("nav-primary__item", depth > 1 ? "border-b border-gray-700" : "mt-6")}>
+             <button
              onClick={() => onLinkClick(link, depth)}
              className={cn(
                 "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out hover:text-white w-full",
                 activeItem?.title === link.title ? 'text-white' : 'text-slate-400'
              )}
             >
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center py-2">
                 {depth === 1 ? (
                   <span className={cn(
                       "text-4xl font-headline tracking-[-0.1px] leading-[1.15] md:text-5xl min-[1260px]:text-[56px] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] hover:bg-[length:100%_1px]",
                       activeItem?.title === link.title && 'bg-[length:100%_1px]'
                   )}>{link.title}</span>
                 ) : (
-                  <strong className="text-lg font-bold">{link.title}</strong>
+                   <span className="flex items-center justify-between w-full">
+                    <strong className="text-lg font-bold">{link.title}</strong>
+                    {link.sublinks && <ChevronRight className="h-5 w-5 text-gray-500" />}
+                   </span>
                 )}
-                {link.sublinks && <ChevronRight className="h-5 w-5 text-gray-500" />}
               </div>
             </button>
           </li>
@@ -319,7 +320,7 @@ export function Header() {
 
   return (
     <>
-      <header className={cn("site-header site-header--position-fixed site-nav--is-active sticky top-0 z-[12000] transition-all duration-300", isScrolled ? "bg-white/80 backdrop-blur-sm shadow-md" : "bg-white")}>
+      <header className={cn("site-header sticky top-0 z-[12000] transition-all duration-300", isScrolled ? "bg-white/80 backdrop-blur-sm shadow-md" : "bg-white")}>
         <div className="flex h-[70px] justify-between items-center px-6 md:h-[75px] min-[960px]:h-[90px]">
           <div className="flex items-center">
             <Link href="/" className="inline-block h-[29px] w-[115px] min-[375px]:h-9 min-[375px]:w-[142px] md:h-[42px] md:w-[166px] min-[1260px]:h-12 min-[1260px]:w-[190px] relative">
