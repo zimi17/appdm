@@ -216,6 +216,8 @@ const NavColumn = ({
   depth?: number,
   className?: string
 }) => {
+  const currentDisplayItem = depth === 2 ? parentItem : activeItem;
+
   return (
     <div className={cn("h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px]", className)}>
       {depth > 1 && parentItem && (
@@ -227,10 +229,10 @@ const NavColumn = ({
               </button>
           </div>
 
-          <strong className="block font-headline text-xl tracking-[-0.1px] leading-normal">{activeItem?.title}</strong>
-          {activeItem?.description && <span className="block text-lg tracking-[-0.1px] leading-normal mt-2">{activeItem.description}</span>}
-          {activeItem?.href && (
-            <Link href={activeItem.href} className="inline-flex items-center text-lg leading-normal mt-2 font-medium hover:underline">
+          <strong className="block font-headline text-xl tracking-[-0.1px] leading-normal">{currentDisplayItem?.title}</strong>
+          {currentDisplayItem?.description && <span className="block text-lg tracking-[-0.1px] leading-normal mt-2">{currentDisplayItem.description}</span>}
+          {currentDisplayItem?.href && (
+            <Link href={currentDisplayItem.href} className="inline-flex items-center text-lg leading-normal mt-2 font-medium hover:underline">
               Explore more <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           )}
@@ -293,6 +295,7 @@ export function Header() {
       if (link.parent) {
           if(link.depth === 2){
             setActiveL1(null);
+            setActiveL2(null);
           } else if (link.depth === 3){
             setActiveL2(null);
           }
@@ -362,7 +365,7 @@ export function Header() {
                        { activeL1?.sublinks && <NavColumn links={activeL1.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={2}/>}
                      </div>
                      <div className={cn("h-full w-full md:w-7/12 lg:w-auto grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300", activeL2 ? "translate-x-0" : "translate-x-full md:hidden")}>
-                       { activeL2?.sublinks && <NavColumn links={activeL2.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL1} activeItem={activeL2} depth={3}/>}
+                       { activeL2?.sublinks && <NavColumn links={activeL2.sublinks} onLinkClick={handleNavLinkClick} parentItem={activeL2} activeItem={null} depth={3}/>}
                      </div>
                   </div>
               </SheetContent>
