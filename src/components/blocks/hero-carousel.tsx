@@ -106,10 +106,10 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
               <Card className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8">
-                  <h3 className="font-headline text-3xl mb-4">{slides[activeSlide].title}</h3>
-                  <p className="text-muted-foreground mb-6">{slides[activeSlide].description}</p>
+                  <h3 className="font-headline text-3xl mb-4">{slides[activeSlide]?.title}</h3>
+                  <p className="text-muted-foreground mb-6">{slides[activeSlide]?.description}</p>
                   <Button asChild>
-                    <Link href={slides[activeSlide].linkHref}>{slides[activeSlide].linkText}</Link>
+                    <Link href={slides[activeSlide]?.linkHref}>{slides[activeSlide]?.linkText}</Link>
                   </Button>
               </Card>
             </motion.div>
