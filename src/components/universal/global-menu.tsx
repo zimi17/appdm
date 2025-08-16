@@ -166,7 +166,7 @@ export function GlobalMenu({
     <Sheet open={isOpen} onOpenChange={onOpenChange}>
       <SheetContent
         side="top"
-        className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0"
+        className="w-full h-full bg-[#292c2f] p-0 text-white overflow-hidden border-0 z-[100]"
       >
         <span className="sr-only">
           <SheetTitle>Main Menu</SheetTitle>
@@ -273,5 +273,3 @@ export function GlobalMenu({
     </Sheet>
   );
 }
-
-    
