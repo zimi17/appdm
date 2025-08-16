@@ -18,26 +18,26 @@ export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) =>
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost" size="icon" className="relative">
-              <Bell className="h-6 w-6" />
+              <Bell className="h-6 w-6 text-background" />
               <span className="absolute top-2 right-2 flex h-2 w-2">
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#a51c30]">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-[#df072e] opacity-75 animate-ping"></span>
                 </span>
               </span>
-              <span className="sr-only">Important Alerts</span>
+              <span className="sr-only">Informasi Penting</span>
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-80 mr-4">
+          <PopoverContent className="w-80 mr-4 z-[111]">
             <div className="grid gap-4">
               <div className="space-y-2">
-                <h4 className="font-medium leading-none">Alerts</h4>
+                <h4 className="font-medium leading-none">Pemberitahuan</h4>
                 <p className="text-sm text-muted-foreground">
-                  Important announcements and updates.
+                  Informasi penting.
                 </p>
               </div>
               <div>
-                <Link href="#" className="text-sm font-medium text-primary hover:underline">
-                  Learn about our lawsuits to protect our students and researchers
+                <Link href="/kalender-akademik" className="text-sm font-medium text-secondary hover:underline">
+                  Kalender Akademik tahun ajaran 2025/2026 telah disesuaikan. Pelajari untuk informasi terkini.
                 </Link>
               </div>
             </div>

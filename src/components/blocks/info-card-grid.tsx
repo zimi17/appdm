@@ -15,10 +15,10 @@ const Card = ({ item }: { item: any }) => (
     className="flex"
     variants={cardVariants}
   >
-    <div className="bg-primary text-primary-foreground p-6 flex flex-col flex-grow group hover:bg-secondary transition-colors duration-300">
+    <div className="bg-secondary text-secondary-foreground p-6 flex flex-col flex-grow group hover:bg-accent transition-colors duration-300">
       <h3 className="font-headline text-2xl mb-4">{item.title}</h3>
       <p className="text-lg mb-6 flex-grow opacity-90">{item.description}</p>
-      <CtaLink href={item.href} variant="link" className="mt-auto self-start text-primary-foreground hover:text-primary-foreground/80">
+      <CtaLink href={item.href} variant="link" className="mt-auto self-start text-secondary-foreground hover:text-secondary-foreground/80">
         {item.linkText}
       </CtaLink>
     </div>
