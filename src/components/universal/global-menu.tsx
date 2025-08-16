@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Sheet, SheetContent, SheetClose, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -81,13 +81,11 @@ const NavColumn = ({
             <button
               onClick={() => onLinkClick(link, depth)}
               className={cn(
-                "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full",
-                activeItem?.title === link.title
-                  ? "text-white"
-                  : "text-slate-400"
+                "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full group",
+                 activeItem?.title === link.title ? "text-white" : "text-slate-400 hover:text-white"
               )}
             >
-              <div className="flex justify-between items-center py-2 group hover:text-white">
+              <div className="flex justify-between items-center py-2">
                 {depth === 1 ? (
                   <span
                     className={cn(
@@ -99,8 +97,10 @@ const NavColumn = ({
                   </span>
                 ) : (
                   <span className="flex items-center w-full">
-                    <strong className="text-lg font-bold transition-colors duration-150 group-hover:text-white">
-                      {link.title}
+                    <strong className="text-lg font-bold">
+                       <span className={cn("bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] group-hover:bg-[length:100%_1px]", activeItem?.title === link.title && "bg-[length:100%_1px]")}>
+                        {link.title}
+                       </span>
                     </strong>
                     {link.sublinks && (
                       <ChevronRight className="h-5 w-5 text-gray-500 ml-2 flex-shrink-0 group-hover:text-white transition-colors duration-150" />
@@ -126,12 +126,18 @@ export function GlobalMenu({
   const [activeL1, setActiveL1] = useState<any | null>(null);
   const [activeL2, setActiveL2] = useState<any | null>(null);
 
+  useEffect(() => {
+    if (!isOpen) {
+      const timer = setTimeout(() => {
+        setActiveL1(null);
+        setActiveL2(null);
+      }, 300); // Delay matches the sheet close animation
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
   const resetNav = () => {
     onOpenChange(false);
-    setTimeout(() => {
-      setActiveL1(null);
-      setActiveL2(null);
-    }, 300);
   };
 
   const handleNavLinkClick = (link: any, depth: number) => {
@@ -144,21 +150,19 @@ export function GlobalMenu({
       return;
     }
 
+    if (!link.sublinks) {
+        if(link.href) {
+            window.location.href = link.href;
+        }
+        resetNav();
+        return;
+    }
+
     if (depth === 1) {
-      if (link.sublinks) {
         setActiveL1({ ...link, parentTitle: "Main Menu" });
         setActiveL2(null);
-      } else {
-        resetNav();
-      }
     } else if (depth === 2) {
-      if (link.sublinks) {
         setActiveL2({ ...link, parentTitle: activeL1?.title });
-      } else {
-        resetNav();
-      }
-    } else {
-      resetNav();
     }
   };
   
@@ -186,31 +190,22 @@ export function GlobalMenu({
         </div>
 
         <div className="h-full flex w-full">
-          <div className="h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 hidden md:block">
-            <NavColumn
-              links={navLinks}
-              onLinkClick={handleNavLinkClick}
-              activeItem={activeL1}
-              depth={1}
-            />
-          </div>
-          <div
-            className={cn(
-              "h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
-              activeL1 ? "translate-x-0" : "translate-x-full",
-              "md:translate-x-0"
-            )}
-          >
-            <div className="md:hidden">
-              <NavColumn
+          <div className={cn("h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out", {"-translate-x-full md:translate-x-0": activeL1})}>
+             <NavColumn
                 links={navLinks}
                 onLinkClick={handleNavLinkClick}
                 activeItem={activeL1}
                 depth={1}
               />
-            </div>
-            <div className="hidden md:block">
-              {activeL1?.sublinks && (
+          </div>
+          <div
+            className={cn(
+              "h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
+              activeL1 ? "translate-x-0" : "translate-x-full",
+              {"-translate-x-full md:translate-x-0": activeL2}
+            )}
+          >
+             {activeL1?.sublinks && (
                 <NavColumn
                   links={activeL1.sublinks}
                   onLinkClick={handleNavLinkClick}
@@ -219,28 +214,14 @@ export function GlobalMenu({
                   depth={2}
                 />
               )}
-            </div>
           </div>
           <div
             className={cn(
               "h-full grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
               activeL2 ? "translate-x-0" : "translate-x-full",
-              "md:translate-x-0"
             )}
           >
-            <div className="md:hidden">
-              {activeL1?.sublinks && (
-                <NavColumn
-                  links={activeL1.sublinks}
-                  onLinkClick={handleNavLinkClick}
-                  parentItem={activeL1}
-                  activeItem={activeL2}
-                  depth={2}
-                />
-              )}
-            </div>
-            <div className="hidden md:block">
-              {activeL2?.sublinks && (
+            {activeL2?.sublinks && (
                 <NavColumn
                   links={activeL2.sublinks}
                   onLinkClick={handleNavLinkClick}
@@ -249,7 +230,6 @@ export function GlobalMenu({
                   depth={3}
                 />
               )}
-            </div>
           </div>
         </div>
          <nav className="absolute bottom-0 left-0 right-0 bg-[#0e0e0e] border-t border-solid border-t-[#464a4f] text-white overflow-hidden" aria-labelledby="quick_links_nav-label">
