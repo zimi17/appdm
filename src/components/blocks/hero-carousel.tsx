@@ -3,18 +3,17 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import { CtaLink } from '../primitives/cta-link';
 import { Button } from '../ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Card } from '../ui/card';
 
 interface CarouselCardProps {
   slide: {
@@ -26,13 +25,11 @@ interface CarouselCardProps {
 }
 
 const CarouselCard = ({ slide }: CarouselCardProps) => (
-  <Card className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8 transition-colors duration-300 hover:bg-card">
+  <div className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8 transition-colors duration-300 hover:bg-card">
       <h3 className="font-headline text-3xl mb-4">{slide.title}</h3>
       <p className="text-muted-foreground mb-6">{slide.description}</p>
-      <Button asChild>
-        <Link href={slide.linkHref}>{slide.linkText}</Link>
-      </Button>
-  </Card>
+      <CtaLink href={slide.linkHref}>{slide.linkText}</CtaLink>
+  </div>
 );
 
 interface HeroCarouselProps {
