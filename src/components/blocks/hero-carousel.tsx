@@ -17,7 +17,6 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface CarouselCardProps {
     slide: {
-      title: string;
       description: string;
       linkText: string;
       linkHref: string;
@@ -26,11 +25,10 @@ interface CarouselCardProps {
 
 const CarouselCard = ({ slide }: CarouselCardProps) => (
     <div className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8 transition-colors duration-300 hover:bg-card">
-        <p className="text-muted-foreground mb-6 text-lg">{slide.description}</p>
+        <p className="text-muted-foreground mb-6 text-lg font-semibold">{slide.description}</p>
         <CtaLink href={slide.linkHref}>{slide.linkText}</CtaLink>
     </div>
 );
-
 
 interface HeroCarouselProps {
   slides: {
@@ -78,54 +76,51 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
 
   return (
     <section className="relative w-full h-[600px] mb-16 md:mb-24 overflow-hidden">
-        <Carousel
-            setApi={setApi}
-            plugins={[autoplayPlugin.current]}
-            opts={{ loop: true }}
-            className="w-full h-full"
-        >
-            <CarouselContent className="h-full">
-            {slides.map((slide, index) => (
-                <CarouselItem key={index} className="h-full">
-                <div className="relative w-full h-full">
-                    <Image
-                    src={slide.imageUrl}
-                    alt={slide.title}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={slide.imageHint}
-                    priority={index === 0}
-                    />
-                    <div className="absolute inset-0 bg-black/30" />
-                </div>
-                </CarouselItem>
-            ))}
-            </CarouselContent>
-        </Carousel>
+      <Carousel
+        setApi={setApi}
+        plugins={[autoplayPlugin.current]}
+        opts={{ loop: true }}
+        className="w-full h-full"
+      >
+        <CarouselContent className="h-full">
+          {slides.map((slide, index) => (
+            <CarouselItem key={index} className="h-full relative">
+              <Image
+                src={slide.imageUrl}
+                alt={slide.title}
+                fill
+                className="object-cover"
+                data-ai-hint={slide.imageHint}
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-black/30" />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
-        <div className="absolute top-8 right-8 z-10 flex gap-2">
-            <Button size="icon" variant="outline" className="rounded-full bg-white/80 hover:bg-white text-black" onClick={scrollPrev}>
-                <ArrowLeft className="h-6 w-6"/>
-            </Button>
-            <Button size="icon" variant="outline" className="rounded-full bg-white/80 hover:bg-white text-black" onClick={scrollNext}>
-                <ArrowRight className="h-6 w-6"/>
-            </Button>
-        </div>
-        
-        <div className="absolute top-1/2 right-8 -translate-y-1/2 z-10">
-            <AnimatePresence mode="wait">
-            <motion.div
-                key={activeSlide}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-                <CarouselCard slide={slides[activeSlide]} />
-            </motion.div>
-            </AnimatePresence>
-        </div>
+      <div className="absolute top-8 right-8 z-10 flex gap-2">
+        <Button size="icon" variant="outline" className="rounded-full bg-white/80 hover:bg-white text-black" onClick={scrollPrev}>
+          <ArrowLeft className="h-6 w-6"/>
+        </Button>
+        <Button size="icon" variant="outline" className="rounded-full bg-white/80 hover:bg-white text-black" onClick={scrollNext}>
+          <ArrowRight className="h-6 w-6"/>
+        </Button>
+      </div>
+      
+      <div className="absolute top-1/2 right-8 -translate-y-1/2 z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSlide}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <CarouselCard slide={slides[activeSlide]} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
-
