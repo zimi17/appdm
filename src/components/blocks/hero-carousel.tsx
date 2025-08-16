@@ -16,12 +16,12 @@ import { Button } from '../ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface CarouselCardProps {
-  slide: {
-    title: string;
-    description: string;
-    linkText: string;
-    linkHref: string;
-  }
+    slide: {
+      title: string;
+      description: string;
+      linkText: string;
+      linkHref: string;
+    }
 }
 
 const CarouselCard = ({ slide }: CarouselCardProps) => (
@@ -121,10 +121,15 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              <CarouselCard slide={slides[activeSlide]} />
+              <div className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8 transition-colors duration-300 hover:bg-card">
+                  <h3 className="font-headline text-3xl mb-4">{slides[activeSlide].title}</h3>
+                  <p className="text-muted-foreground mb-6">{slides[activeSlide].description}</p>
+                  <CtaLink href={slides[activeSlide].linkHref}>{slides[activeSlide].linkText}</CtaLink>
+              </div>
             </motion.div>
         </AnimatePresence>
       </div>
     </section>
   );
 }
+
