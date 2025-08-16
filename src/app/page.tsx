@@ -5,8 +5,8 @@ import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
-import { AccordionSection } from "@/components/blocks/kurikulum-accordion";
-import { mentorshipCards, scienceCards, quote, kurikulumData } from "@/lib/data";
+import { mentorshipCards, scienceCards, quote, infoCards } from "@/lib/data";
+import { InfoCardGrid } from "@/components/blocks/info-card-grid";
 
 export default function Home() {
   return (
@@ -19,17 +19,15 @@ export default function Home() {
           imageUrl="https://placehold.co/2000x667.png"
           imageHint="students graduation"
         />
+        <InfoCardGrid 
+            title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
+            items={infoCards}
+        />
         <PromoBar
           title="Penerimaan Mahasiswa Baru Telah Dibuka!"
           description="Jelajahi program studi kami dan temukan bagaimana STIE Dwimulya dapat menjadi langkah awal kesuksesan Anda. Daftar sekarang dan jadilah bagian dari kampus perubahan."
           linkHref="/admissions"
           linkText="Info Pendaftaran"
-        />
-         <AccordionSection 
-          title={kurikulumData.title}
-          items={kurikulumData.items}
-          linkText={kurikulumData.linkText}
-          linkHref={kurikulumData.linkHref}
         />
         <QuoteSection
           quote={quote.text}

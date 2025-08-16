@@ -1,4 +1,5 @@
 
+
 export const navLinks = [
     {
     title: "Akademik",
@@ -155,3 +156,10 @@ export const kurikulumData = {
     linkText: "Lihat Kurikulum Lengkap",
     linkHref: "/academics/curriculum"
   }
+
+export const infoCards = [
+    { title: "Manajemen (S1)", description: "Program Sarjana Manajemen berfokus pada pengembangan pemimpin bisnis masa depan.", href: "/academics/s1-manajemen", linkText: "Pelajari Lebih Lanjut" },
+    { title: "Akuntansi (S1)", description: "Program Sarjana Akuntansi mempersiapkan mahasiswa untuk karir di bidang akuntansi publik dan perusahaan.", href: "/academics/s1-akuntansi", linkText: "Pelajari Lebih Lanjut" },
+    { title: "Magister Manajemen (S2)", description: "Program pascasarjana untuk para profesional yang ingin meningkatkan keterampilan manajerial mereka.", href: "#", linkText: "Pelajari Lebih Lanjut" },
+    { title: "Pendidikan Jarak Jauh", description: "Kursus online yang dipimpin oleh fakultas pemenang penghargaan untuk membantu Anda menguasai konsep bisnis penting.", href: "#", linkText: "Pelajari Lebih Lanjut" },
+]
