@@ -5,7 +5,8 @@ import { PromoBar } from "@/components/blocks/promo-bar";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { TwoColumnContent } from "@/components/blocks/two-column-content";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
-import { academicsPage } from "@/lib/data";
+import { AccordionSection } from "@/components/blocks/accordion-section";
+import { academicsPage, kurikulumData } from "@/lib/data";
 
 export default function Academics() {
   const { hero, twoColumnContent, degreePrograms, promoBar } = academicsPage;
@@ -28,6 +29,12 @@ export default function Academics() {
             title={degreePrograms.title}
             items={degreePrograms.items}
             className="bg-card"
+        />
+        <AccordionSection 
+            title={kurikulumData.title}
+            items={kurikulumData.items}
+            linkText={kurikulumData.linkText}
+            linkHref={kurikulumData.linkHref}
         />
         <PromoBar
           title={promoBar.title}

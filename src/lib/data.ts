@@ -163,3 +163,41 @@ export const infoCards = [
     { title: "Magister Manajemen (S2)", description: "Program pascasarjana untuk para profesional yang ingin meningkatkan keterampilan manajerial mereka.", href: "#", linkText: "Pelajari Lebih Lanjut" },
     { title: "Pendidikan Jarak Jauh", description: "Kursus online yang dipimpin oleh fakultas pemenang penghargaan untuk membantu Anda menguasai konsep bisnis penting.", href: "#", linkText: "Pelajari Lebih Lanjut" },
 ]
+
+export const missionTopperData = {
+    titleParts: [
+      { text: "Kami mendidik ", isButton: false },
+      { text: "pemimpin", isButton: true },
+      { text: " yang membuat ", isButton: false },
+      { text: "perbedaan", isButton: true },
+      { text: " di ", isButton: false },
+      { text: "dunia", isButton: true },
+      { text: ".", isButton: false },
+    ],
+    slides: [
+      {
+        title: "Pemimpin yang Berintegritas",
+        description: "Program MBA dua tahun, penuh waktu, residensial dengan fokus pada praktik dunia nyata.",
+        imageUrl: "https://placehold.co/1200x800.png",
+        imageHint: "students lecture",
+        linkText: "Jelajahi Program MBA",
+        linkHref: "/academics/s1-manajemen",
+      },
+      {
+        title: "Membuat Perbedaan Positif",
+        description: "Tujuh program penuh waktu yang mengarah ke gelar PhD untuk para sarjana yang tertarik pada penelitian akademis.",
+        imageUrl: "https://placehold.co/1200x800.png",
+        imageHint: "student collaboration",
+        linkText: "Lihat Program Doktoral",
+        linkHref: "/academics/s1-akuntansi",
+      },
+      {
+        title: "Dampak di Seluruh Dunia",
+        description: "Kursus online yang dipimpin oleh fakultas pemenang penghargaan untuk membantu Anda menguasai konsep bisnis penting.",
+        imageUrl: "https://placehold.co/1200x800.png",
+        imageHint: "globe connections",
+        linkText: "Lihat Kursus Online",
+        linkHref: "#",
+      },
+    ],
+  };

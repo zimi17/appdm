@@ -1,11 +1,11 @@
 
 import { SiteHeader } from "@/components/jalantempuh/site-header";
-import { HeroSection } from "@/components/blocks/hero-section";
+import { MissionTopper } from "@/components/blocks/mission-topper";
 import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
-import { mentorshipCards, scienceCards, quote, infoCards } from "@/lib/data";
+import { mentorshipCards, scienceCards, quote, infoCards, missionTopperData } from "@/lib/data";
 import { InfoCardGrid } from "@/components/blocks/info-card-grid";
 
 export default function Home() {
@@ -13,11 +13,9 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main id="main-content">
-        <HeroSection 
-          title="Kampus Rakyat, Kampus Perubahan"
-          description="Memberdayakan Masyarakat, Mengubah Masa Depan. STIE Dwimulya berkomitmen untuk menyediakan pendidikan berkualitas yang dapat diakses oleh semua lapisan masyarakat, menciptakan pemimpin yang siap membawa perubahan positif."
-          imageUrl="https://placehold.co/2000x667.png"
-          imageHint="students graduation"
+        <MissionTopper
+          titleParts={missionTopperData.titleParts}
+          slides={missionTopperData.slides}
         />
         <InfoCardGrid 
             title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
