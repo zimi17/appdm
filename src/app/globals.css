@@ -86,4 +86,40 @@
   .nav-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: rgb(90, 94, 99);
   }
+
+  @keyframes swipe {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(120%);
+      opacity: 0;
+    }
+    51% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes rollDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(120%);
+      opacity: 0;
+    }
+    51% {
+      transform: translateY(-120%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
