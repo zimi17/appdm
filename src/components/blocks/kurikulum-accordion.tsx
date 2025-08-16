@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-interface KurikulumAccordionProps {
+interface AccordionSectionProps {
   title: string;
   items: {
     id: string;
@@ -23,7 +23,7 @@ interface KurikulumAccordionProps {
   linkHref: string;
 }
 
-export function KurikulumAccordion({ title, items, linkText, linkHref }: KurikulumAccordionProps) {
+export function AccordionSection({ title, items, linkText, linkHref }: AccordionSectionProps) {
   return (
     <section className="bg-background text-foreground py-16 md:py-24">
       <div className="container mx-auto px-6 max-w-6xl">

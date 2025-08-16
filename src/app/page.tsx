@@ -5,7 +5,7 @@ import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
-import { KurikulumAccordion } from "@/components/blocks/kurikulum-accordion";
+import { AccordionSection } from "@/components/blocks/kurikulum-accordion";
 import { mentorshipCards, scienceCards, quote, kurikulumData } from "@/lib/data";
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
           linkHref="/admissions"
           linkText="Info Pendaftaran"
         />
-         <KurikulumAccordion 
+         <AccordionSection 
           title={kurikulumData.title}
           items={kurikulumData.items}
           linkText={kurikulumData.linkText}
