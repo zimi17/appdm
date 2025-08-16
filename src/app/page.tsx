@@ -1,4 +1,5 @@
 
+
 import { SiteHeader } from "@/components/jalantempuh/site-header";
 import { MissionTopper } from "@/components/blocks/mission-topper";
 import { PromoBar } from "@/components/blocks/promo-bar";
@@ -13,10 +14,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main id="main-content">
-        <MissionTopper
-          titleParts={missionTopperData.titleParts}
-          slides={missionTopperData.slides}
-        />
+        <MissionTopper slides={missionTopperData.slides} />
         <InfoCardGrid 
             title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
             items={infoCards}
