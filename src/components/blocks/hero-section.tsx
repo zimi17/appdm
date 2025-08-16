@@ -14,7 +14,7 @@ export function HeroSection({ title, description, imageUrl, imageHint }: HeroSec
   const gradientClass = 'bg-gradient-to-t from-background via-background/80 to-transparent';
 
   return (
-    <section className="relative flex items-center justify-center pt-[200px] pb-[200px] text-center overflow-hidden bg-background text-foreground">
+    <section className="relative flex items-center justify-center pt-[200px] pb-[200px] text-center overflow-hidden bg-background text-foreground h-[600px]">
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}

@@ -70,7 +70,7 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
       >
         <CarouselContent className="h-full">
           {slides.map((slide, index) => (
-            <CarouselItem key={index} className="h-full">
+            <CarouselItem key={index} className="h-full relative">
               <div className="relative w-full h-full">
                 <Image
                   src={slide.imageUrl}
