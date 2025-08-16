@@ -32,6 +32,7 @@ const CarouselCard = ({ slide }: CarouselCardProps) => (
   </div>
 );
 
+
 interface HeroCarouselProps {
   slides: {
     title: string;
@@ -77,7 +78,7 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
   }, [api])
 
   return (
-    <section className="relative w-full h-[600px] mb-16 md:mb-24">
+    <section className="relative w-full h-[600px] mb-16 md:mb-24 overflow-hidden">
       <Carousel
         setApi={setApi}
         plugins={[autoplayPlugin.current]}
@@ -111,25 +112,20 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
             <ArrowRight className="h-6 w-6"/>
         </Button>
       </div>
-
+      
       <div className="absolute top-1/2 right-8 -translate-y-1/2 z-10">
         <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSlide}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-            >
-              <div className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8 transition-colors duration-300 hover:bg-card">
-                  <h3 className="font-headline text-3xl mb-4">{slides[activeSlide].title}</h3>
-                  <p className="text-muted-foreground mb-6">{slides[activeSlide].description}</p>
-                  <CtaLink href={slides[activeSlide].linkHref}>{slides[activeSlide].linkText}</CtaLink>
-              </div>
-            </motion.div>
+          <motion.div
+            key={activeSlide}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <CarouselCard slide={slides[activeSlide]} />
+          </motion.div>
         </AnimatePresence>
       </div>
     </section>
   );
 }
-
