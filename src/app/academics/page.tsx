@@ -1,4 +1,5 @@
 
+
 import { SiteHeader } from "@/components/jalantempuh/site-header";
 import { HeroSection } from "@/components/blocks/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar";
@@ -44,7 +45,6 @@ export default function Academics() {
           className="bg-secondary text-secondary-foreground"
           descriptionClassName="text-gray-300"
           linkClassName="text-white hover:text-gray-200"
-          
         />
       </main>
       <SiteFooter />

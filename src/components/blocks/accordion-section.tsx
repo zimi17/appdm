@@ -7,9 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { ComponentHeader } from "../primitives/component-header";
+import { CtaLink } from "../primitives/cta-link";
 
 interface AccordionSectionProps {
   title: string;
@@ -27,15 +27,7 @@ export function AccordionSection({ title, items, linkText, linkHref }: Accordion
   return (
     <section className="bg-background text-foreground py-16 md:py-24">
       <div className="container mx-auto px-6 max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="font-headline text-4xl md:text-5xl">{title}</h2>
-          <hr className="mt-4 border-b-4 border-primary w-24" />
-        </motion.div>
+        <ComponentHeader title={title} />
         
         <motion.div 
           className="mt-12"
@@ -76,9 +68,9 @@ export function AccordionSection({ title, items, linkText, linkHref }: Accordion
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg bg-secondary hover:bg-accent">
-            <Link href={linkHref}>{linkText}</Link>
-          </Button>
+          <CtaLink href={linkHref} size="lg" className="rounded-full px-8 py-6 text-lg bg-secondary hover:bg-accent">
+            {linkText}
+          </CtaLink>
         </motion.div>
       </div>
     </section>

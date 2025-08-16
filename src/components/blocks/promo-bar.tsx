@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { CtaLink } from '../primitives/cta-link';
 
 interface PromoBarProps {
     title: string;
@@ -26,7 +27,7 @@ export function PromoBar({ title, description, linkText, linkHref, className, de
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-8 border-t border-b border-border py-8">
           <h2 className="font-headline text-4xl text-foreground md:w-1/3">{title}</h2>
           <p className={cn("text-lg text-muted-foreground md:w-2/3", descriptionClassName)}>
-            {description} <Link href={linkHref} className={cn("text-primary font-bold hover:underline whitespace-nowrap", linkClassName)}>{linkText}</Link>
+            {description} <CtaLink href={linkHref} className={cn("text-primary font-bold hover:underline whitespace-nowrap", linkClassName)}>{linkText}</CtaLink>
           </p>
       </div>
     </motion.section>

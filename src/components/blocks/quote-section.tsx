@@ -1,9 +1,8 @@
 
 'use client';
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { CtaLink } from "../primitives/cta-link";
 
 interface QuoteSectionProps {
     quote: string;
@@ -34,9 +33,9 @@ export function QuoteSection({ quote, author, role, imageUrl, imageHint, linkTex
                 <span className="block font-bold text-lg text-foreground">{author}</span>
                 <span className="block text-muted-foreground">{role}</span>
               </cite>
-               <Button asChild className="mt-8 bg-secondary text-secondary-foreground hover:bg-accent rounded-full px-6 py-3">
-                  <Link href={linkHref}>{linkText}</Link>
-               </Button>
+               <CtaLink href={linkHref} variant="default" className="mt-8 bg-secondary text-secondary-foreground hover:bg-accent rounded-full px-6 py-3">
+                  {linkText}
+                </CtaLink>
             </blockquote>
           </motion.div>
           <motion.div className="md:w-1/2" variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1 } }}>

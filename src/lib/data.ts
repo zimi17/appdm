@@ -9,10 +9,10 @@ export const navLinks = [
       {
         title: "Program Studi",
         description: "Telusuri semua konsentrasi sarjana dan pascasarjana kami.",
-        href: "/academics/degree-programs",
+        href: "/academics",
         sublinks: [
-          { title: "Manajemen (S1)", href: "/academics/s1-manajemen" },
-          { title: "Akuntansi (S1)", href: "/academics/s1-akuntansi" },
+          { title: "Manajemen (S1)", href: "/academics" },
+          { title: "Akuntansi (S1)", href: "/academics" },
         ]
       },
       { title: "Penerimaan", href: "/admissions" },
@@ -27,15 +27,15 @@ export const navLinks = [
       {
         title: "Sejarah STIE Dwimulya",
         description: "STIE Dwimulya mungkin paling dikenal karena sejarah inovasinya yang abadi dalam pendidikan.",
-        href: "/about/history",
+        href: "/about",
       },
       {
         title: "Pimpinan & Struktur",
         description: "Kenali Pimpinan Kami",
-        href: "/about/leadership",
+        href: "/about",
       },
-      { title: "Visi & Misi", href: "/about/vision-mission" },
-      { title: "Kerjasama", href: "/about/partnerships" },
+      { title: "Visi & Misi", href: "/about" },
+      { title: "Kerjasama", href: "/about" },
     ]
   },
   {
@@ -69,8 +69,8 @@ export const footerSections = [
     {
       title: "Tentang Kami",
       links: [
-        { label: "Sejarah", href: "/about/history" },
-        { label: "Visi & Misi", href: "/about/vision-mission" },
+        { label: "Sejarah", href: "/about" },
+        { label: "Visi & Misi", href: "/about" },
         { label: "Kontak", href: "/contact" },
       ],
     },
@@ -133,8 +133,8 @@ export const academicsPage = {
     degreePrograms: {
       title: "Program Gelar Unggulan",
       items: [
-        { image: "https://placehold.co/768x576.png", hint: "business meeting", title: "Manajemen (S1)", description: "Program Manajemen kami membekali mahasiswa dengan keterampilan kepemimpinan dan strategis yang dibutuhkan untuk sukses di dunia bisnis yang dinamis. Dari keuangan hingga pemasaran, kurikulum kami mencakup semua aspek manajemen modern.", href: "/academics/s1-manajemen", linkText: "Jelajahi Manajemen" },
-        { image: "https://placehold.co/768x576.png", hint: "accounting calculator", title: "Akuntansi (S1)", description: "Program Akuntansi kami memberikan landasan yang kuat dalam prinsip-prinsip akuntansi keuangan dan manajerial, audit, dan perpajakan, mempersiapkan mahasiswa untuk karir di bidang keuangan dan akuntansi.", href: "/academics/s1-akuntansi", linkText: "Jelajahi Akuntansi" },
+        { image: "https://placehold.co/768x576.png", hint: "business meeting", title: "Manajemen (S1)", description: "Program Manajemen kami membekali mahasiswa dengan keterampilan kepemimpinan dan strategis yang dibutuhkan untuk sukses di dunia bisnis yang dinamis. Dari keuangan hingga pemasaran, kurikulum kami mencakup semua aspek manajemen modern.", href: "/academics", linkText: "Jelajahi Manajemen" },
+        { image: "https://placehold.co/768x576.png", hint: "accounting calculator", title: "Akuntansi (S1)", description: "Program Akuntansi kami memberikan landasan yang kuat dalam prinsip-prinsip akuntansi keuangan dan manajerial, audit, dan perpajakan, mempersiapkan mahasiswa untuk karir di bidang keuangan dan akuntansi.", href: "/academics", linkText: "Jelajahi Akuntansi" },
       ]
     },
     promoBar: {
@@ -158,8 +158,8 @@ export const kurikulumData = {
   }
 
 export const infoCards = [
-    { title: "Manajemen (S1)", description: "Program Sarjana Manajemen berfokus pada pengembangan pemimpin bisnis masa depan.", href: "/academics/s1-manajemen", linkText: "Pelajari Lebih Lanjut" },
-    { title: "Akuntansi (S1)", description: "Program Sarjana Akuntansi mempersiapkan mahasiswa untuk karir di bidang akuntansi publik dan perusahaan.", href: "/academics/s1-akuntansi", linkText: "Pelajari Lebih Lanjut" },
+    { title: "Manajemen (S1)", description: "Program Sarjana Manajemen berfokus pada pengembangan pemimpin bisnis masa depan.", href: "/academics", linkText: "Pelajari Lebih Lanjut" },
+    { title: "Akuntansi (S1)", description: "Program Sarjana Akuntansi mempersiapkan mahasiswa untuk karir di bidang akuntansi publik dan perusahaan.", href: "/academics", linkText: "Pelajari Lebih Lanjut" },
     { title: "Magister Manajemen (S2)", description: "Program pascasarjana untuk para profesional yang ingin meningkatkan keterampilan manajerial mereka.", href: "#", linkText: "Pelajari Lebih Lanjut" },
     { title: "Pendidikan Jarak Jauh", description: "Kursus online yang dipimpin oleh fakultas pemenang penghargaan untuk membantu Anda menguasai konsep bisnis penting.", href: "#", linkText: "Pelajari Lebih Lanjut" },
 ]
@@ -179,25 +179,19 @@ export const missionTopperData = {
         title: "Pemimpin yang Berintegritas",
         description: "Program MBA dua tahun, penuh waktu, residensial dengan fokus pada praktik dunia nyata.",
         linkText: "Jelajahi Program MBA",
-        linkHref: "/academics/s1-manajemen",
-        imageUrl: "https://placehold.co/1200x800.png",
-        imageHint: "professionals meeting",
+        linkHref: "/academics/s1-manajemen"
       },
       {
         title: "Membuat Perbedaan Positif",
         description: "Tujuh program penuh waktu yang mengarah ke gelar PhD untuk para sarjana yang tertarik pada penelitian akademis.",
         linkText: "Lihat Program Doktoral",
-        linkHref: "/academics/s1-akuntansi",
-        imageUrl: "https://placehold.co/1200x800.png",
-        imageHint: "community working",
+        linkHref: "/academics/s1-akuntansi"
       },
       {
         title: "Dampak di Seluruh Dunia",
         description: "Kursus online yang dipimpin oleh fakultas pemenang penghargaan untuk membantu Anda menguasai konsep bisnis penting.",
         linkText: "Lihat Kursus Online",
-        linkHref: "#",
-        imageUrl: "https://placehold.co/1200x800.png",
-        imageHint: "global connections",
+        linkHref: "#"
       },
     ],
   };

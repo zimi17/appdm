@@ -1,16 +1,16 @@
 
 "use client";
 
+import { useState } from "react";
 import { SiteHeader } from "@/components/jalantempuh/site-header";
 import { MissionTopper } from "@/components/blocks/mission-topper";
+import { HeroCarousel } from "@/components/blocks/hero-carousel";
+import { CardGrid } from "@/components/blocks/card-grid";
 import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
-import { CardGrid } from "@/components/blocks/card-grid";
-import { SiteFooter } from "@/components/jalantempuh/site-footer";
-import { scienceCards, quote, infoCards, missionTopperData } from "@/lib/data";
 import { InfoCardGrid } from "@/components/blocks/info-card-grid";
-import { useState } from "react";
-import { HeroCarousel } from "@/components/blocks/hero-carousel";
+import { SiteFooter } from "@/components/jalantempuh/site-footer";
+import { missionTopperData, infoCards, quote, scienceCards } from "@/lib/data";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -25,9 +25,9 @@ export default function Home() {
                     setActiveSlide={setActiveSlide}
                 />
                 <HeroCarousel 
-                  slides={missionTopperData.slides}
-                  activeSlide={activeSlide}
-                  setActiveSlide={setActiveSlide}
+                    slides={missionTopperData.slides}
+                    activeSlide={activeSlide}
+                    setActiveSlide={setActiveSlide}
                 />
                 <InfoCardGrid 
                     title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
@@ -51,8 +51,9 @@ export default function Home() {
                  <CardGrid 
                     title="Sorotan Akademik"
                     items={scienceCards}
-                    className="bg-secondary text-secondary-foreground"
+                    className="bg-secondary"
                     titleClassName="text-white"
+                    hrClassName="border-white"
                 />
             </main>
             <SiteFooter />
