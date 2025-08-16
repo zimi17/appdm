@@ -7,13 +7,13 @@ import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
-import { mentorshipCards, scienceCards, quote, infoCards, missionTopperData, homePageCardGrids } from "@/lib/data";
+import { scienceCards, quote, infoCards, missionTopperData } from "@/lib/data";
 import { InfoCardGrid } from "@/components/blocks/info-card-grid";
 import { useState } from "react";
+import { HeroCarousel } from "@/components/blocks/hero-carousel";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
-    const gridData = homePageCardGrids[activeSlide];
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -21,9 +21,13 @@ export default function Home() {
             <main id="main-content">
                 <MissionTopper 
                     titleParts={missionTopperData.titleParts} 
-                    slides={missionTopperData.slides}
                     activeSlide={activeSlide}
                     setActiveSlide={setActiveSlide}
+                />
+                <HeroCarousel 
+                  slides={missionTopperData.slides}
+                  activeSlide={activeSlide}
+                  setActiveSlide={setActiveSlide}
                 />
                 <InfoCardGrid 
                     title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
@@ -43,10 +47,6 @@ export default function Home() {
                   imageHint={quote.imageHint}
                   linkHref={quote.linkHref}
                   linkText={quote.linkText}
-                />
-                <CardGrid 
-                    title={gridData.title}
-                    items={gridData.items}
                 />
                  <CardGrid 
                     title="Sorotan Akademik"

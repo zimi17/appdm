@@ -28,7 +28,7 @@ const Card = ({ item }: { item: any }) => (
   </motion.div>
 );
 
-export function CardGrid({ title, items, className, titleClassName }: { title: string, items: any[], className?: string, titleClassName?: string }) {
+export function CardGrid({ title, items, className, titleClassName }: { title?: string, items: any[], className?: string, titleClassName?: string }) {
   return (
     <motion.section 
       className={cn("py-16 md:py-24", className)}
@@ -51,7 +51,7 @@ export function CardGrid({ title, items, className, titleClassName }: { title: s
            </motion.div>
         )}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {items.map(item => <Card key={item.title} item={item} />)}
+            {items.map((item, index) => <Card key={item.title + index} item={item} />)}
         </div>
       </div>
     </motion.section>
