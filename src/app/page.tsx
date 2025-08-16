@@ -14,7 +14,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main id="main-content">
-        <MissionTopper slides={missionTopperData.slides} />
+        <MissionTopper slides={missionTopperData.slides} titleParts={missionTopperData.titleParts} />
         <InfoCardGrid 
             title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
             items={infoCards}
