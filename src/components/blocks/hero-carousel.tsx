@@ -16,6 +16,25 @@ import { Button } from '../ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Card } from '../ui/card';
 
+interface CarouselCardProps {
+  slide: {
+    title: string;
+    description: string;
+    linkText: string;
+    linkHref: string;
+  }
+}
+
+const CarouselCard = ({ slide }: CarouselCardProps) => (
+  <Card className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8 transition-colors duration-300 hover:bg-card">
+      <h3 className="font-headline text-3xl mb-4">{slide.title}</h3>
+      <p className="text-muted-foreground mb-6">{slide.description}</p>
+      <Button asChild>
+        <Link href={slide.linkHref}>{slide.linkText}</Link>
+      </Button>
+  </Card>
+);
+
 interface HeroCarouselProps {
   slides: {
     title: string;
@@ -70,7 +89,7 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
       >
         <CarouselContent className="h-full">
           {slides.map((slide, index) => (
-            <CarouselItem key={index} className="h-full relative">
+            <CarouselItem key={index} className="h-full">
               <div className="relative w-full h-full">
                 <Image
                   src={slide.imageUrl}
@@ -105,13 +124,7 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
-              <Card className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8">
-                  <h3 className="font-headline text-3xl mb-4">{slides[activeSlide]?.title}</h3>
-                  <p className="text-muted-foreground mb-6">{slides[activeSlide]?.description}</p>
-                  <Button asChild>
-                    <Link href={slides[activeSlide]?.linkHref}>{slides[activeSlide]?.linkText}</Link>
-                  </Button>
-              </Card>
+              <CarouselCard slide={slides[activeSlide]} />
             </motion.div>
         </AnimatePresence>
       </div>

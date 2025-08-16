@@ -12,14 +12,14 @@ const cardVariants = {
 
 const Card = ({ item }: { item: any }) => (
   <motion.div 
-    className="flex flex-col h-full group bg-card"
+    className="flex flex-col h-full group bg-background transition-colors duration-300 hover:bg-card"
     variants={cardVariants}
   >
     <div className="relative aspect-[4/3] overflow-hidden">
       <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.hint} />
     </div>
     <div className="p-8 flex flex-col flex-grow">
-      <h3 className="font-headline text-2xl mb-4 text-card-foreground">{item.title}</h3>
+      <h3 className="font-headline text-2xl mb-4 text-foreground">{item.title}</h3>
       <p className="text-lg mb-6 flex-grow text-muted-foreground">{item.description}</p>
       <Link href={item.href} className="text-primary font-bold self-start hover:underline">
         {item.linkText}
