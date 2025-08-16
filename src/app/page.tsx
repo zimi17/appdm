@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/jalantempuh/site-header";
 import { HeroSection } from "@/components/blocks/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
-import { NewsCardGrid } from "@/components/blocks/news-card-grid";
+import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
 import { KurikulumAccordion } from "@/components/blocks/kurikulum-accordion";
 import { mentorshipCards, scienceCards, quote, kurikulumData } from "@/lib/data";
@@ -40,11 +40,11 @@ export default function Home() {
           linkHref={quote.linkHref}
           linkText={quote.linkText}
         />
-        <NewsCardGrid 
+        <CardGrid 
             title="Berita & Kegiatan"
             items={mentorshipCards}
         />
-         <NewsCardGrid 
+         <CardGrid 
             title="Sorotan Akademik"
             items={scienceCards}
             className="bg-secondary text-secondary-foreground"

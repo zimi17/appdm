@@ -2,7 +2,7 @@
 import { SiteHeader } from "@/components/jalantempuh/site-header";
 import { HeroSection } from "@/components/blocks/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar";
-import { NewsCardGrid } from "@/components/blocks/news-card-grid";
+import { CardGrid } from "@/components/blocks/card-grid";
 import { TwoColumnContent } from "@/components/blocks/two-column-content";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
 import { academicsPage } from "@/lib/data";
@@ -24,7 +24,7 @@ export default function Academics() {
             title={twoColumnContent.title}
             paragraphs={twoColumnContent.paragraphs}
         />
-        <NewsCardGrid 
+        <CardGrid 
             title={degreePrograms.title}
             items={degreePrograms.items}
             className="bg-card"
