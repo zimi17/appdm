@@ -166,38 +166,59 @@ export const infoCards = [
 
 export const missionTopperData = {
     titleParts: [
-      { text: "Kami mendidik ", isButton: false },
-      { text: "pemimpin", isButton: true },
-      { text: " yang membuat ", isButton: false },
-      { text: "perbedaan", isButton: true },
-      { text: " di ", isButton: false },
-      { text: "dunia", isButton: true },
-      { text: ".", isButton: false },
+        { text: "Kami mendidik ", isButton: false },
+        { text: "pemimpin", isButton: true },
+        { text: " yang membuat ", isButton: false },
+        { text: "perbedaan", isButton: true },
+        { text: " di ", isButton: false },
+        { text: "dunia", isButton: true },
+        { text: ".", isButton: false },
     ],
     slides: [
       {
         title: "Pemimpin yang Berintegritas",
         description: "Program MBA dua tahun, penuh waktu, residensial dengan fokus pada praktik dunia nyata.",
-        imageUrl: "https://placehold.co/1200x800.png",
-        imageHint: "students lecture",
         linkText: "Jelajahi Program MBA",
         linkHref: "/academics/s1-manajemen",
       },
       {
         title: "Membuat Perbedaan Positif",
         description: "Tujuh program penuh waktu yang mengarah ke gelar PhD untuk para sarjana yang tertarik pada penelitian akademis.",
-        imageUrl: "https://placehold.co/1200x800.png",
-        imageHint: "student collaboration",
         linkText: "Lihat Program Doktoral",
         linkHref: "/academics/s1-akuntansi",
       },
       {
         title: "Dampak di Seluruh Dunia",
         description: "Kursus online yang dipimpin oleh fakultas pemenang penghargaan untuk membantu Anda menguasai konsep bisnis penting.",
-        imageUrl: "https://placehold.co/1200x800.png",
-        imageHint: "globe connections",
         linkText: "Lihat Kursus Online",
         linkHref: "#",
       },
     ],
   };
+  
+  export const homePageCardGrids = [
+    { 
+      title: "Pemimpin yang Berintegritas",
+      items: [
+        { image: "https://placehold.co/640x480.png", hint: "leader speaking", title: "Etika dalam Kepemimpinan", description: "Kursus ini mengeksplorasi dilema etika yang dihadapi oleh para pemimpin dan kerangka kerja untuk pengambilan keputusan yang berprinsip.", href: "#", linkText: "Selengkapnya" },
+        { image: "https://placehold.co/640x480.png", hint: "team collaborating", title: "Membangun Tim Berkinerja Tinggi", description: "Pelajari cara memotivasi, menginspirasi, dan membimbing tim untuk mencapai hasil yang luar biasa.", href: "#", linkText: "Selengkapnya" },
+        { image: "https://placehold.co/640x480.png", hint: "global business", title: "Negosiasi Strategis", description: "Kuasai seni dan ilmu negosiasi untuk menciptakan nilai dan membangun hubungan yang kuat.", href: "#", linkText: "Selengkapnya" },
+      ]
+    },
+    { 
+      title: "Membuat Perbedaan Positif",
+      items: [
+        { image: "https://placehold.co/640x480.png", hint: "social impact", title: "Inovasi Sosial", description: "Temukan bagaimana model bisnis yang inovatif dapat mengatasi tantangan sosial dan lingkungan yang paling mendesak.", href: "#", linkText: "Selengkapnya" },
+        { image: "https://placehold.co/640x480.png", hint: "community service", title: "Kepemimpinan Nirlaba", description: "Dapatkan keterampilan untuk memimpin organisasi nirlaba secara efektif dan memaksimalkan dampak sosial mereka.", href: "#", linkText: "Selengkapnya" },
+        { image: "https://placehold.co/640x480.png", hint: "sustainability", title: "Keberlanjutan Korporat", description: "Jelajahi bagaimana perusahaan dapat mengintegrasikan keberlanjutan ke dalam strategi inti mereka untuk keuntungan jangka panjang.", href: "#", linkText: "Selengkapnya" },
+      ]
+    },
+    { 
+      title: "Dampak di Seluruh Dunia",
+      items: [
+        { image: "https://placehold.co/640x480.png", hint: "global network", title: "Manajemen Bisnis Internasional", description: "Pahami kompleksitas operasi di pasar global dan kembangkan strategi untuk sukses di dunia internasional.", href: "#", linkText: "Selengkapnya" },
+        { image: "https://placehold.co/640x480.png", hint: "emerging markets", title: "Pasar Berkembang", description: "Analisis peluang dan tantangan unik dalam berbisnis di ekonomi yang tumbuh paling cepat di dunia.", href: "#", linkText: "Selengkapnya" },
+        { image: "https://placehold.co/640x480.png", hint: "cross-cultural communication", title: "Komunikasi Lintas Budaya", description: "Kembangkan keterampilan untuk berkomunikasi dan berkolaborasi secara efektif melintasi batas-batas budaya.", href: "#", linkText: "Selengkapnya" },
+      ]
+    }
+  ]
