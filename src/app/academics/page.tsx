@@ -1,11 +1,12 @@
 
 
-import { SiteHeader } from "@/components/jalantempuh/site-header";
+
+import { SiteHeader } from "@/components/universal/site-header";
 import { HeroSection } from "@/components/blocks/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { TwoColumnContent } from "@/components/blocks/two-column-content";
-import { SiteFooter } from "@/components/jalantempuh/site-footer";
+import { SiteFooter } from "@/components/universal/site-footer";
 import { AccordionSection } from "@/components/blocks/accordion-section";
 import { academicsPage, kurikulumData } from "@/lib/data";
 

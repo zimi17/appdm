@@ -2,14 +2,14 @@
 "use client";
 
 import { useState } from "react";
-import { SiteHeader } from "@/components/jalantempuh/site-header";
+import { SiteHeader } from "@/components/universal/site-header";
 import { MissionTopper } from "@/components/blocks/mission-topper";
 import { HeroCarousel } from "@/components/blocks/hero-carousel";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { InfoCardGrid } from "@/components/blocks/info-card-grid";
-import { SiteFooter } from "@/components/jalantempuh/site-footer";
+import { SiteFooter } from "@/components/universal/site-footer";
 import { missionTopperData, infoCards, quote, scienceCards } from "@/lib/data";
 
 export default function Home() {
