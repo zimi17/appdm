@@ -143,3 +143,15 @@ export const academicsPage = {
       linkText: "Pelajari Tentang Penerimaan"
     }
 }
+
+export const kurikulumData = {
+    title: "Kurikulum Tahun Pertama",
+    items: [
+      { id: "item-1", title: "Keuangan", description: "Deskripsi singkat tentang mata kuliah Keuangan...", credits: "3 SKS" },
+      { id: "item-2", title: "Pemasaran", description: "Deskripsi singkat tentang mata kuliah Pemasaran...", credits: "3 SKS" },
+      { id: "item-3", title: "Operasi", description: "Deskripsi singkat tentang mata kuliah Operasi...", credits: "3 SKS" },
+      { id: "item-4", title: "Strategi", description: "Deskripsi singkat tentang mata kuliah Strategi...", credits: "3 SKS" },
+    ],
+    linkText: "Lihat Kurikulum Lengkap",
+    linkHref: "/academics/curriculum"
+  }

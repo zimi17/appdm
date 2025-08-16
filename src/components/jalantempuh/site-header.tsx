@@ -22,7 +22,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className={cn("site-header sticky top-0 z-[12000] transition-all duration-300 h-[90px]", isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-background")}>
+      <header data-theme="brand-dark" className={cn("site-header sticky top-0 z-[99] transition-all duration-300 h-[90px]", isScrolled ? "bg-[#002147]/80 backdrop-blur-sm shadow-md" : "bg-[#002147]")}>
         <div className="flex h-full justify-between items-center px-6">
           <div className="flex items-center flex-1">
             <HeaderLogo />

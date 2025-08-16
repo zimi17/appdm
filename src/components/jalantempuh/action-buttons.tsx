@@ -46,18 +46,18 @@ export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) =>
       </div>
 
       <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}>
-        <Search className="h-6 w-6 text-foreground" />
+        <Search className="h-6 w-6 text-background" />
       </Button>
       <Sheet onOpenChange={onMenuOpen}>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon">
-            <Menu className="h-6 w-6 text-foreground" />
+            <Menu className="h-6 w-6 text-background" />
           </Button>
         </SheetTrigger>
       </Sheet>
 
       {/* Search Overlay could be its own component too */}
-      <div className={cn("fixed inset-0 bg-black/90 z-[12001] p-8 transition-transform duration-300", isSearchOpen ? "translate-y-0" : "-translate-y-full")}>
+      <div className={cn("fixed inset-0 bg-black/90 z-[100] p-8 transition-transform duration-300", isSearchOpen ? "translate-y-0" : "-translate-y-full")}>
         <div className="flex justify-end">
           <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(false)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-white"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>

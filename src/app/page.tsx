@@ -5,7 +5,8 @@ import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { NewsCardGrid } from "@/components/blocks/news-card-grid";
 import { SiteFooter } from "@/components/jalantempuh/site-footer";
-import { mentorshipCards, scienceCards, quote } from "@/lib/data";
+import { KurikulumAccordion } from "@/components/blocks/kurikulum-accordion";
+import { mentorshipCards, scienceCards, quote, kurikulumData } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -23,6 +24,12 @@ export default function Home() {
           description="Jelajahi program studi kami dan temukan bagaimana STIE Dwimulya dapat menjadi langkah awal kesuksesan Anda. Daftar sekarang dan jadilah bagian dari kampus perubahan."
           linkHref="/admissions"
           linkText="Info Pendaftaran"
+        />
+         <KurikulumAccordion 
+          title={kurikulumData.title}
+          items={kurikulumData.items}
+          linkText={kurikulumData.linkText}
+          linkHref={kurikulumData.linkHref}
         />
         <QuoteSection
           quote={quote.text}
