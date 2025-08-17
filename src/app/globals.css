@@ -54,13 +54,16 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
   }
   .font-headline {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Work Sans', sans-serif;
   }
   .font-body {
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;
+  }
+   .font-serif-body {
+    font-family: 'Source Serif 4', serif;
   }
   /* Custom scrollbar for navigation */
   .nav-scrollbar {

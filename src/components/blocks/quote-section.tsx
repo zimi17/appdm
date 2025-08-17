@@ -28,7 +28,7 @@ export function QuoteSection({ quote, author, role, imageUrl, imageHint, linkTex
           <motion.div className="md:w-1/2" variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}>
             <blockquote className="relative pl-16">
                <motion.div className="absolute top-0 left-0 text-[12rem] text-primary/10 font-serif leading-none -mt-8" initial={{ scale: 0.5, opacity: 0 }} whileInView={{ scale: 1, opacity: 0.2 }} viewport={{once: true}} transition={{ duration: 0.5}}>“</motion.div>
-              <p className="font-headline text-4xl md:text-5xl text-foreground leading-tight">{quote}</p>
+              <p className="font-serif-body text-4xl md:text-5xl text-foreground leading-tight">{quote}</p>
               <cite className="mt-6 block">
                 <span className="block font-bold text-lg text-foreground">{author}</span>
                 <span className="block text-muted-foreground">{role}</span>

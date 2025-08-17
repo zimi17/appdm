@@ -19,8 +19,9 @@ const config = {
     },
     extend: {
        fontFamily: {
-        body: ['"PT Sans"', 'sans-serif'],
-        headline: ['"Playfair Display"', 'serif'],
+        body: ['"Work Sans"', 'sans-serif'],
+        headline: ['"Work Sans"', 'sans-serif'],
+        "serif-body": ['"Source Serif 4"', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
