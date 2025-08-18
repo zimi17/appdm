@@ -56,7 +56,8 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <motion.div
                 className={cn(
                     "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
-                    "w-full md:w-1/2 lg:w-[31.25%]"
+                    "w-full md:w-1/2 lg:w-[31.25%]",
+                    "md:border-l md:border-white/15"
                 )}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0, ...animationProps }}
@@ -78,7 +79,8 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <motion.div
                 className={cn(
                     "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
-                    "w-full md:w-1/2 lg:w-[31.25%]"
+                    "w-full md:w-1/2 lg:w-[31.25%]",
+                    "md:border-l md:border-white/15"
                 )}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0, ...animationProps }}
