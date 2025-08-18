@@ -1,5 +1,11 @@
+/* Hide the chevron on hover or when active */
+[data-sidebar="menu-item"] button:hover .chevron-indicator,
+[data-sidebar="menu-item"] button[data-active="true"] .chevron-indicator {
+    opacity: 0;
+}
 
-[data-sidebar="menu-item"] .nav-primary__action::after {
+/* Base style for the line pseudo-element */
+[data-sidebar="menu-item"] button::after {
     content: " ";
     display: block;
     height: 1px;
@@ -11,11 +17,18 @@
     right: 0;
     transition: width 0.3s cubic-bezier(0.65, 0, 0.35, 1);
     pointer-events: none;
+    z-index: -1; /* Ensure it's behind the text */
 }
 
-[data-sidebar="menu-item"] .nav-primary__action.active::after,
-[data-sidebar="menu-item"] .nav-primary__action:hover::after,
-[data-sidebar="menu-item"] .nav-primary__action[data-state="open"]::after {
+/* Animate the line on hover */
+[data-sidebar="menu-item"] button:hover::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+}
+
+/* Keep the line visible for the active item */
+[data-sidebar="menu-item"] button[data-active="true"]::after {
     width: 100%;
     left: 0;
     right: auto;
