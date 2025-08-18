@@ -46,13 +46,13 @@ export const MobileLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =>
         </motion.div>
 
         <AnimatePresence>
-            {activeL1 && (
+            {activeL1 && !activeL2 && (
                 <motion.div
                     key="l2"
                     className="w-full h-full absolute inset-0 bg-[#292c2f]"
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0, ...animationProps }}
-                    exit={{ opacity: 0, y: -10, ...exitAnimationProps }}
+                    exit={{ opacity: 0, y: 10, ...exitAnimationProps }}
                     transition={{duration: 0.3, ease: 'easeInOut'}}
                 >
                     <MenuColumn
@@ -71,9 +71,9 @@ export const MobileLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =>
                  <motion.div
                     key="l3"
                     className="w-full h-full absolute inset-0 bg-[#292c2f]"
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0, ...animationProps }}
-                    exit={{ opacity: 0, y: -10, ...exitAnimationProps }}
+                    exit={{ opacity: 0, y: 10, ...exitAnimationProps }}
                     transition={{duration: 0.3, ease: 'easeInOut'}}
                 >
                      <MenuColumn
