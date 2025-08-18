@@ -55,10 +55,10 @@ export function GlobalMenu({
     }
 
     if (depth === 1) {
-      setActiveL1({ ...link, parentTitle: "Main Menu" });
-      setActiveL2(null);
+      setActiveL1(link);
+      setActiveL2(null); // Reset L2 when a new L1 is chosen
     } else if (depth === 2) {
-      setActiveL2({ ...link, parentTitle: activeL1?.title });
+      setActiveL2(link);
     }
   };
 
