@@ -46,7 +46,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             className={cn(
                 "h-full shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
                 "w-full md:w-1/2 lg:w-[37.5%]", 
-                l3Active && "md:-translate-x-full lg:translate-x-0"
+                l3Active ? "md:-translate-x-full lg:translate-x-0" : "translate-x-0"
             )}
         >
             <MenuColumn
@@ -65,7 +65,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                     "w-full md:w-1/2 lg:w-[31.25%]",
                     "md:border-l md:border-white/15",
                     "transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
-                    l3Active && "md:-translate-x-full lg:translate-x-0"
+                    l3Active ? "md:-translate-x-full lg:translate-x-0" : "translate-x-0"
                 )}
                 {...animationProps}
             >
