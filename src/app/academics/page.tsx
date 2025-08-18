@@ -10,13 +10,16 @@ import { AccordionSection } from "@/components/blocks/accordion-section";
 import { Aside } from "@/components/primitives/aside";
 import { academicsPageData } from "@/lib/data/pages";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/primitives/breadcrumbs";
 
 export default function Academics() {
   const { hero, twoColumnContent, degreePrograms, promoBar, kurikulum, aside } = academicsPageData;
+  const breadcrumbs = [{ title: "Akademik", link: "/academics", isCurrent: true }];
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
       <main id="main-content">
         <HeroSection 
           title={hero.title}
