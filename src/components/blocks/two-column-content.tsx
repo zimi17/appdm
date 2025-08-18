@@ -19,8 +19,7 @@ export function TwoColumnContent({ title, paragraphs, className }: TwoColumnCont
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
     >
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl">
            <ComponentHeader title={title} />
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 text-lg text-muted-foreground leading-relaxed">
             {paragraphs.map((text, index) => (
@@ -36,7 +35,6 @@ export function TwoColumnContent({ title, paragraphs, className }: TwoColumnCont
             ))}
           </div>
         </div>
-      </div>
     </motion.section>
   );
 }

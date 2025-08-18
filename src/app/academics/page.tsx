@@ -1,6 +1,4 @@
 
-
-
 import { SiteHeader } from "@/components/universal/site-header";
 import { HeroSection } from "@/components/blocks/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar";
@@ -8,7 +6,8 @@ import { CardGrid } from "@/components/blocks/card-grid";
 import { TwoColumnContent } from "@/components/blocks/two-column-content";
 import { SiteFooter } from "@/components/universal/site-footer";
 import { AccordionSection } from "@/components/blocks/accordion-section";
-import { academicsPage, kurikulumData } from "@/lib/data";
+import { Aside } from "@/components/primitives/aside";
+import { academicsPage, kurikulumData, asideData } from "@/lib/data";
 
 export default function Academics() {
   const { hero, twoColumnContent, degreePrograms, promoBar } = academicsPage;
@@ -23,10 +22,20 @@ export default function Academics() {
           imageUrl={hero.imageUrl}
           imageHint={hero.imageHint}
         />
-        <TwoColumnContent
-            title={twoColumnContent.title}
-            paragraphs={twoColumnContent.paragraphs}
-        />
+        <div className="container mx-auto px-6 py-16 md:py-24">
+          <div className="grid lg:grid-cols-4 gap-12">
+            <div className="lg:col-span-3">
+              <TwoColumnContent
+                title={twoColumnContent.title}
+                paragraphs={twoColumnContent.paragraphs}
+                className="py-0"
+              />
+            </div>
+            <div className="lg:col-span-1">
+              <Aside title={asideData.title} links={asideData.links} />
+            </div>
+          </div>
+        </div>
         <CardGrid 
             title={degreePrograms.title}
             items={degreePrograms.items}

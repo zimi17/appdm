@@ -1,5 +1,4 @@
 
-
 import * as z from "zod";
 
 
@@ -251,5 +250,11 @@ export const missionTopperData = {
     "Militer", "Nirlaba / Pemerintah / Pendidikan", "Teknologi",
     "Modal Ventura / Ekuitas Swasta", "Lainnya / Saat Ini Tidak Bekerja", "Mahasiswa Penuh Waktu"
   ];
-  
 
+  export const asideData = {
+    title: "Informasi Tambahan",
+    links: [
+      { text: "Harvard Business Review", href: "#" },
+      { text: "Working Knowledge", href: "#" }
+    ]
+  };
