@@ -7,27 +7,33 @@ import { MenuColumn } from "./menu-column";
 import { navLinks } from "@/lib/data/nav";
 
 const animationProps = {
-    transition:{
+    initial: { opacity: 0, y: 10 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
         duration: 0.6,
         ease: [0.65, 0, 0.35, 1],
         opacity: {
-        duration: 0.2,
-        ease: [0.65, 0, 0.35, 1]
+          duration: 0.2,
+          ease: [0.65, 0, 0.35, 1]
         }
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      y: 10,
+      transition: {
+        duration: 0.6,
+        ease: [0.65, 0, 0.35, 1],
+        opacity: {
+          duration: 0.2,
+          ease: [0.65, 0, 0.35, 1],
+          delay: 0.4
+        }
+      }
     }
   }
-
-const exitAnimationProps = {
-    transition: {
-        duration: 0.6,
-        ease: [0.65, 0, 0.35, 1],
-        opacity: {
-        duration: 0.2,
-        ease: [0.65, 0, 0.35, 1],
-        delay: 0.4 
-        }
-    }
-}
 
 
 export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) => {
@@ -38,7 +44,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
     <div className="h-full w-full relative overflow-hidden flex">
         <motion.div
             className={cn(
-                "h-full shrink-0 transition-transform duration-300 ease-in-out",
+                "h-full shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
                 "w-full md:w-1/2 lg:w-[37.5%]", 
                 l3Active && "md:-translate-x-full lg:translate-x-0"
             )}
@@ -57,11 +63,11 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                 className={cn(
                     "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
                     "w-full md:w-1/2 lg:w-[31.25%]",
-                    "md:border-l md:border-white/15"
+                    "md:border-l md:border-white/15",
+                    "transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
+                    l3Active && "md:-translate-x-full lg:translate-x-0"
                 )}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0, ...animationProps }}
-                exit={{ opacity: 0, y: 10, ...exitAnimationProps }}
+                {...animationProps}
             >
                 <MenuColumn
                     links={activeL1.sublinks}
@@ -82,9 +88,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                     "w-full md:w-1/2 lg:w-[31.25%]",
                     "md:border-l md:border-white/15"
                 )}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0, ...animationProps }}
-                exit={{ opacity: 0, y: 10, ...exitAnimationProps }}
+                {...animationProps}
             >
                 <MenuColumn
                     links={activeL2.sublinks}
