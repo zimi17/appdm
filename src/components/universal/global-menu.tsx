@@ -5,246 +5,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Sheet, SheetContent, SheetClose, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, ChevronLeft, ArrowRight, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ChevronRight, X } from "lucide-react";
 import { Logo } from "@/components/primitives/logo";
 import { navLinks, quickLinks } from "@/lib/data/nav";
-import { AnimatePresence, motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { DesktopLayout } from "./global-menu/desktop-layout";
+import { MobileLayout } from "./global-menu/mobile-layout";
 
-// #region Core Navigation Logic (Shared)
-const NavColumn = ({
-  links,
-  onLinkClick,
-  parentItem,
-  activeItem,
-  depth = 1,
-  className,
-}: {
-  links: any[];
-  onLinkClick: (link: any, depth: number) => void;
-  parentItem?: any;
-  activeItem?: any;
-  depth?: number;
-  className?: string;
-}) => {
-  const handleBackClick = () => {
-    onLinkClick({ parent: true, depth }, depth);
-  };
-
-  return (
-    <div
-      className={cn(
-        "h-full overflow-y-auto w-full pt-[90px] px-6 pb-24 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px] nav-scrollbar z-[111]",
-        className
-      )}
-    >
-      {depth > 1 && parentItem && (
-        <div className="nav-primary__subsec--top pt-[8px] mb-6 md:mb-[41px]">
-          <div className="nav-primary__back mb-9">
-            <button
-              onClick={handleBackClick}
-              className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium"
-            >
-              <span className="icon bg-[#656f77] rounded-full text-white inline-block text-[11px] h-4 left-0 leading-[17px] absolute text-center w-4 top-0.5">
-                <ChevronLeft className="w-4 h-4" />
-              </span>
-              {parentItem.parentTitle || "Back"}
-            </button>
-          </div>
-          {parentItem?.href ? (
-            <Link href={parentItem.href} className="hover:underline group">
-              <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal flex items-center">
-                {parentItem?.title}
-                <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </strong>
-            </Link>
-          ) : (
-            <strong className="block font-bold text-xl tracking-[-0.1px] leading-normal">
-              {parentItem?.title}
-            </strong>
-          )}
-          {parentItem?.description && (
-            <span className="block text-sm leading-normal mt-2 text-gray-400">
-              {parentItem.description}
-            </span>
-          )}
-        </div>
-      )}
-
-      <ol className={cn(depth > 1 && "border-t border-gray-700")}>
-        {links.map((link) => (
-          <li
-            key={link.title}
-            className={cn(
-              "nav-primary__item",
-              depth > 1 && "border-b border-gray-700"
-            )}
-          >
-            <button
-              onClick={() => onLinkClick(link, depth)}
-              className={cn(
-                "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full group",
-                 activeItem?.title === link.title ? "text-white" : "text-slate-400 hover:text-white"
-              )}
-            >
-              <div className="flex justify-between items-center py-2">
-                {depth === 1 ? (
-                  <span
-                    className={cn(
-                      "text-4xl font-headline tracking-[-0.1px] leading-[1.15] md:text-5xl min-[1260px]:text-[56px] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] group-hover:bg-[length:100%_1px]",
-                      activeItem?.title === link.title && "bg-[length:100%_1px]"
-                    )}
-                  >
-                    {link.title}
-                  </span>
-                ) : (
-                  <span className="flex items-center w-full">
-                    <strong className="text-lg font-bold">
-                       <span className={cn("bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] group-hover:bg-[length:100%_1px]", activeItem?.title === link.title && "bg-[length:100%_1px]")}>
-                        {link.title}
-                       </span>
-                    </strong>
-                    {link.sublinks && (
-                      <ChevronRight className="h-5 w-5 text-gray-500 ml-auto flex-shrink-0 group-hover:text-white transition-colors duration-150" />
-                    )}
-                  </span>
-                )}
-              </div>
-            </button>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-};
-// #endregion
-
-// #region Layout Components (Mobile vs Desktop/Tablet)
-
-const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick } : any) => (
-  <div className="h-full flex w-full relative overflow-hidden">
-    <motion.div
-        className={cn(
-          "h-full shrink-0 transition-transform duration-300 ease-in-out",
-          "lg:w-[37.5%] md:w-1/2", // 6/16 on lg, 8/16 on md
-          activeL2 && "md:-translate-x-full"
-        )}
-      >
-      <NavColumn
-        links={navLinks}
-        onLinkClick={handleNavLinkClick}
-        activeItem={activeL1}
-        depth={1}
-      />
-    </motion.div>
-    <AnimatePresence>
-    {activeL1?.sublinks && (
-       <motion.div
-         key="l2"
-         className="h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] lg:w-[31.25%] md:w-1/2" // 5/16 on lg, 8/16 on md
-         initial={{ x: '100%' }}
-         animate={{ x: 0 }}
-         exit={{ x: '100%', transition: { duration: 0.3 } }}
-         transition={{ duration: 0.3, ease: 'easeInOut' }}
-       >
-        <NavColumn
-          links={activeL1.sublinks}
-          onLinkClick={handleNavLinkClick}
-          parentItem={activeL1}
-          activeItem={activeL2}
-          depth={2}
-        />
-      </motion.div>
-    )}
-    </AnimatePresence>
-    <AnimatePresence>
-    {activeL2?.sublinks && (
-      <motion.div
-        key="l3"
-        className="h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] lg:w-[31.25%] md:w-1/2" // 5/16 on lg, 8/16 on md
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%', transition: { duration: 0.3 } }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
-      >
-        <NavColumn
-          links={activeL2.sublinks}
-          onLinkClick={handleNavLinkClick}
-          parentItem={activeL2}
-          activeItem={null}
-          depth={3}
-        />
-      </motion.div>
-    )}
-    </AnimatePresence>
-  </div>
-);
-
-const MobileLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) => (
-   <div className="h-full w-full relative overflow-hidden">
-        <motion.div
-            key="l1"
-            className="w-full h-full absolute inset-0"
-            initial={{x: 0}}
-            animate={{x: activeL1 ? '-100%' : '0'}}
-            transition={{duration: 0.3, ease: 'easeInOut'}}
-        >
-             <NavColumn
-                links={navLinks}
-                onLinkClick={handleNavLinkClick}
-                activeItem={activeL1}
-                depth={1}
-            />
-        </motion.div>
-
-        <AnimatePresence>
-            {activeL1 && (
-                <motion.div
-                    key="l2"
-                    className="w-full h-full absolute inset-0 bg-[#292c2f]"
-                    initial={{x: '100%'}}
-                    animate={{x: activeL2 ? '-100%' : '0'}}
-                    exit={{x: '100%'}}
-                    transition={{duration: 0.3, ease: 'easeInOut'}}
-                >
-                    <NavColumn
-                        links={activeL1.sublinks || []}
-                        onLinkClick={handleNavLinkClick}
-                        parentItem={activeL1}
-                        activeItem={activeL2}
-                        depth={2}
-                    />
-                </motion.div>
-            )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-            {activeL2 && (
-                 <motion.div
-                    key="l3"
-                    className="w-full h-full absolute inset-0 bg-[#292c2f]"
-                    initial={{x: '100%'}}
-                    animate={{x: 0}}
-                    exit={{x: '100%'}}
-                    transition={{duration: 0.3, ease: 'easeInOut'}}
-                >
-                     <NavColumn
-                        links={activeL2.sublinks || []}
-                        onLinkClick={handleNavLinkClick}
-                        parentItem={activeL2}
-                        activeItem={null}
-                        depth={3}
-                    />
-                </motion.div>
-            )}
-        </AnimatePresence>
-    </div>
-);
-
-// #endregion
-
-// #region Main Component
 export function GlobalMenu({
   isOpen,
   onOpenChange,
@@ -261,7 +28,7 @@ export function GlobalMenu({
       const timer = setTimeout(() => {
         setActiveL1(null);
         setActiveL2(null);
-      }, 300); 
+      }, 300);
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -281,21 +48,21 @@ export function GlobalMenu({
     }
 
     if (!link.sublinks) {
-        if(link.href) {
-            window.location.href = link.href;
-        }
-        resetNav();
-        return;
+      if (link.href) {
+        window.location.href = link.href;
+      }
+      resetNav();
+      return;
     }
 
     if (depth === 1) {
-        setActiveL1({ ...link, parentTitle: "Main Menu" });
-        setActiveL2(null);
+      setActiveL1({ ...link, parentTitle: "Main Menu" });
+      setActiveL2(null);
     } else if (depth === 2) {
-        setActiveL2({ ...link, parentTitle: activeL1?.title });
+      setActiveL2({ ...link, parentTitle: activeL1?.title });
     }
   };
-  
+
   return (
     <Sheet open={isOpen} onOpenChange={onOpenChange}>
       <SheetContent
@@ -320,30 +87,46 @@ export function GlobalMenu({
         </div>
 
         {isMobile ? (
-             <MobileLayout activeL1={activeL1} activeL2={activeL2} handleNavLinkClick={handleNavLinkClick} />
+          <MobileLayout
+            activeL1={activeL1}
+            activeL2={activeL2}
+            handleNavLinkClick={handleNavLinkClick}
+          />
         ) : (
-             <DesktopLayout activeL1={activeL1} activeL2={activeL2} handleNavLinkClick={handleNavLinkClick} />
+          <DesktopLayout
+            activeL1={activeL1}
+            activeL2={activeL2}
+            handleNavLinkClick={handleNavLinkClick}
+          />
         )}
 
         <nav className="absolute bottom-0 left-0 right-0 bg-[#0e0e0e] border-t border-solid border-t-[#464a4f] text-white overflow-hidden z-[111]">
-            <div className="overflow-x-auto whitespace-nowrap [-webkit-overflow-scrolling:touch] p-4 md:p-6 lg:px-10 lg:py-8">
-              <strong className="text-[#8996a0] inline-block text-base font-normal tracking-[-0.1px] mr-5 lg:text-lg" id="quick_links_nav-label">
-                Quick Links
-                <ChevronRight className="inline h-4 w-4 ml-1" />
-              </strong>
-              <ol className="inline-block">
-                {quickLinks.map(link => (
-                  <li key={link.label} className="inline-block leading-[1.15] mr-7 last-of-type:mr-0">
-                    <Link href={link.href} className="text-white font-bold text-base lg:text-lg hover:text-gray-300">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </nav>
+          <div className="overflow-x-auto whitespace-nowrap [-webkit-overflow-scrolling:touch] p-4 md:p-6 lg:px-10 lg:py-8">
+            <strong
+              className="text-[#8996a0] inline-block text-base font-normal tracking-[-0.1px] mr-5 lg:text-lg"
+              id="quick_links_nav-label"
+            >
+              Quick Links
+              <ChevronRight className="inline h-4 w-4 ml-1" />
+            </strong>
+            <ol className="inline-block">
+              {quickLinks.map((link) => (
+                <li
+                  key={link.label}
+                  className="inline-block leading-[1.15] mr-7 last-of-type:mr-0"
+                >
+                  <Link
+                    href={link.href}
+                    className="text-white font-bold text-base lg:text-lg hover:text-gray-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </nav>
       </SheetContent>
     </Sheet>
   );
 }
-// #endregion
