@@ -8,11 +8,14 @@ import { HeroSection } from "@/components/blocks/hero-section";
 import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets";
 import { newsPageData } from "@/lib/data/pages";
 import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker";
+import { DateRangePicker } from "@/components/primitives/date-range-picker";
+import { DateRange } from "react-day-picker";
 
 export default function NewsAndEventsPage() {
     const { hero, facets } = newsPageData;
     const [selectedFacets, setSelectedFacets] = useState<Record<string, boolean>>({});
     const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+    const [dateRange, setDateRange] = useState<DateRange | undefined>();
 
     const handleFacetChanged = (item: FacetItemType, checked: boolean) => {
         console.log("Facet Changed:", item.name, checked);
@@ -25,6 +28,11 @@ export default function NewsAndEventsPage() {
     const handleLetterSelect = (letter: string | null) => {
         console.log("Letter selected:", letter);
         setSelectedLetter(letter);
+    }
+    
+    const handleDateRangeChange = (range: DateRange | undefined) => {
+        console.log("Date range selected:", range);
+        setDateRange(range);
     }
 
     const availableLetters = ['A', 'D', 'E', 'F', 'M', 'N', 'P', 'R'];
@@ -47,9 +55,12 @@ export default function NewsAndEventsPage() {
                                 items={facets.items}
                                 onFacetChanged={handleFacetChanged}
                             />
-                             <AlphabeticalPicker 
+                            <AlphabeticalPicker 
                                 availableLetters={availableLetters}
                                 onLetterSelect={handleLetterSelect}
+                             />
+                             <DateRangePicker
+                                onRangeChange={handleDateRangeChange}
                              />
                         </aside>
                         <div className="lg:col-span-3">
@@ -67,6 +78,12 @@ export default function NewsAndEventsPage() {
                                         {selectedLetter ? `"${selectedLetter}"` : 'null'}
                                     </pre>
                                 </div>
+                                <div>
+                                    <h3 className="font-semibold text-lg">Date Range Picker:</h3>
+                                    <pre className="mt-2 p-4 bg-muted rounded-md overflow-x-auto text-sm">
+                                        {dateRange ? JSON.stringify(dateRange, null, 2) : 'undefined'}
+                                    </pre>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -76,3 +93,4 @@ export default function NewsAndEventsPage() {
         </div>
     );
 }
+
