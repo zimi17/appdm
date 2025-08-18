@@ -5,6 +5,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MenuColumn } from "./menu-column";
 import { navLinks } from "@/lib/data/nav";
 
+const animationProps = {
+    transition:{
+        duration: 0.6,
+        ease: [0.65, 0, 0.35, 1],
+        opacity: {
+        duration: 0.2,
+        ease: [0.65, 0, 0.35, 1]
+        }
+    }
+  }
+
+const exitAnimationProps = {
+    transition: {
+        duration: 0.6,
+        ease: [0.65, 0, 0.35, 1],
+        opacity: {
+        duration: 0.2,
+        ease: [0.65, 0, 0.35, 1],
+        delay: 0.4 
+        }
+    }
+}
+
 export const MobileLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) => (
     <div className="h-full w-full relative overflow-hidden">
         <motion.div
@@ -27,9 +50,9 @@ export const MobileLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =>
                 <motion.div
                     key="l2"
                     className="w-full h-full absolute inset-0 bg-[#292c2f]"
-                    initial={{x: '100%'}}
-                    animate={{x: activeL2 ? '-100%' : '0'}}
-                    exit={{x: '100%'}}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0, ...animationProps }}
+                    exit={{ opacity: 0, y: -10, ...exitAnimationProps }}
                     transition={{duration: 0.3, ease: 'easeInOut'}}
                 >
                     <MenuColumn
@@ -48,9 +71,9 @@ export const MobileLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =>
                  <motion.div
                     key="l3"
                     className="w-full h-full absolute inset-0 bg-[#292c2f]"
-                    initial={{x: '100%'}}
-                    animate={{x: 0}}
-                    exit={{x: '100%'}}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0, ...animationProps }}
+                    exit={{ opacity: 0, y: -10, ...exitAnimationProps }}
                     transition={{duration: 0.3, ease: 'easeInOut'}}
                 >
                      <MenuColumn
