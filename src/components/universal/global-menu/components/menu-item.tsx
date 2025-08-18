@@ -31,7 +31,7 @@ export const MenuItem = ({ link, onLinkClick, activeItem, depth, hasBorder }: Me
                 {depth === 1 ? (
                   <span
                     className={cn(
-                      "text-4xl font-semibold tracking-[-0.035em] leading-[1.05] md:text-5xl min-[1260px]:text-[56px] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] group-hover:bg-[length:100%_1px]",
+                      "text-3xl md:text-4xl min-[1260px]:text-5xl font-semibold tracking-[-0.035em] leading-[1.05] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] group-hover:bg-[length:100%_1px]",
                       activeItem?.title === link.title && "bg-[length:100%_1px]"
                     )}
                   >
