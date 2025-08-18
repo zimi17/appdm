@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -37,6 +38,7 @@ export function GlobalMenu({
   };
 
   const handleNavLinkClick = (link: any, depth: number) => {
+    // Handle "Back" button clicks
     if (link.parent) {
       if (depth === 2) {
         setActiveL1(null);
@@ -46,6 +48,7 @@ export function GlobalMenu({
       return;
     }
 
+    // Handle clicks on links that navigate away
     if (!link.sublinks) {
       if (link.href) {
         window.location.href = link.href;
@@ -54,11 +57,21 @@ export function GlobalMenu({
       return;
     }
 
+    // Handle clicks that open submenus
     if (depth === 1) {
-      setActiveL1(link);
-      setActiveL2(null); // Reset L2 when a new L1 is chosen
+      if (activeL1?.title === link.title) {
+        setActiveL1(null);
+        setActiveL2(null);
+      } else {
+        setActiveL1(link);
+        setActiveL2(null);
+      }
     } else if (depth === 2) {
-      setActiveL2(link);
+      if (activeL2?.title === link.title) {
+        setActiveL2(null);
+      } else {
+        setActiveL2(link);
+      }
     }
   };
 
