@@ -15,8 +15,8 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
         <motion.div
             className={cn(
                 "h-full shrink-0 transition-transform duration-300 ease-in-out",
-                "md:w-1/2 lg:w-[37.5%]", 
-                l3Active ? "md:-translate-x-full" : "md:translate-x-0"
+                "w-full md:w-1/2 lg:w-[37.5%]", 
+                l3Active ? "md:-translate-x-full lg:translate-x-0" : "md:translate-x-0"
             )}
         >
             <MenuColumn
@@ -34,16 +34,17 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                 l2Active ? "translate-x-0" : "translate-x-full"
             )}
         >
-            {activeL1?.sublinks && (
-                <MenuColumn
-                    links={activeL1.sublinks}
-                    onLinkClick={handleNavLinkClick}
-                    parentItem={activeL1}
-                    activeItem={activeL2}
-                    depth={2}
-                    className={cn(!l2Active && "hidden")}
-                />
-            )}
+             <div className={cn(!l2Active && "hidden", "w-full h-full")}>
+                {activeL1?.sublinks && (
+                    <MenuColumn
+                        links={activeL1.sublinks}
+                        onLinkClick={handleNavLinkClick}
+                        parentItem={activeL1}
+                        activeItem={activeL2}
+                        depth={2}
+                    />
+                )}
+            </div>
         </motion.div>
         
         <motion.div
@@ -53,6 +54,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                 l3Active ? "translate-x-0" : "translate-x-full"
             )}
         >
+            <div className={cn(!l3Active && "hidden", "w-full h-full")}>
              {activeL2?.sublinks && (
                  <MenuColumn
                     links={activeL2.sublinks}
@@ -60,9 +62,9 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                     parentItem={activeL2}
                     activeItem={null}
                     depth={3}
-                    className={cn(!l3Active && "hidden")}
                 />
              )}
+             </div>
         </motion.div>
     </div>
   );
