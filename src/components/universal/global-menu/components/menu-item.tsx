@@ -25,11 +25,11 @@ export const MenuItem = ({ link, onLinkClick, activeItem, depth, hasBorder }: Me
             <button
               onClick={() => onLinkClick(link, depth)}
               className={cn(
-                "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full group",
+                "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full group relative",
                  isActive ? "text-white" : "text-slate-400 hover:text-white"
               )}
             >
-              <div className="flex justify-between items-center py-2 relative">
+              <div className="flex justify-between items-center py-2">
                 {depth === 1 ? (
                   <span className="text-3xl md:text-4xl min-[1260px]:text-5xl font-semibold tracking-[-0.035em] leading-[1.05] flex items-center gap-2">
                     {link.title}
@@ -42,7 +42,7 @@ export const MenuItem = ({ link, onLinkClick, activeItem, depth, hasBorder }: Me
                     <strong className="text-lg font-bold flex items-center gap-2">
                        {link.title}
                        {link.sublinks && (
-                        <ChevronRight className={cn("h-5 w-5 transition-opacity duration-300", isActive ? 'text-white opacity-0' : 'text-gray-500 group-hover:text-white group-hover:opacity-100')} />
+                        <ChevronRight className={cn("h-5 w-5 ml-auto flex-shrink-0 transition-opacity duration-300", isActive ? 'text-white opacity-0' : 'text-gray-500 group-hover:text-white group-hover:opacity-100')} />
                        )}
                     </strong>
                   </div>
