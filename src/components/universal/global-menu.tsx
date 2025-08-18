@@ -9,6 +9,23 @@ import { ChevronRight, ChevronLeft, ArrowRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/primitives/logo";
 import { navLinks, quickLinks } from "@/lib/data/nav";
+import { AnimatePresence, motion } from "framer-motion";
+
+const columnVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+};
+
 
 const NavColumn = ({
   links,
@@ -32,13 +49,13 @@ const NavColumn = ({
   return (
     <div
       className={cn(
-        "h-full overflow-y-auto w-full pt-[90px] pr-6 pb-0 pl-6 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px] nav-scrollbar z-[111]",
+        "absolute inset-0 h-full overflow-y-auto w-full pt-[90px] pr-6 pb-24 [-webkit-overflow-scrolling:touch] after:content-[''] after:block after:h-[50px] after:w-full min-[1260px]:after:h-[88px] md:pt-[137px] min-[960px]:pl-10 min-[960px]:pr-10 min-[1260px]:pt-[146px] nav-scrollbar z-[111]",
         className
       )}
     >
       {depth > 1 && parentItem && (
         <div className="nav-primary__subsec--top pt-[8px] mb-6 md:mb-[41px]">
-          <div className="nav-primary__back mb-9 md:hidden">
+          <div className="nav-primary__back mb-9">
             <button
               onClick={handleBackClick}
               className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium"
@@ -103,7 +120,7 @@ const NavColumn = ({
                        </span>
                     </strong>
                     {link.sublinks && (
-                      <ChevronRight className="h-5 w-5 text-gray-500 ml-2 flex-shrink-0 group-hover:text-white transition-colors duration-150" />
+                      <ChevronRight className="h-5 w-5 text-gray-500 ml-auto flex-shrink-0 group-hover:text-white transition-colors duration-150" />
                     )}
                   </span>
                 )}
@@ -125,6 +142,7 @@ export function GlobalMenu({
 }) {
   const [activeL1, setActiveL1] = useState<any | null>(null);
   const [activeL2, setActiveL2] = useState<any | null>(null);
+  const [direction, setDirection] = useState(1);
 
   useEffect(() => {
     if (!isOpen) {
@@ -142,6 +160,7 @@ export function GlobalMenu({
 
   const handleNavLinkClick = (link: any, depth: number) => {
     if (link.parent) {
+      setDirection(-1);
       if (link.depth === 2) {
         setActiveL1(null);
       } else if (link.depth === 3) {
@@ -149,6 +168,8 @@ export function GlobalMenu({
       }
       return;
     }
+
+    setDirection(1);
 
     if (!link.sublinks) {
         if(link.href) {
@@ -178,7 +199,7 @@ export function GlobalMenu({
             Site navigation menu. Use the tab key to navigate through the links.
           </SheetDescription>
         </span>
-        <div className="absolute top-0 left-0 right-0 h-[90px] flex justify-between items-center px-6 z-10">
+        <div className="absolute top-0 left-0 right-0 h-[90px] flex justify-between items-center px-6 z-[112]">
           <Link href="/" onClick={resetNav} className="inline-block relative">
             <Logo theme="dark" className="h-12 w-[190px]" />
           </Link>
@@ -189,50 +210,85 @@ export function GlobalMenu({
           </SheetClose>
         </div>
 
-        <div className="h-full flex w-full">
-          <div className={cn("h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out", {"-translate-x-full md:translate-x-0": activeL1})}>
-             <NavColumn
-                links={navLinks}
-                onLinkClick={handleNavLinkClick}
-                activeItem={activeL1}
-                depth={1}
-              />
-          </div>
-          <div
-            className={cn(
-              "h-full md:w-[350px] lg:w-[350px] shrink-0 md:border-r border-gray-700 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
-              activeL1 ? "translate-x-0" : "translate-x-full",
-              {"-translate-x-full md:translate-x-0": activeL2}
-            )}
-          >
-             {activeL1?.sublinks && (
+        <div className="h-full flex w-full relative overflow-hidden">
+          <AnimatePresence initial={false} custom={direction}>
+              <motion.div
+                key="l1"
+                custom={direction}
+                variants={columnVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.2 }
+                }}
+                className={cn(
+                  "h-full md:w-[350px] lg:w-[350px] shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
+                  {"-translate-x-full md:translate-x-0": activeL1}
+                )}
+              >
                 <NavColumn
-                  links={activeL1.sublinks}
-                  onLinkClick={handleNavLinkClick}
-                  parentItem={activeL1}
-                  activeItem={activeL2}
-                  depth={2}
-                />
+                    links={navLinks}
+                    onLinkClick={handleNavLinkClick}
+                    activeItem={activeL1}
+                    depth={1}
+                  />
+              </motion.div>
+
+              {activeL1?.sublinks && (
+                 <motion.div
+                    key="l2"
+                    custom={direction}
+                    variants={columnVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      x: { type: "spring", stiffness: 300, damping: 30 },
+                      opacity: { duration: 0.2 }
+                    }}
+                    className={cn(
+                        "h-full md:w-[350px] lg:w-[350px] shrink-0 absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700",
+                        {"-translate-x-full md:translate-x-0": activeL2}
+                    )}
+                 >
+                   <NavColumn
+                     links={activeL1.sublinks}
+                     onLinkClick={handleNavLinkClick}
+                     parentItem={activeL1}
+                     activeItem={activeL2}
+                     depth={2}
+                   />
+                 </motion.div>
               )}
-          </div>
-          <div
-            className={cn(
-              "h-full grow absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
-              activeL2 ? "translate-x-0" : "translate-x-full",
-            )}
-          >
-            {activeL2?.sublinks && (
-                <NavColumn
-                  links={activeL2.sublinks}
-                  onLinkClick={handleNavLinkClick}
-                  parentItem={activeL2}
-                  activeItem={null}
-                  depth={3}
-                />
+
+              {activeL2?.sublinks && (
+                <motion.div
+                  key="l3"
+                  custom={direction}
+                  variants={columnVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
+                  }}
+                  className="h-full grow absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700"
+                >
+                  <NavColumn
+                    links={activeL2.sublinks}
+                    onLinkClick={handleNavLinkClick}
+                    parentItem={activeL2}
+                    activeItem={null}
+                    depth={3}
+                  />
+                </motion.div>
               )}
-          </div>
+          </AnimatePresence>
         </div>
-         <nav className="absolute bottom-0 left-0 right-0 bg-[#0e0e0e] border-t border-solid border-t-[#464a4f] text-white overflow-hidden" aria-labelledby="quick_links_nav-label">
+         <nav className="absolute bottom-0 left-0 right-0 bg-[#0e0e0e] border-t border-solid border-t-[#464a4f] text-white overflow-hidden z-[111]">
             <div className="overflow-x-auto whitespace-nowrap [-webkit-overflow-scrolling:touch] p-4 md:p-6 lg:px-10 lg:py-8">
               <strong className="text-[#8996a0] inline-block text-base font-normal tracking-[-0.1px] mr-5 lg:text-lg" id="quick_links_nav-label">
                 Quick Links

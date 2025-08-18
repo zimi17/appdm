@@ -1,52 +1,75 @@
+
 export const navLinks = [
-    {
+  {
     title: "Akademik",
     description: "Belajar di STIE Dwimulya dapat terjadi untuk setiap jenis pembelajar, pada setiap fase kehidupan.",
-    href: "/academics",
+    href: "/akademics",
     sublinks: [
       {
         title: "Program Studi",
         description: "Telusuri semua konsentrasi sarjana dan pascasarjana kami.",
-        href: "/academics",
+        href: "/akademik/program-studi",
         sublinks: [
-          { title: "Manajemen (S1)", href: "/academics" },
-          { title: "Akuntansi (S1)", href: "/academics" },
+          { title: "S1 Manajemen", href: "/akademik/program-studi/s1-manajemen" },
+          { title: "S1 Akuntansi", href: "/akademik/program-studi/s1-akuntansi" }
         ]
       },
-      { title: "Penerimaan", href: "/admissions" },
-      { title: "Beasiswa", href: "/scholarships" },
+      { title: "Penelitian", href: "/akademik/penelitian" },
+      { title: "Kalender Akademik", href: "/akademik/kalender-akademik" },
+      { 
+        title: "Pendidikan",
+        href: "/akademik/pendidikan",
+        description: "Kurikulum, kewirausahaan, dan beasiswa di STIE Dwimulya.",
+        sublinks: [
+          { title: "Kurikulum", href: "/akademik/pendidikan/kurikulum" },
+          { title: "Kewirausahaan", href: "/akademik/pendidikan/kewirausahaan" },
+          { title: "Beasiswa", href: "/akademik/pendidikan/beasiswa" }
+        ]
+      }
     ]
   },
   {
     title: "Tentang",
     description: "Pelajari bagaimana STIE Dwimulya terstruktur, jelajahi sejarah panjang kami, dan temukan komunitas kami yang luas.",
-    href: "/about",
+    href: "/tentang",
     sublinks: [
-      {
-        title: "Sejarah STIE Dwimulya",
-        description: "STIE Dwimulya mungkin paling dikenal karena sejarah inovasinya yang abadi dalam pendidikan.",
-        href: "/about",
-      },
-      {
-        title: "Pimpinan & Struktur",
-        description: "Kenali Pimpinan Kami",
-        href: "/about",
-      },
-      { title: "Visi & Misi", href: "/about" },
-      { title: "Kerjasama", href: "/about" },
+      { title: "Sejarah STIE Dwimulya", href: "/tentang/sejarah" },
+      { title: "Pimpinan & Struktur", href: "/tentang/pimpinan-struktur" },
+      { title: "Visi & Misi", href: "/tentang/visi-misi" },
+      { title: "Kerjasama", href: "/tentang/kerjasama" }
     ]
   },
   {
-    title: "Berita & Acara",
-    description: "Berita resmi dari STIE Dwimulya tentang sains, kedokteran, seni, kehidupan kampus, isu-isu Universitas, dan keprihatinan nasional dan global yang lebih luas.",
-    href: "/news-events",
+    title: "Layanan",
+    description: "Layanan yang ditawarkan untuk menunjang kebutuhan mahasiswa dan alumni STIE Dwimulya.",
+    href: "/layanan",
+    sublinks: [
+      { title: "BAAK", href: "/layanan/baak" },
+      { title: "BAUK", href: "/layanan/bauk" },
+      {
+        title: "CDU",
+        href: "/layanan/cdu",
+        description: "Career Development Unit untuk lowongan kerja, magang, dan pelatihan.",
+        sublinks: [
+          { title: "Lowongan Kerja", href: "/layanan/cdu/lowongan-kerja" },
+          { title: "Magang", href: "/layanan/cdu/magang" },
+          { title: "Pelatihan", href: "/layanan/cdu/pelatihan" }
+        ]
+      }
+    ]
   },
-    {
+  {
+    title: "Pendaftaran",
+    description: "Informasi mengenai proses pendaftaran di STIE Dwimulya.",
+    href: "/admissions"
+  },
+  {
     title: "Kontak",
     description: "Hubungi kami untuk informasi lebih lanjut.",
-    href: "/contact",
-  },
+    href: "/contact"
+  }
 ];
+
 
 export const hotLinks = [
   {
