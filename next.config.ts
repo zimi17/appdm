@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.hbs.edu',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: "https",
+        hostname: "cloudinary.hbs.edu",
+        port: "",
+        pathname: "/**",
       }
     ],
   },

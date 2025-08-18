@@ -1,16 +1,18 @@
 
+
 "use client";
 
 import { useState } from "react";
 import { SiteHeader } from "@/components/universal/site-header";
 import { MissionTopper } from "@/components/blocks/mission-topper";
 import { HeroCarousel } from "@/components/blocks/hero-carousel";
-import { CardGrid } from "@/components/blocks/card-grid";
+import { InfoCardGrid } from "@/components/blocks/info-card-grid";
+import { HeroStatement } from "@/components/blocks/hero-statement";
 import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
-import { InfoCardGrid } from "@/components/blocks/info-card-grid";
+import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/universal/site-footer";
-import { missionTopperData, infoCards, quote, scienceCards } from "@/lib/data";
+import { missionTopperData, infoCards, heroStatementData, quote, scienceCards } from "@/lib/data";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -32,6 +34,13 @@ export default function Home() {
                 <InfoCardGrid 
                     title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                     items={infoCards}
+                />
+                <HeroStatement
+                    title={heroStatementData.title}
+                    description={heroStatementData.description}
+                    imageUrl={heroStatementData.imageUrl}
+                    imageHint={heroStatementData.imageHint}
+                    links={heroStatementData.links}
                 />
                 <PromoBar
                   title="Penerimaan Mahasiswa Baru Telah Dibuka!"
