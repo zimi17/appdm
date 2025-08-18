@@ -14,6 +14,9 @@ export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) =>
 
   return (
     <div className="flex items-center gap-2">
+      <Link href="/admissions">
+        <Button variant="ghost" className="hidden md:inline-flex text-background hover:text-primary">Daftar</Button>
+      </Link>
       <div className="md:hidden">
         <Popover>
           <PopoverTrigger asChild>
