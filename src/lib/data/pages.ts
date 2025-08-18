@@ -16,7 +16,7 @@ export const homePageData = {
           description: "Program MBA dua tahun, penuh waktu, residensial dengan fokus pada praktik dunia nyata.",
           linkText: "Jelajahi Program MBA",
           linkHref: "/academics/s1-manajemen",
-          imageUrl: "https://www.hbs.edu/about/PublishingImages/campus-and-culture/hbs-campus-1400x650.jpg",
+          imageUrl: "https://images.pexels.com/photos/8199132/pexels-photo-8199132.jpeg",
           imageHint: "leader integrity"
         },
         {
@@ -24,7 +24,7 @@ export const homePageData = {
           description: "Tujuh program penuh waktu yang mengarah ke gelar PhD untuk para sarjana yang tertarik pada penelitian akademis.",
           linkText: "Lihat Program Doktoral",
           linkHref: "/academics/s1-akuntansi",
-          imageUrl: "https://www.hbs.edu/Style%20Guide/feature/PublishingImages/arts-and-culture-1400x650.jpg",
+          imageUrl: "https://images.pexels.com/photos/5212697/pexels-photo-5212697.jpeg",
           imageHint: "positive difference"
         },
         {
@@ -32,7 +32,7 @@ export const homePageData = {
           description: "Kursus online yang dipimpin oleh fakultas pemenang penghargaan untuk membantu Anda menguasai konsep bisnis penting.",
           linkText: "Lihat Kursus Online",
           linkHref: "#",
-          imageUrl: "https://www.hbs.edu/about/PublishingImages/campus-and-culture/global-reach-1400x650.jpg",
+          imageUrl: "https://images.pexels.com/photos/7972525/pexels-photo-7972525.jpeg",
           imageHint: "global impact"
         },
       ],

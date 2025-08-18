@@ -32,7 +32,7 @@ export const MenuColumn = ({
       )}
     >
       {depth > 1 && parentItem && (
-        <MenuHeader parentItem={parentItem} onBackClick={handleBackClick} />
+        <MenuHeader parentItem={parentItem} onBackClick={handleBackClick} depth={depth} />
       )}
 
       <MenuList

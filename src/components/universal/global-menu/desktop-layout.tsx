@@ -7,32 +7,31 @@ import { MenuColumn } from "./menu-column";
 import { navLinks } from "@/lib/data/nav";
 
 const animationProps = {
-    initial: { opacity: 0, y: 10 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
+  initial: { opacity: 0, y: 10 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3, // Dipercepat dari 0.6
+      ease: [0.65, 0, 0.35, 1],
+      opacity: {
+        duration: 0.1, // Dipercepat dari 0.2
         ease: [0.65, 0, 0.35, 1],
-        opacity: {
-          duration: 0.2,
-          ease: [0.65, 0, 0.35, 1],
-        },
       },
     },
-    exit: {
-      opacity: 0,
-      y: 10,
-      transition: {
-        duration: 0.6,
+  },
+  exit: {
+    opacity: 0,
+    y: 10,
+    transition: {
+      duration: 0.3,
+      ease: [0.65, 0, 0.35, 1],
+      opacity: {
+        duration: 0.1,
         ease: [0.65, 0, 0.35, 1],
-        opacity: {
-          duration: 0.2,
-          ease: [0.65, 0, 0.35, 1],
-          delay: 0.4,
-        },
       },
     },
+  },
 };
 
 export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) => {
@@ -41,10 +40,12 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
 
   return (
     <div className="h-full w-full relative overflow-hidden flex">
+      {/* Level 1 Column - 8/16 grid (50% di tablet, 37.5% di desktop) */}
       <motion.div
         className={cn(
           "h-full shrink-0 w-full md:w-1/2 lg:w-[37.5%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
           l2Active && "md:border-r md:border-white/15",
+          // Slide keluar saat L3 aktif di tablet, tetap di tempat di desktop
           l3Active ? "md:-translate-x-full lg:translate-x-0" : "translate-x-0"
         )}
       >
@@ -56,19 +57,20 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
         />
       </motion.div>
 
+      {/* Level 2 Column */}
       <motion.div
         className={cn(
-          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] flex",
+          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
           l3Active && "md:border-r md:border-white/15",
           l3Active ? "md:-translate-x-full lg:translate-x-0" : "md:translate-x-0",
           l2Active ? "flex" : "hidden"
         )}
       >
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {l2Active && (
-            <motion.div 
-              key={activeL1?.title || 'level2'}
-              {...animationProps} 
+            <motion.div
+              key={activeL1?.id || activeL1?.title || 'level2'} // Gunakan ID unik
+              {...animationProps}
               className="h-full w-full"
             >
               <MenuColumn
@@ -83,18 +85,34 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
         </AnimatePresence>
       </motion.div>
 
-      <motion.div 
+      {/* Level 3 Column */}
+      <motion.div
         className={cn(
-          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%]",
+          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
+          "md:absolute md:right-0 md:top-0",
+          "lg:relative lg:right-auto lg:top-auto",
+          l3Active && "z-10",
           l3Active ? "flex" : "hidden"
         )}
       >
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {l3Active && (
-            <motion.div 
-              key={activeL2?.title || 'level3'}
-              {...animationProps} 
+            <motion.div
+              key={activeL2?.id || activeL2?.title || 'level3'} // Gunakan ID unik
+              {...animationProps}
               className="h-full w-full"
+              exit={{
+                opacity: 0,
+                y: 10,
+                transition: {
+                  duration: 0.1, // Percepat exit
+                  ease: [0.65, 0, 0.35, 1],
+                  opacity: {
+                    duration: 0.1, // Percepat opacity exit
+                    ease: [0.65, 0, 0.35, 1]
+                  }
+                }
+              }}
             >
               <MenuColumn
                 links={activeL2.sublinks || []}

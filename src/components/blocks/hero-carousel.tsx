@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -50,39 +49,44 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
       api.scrollTo(activeSlide);
     }
   }, [api, activeSlide]);
-  
+
   const scrollPrev = React.useCallback(() => {
     api?.scrollPrev()
-  }, [api])
+  }, [api]);
 
   const scrollNext = React.useCallback(() => {
     api?.scrollNext()
-  }, [api])
+  }, [api]);
 
   return (
-    <section className="relative w-full h-[600px] mb-16 md:mb-24">
-      <Carousel
-        setApi={setApi}
-        plugins={[autoplayPlugin.current]}
-        opts={{ loop: true }}
-        className="w-full h-full overflow-hidden"
-      >
-        <CarouselContent className="h-full">
-          {slides.map((slide, index) => (
-            <CarouselItem key={index} className="h-full relative">
-              <Image
-                src={slide.imageUrl}
-                alt={slide.title}
-                fill
-                className="object-cover"
-                data-ai-hint={slide.imageHint}
-                priority={index === 0}
-              />
-              <div className="absolute inset-0 bg-black/30" />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+    <section className="relative w-full pb-[56.25%] px-6 mb-2 md:mb-24">
+      {/* Membungkus dengan container lebar terbatas */}
+      <div className="w-full max-w-screen-xl mx-auto relative">
+        <Carousel
+          setApi={setApi}
+          plugins={[autoplayPlugin.current]}
+          opts={{ loop: true }}
+          className="w-full h-full absolute top-0 left-0 overflow-hidden"
+        >
+          <CarouselContent className="h-full">
+            {slides.map((slide, index) => (
+              <CarouselItem key={index} className="h-full relative">
+                <Image
+                  src={slide.imageUrl}
+                  alt={slide.title}
+                  layout="responsive" // Ganti fill dengan layout="responsive"
+                  width={3200}  // Tentukan lebar yang sesuai
+                  height={1800} // Tentukan tinggi yang sesuai (aspect ratio 16:9)
+                  className="object-cover"
+                  data-ai-hint={slide.imageHint}
+                  priority={index === 0}
+                />
+                <div className="absolute inset-0 bg-black/30" />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
 
       <div className="absolute top-8 right-8 z-10 flex gap-2">
         <Button size="icon" variant="outline" className="rounded-full bg-white/80 hover:bg-white text-black" onClick={scrollPrev}>
@@ -93,7 +97,7 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
         </Button>
       </div>
       
-      <div className="absolute top-1/2 right-8 -translate-y-1/2 z-10">
+      <div className="absolute top-8 left-8 z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSlide}
