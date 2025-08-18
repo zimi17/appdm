@@ -12,7 +12,7 @@ interface MenuHeaderProps {
 export const MenuHeader = ({ parentItem, onBackClick }: MenuHeaderProps) => {
     return (
         <div className="nav-primary__subsec--top pt-[8px] mb-6 md:mb-[41px]">
-            <div className="nav-primary__back mb-9">
+            <div className="nav-primary__back mb-9 lg:hidden">
                 <button
                 onClick={onBackClick}
                 className="nav-primary__back-action bg-transparent border-0 text-white text-sm tracking-wider uppercase pt-0 pr-0 pb-0 pl-[26px] relative flex items-center font-medium"
