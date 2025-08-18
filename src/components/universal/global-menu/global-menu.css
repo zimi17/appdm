@@ -1,30 +1,30 @@
 
-[data-sidebar="menu-item"] button .chevron-indicator {
-    transition: opacity 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+.chevron-indicator {
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 [data-sidebar="menu-item"] button:hover .chevron-indicator,
 [data-sidebar="menu-item"] button[data-active="true"] .chevron-indicator {
-    opacity: 0;
+    transform: scaleX(1.5) scaleY(0.1);
+    border-radius: 0;
+    opacity: 1 !important; /* Ensure it's visible when transformed */
 }
 
-[data-sidebar="menu-item"] button::after {
-    content: " ";
-    display: block;
-    height: 1px;
-    width: 0;
-    background-color: hsl(var(--primary));
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    transition: width 0.3s cubic-bezier(0.65, 0, 0.35, 1);
-    pointer-events: none;
+/* For Level 2 and up, ensure the color becomes primary on hover/active */
+[data-sidebar="menu-item"] button:hover .chevron-indicator,
+[data-sidebar="menu-item"] button[data-active="true"] .chevron-indicator {
+    color: hsl(var(--primary));
 }
 
-[data-sidebar="menu-item"] button:hover::after,
-[data-sidebar="menu-item"] button[data-active="true"]::after {
-    width: 100%;
-    left: 0;
-    right: auto;
+/* Specificity for Level 1 chevron */
+[data-sidebar="menu-item"] button:hover > div > span > .chevron-indicator,
+[data-sidebar="menu-item"] button[data-active="true"] > div > span > .chevron-indicator {
+    color: white; /* Or any color you want for L1 active indicator */
+    transform: scaleX(1.5) scaleY(0.1);
+}
+
+/* Level 2+ chevron indicator styling */
+[data-sidebar="menu-item"] button:hover .text-lg .chevron-indicator,
+[data-sidebar="menu-item"] button[data-active="true"] .text-lg .chevron-indicator {
+    color: hsl(var(--primary));
 }
