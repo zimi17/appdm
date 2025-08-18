@@ -1,0 +1,155 @@
+@layer base {
+    /* ==========================================================================
+       CSS CUSTOM PROPERTIES - DESIGN TOKENS
+       ========================================================================== */
+    
+    :root {
+      /* STIE Dwimulya Brand Colors - From Brand Guidelines */
+      --color-primary: #002147;    /* Oxford Blue */
+      --color-accent: #D4A017;     /* Goldenrod */
+      --color-background: #F8F8F8; /* Broken White */
+      
+      /* Block Spacing System - Responsive & Systematic */
+      --block-spacing-xs: clamp(8px, 1.5vw, 12px);
+      --block-spacing-sm: clamp(12px, 2.5vw, 18px);
+      --block-spacing-md: clamp(36px, 2.5vw, 60px);
+      --block-spacing-lg: clamp(60px, 5vw, 120px);
+      --block-spacing-xl: clamp(60px, 10vw, 160px);
+      
+      /* Block Spacing Offsets - For overlapping sections */
+      --block-spacing-offset-xs: clamp(-12px, -1.5vw, -8px);
+      --block-spacing-offset-sm: clamp(-18px, -2.5vw, -12px);
+      --block-spacing-offset-md: clamp(-60px, -2.5vw, -36px);
+      --block-spacing-offset-lg: clamp(-120px, -5vw, -60px);
+      --block-spacing-offset-xl: clamp(-160px, -10vw, -60px);
+      
+      /* Theme Colors - Default (Light) */
+      --theme-bg: var(--color-background);
+      --theme-bg-inverse: var(--color-primary);
+      --theme-bg-complementary: #ffffff;
+      --theme-text: rgba(0, 0, 0, 0.85);
+      --theme-text-light: rgba(0, 0, 0, 0.66);
+      --theme-text-lighter: rgba(0, 0, 0, 0.55);
+      --theme-text-inverse: rgba(255, 255, 255, 0.95);
+      --theme-border: rgba(0, 33, 71, 0.34);
+      --theme-border-dark: rgba(0, 33, 71, 0.45);
+      --theme-border-light: rgba(0, 33, 71, 0.08);
+      
+      /* Component Colors */
+      --component-bg: #ffffff;
+      --component-bg-hover: #f0f4f8;
+      --component-bg-subtle: rgba(255, 255, 255, 0.15);
+      --component-border: rgba(0, 33, 71, 0.15);
+      --component-text: var(--theme-text);
+      --component-text-muted: var(--theme-text-light);
+      
+      /* Interactive Elements */
+      --button-bg: var(--component-bg);
+      --button-bg-primary: var(--color-primary);
+      --button-bg-accent: var(--color-accent);
+      --link-color: var(--color-primary);
+      --link-hover: var(--color-accent);
+      
+      /* shadcn/ui compatibility variables */
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+      --primary: 210 40% 13%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 210 40% 96%;
+      --secondary-foreground: 222.2 84% 4.9%;
+      --muted: 210 40% 96%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+      --accent: 210 40% 96%;
+      --accent-foreground: 222.2 84% 4.9%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
+      --radius: 0.5rem;
+    }
+  
+    /* ==========================================================================
+       BLOCK-LEVEL THEME VARIATIONS
+       ========================================================================== */
+  
+    /* Dark blocks/sections - untuk hero, footer, atau sections dengan bg gelap */
+    [data-theme="dark"] {
+      --theme-bg: var(--color-primary);
+      --theme-text: rgba(255, 255, 255, 0.95);
+      --theme-text-light: rgba(255, 255, 255, 0.85);
+      --theme-text-lighter: rgba(255, 255, 255, 0.75);
+      --theme-border: rgba(255, 255, 255, 0.34);
+      --theme-border-dark: rgba(255, 255, 255, 0.45);
+      --theme-border-light: rgba(255, 255, 255, 0.15);
+      --component-bg: rgba(0, 33, 71, 0.8);
+      --component-bg-hover: rgba(0, 33, 71, 0.9);
+      --link-color: var(--color-accent);
+      --link-hover: #ffffff;
+    }
+  
+    /* Medium blocks/sections - untuk content areas dengan subtle background */
+    [data-theme="medium"] {
+      --theme-bg: #e6eef7;
+      --theme-text: rgba(0, 33, 71, 0.85);
+      --theme-text-light: rgba(0, 33, 71, 0.66);
+      --theme-text-lighter: rgba(0, 33, 71, 0.55);
+      --theme-border: rgba(0, 33, 71, 0.21);
+      --component-bg: #ffffff;
+      --component-bg-hover: #f8fafd;
+    }
+  
+    /* Brand dark blocks - untuk sections dengan brand treatment */
+    [data-theme="brand-dark"] {
+      --theme-bg: #001a3a;
+      --theme-text: var(--color-accent);
+      --theme-text-light: #f7e4ac;
+      --theme-text-lighter: rgba(212, 160, 23, 0.75);
+      --theme-border: rgba(212, 160, 23, 0.34);
+      --component-bg: var(--color-primary);
+      --component-bg-hover: #002a5a;
+      --link-color: #ffffff;
+      --link-hover: var(--color-accent);
+    }
+  
+    /* Accent blocks - untuk call-to-action sections */
+    [data-theme="accent"] {
+      --theme-bg: var(--color-accent);
+      --theme-text: var(--color-primary);
+      --theme-text-light: rgba(0, 33, 71, 0.85);
+      --theme-text-lighter: rgba(0, 33, 71, 0.75);
+      --component-bg: rgba(255, 255, 255, 0.95);
+      --component-bg-hover: #ffffff;
+      --link-color: var(--color-primary);
+      --link-hover: #001a3a;
+    }
+  
+    /* ==========================================================================
+       BASE STYLES - SYSTEMATIC & MINIMAL
+       ========================================================================== */
+  
+    * {
+      border: 0;
+      font: inherit;
+      font-size: 100%;
+      margin: 0;
+      padding: 0;
+      vertical-align: baseline;
+      box-sizing: border-box;
+    }
+  
+    body {
+      background: var(--theme-bg);
+      color: var(--theme-text);
+      font-family: 'Work Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}  

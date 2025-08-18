@@ -35,7 +35,7 @@ export function InfoCardGrid({ title, items, className }: { title: string, items
       transition={{ staggerChildren: 0.1 }}
     >
       <div className="container mx-auto px-6">
-        <ComponentHeader title={title} className="max-w-2xl"/>
+        <ComponentHeader title={title} className="max-w-2xl" titleClassName="font-bold"/>
         <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {items.map(item => <Card key={item.title} item={item} />)}
         </ul>
