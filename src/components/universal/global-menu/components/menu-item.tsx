@@ -13,6 +13,7 @@ interface MenuItemProps {
 
 export const MenuItem = ({ link, onLinkClick, activeItem, depth }: MenuItemProps) => {
     const isActive = activeItem?.title === link.title;
+    const hasSublinks = !!link.sublinks;
 
     return (
         <li
@@ -22,8 +23,9 @@ export const MenuItem = ({ link, onLinkClick, activeItem, depth }: MenuItemProps
             <button
               onClick={() => onLinkClick(link, depth)}
               data-active={isActive}
+              data-depth={depth}
               className={cn(
-                "nav-primary__action menu-item-button bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full group relative",
+                "menu-item-button bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full group relative",
                  isActive ? "text-white" : "text-slate-400 hover:text-white"
               )}
             >
@@ -31,18 +33,18 @@ export const MenuItem = ({ link, onLinkClick, activeItem, depth }: MenuItemProps
                 {depth === 1 ? (
                   <span className="text-3xl md:text-4xl min-[1260px]:text-5xl font-semibold tracking-[-0.035em] leading-[1.05] flex items-center gap-2">
                     <span className="relative z-10 bg-[#292c2f] pr-2">{link.title}</span>
-                    {link.sublinks && (
+                    {hasSublinks && (
                        <ChevronRight className={cn("chevron-indicator h-6 w-6 transition-opacity duration-300", isActive ? 'opacity-100' : 'opacity-50 group-hover:opacity-100')} />
                     )}
                   </span>
                 ) : (
                   <div className="flex items-center w-full">
-                    <strong className="text-lg font-bold flex items-center gap-2 group">
-                       <span className="relative z-10 bg-[#292c2f] pr-2">{link.title}</span>
-                       {link.sublinks && (
-                        <ChevronRight className="chevron-indicator h-5 w-5 ml-auto flex-shrink-0 transition-opacity duration-300 opacity-50 group-hover:opacity-100" />
-                       )}
+                    <strong className="text-lg font-bold flex items-center gap-2 group relative z-10 bg-[#292c2f] pr-2">
+                       {link.title}
                     </strong>
+                    {hasSublinks && (
+                      <ChevronRight className="chevron-indicator h-5 w-5 ml-auto flex-shrink-0 transition-opacity duration-300 opacity-50 group-hover:opacity-100" />
+                    )}
                   </div>
                 )}
               </div>

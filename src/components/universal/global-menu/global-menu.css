@@ -1,30 +1,46 @@
-.menu-item-button::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  height: 2px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background-color: transparent;
-  bottom: 50%;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
-  z-index: -1;
+.menu-item-button {
+    position: relative;
+    overflow: hidden;
 }
 
+.menu-item-button::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 1px; /* Garis lebih tipis */
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.15); /* Warna lebih halus, seperti border */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+    z-index: 0; /* Di belakang teks */
+}
+
+/* Posisi garis untuk item Level 1 */
+.menu-item-button[data-depth="1"]::after {
+    top: 55%; /* Penyesuaian posisi vertikal */
+}
+
+/* Posisi garis untuk item Level 2 & 3 */
+.menu-item-button[data-depth="2"]::after,
+.menu-item-button[data-depth="3"]::after {
+    top: 50%;
+}
+
+
+/* Animasikan garis saat hover atau aktif */
 .menu-item-button:hover::after,
 .menu-item-button[data-active="true"]::after {
-  background-color: white;
-  transform: scaleX(1);
+    transform: scaleX(1);
 }
 
-.menu-item-button .chevron-indicator {
-  transition: opacity 0.3s ease;
-}
-
+/* Sembunyikan ikon chevron saat hover atau aktif */
 .menu-item-button:hover .chevron-indicator,
 .menu-item-button[data-active="true"] .chevron-indicator {
-  opacity: 0;
+    opacity: 0;
+}
+
+.chevron-indicator {
+    transition: opacity 0.2s ease-in-out;
 }
