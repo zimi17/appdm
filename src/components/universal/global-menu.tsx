@@ -225,8 +225,9 @@ export function GlobalMenu({
                 }}
                 className={cn(
                   "h-full w-full shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
-                  "md:w-1/2 lg:w-[37.5%]", // 8/16 on tablet, 6/16 on desktop
-                  {"-translate-x-full": activeL2}, // Hide L1 when L3 is visible on desktop
+                  "md:w-1/2 lg:w-[37.5%]",
+                  "transition-transform duration-300 ease-in-out",
+                  {'md:-translate-x-full': !!activeL2}, // Hide L1 when L2 has a child L3 opened
                 )}
               >
                 <NavColumn
@@ -251,7 +252,7 @@ export function GlobalMenu({
                     }}
                     className={cn(
                       "h-full w-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700",
-                      "md:w-1/2 lg:w-[31.25%]", // 8/16 on tablet, 5/16 on desktop
+                      "md:w-1/2 lg:w-[31.25%]",
                     )}
                  >
                    <NavColumn
@@ -278,7 +279,7 @@ export function GlobalMenu({
                   }}
                   className={cn(
                     "h-full w-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700",
-                    "md:w-1/2 lg:w-[31.25%]", // 8/16 on tablet, 5/16 on desktop
+                    "md:w-1/2 lg:w-[31.25%]", 
                   )}
                 >
                   <NavColumn
