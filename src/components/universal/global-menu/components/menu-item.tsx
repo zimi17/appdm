@@ -32,14 +32,14 @@ export const MenuItem = ({ link, onLinkClick, activeItem, depth }: MenuItemProps
               <div className="flex justify-between items-center py-2">
                 {depth === 1 ? (
                   <span className="text-3xl md:text-4xl min-[1260px]:text-5xl font-semibold tracking-[-0.035em] leading-[1.05] flex items-center gap-2">
-                    <span className="relative z-10 bg-[#292c2f] pr-2">{link.title}</span>
+                    <span className="bg-[#292c2f] relative z-10 pr-2">{link.title}</span>
                     {hasSublinks && (
                        <ChevronRight className={cn("chevron-indicator h-6 w-6 transition-opacity duration-300", isActive ? 'opacity-100' : 'opacity-50 group-hover:opacity-100')} />
                     )}
                   </span>
                 ) : (
                   <div className="flex items-center w-full">
-                    <strong className="text-lg font-bold flex items-center gap-2 group relative z-10 bg-[#292c2f] pr-2">
+                    <strong className="text-lg font-normal leading-[1.55] tracking-[-0.02em] flex items-center gap-2 group relative z-10 bg-[#292c2f] pr-2">
                        {link.title}
                     </strong>
                     {hasSublinks && (

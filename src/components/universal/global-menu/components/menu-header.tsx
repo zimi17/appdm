@@ -11,7 +11,7 @@ interface MenuHeaderProps {
 
 export const MenuHeader = ({ parentItem, onBackClick }: MenuHeaderProps) => {
     return (
-        <div className="nav-primary__subsec--top pt-[8px] mb-6 md:mb-[41px]">
+        <div className="nav-primary__subsec--top pt-[8px] mb-[18px]">
             <div className="nav-primary__back mb-9 lg:hidden">
                 <button
                 onClick={onBackClick}

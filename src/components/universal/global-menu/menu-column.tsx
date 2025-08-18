@@ -40,7 +40,6 @@ export const MenuColumn = ({
         onLinkClick={onLinkClick}
         activeItem={activeItem}
         depth={depth}
-        hasBorder={depth > 1}
       />
     </div>
   );
