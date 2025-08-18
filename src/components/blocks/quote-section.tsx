@@ -1,8 +1,8 @@
 
 'use client';
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { CtaLink } from "../primitives/cta-link";
+import { LazyImage } from "../primitives/lazy-image";
 
 interface QuoteSectionProps {
     quote: string;
@@ -39,7 +39,15 @@ export function QuoteSection({ quote, author, role, imageUrl, imageHint, linkTex
             </blockquote>
           </motion.div>
           <motion.div className="md:w-1/2" variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1 } }}>
-            <Image src={imageUrl} alt={author} width={624} height={624} className="rounded-full aspect-square object-cover" data-ai-hint={imageHint} />
+            <LazyImage 
+              src={imageUrl} 
+              alt={author} 
+              className="rounded-full aspect-square"
+              imageClassName="object-cover rounded-full"
+              data-ai-hint={imageHint}
+              width={624}
+              height={624} 
+            />
           </motion.div>
         </div>
       </div>

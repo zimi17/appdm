@@ -1,9 +1,9 @@
 
 'use client';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ComponentHeader } from '../primitives/component-header';
 import { CtaList } from '../primitives/cta-list';
+import { LazyImage } from '../primitives/lazy-image';
 
 interface HeroStatementProps {
     title: string;
@@ -41,9 +41,14 @@ export function HeroStatement({ title, description, imageUrl, imageHint, links }
                         variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } }}
                         transition={{duration: 0.5}}
                     >
-                         <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                            <Image src={imageUrl} alt={title} fill className="object-cover" data-ai-hint={imageHint} />
-                        </div>
+                         <LazyImage 
+                           src={imageUrl} 
+                           alt={title} 
+                           className="relative aspect-[4/3] overflow-hidden rounded-lg"
+                           imageClassName="object-cover"
+                           data-ai-hint={imageHint}
+                           fill
+                          />
                     </motion.div>
                 </div>
             </div>

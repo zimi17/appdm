@@ -1,10 +1,10 @@
 
 'use client';
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { CtaLink } from "../primitives/cta-link";
 import { ComponentHeader } from "../primitives/component-header";
+import { LazyImage } from "../primitives/lazy-image";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -16,9 +16,14 @@ const Card = ({ item }: { item: any }) => (
     className="flex flex-col h-full group bg-background transition-colors duration-300 hover:bg-card"
     variants={cardVariants}
   >
-    <div className="relative aspect-[4/3] overflow-hidden">
-      <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={item.hint} />
-    </div>
+    <LazyImage 
+      src={item.image} 
+      alt={item.title} 
+      className="aspect-[4/3]"
+      imageClassName="object-cover group-hover:scale-105 transition-transform duration-300"
+      data-ai-hint={item.hint} 
+      fill
+    />
     <div className="p-8 flex flex-col flex-grow">
       <h3 className="font-headline text-2xl mb-4 text-foreground">{item.title}</h3>
       <p className="text-lg mb-6 flex-grow text-muted-foreground">{item.description}</p>
