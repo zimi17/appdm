@@ -11,24 +11,9 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { CtaLink } from '../primitives/cta-link';
+import { CarouselCard } from './carousel-card';
 import { Button } from '../ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-
-interface CarouselCardProps {
-    slide: {
-      description: string;
-      linkText: string;
-      linkHref: string;
-    }
-}
-
-const CarouselCard = ({ slide }: CarouselCardProps) => (
-    <div className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-8 transition-colors duration-300 hover:bg-card">
-        <p className="text-muted-foreground mb-6 text-lg font-semibold">{slide.description}</p>
-        <CtaLink href={slide.linkHref}>{slide.linkText}</CtaLink>
-    </div>
-);
 
 interface HeroCarouselProps {
   slides: {
