@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/universal/site-footer";
 import { AccordionSection } from "@/components/blocks/accordion-section";
 import { Aside } from "@/components/primitives/aside";
 import { academicsPage, kurikulumData, asideData } from "@/lib/data";
+import Link from "next/link";
 
 export default function Academics() {
   const { hero, twoColumnContent, degreePrograms, promoBar } = academicsPage;
@@ -32,7 +33,13 @@ export default function Academics() {
               />
             </div>
             <div className="lg:col-span-1">
-              <Aside title={asideData.title} links={asideData.links} />
+              <Aside title={asideData.title}>
+                {asideData.links.map((link) => (
+                  <p key={link.text}>
+                    <Link href={link.href}>{link.text}</Link>
+                  </p>
+                ))}
+              </Aside>
             </div>
           </div>
         </div>
