@@ -10,23 +10,9 @@ import { cn } from "@/lib/utils";
 import { Logo } from "@/components/primitives/logo";
 import { navLinks, quickLinks } from "@/lib/data/nav";
 import { AnimatePresence, motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-const columnVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? '100%' : '-100%',
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction < 0 ? '100%' : '-100%',
-    opacity: 0,
-  }),
-};
-
-
+// #region Core Navigation Logic (Shared)
 const NavColumn = ({
   links,
   onLinkClick,
@@ -132,7 +118,133 @@ const NavColumn = ({
     </div>
   );
 };
+// #endregion
 
+// #region Layout Components (Mobile vs Desktop/Tablet)
+
+const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick } : any) => (
+  <div className="h-full flex w-full relative overflow-hidden">
+    <motion.div
+        className={cn(
+          "h-full shrink-0 transition-transform duration-300 ease-in-out",
+          "lg:w-[37.5%] md:w-1/2", // 6/16 on lg, 8/16 on md
+          activeL2 && "md:-translate-x-full"
+        )}
+      >
+      <NavColumn
+        links={navLinks}
+        onLinkClick={handleNavLinkClick}
+        activeItem={activeL1}
+        depth={1}
+      />
+    </motion.div>
+    <AnimatePresence>
+    {activeL1?.sublinks && (
+       <motion.div
+         key="l2"
+         className="h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] lg:w-[31.25%] md:w-1/2" // 5/16 on lg, 8/16 on md
+         initial={{ x: '100%' }}
+         animate={{ x: 0 }}
+         exit={{ x: '100%', transition: { duration: 0.3 } }}
+         transition={{ duration: 0.3, ease: 'easeInOut' }}
+       >
+        <NavColumn
+          links={activeL1.sublinks}
+          onLinkClick={handleNavLinkClick}
+          parentItem={activeL1}
+          activeItem={activeL2}
+          depth={2}
+        />
+      </motion.div>
+    )}
+    </AnimatePresence>
+    <AnimatePresence>
+    {activeL2?.sublinks && (
+      <motion.div
+        key="l3"
+        className="h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] lg:w-[31.25%] md:w-1/2" // 5/16 on lg, 8/16 on md
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%', transition: { duration: 0.3 } }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+        <NavColumn
+          links={activeL2.sublinks}
+          onLinkClick={handleNavLinkClick}
+          parentItem={activeL2}
+          activeItem={null}
+          depth={3}
+        />
+      </motion.div>
+    )}
+    </AnimatePresence>
+  </div>
+);
+
+const MobileLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) => (
+   <div className="h-full w-full relative overflow-hidden">
+        <motion.div
+            key="l1"
+            className="w-full h-full absolute inset-0"
+            initial={{x: 0}}
+            animate={{x: activeL1 ? '-100%' : '0'}}
+            transition={{duration: 0.3, ease: 'easeInOut'}}
+        >
+             <NavColumn
+                links={navLinks}
+                onLinkClick={handleNavLinkClick}
+                activeItem={activeL1}
+                depth={1}
+            />
+        </motion.div>
+
+        <AnimatePresence>
+            {activeL1 && (
+                <motion.div
+                    key="l2"
+                    className="w-full h-full absolute inset-0 bg-[#292c2f]"
+                    initial={{x: '100%'}}
+                    animate={{x: activeL2 ? '-100%' : '0'}}
+                    exit={{x: '100%'}}
+                    transition={{duration: 0.3, ease: 'easeInOut'}}
+                >
+                    <NavColumn
+                        links={activeL1.sublinks || []}
+                        onLinkClick={handleNavLinkClick}
+                        parentItem={activeL1}
+                        activeItem={activeL2}
+                        depth={2}
+                    />
+                </motion.div>
+            )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+            {activeL2 && (
+                 <motion.div
+                    key="l3"
+                    className="w-full h-full absolute inset-0 bg-[#292c2f]"
+                    initial={{x: '100%'}}
+                    animate={{x: 0}}
+                    exit={{x: '100%'}}
+                    transition={{duration: 0.3, ease: 'easeInOut'}}
+                >
+                     <NavColumn
+                        links={activeL2.sublinks || []}
+                        onLinkClick={handleNavLinkClick}
+                        parentItem={activeL2}
+                        activeItem={null}
+                        depth={3}
+                    />
+                </motion.div>
+            )}
+        </AnimatePresence>
+    </div>
+);
+
+// #endregion
+
+// #region Main Component
 export function GlobalMenu({
   isOpen,
   onOpenChange,
@@ -142,13 +254,14 @@ export function GlobalMenu({
 }) {
   const [activeL1, setActiveL1] = useState<any | null>(null);
   const [activeL2, setActiveL2] = useState<any | null>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (!isOpen) {
       const timer = setTimeout(() => {
         setActiveL1(null);
         setActiveL2(null);
-      }, 300); // Delay matches the sheet close animation
+      }, 300); 
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -159,9 +272,9 @@ export function GlobalMenu({
 
   const handleNavLinkClick = (link: any, depth: number) => {
     if (link.parent) {
-      if (link.depth === 2) {
+      if (depth === 2) {
         setActiveL1(null);
-      } else if (link.depth === 3) {
+      } else if (depth === 3) {
         setActiveL2(null);
       }
       return;
@@ -206,70 +319,13 @@ export function GlobalMenu({
           </SheetClose>
         </div>
 
-        <div className="h-full flex w-full relative overflow-hidden">
-            <motion.div 
-                className={cn(
-                    "h-full shrink-0 transition-transform duration-300 ease-in-out",
-                    "w-full md:w-1/2 lg:w-[37.5%]",
-                    activeL1 && "absolute md:relative -translate-x-full md:translate-x-0",
-                    activeL2 && "md:-translate-x-full"
-                )}
-            >
-                <NavColumn
-                    links={navLinks}
-                    onLinkClick={handleNavLinkClick}
-                    activeItem={activeL1}
-                    depth={1}
-                />
-            </motion.div>
+        {isMobile ? (
+             <MobileLayout activeL1={activeL1} activeL2={activeL2} handleNavLinkClick={handleNavLinkClick} />
+        ) : (
+             <DesktopLayout activeL1={activeL1} activeL2={activeL2} handleNavLinkClick={handleNavLinkClick} />
+        )}
 
-            <AnimatePresence>
-            {activeL1?.sublinks && (
-                <motion.div 
-                    key="l2"
-                    className={cn(
-                        "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
-                        "w-full md:w-1/2 lg:w-[31.25%]",
-                         activeL2 && "hidden md:block"
-                    )}
-                    initial={{ x: '100%' }}
-                    animate={{ x: 0 }}
-                    exit={{ x: '100%' }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                >
-                   <NavColumn
-                     links={activeL1.sublinks}
-                     onLinkClick={handleNavLinkClick}
-                     parentItem={activeL1}
-                     activeItem={activeL2}
-                     depth={2}
-                   />
-                </motion.div>
-            )}
-            </AnimatePresence>
-            
-            <AnimatePresence>
-            {activeL2?.sublinks && (
-                 <motion.div 
-                    key="l3"
-                    className="h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] w-full md:w-1/2 lg:w-[31.25%]"
-                    initial={{ x: '100%' }}
-                    animate={{ x: 0 }}
-                    exit={{ x: '100%' }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                >
-                  <NavColumn
-                    links={activeL2.sublinks}
-                    onLinkClick={handleNavLinkClick}
-                    parentItem={activeL2}
-                    activeItem={null}
-                    depth={3}
-                  />
-                </motion.div>
-            )}
-            </AnimatePresence>
-        </div>
-         <nav className="absolute bottom-0 left-0 right-0 bg-[#0e0e0e] border-t border-solid border-t-[#464a4f] text-white overflow-hidden z-[111]">
+        <nav className="absolute bottom-0 left-0 right-0 bg-[#0e0e0e] border-t border-solid border-t-[#464a4f] text-white overflow-hidden z-[111]">
             <div className="overflow-x-auto whitespace-nowrap [-webkit-overflow-scrolling:touch] p-4 md:p-6 lg:px-10 lg:py-8">
               <strong className="text-[#8996a0] inline-block text-base font-normal tracking-[-0.1px] mr-5 lg:text-lg" id="quick_links_nav-label">
                 Quick Links
@@ -290,3 +346,4 @@ export function GlobalMenu({
     </Sheet>
   );
 }
+// #endregion
