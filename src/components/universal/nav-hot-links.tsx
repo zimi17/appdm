@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { hotLinks } from '@/lib/data';
+import { hotLinks } from '@/lib/data/nav';
 
 export function NavHotLinks() {
   return (
@@ -20,3 +20,4 @@ export function NavHotLinks() {
     </nav>
   );
 }
+

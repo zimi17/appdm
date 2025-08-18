@@ -17,8 +17,8 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { toast } from "@/hooks/use-toast";
-import { admissionFormSchema, ugPrograms, ugYears, industries } from "@/lib/data";
+import { useToast } from "@/hooks/use-toast";
+import { admissionFormSchema, ugPrograms, ugYears, industries } from "@/lib/data/forms";
 
 
 function SectionHeader({ title }: { title: string }) {
@@ -26,6 +26,7 @@ function SectionHeader({ title }: { title: string }) {
 }
 
 export default function AdmissionsPage() {
+    const { toast } = useToast()
     const form = useForm<z.infer<typeof admissionFormSchema>>({
         resolver: zodResolver(admissionFormSchema),
         defaultValues: {

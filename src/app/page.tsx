@@ -12,35 +12,37 @@ import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/universal/site-footer";
-import { missionTopperData, infoCards, heroStatementData, quote, scienceCards } from "@/lib/data";
+import { homePageData } from "@/lib/data/pages";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
+    const { missionTopper, infoCards, heroStatement, quote, scienceCards } = homePageData;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main id="main-content">
                 <MissionTopper 
-                    titleParts={missionTopperData.titleParts} 
+                    titleParts={missionTopper.titleParts} 
                     activeSlide={activeSlide}
                     setActiveSlide={setActiveSlide}
                 />
                 <HeroCarousel 
-                    slides={missionTopperData.slides}
+                    slides={missionTopper.slides}
                     activeSlide={activeSlide}
                     setActiveSlide={setActiveSlide}
                 />
                 <InfoCardGrid 
                     title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                     items={infoCards}
+                    titleClassName="font-bold"
                 />
                 <HeroStatement
-                    title={heroStatementData.title}
-                    description={heroStatementData.description}
-                    imageUrl={heroStatementData.imageUrl}
-                    imageHint={heroStatementData.imageHint}
-                    links={heroStatementData.links}
+                    title={heroStatement.title}
+                    description={heroStatement.description}
+                    imageUrl={heroStatement.imageUrl}
+                    imageHint={heroStatement.imageHint}
+                    links={heroStatement.links}
                 />
                 <PromoBar
                   title="Penerimaan Mahasiswa Baru Telah Dibuka!"

@@ -1,4 +1,5 @@
 
+
 import { SiteHeader } from "@/components/universal/site-header";
 import { HeroSection } from "@/components/blocks/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar";
@@ -7,11 +8,11 @@ import { TwoColumnContent } from "@/components/blocks/two-column-content";
 import { SiteFooter } from "@/components/universal/site-footer";
 import { AccordionSection } from "@/components/blocks/accordion-section";
 import { Aside } from "@/components/primitives/aside";
-import { academicsPage, kurikulumData, asideData } from "@/lib/data";
+import { academicsPageData } from "@/lib/data/pages";
 import Link from "next/link";
 
 export default function Academics() {
-  const { hero, twoColumnContent, degreePrograms, promoBar } = academicsPage;
+  const { hero, twoColumnContent, degreePrograms, promoBar, kurikulum, aside } = academicsPageData;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -33,8 +34,8 @@ export default function Academics() {
               />
             </div>
             <div className="lg:col-span-1">
-              <Aside title={asideData.title}>
-                {asideData.links.map((link) => (
+              <Aside title={aside.title}>
+                {aside.links.map((link) => (
                   <p key={link.text}>
                     <Link href={link.href}>{link.text}</Link>
                   </p>
@@ -49,10 +50,10 @@ export default function Academics() {
             className="bg-card"
         />
         <AccordionSection 
-            title={kurikulumData.title}
-            items={kurikulumData.items}
-            linkText={kurikulumData.linkText}
-            linkHref={kurikulumData.linkHref}
+            title={kurikulum.title}
+            items={kurikulum.items}
+            linkText={kurikulum.linkText}
+            linkHref={kurikulum.linkHref}
         />
         <PromoBar
           title={promoBar.title}

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft, ArrowRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/primitives/logo";
-import { navLinks, quickLinks } from "@/lib/data";
+import { navLinks, quickLinks } from "@/lib/data/nav";
 
 const NavColumn = ({
   links,
