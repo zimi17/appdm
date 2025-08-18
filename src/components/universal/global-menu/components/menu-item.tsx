@@ -13,6 +13,8 @@ interface MenuItemProps {
 }
 
 export const MenuItem = ({ link, onLinkClick, activeItem, depth, hasBorder }: MenuItemProps) => {
+    const isActive = activeItem?.title === link.title;
+
     return (
         <li
             className={cn(
@@ -24,30 +26,34 @@ export const MenuItem = ({ link, onLinkClick, activeItem, depth, hasBorder }: Me
               onClick={() => onLinkClick(link, depth)}
               className={cn(
                 "nav-primary__action bg-transparent border-0 inline p-0 text-left transition-colors duration-150 ease-in-out w-full group",
-                 activeItem?.title === link.title ? "text-white" : "text-slate-400 hover:text-white"
+                 isActive ? "text-white" : "text-slate-400 hover:text-white"
               )}
             >
-              <div className="flex justify-between items-center py-2">
+              <div className="flex justify-between items-center py-2 relative">
                 {depth === 1 ? (
                   <span
                     className={cn(
-                      "text-3xl md:text-4xl min-[1260px]:text-5xl font-semibold tracking-[-0.035em] leading-[1.05] bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] group-hover:bg-[length:100%_1px]",
-                      activeItem?.title === link.title && "bg-[length:100%_1px]"
+                      "text-3xl md:text-4xl min-[1260px]:text-5xl font-semibold tracking-[-0.035em] leading-[1.05] flex items-center gap-2"
                     )}
                   >
                     {link.title}
+                    {link.sublinks && (
+                       <ChevronRight className={cn("h-6 w-6 transition-opacity", isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100')} />
+                    )}
+                    <span className={cn("menu-item-underline", isActive && "active")}></span>
                   </span>
                 ) : (
-                  <span className="flex items-center w-full">
-                    <strong className="text-lg font-bold">
-                       <span className={cn("bg-[linear-gradient(currentColor,currentColor)] bg-no-repeat relative transition-[background-size] duration-300 bg-[0_100%] bg-[length:0%_1px] group-hover:bg-[length:100%_1px]", activeItem?.title === link.title && "bg-[length:100%_1px]")}>
+                  <div className="flex items-center w-full">
+                    <strong className="text-lg font-bold relative">
+                       <span className="flex items-center gap-2">
                         {link.title}
                        </span>
+                        <span className={cn("menu-item-underline", isActive && "active")}></span>
                     </strong>
                     {link.sublinks && (
-                      <ChevronRight className="h-5 w-5 text-gray-500 ml-auto flex-shrink-0 group-hover:text-white transition-colors duration-150" />
+                      <ChevronRight className={cn("h-5 w-5 text-gray-500 ml-2 flex-shrink-0 transition-opacity", isActive ? "opacity-0" : "group-hover:text-white")} />
                     )}
-                  </span>
+                  </div>
                 )}
               </div>
             </button>

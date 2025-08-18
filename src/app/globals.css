@@ -149,3 +149,12 @@
     }
   }
 }
+
+@layer components {
+  .menu-item-underline {
+    @apply absolute bottom-0 left-0 h-px w-full bg-white transition-transform duration-300 ease-menu scale-x-0 group-hover:scale-x-100;
+  }
+  .menu-item-underline.active {
+    @apply scale-x-100;
+  }
+}
