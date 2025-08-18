@@ -14,7 +14,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
     <div className="h-full flex w-full relative overflow-hidden">
         <motion.div
             className={cn(
-                "h-full shrink-0 transition-transform duration-500 ease-in-out",
+                "h-full shrink-0 transition-transform duration-300 ease-in-out",
                 "md:w-1/2 lg:w-[37.5%]", 
                 l3Active ? "md:-translate-x-full" : "md:translate-x-0"
             )}
@@ -28,11 +28,10 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
         </motion.div>
        
         <motion.div
-            className={cn(
-                "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-500 ease-in-out",
+             className={cn(
+                "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
                 "w-full md:w-1/2 lg:w-[31.25%]",
-                l2Active ? "translate-x-0" : "translate-x-full",
-                l3Active ? "md:-translate-x-full" : "md:translate-x-0"
+                l2Active ? "translate-x-0" : "translate-x-full"
             )}
         >
             {activeL1?.sublinks && (
@@ -42,14 +41,15 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                     parentItem={activeL1}
                     activeItem={activeL2}
                     depth={2}
+                    className={cn(!l2Active && "hidden")}
                 />
             )}
         </motion.div>
         
         <motion.div
             className={cn(
-                "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-500 ease-in-out",
-                 "w-full md:w-1/2 lg:w-[31.25%]",
+                "h-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] transition-transform duration-300 ease-in-out",
+                "w-full md:w-1/2 lg:w-[31.25%]",
                 l3Active ? "translate-x-0" : "translate-x-full"
             )}
         >
@@ -60,6 +60,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
                     parentItem={activeL2}
                     activeItem={null}
                     depth={3}
+                    className={cn(!l3Active && "hidden")}
                 />
              )}
         </motion.div>
