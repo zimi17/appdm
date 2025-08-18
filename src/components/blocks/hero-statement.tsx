@@ -28,16 +28,16 @@ export function HeroStatement({ title, description, imageUrl, imageHint, links }
             <div className="container mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <motion.div 
-                        className="order-2 lg:order-1"
-                        variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
+                        className="order-2 lg:order-2"
+                        variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0 } }}
                         transition={{duration: 0.5}}
                     >
-                        <ComponentHeader title={title} hrClassName="border-primary" />
+                        <ComponentHeader title={title} hrClassName="border-primary" titleClassName="font-bold" />
                         <p className="text-lg text-muted-foreground mt-4">{description}</p>
                         <CtaList items={links} />
                     </motion.div>
                     <motion.div 
-                        className="order-1 lg:order-2"
+                        className="order-1 lg:order-1"
                         variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } }}
                         transition={{duration: 0.5}}
                     >

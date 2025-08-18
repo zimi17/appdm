@@ -1,6 +1,7 @@
 
 
 
+
 export const navLinks = [
     {
     title: "Akademik",
@@ -206,7 +207,7 @@ export const missionTopperData = {
   export const heroStatementData = {
     title: "Pemikir Berani, Pembelajar Kolaboratif",
     description: "STIE Dwimulya adalah salah satu sumber pendidikan manajemen dan kepemimpinan pemikiran yang paling terpercaya di dunia. Ini adalah ekosistem dinamis dari penelitian, pembelajaran, dan kewirausahaan yang memperkuat dirinya sendiri saat Sekolah dan fakultas kami berinteraksi dengan organisasi, praktisi, sarjana, dan pemimpin global baru.",
-    imageUrl: "https://www.hbs.edu/all-images/PublishingImages/Social-Enterprise/social-enterprise.jpg",
+    imageUrl: "https://placehold.co/1400x933.png",
     imageHint: "social enterprise",
     links: [
         { href: "/faculty-research", text: "Jelajahi Fakultas & Penelitian" },
