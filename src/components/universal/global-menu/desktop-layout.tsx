@@ -33,7 +33,7 @@ const animationProps = {
         }
       }
     }
-  }
+}
 
 
 export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) => {
@@ -44,7 +44,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
     <div className="h-full w-full relative overflow-hidden">
         <motion.div 
             className={cn(
-                "h-full flex w-[200%] md:w-[200%] lg:w-full",
+                "h-full flex w-[300%] md:w-[200%] lg:w-full",
                 "transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
                 l3Active ? "md:-translate-x-1/2 lg:translate-x-0" : "translate-x-0"
             )}
@@ -53,7 +53,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <div
                 className={cn(
                 "h-full shrink-0",
-                "w-1/2 md:w-1/2 lg:w-[37.5%]"
+                "w-1/3 md:w-1/2 lg:w-[37.5%]",
                 )}
             >
                 <MenuColumn
@@ -68,14 +68,14 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <div
                 className={cn(
                     "h-full shrink-0 bg-[#292c2f]",
-                    "w-1/2 md:w-1/2 lg:w-[31.25%]",
+                    "w-1/3 md:w-1/2 lg:w-[31.25%]",
                     "md:border-l md:border-white/15",
-                    !l2Active && "hidden" // Hide until active to prevent layout shifts
+                    l2Active ? "flex" : "hidden"
                 )}
             >
                 <AnimatePresence>
                 {l2Active && (
-                    <motion.div className="h-full" {...animationProps}>
+                    <motion.div className="h-full w-full" {...animationProps}>
                         <MenuColumn
                             links={activeL1.sublinks}
                             onLinkClick={handleNavLinkClick}
@@ -92,14 +92,14 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <div
                 className={cn(
                     "h-full shrink-0 bg-[#292c2f]",
-                    "w-1/2 md:w-1/2 lg:w-[31.25%]",
+                    "w-1/3 md:w-1/2 lg:w-[31.25%]",
                     "md:border-l md:border-white/15",
-                     !l3Active && "hidden"
+                     l3Active ? "flex" : "hidden"
                 )}
             >
                  <AnimatePresence>
                 {l3Active && (
-                    <motion.div className="h-full" {...animationProps}>
+                    <motion.div className="h-full w-full" {...animationProps}>
                         <MenuColumn
                             links={activeL2.sublinks}
                             onLinkClick={handleNavLinkClick}
