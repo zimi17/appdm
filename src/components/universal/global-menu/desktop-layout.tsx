@@ -44,6 +44,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
       <motion.div
         className={cn(
           "h-full shrink-0 w-full md:w-1/2 lg:w-[37.5%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
+          l2Active && "md:border-r md:border-white/15",
           l3Active ? "md:-translate-x-full lg:translate-x-0" : "translate-x-0"
         )}
       >
@@ -58,6 +59,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
       <motion.div
         className={cn(
           "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] flex",
+          l3Active && "md:border-r md:border-white/15",
           l3Active ? "md:-translate-x-full lg:translate-x-0" : "md:translate-x-0",
           l2Active ? "flex" : "hidden"
         )}
@@ -67,10 +69,10 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <motion.div 
               key={activeL1?.title || 'level2'}
               {...animationProps} 
-              className="h-full w-full md:border-l md:border-white/15"
+              className="h-full w-full"
             >
               <MenuColumn
-                links={activeL1?.sublinks || []}
+                links={activeL1.sublinks || []}
                 onLinkClick={handleNavLinkClick}
                 parentItem={activeL1}
                 activeItem={activeL2}
@@ -92,10 +94,10 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <motion.div 
               key={activeL2?.title || 'level3'}
               {...animationProps} 
-              className="h-full w-full md:border-l md:border-white/15"
+              className="h-full w-full"
             >
               <MenuColumn
-                links={activeL2?.sublinks || []}
+                links={activeL2.sublinks || []}
                 onLinkClick={handleNavLinkClick}
                 parentItem={activeL2}
                 activeItem={null}
