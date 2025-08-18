@@ -41,78 +41,66 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
   const l3Active = !!activeL2;
 
   return (
-    <div className="h-full w-full relative overflow-hidden">
-        <motion.div 
-            className={cn(
-                "flex h-full w-[150%] lg:w-full", // 150% for tablet (3 cols @ 50%), 100% for desktop
-                "transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
-                l3Active ? "md:-translate-x-[33.3333%]" : "translate-x-0", // On tablet, shift 1/3 of the container (which is 1/2 of the viewport)
-                "lg:translate-x-0"
-            )}
-        >
-            {/* Level 1 Column */}
-            <div
-                className={cn(
-                "h-full shrink-0",
-                "w-[calc(100%/3)] md:w-1/2 lg:w-[37.5%]",
-                )}
-            >
-                <MenuColumn
-                links={navLinks}
-                onLinkClick={handleNavLinkClick}
-                activeItem={activeL1}
-                depth={1}
-                />
-            </div>
+    <div className="h-full w-full relative overflow-hidden flex">
+      {/* Level 1 Column */}
+      <motion.div
+        className={cn(
+          "h-full shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
+          "w-full md:w-1/2 lg:w-[37.5%]",
+          l3Active ? "md:-translate-x-full lg:translate-x-0" : "translate-x-0"
+        )}
+      >
+        <MenuColumn
+          links={navLinks}
+          onLinkClick={handleNavLinkClick}
+          activeItem={activeL1}
+          depth={1}
+        />
+      </motion.div>
 
-            {/* Level 2 Column */}
-            <div
-                className={cn(
-                    "h-full shrink-0 bg-[#292c2f]",
-                    "w-[calc(100%/3)] md:w-1/2 lg:w-[31.25%]",
-                    "md:border-l md:border-white/15",
-                    "flex flex-col" // Always flex to allow content visibility
-                )}
-            >
-                <AnimatePresence>
-                {l2Active && (
-                    <motion.div className="h-full w-full" {...animationProps}>
-                        <MenuColumn
-                            links={activeL1.sublinks}
-                            onLinkClick={handleNavLinkClick}
-                            parentItem={activeL1}
-                            activeItem={activeL2}
-                            depth={2}
-                        />
-                    </motion.div>
-                )}
-                </AnimatePresence>
-            </div>
-            
-            {/* Level 3 Column */}
-            <div
-                className={cn(
-                    "h-full shrink-0 bg-[#292c2f]",
-                    "w-[calc(100%/3)] md:w-1/2 lg:w-[31.25%]",
-                    "md:border-l md:border-white/15",
-                    "flex flex-col" // Always flex to allow content visibility
-                )}
-            >
-                 <AnimatePresence>
-                {l3Active && (
-                    <motion.div className="h-full w-full" {...animationProps}>
-                        <MenuColumn
-                            links={activeL2.sublinks}
-                            onLinkClick={handleNavLinkClick}
-                            parentItem={activeL2}
-                            activeItem={null}
-                            depth={3}
-                        />
-                    </motion.div>
-                )}
-                </AnimatePresence>
-            </div>
-        </motion.div>
+      {/* Level 2 Column */}
+      <AnimatePresence>
+        {l2Active && (
+          <motion.div
+            {...animationProps}
+            className={cn(
+              "h-full shrink-0 bg-[#292c2f]",
+              "w-full md:w-1/2 lg:w-[31.25%]",
+              l3Active ? "lg:border-l lg:border-white/15" : "md:border-l md:border-white/15"
+            )}
+          >
+            <MenuColumn
+              links={activeL1.sublinks}
+              onLinkClick={handleNavLinkClick}
+              parentItem={activeL1}
+              activeItem={activeL2}
+              depth={2}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Level 3 Column */}
+       <AnimatePresence>
+        {l3Active && (
+          <motion.div
+             {...animationProps}
+            className={cn(
+              "h-full shrink-0 bg-[#292c2f]",
+              "w-full md:w-1/2 lg:w-[31.25%]",
+              "md:border-l md:border-white/15"
+            )}
+          >
+            <MenuColumn
+              links={activeL2.sublinks}
+              onLinkClick={handleNavLinkClick}
+              parentItem={activeL2}
+              activeItem={null}
+              depth={3}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
