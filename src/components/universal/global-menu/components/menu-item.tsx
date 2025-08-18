@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ChevronRight } from "lucide-react";
@@ -8,21 +9,16 @@ interface MenuItemProps {
     onLinkClick: (link: any, depth: number) => void;
     activeItem: any;
     depth: number;
-    hasBorder?: boolean;
 }
 
-export const MenuItem = ({ link, onLinkClick, activeItem, depth, hasBorder }: MenuItemProps) => {
+export const MenuItem = ({ link, onLinkClick, activeItem, depth }: MenuItemProps) => {
     const isActive = activeItem?.title === link.title;
 
     return (
         <li
-            className={cn(
-              "nav-primary__item",
-              depth > 1 && "border-b border-gray-700",
-              "bg-[#292c2f]" // Add background color to the item
-            )}
+            className="nav-primary__item bg-[#292c2f]"
             data-sidebar="menu-item"
-          >
+        >
             <button
               onClick={() => onLinkClick(link, depth)}
               data-active={isActive}
