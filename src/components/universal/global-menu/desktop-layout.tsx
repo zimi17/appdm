@@ -44,16 +44,17 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
     <div className="h-full w-full relative overflow-hidden">
         <motion.div 
             className={cn(
-                "h-full flex w-[300%] md:w-[200%] lg:w-full",
+                "flex h-full w-[150%] lg:w-full", // 150% for tablet (3 cols @ 50%), 100% for desktop
                 "transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
-                l3Active ? "md:-translate-x-1/2 lg:translate-x-0" : "translate-x-0"
+                l3Active ? "md:-translate-x-[33.3333%]" : "translate-x-0", // On tablet, shift 1/3 of the container (which is 1/2 of the viewport)
+                "lg:translate-x-0"
             )}
         >
             {/* Level 1 Column */}
             <div
                 className={cn(
                 "h-full shrink-0",
-                "w-1/3 md:w-1/2 lg:w-[37.5%]",
+                "w-[calc(100%/3)] md:w-1/2 lg:w-[37.5%]",
                 )}
             >
                 <MenuColumn
@@ -68,9 +69,9 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <div
                 className={cn(
                     "h-full shrink-0 bg-[#292c2f]",
-                    "w-1/3 md:w-1/2 lg:w-[31.25%]",
+                    "w-[calc(100%/3)] md:w-1/2 lg:w-[31.25%]",
                     "md:border-l md:border-white/15",
-                    l2Active ? "flex" : "hidden"
+                    "flex flex-col" // Always flex to allow content visibility
                 )}
             >
                 <AnimatePresence>
@@ -92,9 +93,9 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
             <div
                 className={cn(
                     "h-full shrink-0 bg-[#292c2f]",
-                    "w-1/3 md:w-1/2 lg:w-[31.25%]",
+                    "w-[calc(100%/3)] md:w-1/2 lg:w-[31.25%]",
                     "md:border-l md:border-white/15",
-                     l3Active ? "flex" : "hidden"
+                    "flex flex-col" // Always flex to allow content visibility
                 )}
             >
                  <AnimatePresence>
