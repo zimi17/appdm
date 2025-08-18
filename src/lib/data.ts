@@ -89,7 +89,7 @@ export const footerSections = [
   export const quickLinks = [
     { label: "Peta Kampus", href: "#" },
     { label: "Direktori", href: "#" },
-    { label: "Berita", href: "#" },
+    { label: "Berita", href: "/news-events" },
     { label: "Karir", href: "#" },
     { label: "Alumni", href: "#" },
     { label: "Donasi", href: "#" },
@@ -258,3 +258,31 @@ export const missionTopperData = {
       { text: "Working Knowledge", href: "#" }
     ]
   };
+
+  export const newsPageData = {
+    hero: {
+      title: "Berita & Acara",
+      description: "Tetap terinformasi dengan berita terbaru, acara mendatang, dan pengumuman penting dari komunitas STIE Dwimulya.",
+      imageUrl: "https://placehold.co/2000x1333.png",
+      imageHint: "community event"
+    },
+    facets: {
+      title: "Filter Berdasarkan",
+      items: [
+        { name: "Semua", value: "all", number: "300" },
+        { name: "Berita Kampus", value: "campus-news", number: "120" },
+        { 
+          name: "Acara", 
+          value: "events", 
+          number: "80",
+          items: [
+            { name: "Seminar", value: "seminar", number: "30" },
+            { name: "Workshop", value: "workshop", number: "25" },
+            { name: "Webinar", value: "webinar", number: "25" },
+          ]
+        },
+        { name: "Prestasi Mahasiswa", value: "student-achievements", number: "50" },
+        { name: "Penelitian", value: "research", number: "50" },
+      ]
+    }
+  }
