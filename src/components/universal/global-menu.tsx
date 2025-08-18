@@ -224,8 +224,9 @@ export function GlobalMenu({
                   opacity: { duration: 0.2 }
                 }}
                 className={cn(
-                  "h-full md:w-[350px] lg:w-[350px] shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
-                  {"-translate-x-full md:translate-x-0": activeL1}
+                  "h-full w-full shrink-0 absolute md:relative inset-0 bg-[#292c2f]",
+                  "md:w-1/2 lg:w-[37.5%]", // 8/16 on tablet, 6/16 on desktop
+                  {"-translate-x-full": activeL2}, // Hide L1 when L3 is visible on desktop
                 )}
               >
                 <NavColumn
@@ -249,8 +250,8 @@ export function GlobalMenu({
                       opacity: { duration: 0.2 }
                     }}
                     className={cn(
-                        "h-full md:w-[350px] lg:w-[350px] shrink-0 absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700",
-                        {"-translate-x-full md:translate-x-0": activeL2}
+                      "h-full w-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700",
+                      "md:w-1/2 lg:w-[31.25%]", // 8/16 on tablet, 5/16 on desktop
                     )}
                  >
                    <NavColumn
@@ -275,7 +276,10 @@ export function GlobalMenu({
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 }
                   }}
-                  className="h-full grow absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700"
+                  className={cn(
+                    "h-full w-full shrink-0 absolute md:relative inset-0 bg-[#292c2f] md:border-l border-gray-700",
+                    "md:w-1/2 lg:w-[31.25%]", // 8/16 on tablet, 5/16 on desktop
+                  )}
                 >
                   <NavColumn
                     links={activeL2.sublinks}
