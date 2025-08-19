@@ -29,11 +29,13 @@ export default function Home() {
                         setActiveSlide={setActiveSlide}
                     />
                 </div>
-                <HeroCarousel 
-                    slides={missionTopper.slides}
-                    activeSlide={activeSlide}
-                    setActiveSlide={setActiveSlide}
-                />
+                <div className="max-w-screen-2xl mx-auto px-6">
+                    <HeroCarousel 
+                        slides={missionTopper.slides}
+                        activeSlide={activeSlide}
+                        setActiveSlide={setActiveSlide}
+                    />
+                </div>
                  <div className="max-w-screen-2xl mx-auto px-6">
                     <InfoCardGrid 
                         title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
