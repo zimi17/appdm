@@ -103,6 +103,45 @@ export const homePageData = {
         },
     ]
   },
+  distinction: {
+    header: {
+      title: "Apa yang membuat STIE Dwimulya unik?",
+      description: "Di STIE Dwimulya, kami menggabungkan gagasan berani, pedagogi yang kuat, dan pembelajaran berbasis kelompok yang kolaboratif untuk memberikan pendidikan manajemen yang tak tertandingi dan membina jaringan pembelajaran seumur hidup.",
+      cta: {
+        text: "Lebih Lanjut Tentang STIE Dwimulya",
+        href: "/tentang"
+      }
+    },
+    details: {
+      items: [
+        {
+          title: "Pembelajaran Imersif & Dinamis",
+          subtitle: "Di sini, ide-ide baru yang menarik didiskusikan, diperdebatkan, dan dieksplorasi melalui pengajaran berbasis kasus dan keterlibatan interaktif yang terstruktur."
+        },
+        {
+          title: "Komunitas yang Erat",
+          subtitle: "Pembelajaran intensif berbasis kelompok menciptakan kelompok pembelajar kolaboratif yang erat dengan urgensi untuk menguji ide-ide baru dan memecahkan masalah."
+        },
+        {
+          title: "Perspektif Global & Lokal",
+          subtitle: "Kami menyatukan para pemimpin dan pembelajar untuk mengeksplorasi isu-isu dan mempelajari kasus-kasus yang memiliki dampak global dan relevansi lokal yang sejati."
+        },
+        {
+          title: "Koneksi Seumur Hidup",
+          subtitle: "STIE Dwimulya membina jaringan pembelajaran yang kuat, dengan 749+ alumni, yang mengubah lintasan karier dan berdampak positif bagi organisasi."
+        },
+        {
+          title: "Kampus Residensial",
+          subtitle: "Terletak di Serang, di mana sejarah dan inovasi bertemu, kampus kami dirancang untuk menumbuhkan interaksi harian yang memperluas dan memperkaya pembelajaran di dalam kelas."
+        }
+      ],
+      mediaAsset: {
+        src: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_1200:1560,w_1200/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fctfassets%2Fpublic%2Fimages%2F3e0EWFVZhkopwyuOSsxUAW%2F0.0-difference-180423-RL-1200x1560.jpg",
+        alt: "Mahasiswa STIE Dwimulya berjalan di kampus",
+        hint: "students campus"
+      }
+    }
+  },
   quote: {
       text: "Pendidikan adalah kunci untuk membuka potensi lokal. Kami berdedikasi untuk menciptakan pemimpin yang tidak hanya unggul secara akademis, tetapi juga memiliki kepedulian untuk membangun komunitasnya.",
       author: "Dr. H. Rachmat Maulana, S.Sos., M.Si.",
