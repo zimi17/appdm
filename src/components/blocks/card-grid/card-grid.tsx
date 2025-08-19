@@ -41,7 +41,7 @@ export function CardGrid({ title, items, className, titleClassName, hrClassName 
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.2 }}
     >
-        <div className="col-span-full lg:col-span-12 lg:col-start-3">
+        <div className="container mx-auto px-6">
             {title && (
             <ComponentHeader title={title} titleClassName={titleClassName} hrClassName={hrClassName} />
             )}

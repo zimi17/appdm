@@ -13,15 +13,16 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem", // 24px
       screens: {
-        "2xl": "1400px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1800px",
       },
     },
     extend: {
-      gridTemplateColumns: {
-        '16': 'repeat(16, minmax(0, 1fr))',
-      },
       fontFamily: {
         body: ['"Work Sans"', 'sans-serif'],
         headline: ['"Work Sans"', 'sans-serif'],

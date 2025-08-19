@@ -128,38 +128,39 @@ export default function NewsAndEventsPage() {
     return (
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
-            <main id="main-content" className="grid grid-cols-4 lg:grid-cols-16 gap-x-6 px-6">
+            <main id="main-content">
+                <Breadcrumbs breadcrumbs={breadcrumbs}/>
                  <HeroSection 
                     title={hero.title}
                     description={hero.description}
                     imageUrl={hero.imageUrl}
                     imageHint={hero.imageHint}
-                    className="col-span-full"
                 />
-                <div className="col-span-full">
-                  <Breadcrumbs breadcrumbs={breadcrumbs}/>
-                </div>
                 
-                <aside className="col-span-full lg:col-span-4 space-y-8 self-start sticky top-28 py-8">
-                    <ArchivePageFacets 
-                        title={facets.title}
-                        items={facets.items}
-                        onFacetChanged={handleFacetChanged}
-                    />
-                    <AlphabeticalPicker 
-                        availableLetters={availableLetters}
-                        onLetterSelect={handleLetterSelect}
-                        />
-                        <DateRangePicker
-                        onRangeChange={handleDateRangeChange}
-                        />
-                </aside>
-                <div className="col-span-full lg:col-span-12 py-8">
-                        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-                        {paginatedNews.map(article => <NewsCard key={article.id} article={article}/>)}
-                    </div>
-                    <div className="mt-16">
-                        {renderPagination()}
+                <div className="container mx-auto px-6 py-16 md:py-24">
+                    <div className="grid lg:grid-cols-12 gap-12">
+                        <aside className="lg:col-span-3 space-y-8 self-start sticky top-28">
+                            <ArchivePageFacets 
+                                title={facets.title}
+                                items={facets.items}
+                                onFacetChanged={handleFacetChanged}
+                            />
+                            <AlphabeticalPicker 
+                                availableLetters={availableLetters}
+                                onLetterSelect={handleLetterSelect}
+                                />
+                                <DateRangePicker
+                                onRangeChange={handleDateRangeChange}
+                                />
+                        </aside>
+                        <div className="lg:col-span-9">
+                                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+                                {paginatedNews.map(article => <NewsCard key={article.id} article={article}/>)}
+                            </div>
+                            <div className="mt-16">
+                                {renderPagination()}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>

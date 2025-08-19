@@ -60,7 +60,7 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
   }, [api]);
 
   return (
-    <section className="relative w-full col-span-full">
+    <section className="relative w-full">
       <Carousel
         setApi={setApi}
         plugins={[autoplayPlugin.current]}

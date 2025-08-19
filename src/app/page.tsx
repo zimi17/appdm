@@ -22,12 +22,11 @@ export default function Home() {
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main id="main-content">
-                <div className="grid grid-cols-4 lg:grid-cols-16 gap-x-6 px-6">
+                <div className="container mx-auto px-6">
                     <MissionTopper 
                         titleParts={missionTopper.titleParts} 
                         activeSlide={activeSlide}
                         setActiveSlide={setActiveSlide}
-                        className="col-span-full"
                     />
                 </div>
                 <HeroCarousel 
@@ -35,11 +34,10 @@ export default function Home() {
                     activeSlide={activeSlide}
                     setActiveSlide={setActiveSlide}
                 />
-                 <div className="grid grid-cols-4 lg:grid-cols-16 gap-x-6 px-6">
+                 <div className="container mx-auto px-6">
                     <InfoCardGrid 
                         title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                         items={infoCards}
-                        className="col-span-full"
                     />
                     <HeroStatement
                         title={heroStatement.title}
@@ -47,17 +45,15 @@ export default function Home() {
                         imageUrl={heroStatement.imageUrl}
                         imageHint={heroStatement.imageHint}
                         links={heroStatement.links}
-                        className="col-span-full"
                     />
                 </div>
                 <KeywordScrollLists keywords={snowflakes.keywords} />
-                <div className="grid grid-cols-4 lg:grid-cols-16 gap-x-6 px-6">
+                <div className="container mx-auto px-6">
                     <HierarchicalTease
                         header={hierarchicalTease.header}
                         articles={hierarchicalTease.articles}
-                        className="col-span-full"
                     />
-                    <section className="col-span-full py-16 md:py-24 bg-background">
+                    <section className="py-16 md:py-24 bg-background">
                         <SectionHeader 
                             title={distinction.header.title}
                             description={distinction.header.description}

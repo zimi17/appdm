@@ -28,7 +28,7 @@ interface AccordionSectionProps {
 export function AccordionSection({ title, items, linkText, linkHref, className }: AccordionSectionProps) {
   return (
     <section className={cn("bg-background text-foreground py-16 md:py-24", className)}>
-        <div className="col-span-full lg:col-span-12 lg:col-start-3">
+        <div className="container mx-auto px-6">
             <ComponentHeader title={title} />
             
             <motion.div 
