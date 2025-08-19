@@ -10,20 +10,18 @@ import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
 import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
-import { SectionHeader } from "@/components/blocks/section-header";
 import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
 import { CardGrid } from "@/components/blocks/card-grid/card-grid";
-import { cn } from "@/lib/utils";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
     const { missionTopper, infoCards, heroStatement, snowflakes, hierarchicalTease, distinction } = homePageData;
 
     return (
-        <div className="flex flex-col min-h-screen bg-background">
+        <div className="flex flex-col min-h-screen">
             <SiteHeader />
             <main id="main-content">
-                <section className="col-span-full bg-card">
+                <section className="bg-card">
                     <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                         <MissionTopper 
                             titleParts={missionTopper.titleParts} 
@@ -41,19 +39,8 @@ export default function Home() {
                     </div>
                 </section>
                 
-                <section className="py-16 md:py-24 bg-background">
-                    <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                        <CardGrid 
-                            title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
-                            items={infoCards}
-                            className="col-span-full"
-                            cardClassName="bg-secondary text-secondary-foreground hover:bg-accent"
-                        />
-                    </div>
-                </section>
-
-                <section className="py-16 md:py-24 bg-background">
-                    <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                <section className="bg-background py-16 md:py-24">
+                     <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                         <HeroStatement
                             title={heroStatement.title}
                             description={heroStatement.description}
@@ -64,23 +51,33 @@ export default function Home() {
                         />
                     </div>
                 </section>
-                
-                <KeywordScrollLists keywords={snowflakes.keywords} />
 
-                 <HierarchicalTease
+                <section className="bg-background">
+                    <KeywordScrollLists keywords={snowflakes.keywords} />
+                </section>
+                
+                <HierarchicalTease
                     header={hierarchicalTease.header}
                     articles={hierarchicalTease.articles}
                     className="bg-secondary text-secondary-foreground"
                 />
-                <section className="py-16 md:py-24 bg-background">
+
+                <section className="bg-background py-16 md:py-24">
+                    <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                         <CardGrid 
+                            title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
+                            items={infoCards}
+                            className="col-span-full"
+                            cardClassName="bg-secondary text-secondary-foreground hover:bg-accent"
+                        />
+                    </div>
+                </section>
+
+                <section className="bg-background py-16 md:py-24">
                     <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                         <div className="col-span-full lg:col-span-14 lg:col-start-2">
-                            <SectionHeader 
-                                title={distinction.header.title}
-                                description={distinction.header.description}
-                                cta={distinction.header.cta}
-                            />
                             <SupportingDetails
+                                header={distinction.header}
                                 items={distinction.details.items}
                                 mediaAsset={distinction.details.mediaAsset}
                             />

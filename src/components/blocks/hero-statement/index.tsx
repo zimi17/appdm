@@ -24,8 +24,8 @@ export function HeroStatement({ title, description, imageUrl, imageHint, links, 
             className={cn("grid lg:grid-cols-12 gap-12 items-center", className)}
         >
             <motion.div 
-                className="lg:col-span-7 order-last lg:order-first"
-                initial={{ opacity: 0, x: -50 }}
+                className="lg:col-span-7 order-first lg:order-last"
+                initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{duration: 0.5}}
@@ -35,7 +35,7 @@ export function HeroStatement({ title, description, imageUrl, imageHint, links, 
                 <CtaList items={links} />
             </motion.div>
             <motion.div 
-                className="lg:col-span-5 order-first lg:order-last"
+                className="lg:col-span-5 order-last lg:order-first"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
