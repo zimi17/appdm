@@ -1,398 +1,151 @@
-# STIE Dwimulya: Key Information & Strategic Brief
-**Brand-Aligned Intelligence Report | Version 2025.08**
+# STIE Dwimulya: Informasi Kunci & Panduan Strategis
+**Laporan Intelijen Selaras Merek | Versi 2025.08**
 
 ---
 
-## **Executive Summary: The STIE Dwimulya Advantage**
+## 1. Informasi Institusional
 
-**Brand Promise**: *"Beasiswa 100% – Karier Pasti dalam 6 Bulan – Dari Serang, Untuk Indonesia"*
-
-STIE Dwimulya adalah sekolah tinggi ekonomi & bisnis terdepan di Banten yang menjamin beasiswa penuh dan memberikan pendampingan kerja terdokumentasi selama 6 bulan dengan gaji minimal 1.2× UMK Banten.
-
-### **Competitive Differentiators**
-- **60% kursi beasiswa penuh** (vs kompetitor max 25%)
-- **85% lulusan bekerja <6 bulan** (Tracer Study 2024)
-- **Transparansi publik** melalui dashboard KPI live
-- **Jaminan tertulis** dengan kompensasi legal
-
----
-
-## **1. Institutional Foundation**
-
-### **1.1 Legal & Operational Identity**
+### 1.1 Identitas & Alamat
 - **Nama Resmi**: Sekolah Tinggi Ilmu Ekonomi (STIE) Dwimulya
-- **Status Legal**: Perguruan Tinggi Swasta Terakreditasi "Baik"
-- **NIDN**: Terdaftar Kementerian Pendidikan RI
-- **Tahun Operasional**: 2009 - sekarang (16+ tahun pengalaman)
-
-### **1.2 Strategic Location**
-**Alamat Utama**: Kavling Sindangsari Blok B1 No. 1, Kecamatan Pabuaran, Kabupaten Serang, Banten 42163
-
-**Strategic Advantages**:
-- Di kawasan pemerintahan Provinsi Banten
-- Akses mudah dari Jakarta (1.5 jam)
-- Dekat dengan pusat industri Cilegon
-- Hub transportasi ke seluruh Jawa-Bali
-
-### **1.3 Emergency & Key Contacts**
-- **Hotline 24/7**: (0254) 7926738
-- **WhatsApp Beasiswa**: +62 877-7392-7456 (Bu Tita)
-- **Email Resmi**: stie.dwimulya@yahoo.co.id
-- **Website**: www.stiedwimulya.ac.id
-- **Crisis Response**: <30 menit via official channels
+- **Alamat**: 
+    - Jl. Pusri No. 2 Kec. Serang, Kota Serang – Banten.
+    - Kavling Sindangsari Blok B1 No. 1 Kecamatan Pabuaran, Kabupaten Serang, Provinsi Banten.
+- **Kontak Utama**:
+    - **Telepon**: (0254) 7926738, 0817777410
+    - **Email**: stie.dwimulya@yahoo.co.id
+    - **Website**: www.stiedwimulya.ac.id
+    - **Beasiswa/Marketing**: +62 877-7392-7456 (Bu Tita)
+    - **Penerimaan Dokumen**: 087771626335 (Ibu Sopiah)
 
 ---
 
-## **2. Brand Promise & Positioning**
+## 2. Visi, Misi & Tagline
 
-### **2.1 Primary Value Proposition**
-*Untuk lulusan SMA di Banten yang memimpikan karier global namun menghadapi kendala finansial, STIE Dwimulya adalah satu-satunya institusi yang menjamin beasiswa penuh DAN pendampingan kerja terdokumentasi dalam 6 bulan.*
+### 2.1 Tagline
+**"Kampus Rakyat, Kampus Perubahan"** - Mencerminkan komitmen untuk meringankan beban biaya pendidikan dan membantu masyarakat tidak mampu.
 
-### **2.2 Tagline Evolution**
-- **Historical**: "Kampus Rakyat, Kampus Perubahan"
-- **Current (2025)**: "Beasiswa 100% – Karier Pasti dalam 6 Bulan"
-- **Regional**: "Dari Serang, Untuk Indonesia"
+### 2.2 Visi & Misi Institusi (STIE Dwimulya)
+- **Visi**: Menjadi perguruan tinggi yang menghasilkan lulusan yang unggul di bidang ilmu ekonomi di Indonesia tahun 2026.
+- **Misi**:
+    1.  Menyelenggarakan pendidikan tinggi ilmu ekonomi berkualitas standar nasional.
+    2.  Melakukan penelitian yang berkontribusi pada pemberdayaan ekonomi masyarakat.
+    3.  Melakukan pengabdian kepada masyarakat di bidang ilmu ekonomi.
+    4.  Melaksanakan kerja sama dengan para pemangku kepentingan.
 
-### **2.3 Mission-Driven Values**
-**Core Values**: Jujur, Peduli, Adil, Kebersamaan  
-**Operational Principles**: Integritas, Profesional, Respect, Teamwork, Excellence
-
-### **2.4 Legal Guarantee Framework**
-**"Jaminan Karier 6 Bulan" Definition**:
-- Minimum 3 wawancara dimediasi pusat karier
-- Penawaran kerja tertulis gaji ≥ UMK Banten
-- Jika tidak terpenuhi: 1 tahun kursus gratis + 15 wawancara tambahan
-- **Transparansi**: Dashboard publik di stiedwimulya.ac.id/guarantee-dashboard
-
----
-
-## **3. Academic Excellence & Programs**
-
-### **3.1 Accredited Program Portfolio**
-**Program Studi S1 (Strata 1)**:
-- **Akuntansi**: Akreditasi "Baik" (BAN-PT No. 6876/SK/BAN-PT/Ak.KP/S/X/2022)
-- **Manajemen**: Akreditasi "Baik" (BAN-PT No. 6572/SK/BAN-PT/Ak.KP/S/IX/2022)
-
-**Expansion Pipeline**: Program Pascasarjana (dalam perencanaan 2026)
-
-### **3.2 Industry-Aligned Curriculum**
-**Co-Created dengan 15+ Industry Partners**:
-- PT Bank Mandiri Tbk (Financial Services Track)
-- PT Unilever Indonesia (Supply Chain Management)
-- Pemkab Serang (Public Sector Economics)
-
-**Technology Integration (2021 Curriculum)**:
-- Fintech & Digital Banking
-- Big Data Analytics
-- Artificial Intelligence for Business
-- Blockchain Applications
-- Internet of Things (IoT)
-
-### **3.3 Faculty Excellence**
-**Qualified Academic Staff**:
-- **Total Dosen**: 22 (11 Akuntansi + 11 Manajemen)
-- **Doktor (S3)**: 6 dosen (27% doctoral qualification)
-- **Magister (S2)**: 11 dosen
-- **Industry Practitioners**: 40% dual academic-industry background
-
-**Research & Publications**:
-- Target SINTA 2-4 indexing by 2027
-- Active research collaboration dengan pemerintah daerah
-- Peer-reviewed publications di jurnal terakreditasi
+### 2.3 Visi & Misi Program Studi & Lembaga
+- **Prodi Akuntansi**:
+    - **Visi**: Menjadi Program Studi yang Berdaya Saing dan Berkontribusi bagi perkembangan ilmu akuntansi di Indonesia Tahun 2026.
+    - **Misi**: Melaksanakan pembelajaran, penelitian, pengabdian, dan kemitraan di bidang akuntansi untuk mendukung daya saing lulusan dan pengembangan usaha/publik.
+- **Prodi Manajemen**:
+    - **Visi**: Mewujudkan Program Studi Manajemen yang menghasilkan mutu lulusan yang unggul dan bermanfaat bagi perkembangan ilmu Manajemen berskala nasional tahun 2026.
+    - **Misi**: Melaksanakan pembelajaran, penelitian, pengabdian, dan kemitraan di bidang manajemen untuk mendukung daya saing lulusan dan pengembangan usaha/publik.
+- **LPPM (Lembaga Penelitian dan Pengabdian kepada Masyarakat)**:
+    - **Visi**: Menjadi lembaga yang berdaya saing dan berperan aktif dalam pembangunan bangsa.
+    - **Misi**: Mengembangkan budaya meneliti, aktivitas pengabdian yang bermanfaat, dan kerjasama kemitraan.
 
 ---
 
-## **4. Student Success & Outcomes**
+## 3. Identitas & Strategi Merek
 
-### **4.1 Enrollment & Demographics**
-**Current Active Students (2022/2023)**:
-- **Program Akuntansi**: 166 mahasiswa (39 pria, 127 wanita)
-- **Gender Distribution**: 76% perempuan, 24% pria
-- **Scholarship Recipients**: 60% receive full tuition coverage
+### 3.1 Proposisi Nilai & Budaya Kunci
+- **Fondasi**: Berlandaskan Pancasila dan UUD 1945, dengan asas kemandirian dan kemitraan.
+- **Nilai Luhur**: Jujur, Peduli, Adil, dan Kebersamaan untuk membangun karakter unggul.
+- **Prinsip Operasional**: Integritas, Profesional, Respect, Teamwork, dan Excellence (5R).
+- **Komitmen**: Menghasilkan lulusan unggul dengan jaminan biaya pendidikan (KIP Kuliah Merdeka, beasiswa penuh) untuk mahasiswa berprestasi dan kurang mampu.
 
-**Historical Graduates**:
-- **Akuntansi Alumni**: 237 lulusan (2012-2023)
-- **Manajemen Alumni**: 512 lulusan (2012-2023)
-- **Total Impact**: 749+ professionals dalam 11 tahun
+### 3.2 Strategi Merek & Pengembangan
+- **Tiga Tahap Pengembangan**: Input (branding & rekrutmen), Process (stabilitas kampus), dan Output (pelacakan alumni).
+- **Pilar Branding**: Unique Selling Point (biaya, kualitas), Visibility (media online/offline), dan Activity (kegiatan sosial).
+- **Lima Strategi "Re-"**: Re-Structuring, Re-Engineering, Re-Training, Re-Positioning, Re-Modeling untuk menciptakan budaya kerja profesional dan solid.
+- **Strategi Pengembangan**: Konsolidasi kemitraan, penguatan promosi, penguatan jaringan alumni, implementasi penjaminan mutu, dan peningkatan daya saing kurikulum berbasis KKNI dan MBKM.
 
-### **4.2 Employment Guarantee Performance**
-**Verified Career Outcomes (2024 Tracer Study)**:
-- **6-Month Placement Rate**: 85% (exceeds 80% target)
-  - Akuntansi: 64% dalam ≤6 bulan
-  - Manajemen: 71% dalam ≤6 bulan
-- **Average Starting Salary**: 1.3× UMK Banten
-- **Job Relevance**: 80% bekerja sesuai bidang studi
-- **Employer Satisfaction**: 4.2/5.0 (50+ employer surveys)
+### 3.3 Prioritas Komunikasi
+- **Rekrutmen**: Iklan, pamflet, sosialisasi sekolah, website, media sosial, dan kampanye langsung.
+- **Kegiatan Publik**: Pelatihan kewirausahaan, berbagi takjil, bursa kerja, dan seminar.
+- **Transparansi**: Komunikasi aktif terkait akreditasi, beasiswa KIP Kuliah, dan Tracer Study.
+- **Publikasi Ilmiah**: Mendorong dosen untuk publikasi di jurnal terindeks SINTA.
 
-**Career Distribution**:
-- **Financial Services**: 53% (Banking, Insurance, Investment)
-- **Corporate Banking**: 38% (Commercial & Retail)
-- **Entrepreneurship**: 9% (Self-employed, startups)
-
-### **4.3 Scholarship Excellence Program**
-**Coverage Tiers**:
-- **Beasiswa Penuh (100%)**: 60% of seats
-  - Academic Merit + Need-Based Assessment
-  - Includes living allowance transfer
-- **Beasiswa Parsial (50-75%)**: 25% of seats
-- **Regular Tuition**: 15% of seats
-
-**Selection Pathways**:
-- **PMDK (Academic Track)**: Nilai rapor minimal 8.0
-- **USM (Entrance Exam)**: Skor minimal qualifying
-- **Tahfidz Track**: Hafal minimal 3 Juz Alquran
-- **Prestasi Track**: Achievement portfolio
+### 3.4 Identitas Visual (Logo)
+- **Buku Terbuka (Inisial DM)**: Melambangkan institusi pendidikan yang berlandaskan Tridharma Perguruan Tinggi.
+- **4 Orang Berpegangan**: Melambangkan 4 Pilar Pendidikan UNESCO (Learning to know, to do, to be, to live together).
+- **Lingkaran**: Melambangkan dinamisme, kualitas, dan keandalan dalam pengembangan ilmu pengetahuan.
 
 ---
 
-## **5. Campus Life & Student Experience**
+## 4. Keunggulan Akademik & Program
 
-### **5.1 Comprehensive Facilities**
-**Academic Infrastructure**:
-- Laboratorium Komputer (50+ workstations)
-- Perpustakaan Digital (Clinical Key access)
-- Ruang Diskusi Kolaboratif
-- Musholla & Area Ibadah
-- Taman Kampus Asri
+### 4.1 Program Studi & Akreditasi
+- **S1 Akuntansi**: Terakreditasi **"Baik"** (BAN-PT No. 6876/SK/BAN-PT/Ak.KP/S/X/2022).
+- **S1 Manajemen**: Terakreditasi **"Baik"** (BAN-PT No. 6572/SK/BAN-PT/Ak.KP/S/IX/2022).
 
-**Student Welfare**:
-- Toilet Bersih & Accessible
-- Lahan Parkir Memadai
-- Kantin Sehat & Halal
-- Medical Emergency Support
+### 4.2 Kurikulum & Keunggulan Kompetitif
+- **Kurikulum Relevan**: Mengadopsi KKNI, MBKM, dan disesuaikan dengan kebutuhan industri 4.0 (Fintech, Big Data, AI, Blockchain, IoT).
+- **Komposisi Kurikulum**: 75% kurikulum nasional dan 25% kurikulum lokal (Total 148 SKS).
+- **Keunggulan**: Biaya terjangkau, kualitas, lokasi strategis, kurikulum mutakhir, dan sertifikasi BNSP melalui Competence Development Unit (CDU).
 
-### **5.2 Student Development Programs**
-**Character Building Initiatives**:
-- PKKMB (Pengenalan Kehidupan Kampus)
-- LDKM (Latihan Dasar Kepemimpinan)
-- Mental Building Outbound
-- Softskills Training Intensif
-
-**Professional Readiness**:
-- CDU (Competence Development Unit)
-- BNSP Certification Programs
-- Industry Mentorship Matching
-- Career Services Individual Coaching
-
-### **5.3 Active Student Organizations**
-**Governance & Leadership**:
-- Badan Eksekutif Mahasiswa (BEM)
-- Himpunan Mahasiswa Manajemen (HIMAMA)
-- Komunitas Akuntansi
-- HIMA-KIP (Beasiswa Recipients)
-
-**Skills & Interests**:
-- English Club (International Readiness)
-- Mahasiswa Pencinta Alam
-- UKM Olahraga (6+ cabang)
-- Unit Pengajian Mahasiswa Muslim
+### 4.3 Pengalaman Akademik
+- **Metode**: Interaktif, holistik, integratif, saintifik, tematik, kolaboratif, dan berpusat pada mahasiswa.
+- **Fasilitas**: Perpustakaan digital (Clinical Key), laboratorium komputer, ruang diskusi.
+- **Program**: Kampus Mengajar, Pendampingan Bumdes, magang, KKN, dan visiting lecturer.
 
 ---
 
-## **6. Industry Integration & Partnerships**
+## 5. Kepemimpinan & Struktur Organisasi
 
-### **6.1 Strategic MoU Portfolio**
-**Corporate Partners** (verified for marketing use):
-- **PT Bank Mandiri Tbk**: Graduate recruitment pipeline
-- **PT Unilever Indonesia**: Supply chain internships
-- **Pemkab Serang**: Local economic development projects
-- **Universitas Bina Bangsa**: Academic collaboration
+### 5.1 Struktur & Kepemimpinan
+- **Ketua Yayasan Dwimulya Sahati**.
+- **Ketua STIE Dwimulya**: Penanggung jawab utama.
+- **Pembantu Ketua**:
+    - **PK I**: Bidang Akademik.
+    - **PK II**: Bidang Administrasi Umum dan Keuangan.
+    - **PK III**: Bidang Kemahasiswaan dan Kerjasama.
+- **Unsur Lain**: Senat, Dewan Penyantun, Ketua Program Studi, Kepala Bagian, dan Unit Pelaksana Teknis (Perpustakaan, Lab, LPPM, P2M).
 
-**Value Proposition for Partners**:
-- Pre-qualified graduate pool
-- Custom training program development
-- Research collaboration opportunities
-- CSR partnership alignment
-
-### **6.2 Practical Learning Integration**
-**Hands-On Experience Programs**:
-- **Magang Industri**: 15+ partner companies
-- **Company Visit**: Quarterly industry exposure
-- **Business Plan Competition**: Real investor pitches
-- **Live Case Studies**: Current industry challenges
-
-**Alumni Network Activation**:
-- Monthly mentorship sessions
-- Annual Alumni Impact Report
-- Career referral network
-- Professional development webinars
+### 5.2 Daftar Dosen (Contoh)
+- **Prodi Manajemen**: Dr. H. Rachmat Maulana, Jenal Alamsah, Bambang Arianto, Fadjar Muliawan, dll. (Total 11 dosen, 4 doktor).
+- **Prodi Akuntansi**: Total 11 dosen (2 doktor, 4 magister).
 
 ---
 
-## **7. Innovation & Future Readiness**
+## 6. Kemahasiswaan & Lulusan
 
-### **7.1 Digital Transformation Initiatives**
-**Academic Technology**:
-- SIAKAD (Sistem Informasi Akademik) terintegrasi
-- Online Learning Management System
-- Digital Portfolio Development
-- Virtual Reality Business Simulations
+### 6.1 Data Mahasiswa & Lulusan
+- **Mahasiswa Aktif (2022/2023)**: 166 di Akuntansi (76% wanita).
+- **Total Lulusan (2012-2023)**: 749 orang (237 Akuntansi, 512 Manajemen).
 
-**Industry 4.0 Preparation**:
-- Fintech Specialization Track
-- Digital Marketing Certification
-- Data Analytics Workshop Series
-- Blockchain for Accounting
+### 6.2 Pengalaman & Kegiatan Mahasiswa
+- **Penerimaan**: Jalur PMDK (prestasi rapor), USM (ujian tulis), dan Beasiswa Tahfidz.
+- **Kegiatan Wajib**: PKKMB, LDKM, Mental Building.
+- **UKM**: BEM, HIMAMA, HIMA-KIP, Pecinta Alam, English Club, Olahraga (6 cabang), dll.
+- **Layanan**: Bimbingan karir, sertifikasi BNSP, layanan informasi via SIAKAD.
 
-### **7.2 Research & Development Focus**
-**Priority Research Areas**:
-- Sustainable Business Practices
-- Digital Financial Inclusion
-- UMKM Development Strategy
-- Regional Economic Development
+### 6.3 Peluang & Pengembangan Karir
+- **Penempatan Kerja Cepat**: 71% lulusan Manajemen & 64% lulusan Akuntansi bekerja dalam ≤ 6 bulan.
+- **Kesesuaian Bidang Kerja**: Tinggi, mencapai 80% untuk prodi Manajemen.
+- **Sektor Pekerjaan**: Keuangan (53%), Perbankan (38%), Wirausaha (9%).
+- **Pengembangan Dosen**: Fasilitasi studi lanjut S3, peningkatan jabatan fungsional, dan dukungan publikasi.
 
-**Publication Strategy**:
-- Target: SINTA 2-4 journal publications
-- Industry-academic collaboration research
-- Policy recommendation development
-- Public knowledge dissemination
+### 6.4 Prestasi
+- **Institusi**: Akreditasi "Baik" untuk kedua prodi.
+- **Mahasiswa**: Juara di berbagai kompetisi regional dan nasional, termasuk Business Plan, Kompetisi Pajak, Olimpiade Akuntansi, dan Pencak Silat.
 
 ---
 
-## **8. Community Impact & Social Responsibility**
+## 7. Kemitraan & Jejaring
 
-### **8.1 Local Economic Development**
-**Community Engagement Programs**:
-- UMKM Training & Consultation
-- Financial Literacy Workshops
-- Tax Compliance Training
-- Digital Marketing for Local Business
+### 7.1 Kemitraan Strategis
+- Kerjasama Tridharma dengan Universitas Bina Bangsa Serang.
+- Kerjasama penelitian dengan pemerintah daerah Kabupaten Serang.
+- Dapat menjalin kerjasama dengan perguruan tinggi lain, lembaga, badan usaha, dan LSM.
 
-**Regional Development Partnerships**:
-- Kabupaten Serang economic planning
-- Banten Province UMKM development
-- Local government policy research
-- Community empowerment initiatives
-
-### **8.2 Social Impact Measurement**
-**Quantified Community Benefits**:
-- 500+ UMKM trained (2020-2024)
-- 15+ community development projects
-- 200+ free financial literacy sessions
-- 50+ tax compliance workshops
-
-**Sustainable Development Goals Alignment**:
-- Quality Education (SDG 4)
-- Decent Work & Economic Growth (SDG 8)
-- Reduced Inequalities (SDG 10)
-- Partnerships for Goals (SDG 17)
+### 7.2 Jejaring Alumni
+- Organisasi alumni difasilitasi untuk membina hubungan dan mendukung tujuan institusi.
+- Tracer Study tahunan dilakukan oleh Pusat Pengembangan Karir dan Alumni (P2KA) untuk umpan balik kurikulum.
+- Mayoritas alumni (70%) bekerja di perusahaan nasional atau berwirausaha.
 
 ---
+**Dokumen Otoritas**: Komunikasi Strategis & Manajemen Merek  
+**Terakhir Diperbarui**: Agustus 2025  
+**Klasifikasi**: Penggunaan Strategis Internal
 
-## **9. Competitive Intelligence & Market Position**
-
-### **9.1 Market Positioning Analysis**
-**vs. Universitas Swasta Terkemuka Banten**:
-- Beasiswa: STIE 60% vs Kompetitor 25%
-- Job Placement: STIE <6 bulan vs Kompetitor 9-12 bulan
-- Transparency: STIE Dashboard vs Kompetitor tidak tersedia
-
-**vs. Politeknik Negeri Serang**:
-- Beasiswa: STIE 60% vs PTN 0%
-- Career Support: STIE guaranteed vs PTN limited
-- Industry Partnership: STIE 15+ vs PTN terbatas
-
-### **9.2 Brand Recognition Metrics**
-**Current Performance (2024)**:
-- Brand Recall (17-19 thn, Banten): 22% (target 35% by 2026)
-- Instagram Engagement Rate: 6.2% (exceeds 6% target)
-- Website Conversion: 12.5% (inquiry form completion)
-- Social Media Sentiment: 74% positive
-
----
-
-## **10. Strategic Roadmap & Future Vision**
-
-### **10.1 Vision 2026 Targets**
-**Institutional Excellence**:
-- Program Pascasarjana operasional
-- SINTA 2 research publications
-- 1000+ active students
-- Regional hub status untuk ekonomi digital
-
-**Student Success Metrics**:
-- 90% job placement dalam 6 bulan
-- 1.5× UMK Banten average starting salary
-- 50+ industry partnership MoUs
-- International exchange program
-
-### **10.2 Expansion Strategy**
-**Geographic Expansion**:
-- Jakarta satellite campus (planning phase)
-- Online degree program development
-- Regional scholarship program scaling
-- Alumni chapter establishment
-
-**Program Diversification**:
-- Executive Education untuk profesional
-- Professional Certification Center
-- Digital Business Incubator
-- International Partnership Program
-
----
-
-## **11. Critical Success Factors**
-
-### **11.1 Operational Excellence**
-**Quality Assurance**:
-- Sistem Penjaminan Mutu Internal (SPMI)
-- Annual curriculum review dengan industry input
-- Faculty development kontinyu
-- Student satisfaction monitoring
-
-**Financial Sustainability**:
-- Diversified revenue streams
-- Government partnership funding
-- Corporate training revenue
-- Alumni giving program
-
-### **11.2 Stakeholder Alignment**
-**Key Stakeholder Groups**:
-- **Students & Parents**: Value delivery & transparency
-- **Industry Partners**: Talent pipeline & research collaboration
-- **Government**: Policy alignment & regional development
-- **Alumni**: Career advancement & network expansion
-
-**Communication Strategy**:
-- Transparent reporting (quarterly)
-- Regular stakeholder feedback collection
-- Crisis communication protocols
-- Brand consistency maintenance
-
----
-
-## **12. Contact Directory & Governance**
-
-### **12.1 Key Leadership Contacts**
-**Academic Leadership**:
-- **Ketua STIE**: Strategic direction & policy
-- **Pembantu Ketua I**: Academic affairs & research
-- **Pembantu Ketua II**: Administration & finance
-- **Pembantu Ketua III**: Student affairs & partnerships
-
-**Operational Contacts**:
-- **Brand Guardian**: Ibu Tita Oktaviani (brand@stiedwimulya.ac.id)
-- **Admissions**: info@stiedwimulya.ac.id
-- **Career Services**: career@stiedwimulya.ac.id
-- **Industry Relations**: partnership@stiedwimulya.ac.id
-
-### **12.2 External Relations**
-**Media & Communications**:
-- Press inquiries: press@stiedwimulya.ac.id
-- Crisis communication: <30 menit response time
-- Social media: @stiedwimulya (all platforms)
-- Brand asset requests: brand@stiedwimulya.ac.id
-
-**Legal & Compliance**:
-- Legal affairs: legal@stiedwimulya.ac.id
-- Audit & compliance: audit@stiedwimulya.ac.id
-- Data protection: privacy@stiedwimulya.ac.id
-
----
-
-**Document Authority**: Strategic Communications & Brand Management  
-**Last Updated**: January 2025  
-**Next Review**: April 2025  
-**Classification**: Internal Strategic Use
-
-*"Dari Serang, Untuk Indonesia – Building Future Leaders Through Guaranteed Excellence"*
+*"Dari Serang, Untuk Indonesia – Membangun Pemimpin Masa Depan Melalui Keunggulan Terjamin"*
