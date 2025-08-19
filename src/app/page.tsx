@@ -12,7 +12,7 @@ import { PromoBar } from "@/components/blocks/promo-bar";
 import { QuoteSection } from "@/components/blocks/quote-section";
 import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/universal/site-footer";
-import { homePageData } from "@/lib/data/pages";
+import { homePageData } from "./home-data";
 import { Snowflakes } from "@/components/blocks/snowflakes";
 import { HierarchicalTease } from "@/components/blocks/hierarchical-tease";
 

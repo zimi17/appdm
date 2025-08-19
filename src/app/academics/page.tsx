@@ -8,7 +8,7 @@ import { TwoColumnContent } from "@/components/blocks/two-column-content";
 import { SiteFooter } from "@/components/universal/site-footer";
 import { AccordionSection } from "@/components/blocks/accordion-section";
 import { Aside } from "@/components/primitives/aside";
-import { academicsPageData } from "@/lib/data/pages";
+import { academicsPageData } from "./academics-data";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/primitives/breadcrumbs";
 
