@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/blocks/hero-section/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar/promo-bar";
 import { Aside } from "@/components/primitives/aside/aside";
 import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
+import { PageHead } from "@/components/primitives/page-head/page-head";
 import { academicsPageData } from "./akademik-data";
 import Link from "next/link";
 
@@ -15,6 +16,11 @@ export default function Academics() {
 
   return (
     <>
+      <PageHead
+        title="Akademik - STIE Dwimulya"
+        description="Jelajahi program akademik, kurikulum, dan peluang pendidikan di STIE Dwimulya."
+        image={{ src: hero.imageUrl, alt: hero.title }}
+      />
       <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
         <div className="col-span-full">
             <Breadcrumbs breadcrumbs={breadcrumbs} />
