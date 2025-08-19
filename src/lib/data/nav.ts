@@ -1,4 +1,5 @@
 
+
 export const navLinks = [
   {
     id: 'akademik',
@@ -53,13 +54,13 @@ export const navLinks = [
       { id: 'bauk', title: "BAUK", href: "/layanan/bauk" },
       {
         id: 'cdu',
-        title: "CDU",
-        href: "/layanan/cdu",
+        title: "Pusat Karir",
+        href: "/pusat-karir",
         description: "Career Development Unit untuk lowongan kerja, magang, dan pelatihan.",
         sublinks: [
-          { id: 'lowongan-kerja', title: "Lowongan Kerja", href: "/layanan/cdu/lowongan-kerja" },
-          { id: 'magang', title: "Magang", href: "/layanan/cdu/magang" },
-          { id: 'pelatihan', title: "Pelatihan", href: "/layanan/cdu/pelatihan" }
+          { id: 'lowongan-kerja', title: "Lowongan Kerja", href: "/pusat-karir/lowongan-kerja" },
+          { id: 'magang', title: "Magang", href: "/pusat-karir/magang" },
+          { id: 'pelatihan', title: "Pelatihan", href: "/pusat-karir/pelatihan" }
         ]
       }
     ]
@@ -88,11 +89,10 @@ export const hotLinks = [
 
 export const footerBlocks = [
     {
-      title: 'STIE Dwimulya',
+      title: 'Tentang Kami',
       items: [
-        {
-          children: "Jl. Kav. Sindangsari B1, Kec. Pabuaran, Serang 42163, Banten"
-        }
+        { children: "Sejarah", href: "/tentang/sejarah" },
+        { children: "Visi & Misi", href: "/tentang/visi-misi" },
       ]
     },
     {
@@ -108,16 +108,6 @@ export const footerBlocks = [
         }
       ]
     },
-    {
-        title: "Media Sosial",
-        items: [
-            { children: "Instagram", href: "#" },
-            { children: "TikTok", href: "#" },
-            { children: "LinkedIn", href: "#" },
-            { children: "Facebook", href: "#" },
-            { children: "YouTube", href: "#" },
-        ]
-    }
 ];
 
   export const footerLegalItems = [
