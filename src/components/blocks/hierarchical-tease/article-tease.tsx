@@ -18,7 +18,7 @@ export function ArticleTease({ item, isFeatured = false }: { item: any, isFeatur
             />
             <div className="mt-4">
                 <p className="text-sm font-semibold text-primary">{item.overline}</p>
-                <h3 className={cn("font-headline font-bold mt-1", isFeatured ? "text-3xl" : "text-xl")}>
+                <h3 className={cn("font-headline font-bold mt-1 text-white", isFeatured ? "text-3xl" : "text-xl")}>
                     <Link href={item.href} className="hover:underline">{item.title}</Link>
                 </h3>
                 <p className="text-sm text-muted-foreground mt-2">{item.meta}</p>
