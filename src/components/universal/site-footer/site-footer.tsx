@@ -20,11 +20,11 @@ export function SiteFooter() {
     <footer className="mt-auto">
       <SiteFooterPrimaryCta
         title="Daftar Sekarang"
-        description="Mulai perjalanan Anda menuju karier yang pasti dalam 6 bulan."
+        description="Mulai perjalanan Anda menuju karier yang pasti."
         href="/pendaftaran"
       />
       <div className="bg-secondary text-secondary-foreground">
-        <div className="container mx-auto py-16">
+        <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
               <Link href="/" aria-label="Beranda" className="mb-4">
