@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { motion } from "framer-motion";
@@ -21,7 +20,7 @@ export function HierarchicalTease({
 
   return (
     <motion.section
-      className={cn("bg-secondary text-secondary-foreground py-16 md:py-24", className)}
+      className={cn("py-16 md:py-24", className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}

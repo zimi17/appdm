@@ -5,7 +5,6 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/universal/site-header/site-header";
 import { MissionTopper } from "@/components/blocks/mission-topper/mission-topper";
 import { HeroCarousel } from "@/components/blocks/hero-carousel/hero-carousel";
-import { InfoCardGrid } from "@/components/blocks/info-card-grid/info-card-grid";
 import { HeroStatement } from "@/components/blocks/hero-statement";
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
@@ -13,6 +12,8 @@ import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/key
 import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
 import { SectionHeader } from "@/components/blocks/section-header";
 import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
+import { CardGrid } from "@/components/blocks/card-grid/card-grid";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -31,7 +32,7 @@ export default function Home() {
                             className="col-span-full"
                         />
                     </div>
-                    <div className="max-w-screen-2xl mx-auto px-6">
+                     <div className="max-w-screen-2xl mx-auto px-6">
                         <HeroCarousel 
                             slides={missionTopper.slides}
                             activeSlide={activeSlide}
@@ -41,11 +42,12 @@ export default function Home() {
                 </section>
                 
                 <section className="py-16 md:py-24 bg-background">
-                     <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                        <InfoCardGrid 
+                    <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                        <CardGrid 
                             title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                             items={infoCards}
                             className="col-span-full"
+                            cardClassName="bg-secondary text-secondary-foreground hover:bg-accent"
                         />
                     </div>
                 </section>
@@ -65,9 +67,10 @@ export default function Home() {
                 
                 <KeywordScrollLists keywords={snowflakes.keywords} />
 
-                <HierarchicalTease
+                 <HierarchicalTease
                     header={hierarchicalTease.header}
                     articles={hierarchicalTease.articles}
+                    className="bg-secondary text-secondary-foreground"
                 />
                 <section className="py-16 md:py-24 bg-background">
                     <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">

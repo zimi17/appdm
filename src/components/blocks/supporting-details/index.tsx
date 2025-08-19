@@ -31,7 +31,7 @@ export function SupportingDetails({ items = [], mediaAsset, className }: Support
       transition={{ staggerChildren: 0.15 }}
     >
         <motion.ul 
-          className="grid md:grid-cols-2 gap-x-8 gap-y-10 lg:col-span-7"
+          className="grid md:grid-cols-2 gap-x-8 gap-y-10 lg:col-span-8"
           variants={{
             visible: {
               transition: {
@@ -43,13 +43,13 @@ export function SupportingDetails({ items = [], mediaAsset, className }: Support
           {items.map((item, i) => (
             <motion.li 
               key={i} 
-              className="flex items-baseline gap-4"
+              className="flex items-start gap-4"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
             >
-              <div className="w-16 shrink-0 border-t-2 border-primary translate-y-3"></div>
+              <div className="w-16 shrink-0 border-t-2 border-primary mt-3"></div>
               <div>
                 {item.title && (
                   <h3 className="text-xl font-bold font-headline text-foreground">
@@ -66,7 +66,7 @@ export function SupportingDetails({ items = [], mediaAsset, className }: Support
 
         {mediaAsset && (
           <motion.div 
-            className="row-start-1 lg:row-start-auto lg:col-span-5"
+            className="row-start-1 lg:row-start-auto lg:col-span-4"
             variants={{
               hidden: { opacity: 0, scale: 0.95 },
               visible: { opacity: 1, scale: 1 }
@@ -77,7 +77,7 @@ export function SupportingDetails({ items = [], mediaAsset, className }: Support
                 src={mediaAsset.src} 
                 alt={mediaAsset.alt}
                 data-ai-hint={mediaAsset.hint}
-                className="aspect-[4/5] overflow-hidden"
+                className="aspect-[3/4] overflow-hidden"
                 imageClassName="object-cover"
                 fill
             />
@@ -86,4 +86,3 @@ export function SupportingDetails({ items = [], mediaAsset, className }: Support
     </motion.div>
   );
 }
-

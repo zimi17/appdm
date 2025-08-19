@@ -38,11 +38,11 @@ export const homePageData = {
     infoCards: [
       { title: "Manajemen (S1)", description: "Fokus pada pengembangan pemimpin bisnis masa depan dengan keahlian praktis.", href: "/akademik", linkText: "Selengkapnya" },
       { title: "Akuntansi (S1)", description: "Mempersiapkan mahasiswa untuk karir di bidang akuntansi publik dan korporat.", href: "/akademik", linkText: "Selengkapnya" },
-      { title: "Biaya Terjangkau", description: "Komitmen kami untuk 'Kampus Rakyat' melalui beragam skema beasiswa dan KIP-K.", href: "/pendaftaran", linkText: "Info Beasiswa" },
-      { title: "Sertifikasi BNSP", description: "Tingkatkan daya saing Anda dengan sertifikasi profesi dari Career Development Unit (CDU) kami.", href: "/layanan/cdu", linkText: "Lihat Sertifikasi" },
+      { title: "Beasiswa & Bantuan", description: "Komitmen kami untuk 'Kampus Rakyat' melalui beragam skema beasiswa dan KIP-K.", href: "/pendaftaran", linkText: "Info Beasiswa" },
+      { title: "Sertifikasi Profesi", description: "Tingkatkan daya saing Anda dengan sertifikasi dari Career Development Unit (CDU) kami.", href: "/layanan/cdu", linkText: "Lihat Sertifikasi" },
   ],
   heroStatement: {
-    title: "Kampus Rakyat, Kampus Perubahan",
+    title: "Pemikir Berani, Pembelajar Kolaboratif",
     description: "STIE Dwimulya adalah pusat pendidikan ekonomi yang berakar kuat di Banten. Kami adalah ekosistem dinamis dari pembelajaran, penelitian terapan, dan kewirausahaan yang bertujuan untuk memberdayakan masyarakat dan mendorong pertumbuhan ekonomi regional melalui lulusan yang kompeten dan berkarakter.",
     imageUrl: "https://images.pexels.com/photos/32907649/pexels-photo-32907649.jpeg",
     imageHint: "campus building",

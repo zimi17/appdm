@@ -11,46 +11,48 @@ const cardVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const Card = ({ item }: { item: any }) => (
+const Card = ({ item, cardClassName }: { item: any, cardClassName?: string }) => (
   <motion.div 
-    className="flex flex-col h-full group bg-background transition-colors duration-300 hover:bg-card"
+    className={cn("flex flex-col h-full group bg-background transition-colors duration-300 hover:bg-card", cardClassName)}
     variants={cardVariants}
   >
-    <LazyImage 
-      src={item.image} 
-      alt={item.title} 
-      className="aspect-[3/2]"
-      imageClassName="object-cover group-hover:scale-105 transition-transform duration-300"
-      data-ai-hint={item.hint} 
-      fill
-    />
+    {item.image && (
+        <LazyImage 
+        src={item.image} 
+        alt={item.title} 
+        className="aspect-[3/2]"
+        imageClassName="object-cover group-hover:scale-105 transition-transform duration-300"
+        data-ai-hint={item.hint} 
+        fill
+        />
+    )}
     <div className="p-8 flex flex-col flex-grow">
-      <h3 className="font-headline text-2xl mb-4 text-foreground">{item.title}</h3>
-      <p className="text-lg mb-6 flex-grow text-muted-foreground">{item.description}</p>
-      <CtaLink href={item.href} variant="link">{item.linkText}</CtaLink>
+      <h3 className="font-headline text-2xl mb-4">{item.title}</h3>
+      <p className="text-lg mb-6 flex-grow opacity-90">{item.description}</p>
+      <CtaLink href={item.href} variant="link" className="mt-auto self-start text-primary-foreground hover:text-primary-foreground/80 group-[.hover\\:bg-accent]:text-primary-foreground group-[.hover\\:bg-accent]:hover:text-primary-foreground/80 group-[.bg-background]:text-primary group-[.bg-background]:hover:text-accent-foreground">
+        {item.linkText}
+      </CtaLink>
     </div>
   </motion.div>
 );
 
-export function CardGrid({ title, items, className, titleClassName, hrClassName }: { title?: string, items: any[], className?: string, titleClassName?: string, hrClassName?:string }) {
+export function CardGrid({ title, items, className, titleClassName, hrClassName, cardClassName }: { title?: string, items: any[], className?: string, titleClassName?: string, hrClassName?:string, cardClassName?: string }) {
   return (
     <motion.section 
-      className={cn("py-16 md:py-24 bg-background", className)}
+      className={cn("py-16 md:py-24 bg-transparent", className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.2 }}
     >
-      <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
         <div className="col-span-full">
             {title && (
             <ComponentHeader title={title} titleClassName={titleClassName} hrClassName={hrClassName} />
             )}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {items.map((item, index) => <Card key={item.title + index} item={item} />)}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {items.map((item, index) => <Card key={item.title + index} item={item} cardClassName={cardClassName} />)}
             </div>
         </div>
-      </div>
     </motion.section>
   )
 }

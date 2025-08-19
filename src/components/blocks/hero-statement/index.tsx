@@ -1,5 +1,4 @@
 
-
 'use client';
 import { motion } from 'framer-motion';
 import { CtaList } from '../../primitives/cta-list';
@@ -21,38 +20,36 @@ interface HeroStatementProps {
 
 export function HeroStatement({ title, description, imageUrl, imageHint, links, className }: HeroStatementProps) {
     return (
-        <section className={cn("bg-card py-16 md:py-24", className)}>
+        <div 
+            className={cn("grid lg:grid-cols-12 gap-12 items-center", className)}
+        >
             <motion.div 
-                className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6 items-center"
-                initial="hidden"
-                whileInView="visible"
+                className="lg:col-span-7 order-last lg:order-first"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ staggerChildren: 0.2 }}
+                transition={{duration: 0.5}}
             >
-                <motion.div 
-                    className="col-span-full lg:col-span-8"
-                    variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
-                    transition={{duration: 0.5}}
-                >
-                    <ComponentHeader title={title} hrClassName="border-primary" titleClassName="font-bold" />
-                    <p className="text-lg text-muted-foreground mt-4">{description}</p>
-                    <CtaList items={links} />
-                </motion.div>
-                <motion.div 
-                    className="col-span-full lg:col-span-8 row-start-1 lg:row-start-auto"
-                    variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } }}
-                    transition={{duration: 0.5}}
-                >
-                    <LazyImage 
-                        src={imageUrl} 
-                        alt={title} 
-                        className="relative aspect-[3/2] overflow-hidden"
-                        imageClassName="object-cover"
-                        data-ai-hint={imageHint}
-                        fill
-                    />
-                </motion.div>
+                <ComponentHeader title={title} hrClassName="border-primary" titleClassName="font-bold" />
+                <p className="text-lg text-muted-foreground mt-4">{description}</p>
+                <CtaList items={links} />
             </motion.div>
-        </section>
+            <motion.div 
+                className="lg:col-span-5 order-first lg:order-last"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{duration: 0.5}}
+            >
+                <LazyImage 
+                    src={imageUrl} 
+                    alt={title} 
+                    className="relative aspect-[4/5] overflow-hidden"
+                    imageClassName="object-cover"
+                    data-ai-hint={imageHint}
+                    fill
+                />
+            </motion.div>
+        </div>
     );
 }
