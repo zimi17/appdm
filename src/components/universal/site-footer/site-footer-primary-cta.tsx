@@ -19,7 +19,7 @@ export function SiteFooterPrimaryCta({
   if (!title || !href) return null;
 
   return (
-    <div className="bg-secondary text-secondary-foreground group hover:bg-accent transition-colors duration-300">
+    <div className="bg-secondary text-secondary-foreground group hover:bg-[#17A2B8] transition-colors duration-300">
       <div className="max-w-screen-2xl mx-auto px-6">
         <Link href={href} className="block py-4 md:py-6">
           <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-8 items-center">
