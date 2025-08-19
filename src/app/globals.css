@@ -205,9 +205,12 @@
     @apply inline-block px-4;
 
     &:not(:last-child):after {
-      content: "/";
-      color: hsl(var(--primary));
-      @apply inline-block align-middle pl-8 text-3xl md:text-4xl lg:text-6xl;
+      content: "";
+      height: 0.95em;
+      @apply inline-block border-r-2 border-primary align-middle;
+      margin-bottom: -0.15em;
+      margin-left: 0.4em;
+      margin-right: 0.4em;
       transform: rotate(15deg);
     }
   }
