@@ -11,7 +11,7 @@ export function ArticleTease({ item, isFeatured = false }: { item: any, isFeatur
             <LazyImage 
                 src={item.image} 
                 alt={item.title} 
-                className={cn("aspect-[3/2] w-full", isFeatured ? "md:aspect-[2/1] lg:aspect-[3/2]" : "aspect-video")}
+                className={cn("w-full", isFeatured ? "aspect-[3/2]" : "aspect-[3/2]")}
                 imageClassName="object-cover group-hover:scale-105 transition-transform duration-300"
                 data-ai-hint={item.hint}
                 fill 
