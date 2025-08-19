@@ -20,7 +20,7 @@ export function HierarchicalTease({
 
   return (
     <motion.section
-      className={cn("py-16 md:py-24", className)}
+      className={cn("bg-card text-foreground py-16 md:py-24", className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}

@@ -1,121 +1,83 @@
+"use client";
 
-'use client';
+import { useState } from "react";
+import { MissionTopper } from "@/components/blocks/mission-topper/mission-topper";
+import { HeroCarousel } from "@/components/blocks/hero-carousel/hero-carousel";
+import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
+import { homePageData } from "./home-data";
+import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
+import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
+import { CardGrid } from "@/components/blocks/card-grid/card-grid";
 
-import * as React from "react";
-import { useEffect, useState, CSSProperties, useRef } from "react";
-import { cn } from "@/lib/utils";
+export default function Home() {
+    const [activeSlide, setActiveSlide] = useState(0);
+    const { missionTopper, programCards, heroStatement, snowflakes, hierarchicalTease, distinction } = homePageData;
 
-interface KeywordProps {
-  label: string;
-}
+    return (
+        <>
+            <section className="bg-card">
+                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                    <MissionTopper 
+                        titleParts={missionTopper.titleParts} 
+                        activeSlide={activeSlide}
+                        setActiveSlide={setActiveSlide}
+                        className="col-span-full"
+                    />
+                </div>
+                    <div className="max-w-screen-2xl mx-auto px-6">
+                    <HeroCarousel 
+                        slides={missionTopper.slides}
+                        activeSlide={activeSlide}
+                        setActiveSlide={setActiveSlide}
+                    />
+                </div>
+            </section>
+            
+            <section className="bg-background py-16 md:py-24">
+                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                    <div className="col-span-full">
+                        <CardGrid 
+                            items={programCards}
+                            cardClassName="bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground"
+                        />
+                    </div>
+                </div>
+            </section>
 
-interface KeywordScrollListProps {
-  keywords: Array<KeywordProps>;
-}
+            <section className="bg-background pb-16 md:pb-24">
+                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                    <HeroStatement
+                        title={heroStatement.title}
+                        description={heroStatement.description}
+                        imageUrl={heroStatement.imageUrl}
+                        imageHint={heroStatement.imageHint}
+                        links={heroStatement.links}
+                        className="col-span-full"
+                    />
+                </div>
+            </section>
 
-export function Snowflakes({ keywords }: KeywordScrollListProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [scrollPercentage, setScrollPercentage] = useState<number>(0);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
-  const [sortedKeywords, setSortedKeywords] = useState<KeywordProps[]>([]);
-
-  useEffect(() => {
-    // Sort keywords on the client-side only to prevent hydration mismatch
-    setSortedKeywords([...keywords].sort(() => Math.random() - 0.5));
-  }, [keywords]);
-
-  // Distribute keywords into 3 rows
-  const rows = React.useMemo(() => {
-    const numRows = 3;
-    if (sortedKeywords.length === 0) return [[], [], []];
-
-    const baseWordsPerRow = Math.floor(sortedKeywords.length / numRows);
-    const extraWords = sortedKeywords.length % numRows;
-    const newRows: Array<Array<KeywordProps>> = [];
-    let currentIndex = 0;
-
-    for (let i = 0; i < numRows; i++) {
-      const wordsForThisRow = baseWordsPerRow + (i < extraWords ? 1 : 0);
-      const end = currentIndex + wordsForThisRow;
-      const rowKeywords = sortedKeywords.slice(currentIndex, end);
-      
-      // Duplicate keywords to ensure the row is long enough for the scroll effect
-      while(rowKeywords.map(k => k.label).join(' / ').length < 150 && sortedKeywords.length > 0) {
-        rowKeywords.push(...rowKeywords.slice(0, wordsForThisRow));
-      }
-
-      newRows.push(rowKeywords);
-      currentIndex = end;
-    }
-    return newRows;
-  }, [sortedKeywords]);
-
-
-  function updateVariables() {
-    if (ref.current) {
-      const elBoundingBox = ref.current.getBoundingClientRect();
-      const elHeight = elBoundingBox.height;
-      const windowHeight = window.innerHeight;
-      const elTop = elBoundingBox.top;
-      const speedControl = 0.65;
-
-      if (elTop - windowHeight <= 0 && elTop + elHeight > 0) {
-        setScrollPercentage(
-          (1 - (elTop + elHeight) / (elHeight + windowHeight)) * speedControl,
-        );
-        setWindowWidth(window.innerWidth);
-      }
-    }
-  }
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+            <section className="bg-background">
+                <KeywordScrollLists keywords={snowflakes.keywords} />
+            </section>
+            
+            <HierarchicalTease
+                header={hierarchicalTease.header}
+                articles={hierarchicalTease.articles}
+            />
+            
+            <section className="bg-background py-16 md:py-24">
+                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                    <div className="col-span-full lg:col-span-14 lg:col-start-2">
+                        <SupportingDetails
+                            header={distinction.header}
+                            items={distinction.details.items}
+                            mediaAsset={distinction.details.mediaAsset}
+                        />
+                    </div>
+                </div>
+            </section>
+        </>
     );
-    if (prefersReducedMotion?.matches === true) {
-      return;
-    }
-    
-    updateVariables(); // Initial call
-    
-    const onScroll = () => updateVariables();
-    const onResize = () => updateVariables();
-
-    window.addEventListener("scroll", onScroll);
-    window.addEventListener("resize", onResize);
-    
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
-  return (
-    <div
-      className="keyword-scroll-list-container"
-      data-chromatic="ignore"
-      style={
-        {
-          "--keyword-scroll-offset": scrollPercentage,
-          "--window-width": `${windowWidth}px`,
-        } as CSSProperties
-      }
-      ref={ref}
-    >
-      <div className="keyword-scroll-list" aria-hidden="true">
-        {rows.map((row, index) => (
-          <p className="keyword-scroll-list__row" key={index}>
-            {row.map((keyword, i) => (
-              <span
-                key={i}
-                className="keyword-scroll-list__keyword"
-              >
-                {keyword.label}
-              </span>
-            ))}
-          </p>
-        ))}
-      </div>
-    </div>
-  );
 }

@@ -4,6 +4,7 @@
 import { LazyImage } from "@/components/primitives/lazy-image/lazy-image";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { ComponentHeader } from "@/components/primitives/component-header/component-header";
 
 export interface SupportingDetailsListItem {
   title?: ReactNode;
@@ -11,6 +12,14 @@ export interface SupportingDetailsListItem {
 }
 
 export interface SupportingDetailsProps {
+  header: {
+    title: string;
+    description: string;
+    cta: {
+      text: string;
+      href: string;
+    }
+  }
   items?: Array<SupportingDetailsListItem>;
   mediaAsset?: {
     src: string;
@@ -19,7 +28,7 @@ export interface SupportingDetailsProps {
   };
 }
 
-export function SupportingDetails({ items = [], mediaAsset }: SupportingDetailsProps) {
+export function SupportingDetails({ header, items = [], mediaAsset }: SupportingDetailsProps) {
   return (
     <motion.div 
       className="mt-12"
@@ -28,6 +37,7 @@ export function SupportingDetails({ items = [], mediaAsset }: SupportingDetailsP
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.15 }}
     >
+       <ComponentHeader title={header.title} description={header.description} cta={header.cta}/>
       <div className="grid lg:grid-cols-12 gap-12 items-start">
         <motion.ul 
           className="grid md:grid-cols-2 gap-x-8 gap-y-10 lg:col-span-7"

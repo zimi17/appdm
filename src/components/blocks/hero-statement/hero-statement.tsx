@@ -27,7 +27,7 @@ export function HeroStatement({ title, description, imageUrl, imageHint, links, 
             viewport={{ once: true, amount: 0.2 }}
             transition={{ staggerChildren: 0.2 }}
         >
-            <motion.div 
+             <motion.div 
                 className="lg:col-span-6"
                 variants={{ hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } }}
                 transition={{duration: 0.5}}

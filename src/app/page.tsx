@@ -4,11 +4,11 @@
 import { useState } from "react";
 import { MissionTopper } from "@/components/blocks/mission-topper/mission-topper";
 import { HeroCarousel } from "@/components/blocks/hero-carousel/hero-carousel";
-import { HeroStatement } from "@/components/blocks/hero-statement";
+import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
 import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
-import { SupportingDetails } from "@/components/blocks/supporting-details";
+import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
 import { CardGrid } from "@/components/blocks/card-grid/card-grid";
 
 export default function Home() {
@@ -39,7 +39,6 @@ export default function Home() {
                 <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                     <div className="col-span-full">
                         <CardGrid 
-                            title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                             items={programCards}
                             cardClassName="bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground"
                         />
@@ -67,7 +66,6 @@ export default function Home() {
             <HierarchicalTease
                 header={hierarchicalTease.header}
                 articles={hierarchicalTease.articles}
-                className="bg-card"
             />
             
             <section className="bg-background py-16 md:py-24">
@@ -84,4 +82,3 @@ export default function Home() {
         </>
     );
 }
-

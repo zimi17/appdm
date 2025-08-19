@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Logo } from '@/components/primitives/logo';
+import { Logo } from '@/components/primitives/logo/logo';
 
 export function HeaderLogo() {
   return (
