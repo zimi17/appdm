@@ -6,35 +6,29 @@ import { id } from 'date-fns/locale';
 import Link from 'next/link';
 import { type BylineProps, type Author } from '../article-tease/types';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { cn } from '@/lib/utils';
 
+// Helper component untuk merender satu penulis dengan tautan opsional
 const AuthorLink = ({ author, disableLinks }: { author: Author, disableLinks?: boolean }) => {
     if (disableLinks || !author.link) {
-        return <span>{author.name}</span>;
+        return <span className="font-semibold">{author.name}</span>;
     }
-    return <Link href={author.link} className="hover:underline">{author.name}</Link>;
+    return <Link href={author.link} className="font-semibold hover:underline">{author.name}</Link>;
 };
 
+// Helper component untuk merender daftar penulis dengan pemisah yang benar
 const AuthorList = ({ authors, disableLinks }: { authors?: Author[], disableLinks?: boolean }) => {
     if (!authors || authors.length === 0) return null;
 
     return (
         <>
-            {authors.map((author, index) => {
-                let separator = '';
-                if (authors.length > 1) {
-                    if (index < authors.length - 2) {
-                        separator = ', ';
-                    } else if (index === authors.length - 2) {
-                        separator = ' dan ';
-                    }
-                }
-                return (
-                    <span key={author.name} className="inline">
-                        <AuthorLink author={author} disableLinks={disableLinks} />
-                        {separator}
-                    </span>
-                );
-            })}
+            {authors.map((author, index) => (
+                <React.Fragment key={author.name}>
+                    <AuthorLink author={author} disableLinks={disableLinks} />
+                    {authors.length > 1 && index < authors.length - 2 && ', '}
+                    {authors.length > 1 && index === authors.length - 2 && ' dan '}
+                </React.Fragment>
+            ))}
         </>
     );
 };
@@ -46,12 +40,12 @@ export function Byline({ authors, featuredAuthors, publicationDate, type = "Auth
     try {
         formattedDate = format(new Date(publicationDate), "d MMMM yyyy", { locale: id });
     } catch (e) {
-        // Fallback for invalid date
+        // Fallback untuk tanggal yang tidak valid
         formattedDate = publicationDate;
     }
 
-    const showFeatured = type === "Featured" || type === "ShowAll";
-    const showAuthors = type === "Authors" || type === "ShowAll";
+    const showFeatured = (type === "Featured" || type === "ShowAll") && featuredAuthors && featuredAuthors.length > 0;
+    const showAuthors = (type === "Authors" || type === "ShowAll") && authors && authors.length > 0;
     const showDate = type !== "PeopleOnly";
 
     if (type === 'PeopleOnly') {
@@ -67,28 +61,29 @@ export function Byline({ authors, featuredAuthors, publicationDate, type = "Auth
     if (type === 'DateOnly') {
          return (
             <div className="text-sm text-muted-foreground">
-                <p>
-                    <time dateTime={publicationDate}>{formattedDate}</time>
-                </p>
+                <time dateTime={publicationDate}>{formattedDate}</time>
             </div>
          )
     }
     
-    if (type === 'Featured' && featuredAuthors) {
+    if (type === 'Featured' && showFeatured) {
         return (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
                 <div className="flex -space-x-2">
                     {featuredAuthors.map(author => (
-                        <Avatar key={author.name}>
-                            <AvatarImage src={author.avatar?.image.src} alt={author.name} />
+                        <Avatar key={author.name} className="h-8 w-8 border-2 border-background">
+                            <AvatarImage src={author.avatar?.image.src} alt={author.avatar?.image.alt || author.name} />
                             <AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                     ))}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                    <p>
-                        <AuthorList authors={featuredAuthors} disableLinks={disableLinks} />
-                    </p>
+                    <AuthorList authors={featuredAuthors} disableLinks={disableLinks} />
+                    {showDate && (
+                        <span className='ml-1'>
+                            · <time dateTime={publicationDate}>{formattedDate}</time>
+                        </span>
+                    )}
                 </div>
             </div>
         )
@@ -96,24 +91,17 @@ export function Byline({ authors, featuredAuthors, publicationDate, type = "Auth
 
     return (
         <div className="text-sm text-muted-foreground">
-            <p>
-                {showFeatured && featuredAuthors && (
-                    <>
-                        Featuring <AuthorList authors={featuredAuthors} disableLinks={disableLinks} />.
-                    </>
-                )}
-                {showAuthors && authors && (
-                    <>
-                         By <AuthorList authors={authors} disableLinks={disableLinks} />
-                    </>
-                )}
-                {showDate && (
-                    <>
-                        {' on '}
-                        <time dateTime={publicationDate}>{formattedDate}</time>
-                    </>
-                )}.
-            </p>
+            {showAuthors && (
+                <span>
+                    Oleh <AuthorList authors={authors} disableLinks={disableLinks} />
+                </span>
+            )}
+            {showDate && (
+                 <span>
+                    {showAuthors && ' · '}
+                    <time dateTime={publicationDate}>{formattedDate}</time>
+                </span>
+            )}
         </div>
     );
 }
