@@ -41,13 +41,11 @@ export function CardGrid({ title, items, className, titleClassName, hrClassName 
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.2 }}
     >
-        <div className="max-w-screen-2xl mx-auto px-6">
-            {title && (
-            <ComponentHeader title={title} titleClassName={titleClassName} hrClassName={hrClassName} />
-            )}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {items.map((item, index) => <Card key={item.title + index} item={item} />)}
-            </div>
+        {title && (
+        <ComponentHeader title={title} titleClassName={titleClassName} hrClassName={hrClassName} />
+        )}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {items.map((item, index) => <Card key={item.title + index} item={item} />)}
         </div>
     </motion.section>
   )

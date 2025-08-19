@@ -6,13 +6,13 @@ import { SiteHeader } from "@/components/universal/site-header/site-header";
 import { MissionTopper } from "@/components/blocks/mission-topper/mission-topper";
 import { HeroCarousel } from "@/components/blocks/hero-carousel/hero-carousel";
 import { InfoCardGrid } from "@/components/blocks/info-card-grid/info-card-grid";
-import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
+import { HeroStatement } from "@/components/blocks/hero-statement";
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
-import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
-import { SectionHeader } from "@/components/blocks/section-header/section-header";
-import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease";
+import { SectionHeader } from "@/components/blocks/section-header";
+import { SupportingDetails } from "@/components/blocks/supporting-details";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -22,24 +22,24 @@ export default function Home() {
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main id="main-content">
-                <div className="max-w-screen-2xl mx-auto px-6">
+                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                     <MissionTopper 
                         titleParts={missionTopper.titleParts} 
                         activeSlide={activeSlide}
                         setActiveSlide={setActiveSlide}
+                        className="col-span-full"
                     />
-                </div>
-                <div className="max-w-screen-2xl mx-auto px-6">
-                    <HeroCarousel 
-                        slides={missionTopper.slides}
-                        activeSlide={activeSlide}
-                        setActiveSlide={setActiveSlide}
-                    />
-                </div>
-                 <div className="max-w-screen-2xl mx-auto px-6">
-                    <InfoCardGrid 
+                    <div className="col-span-full">
+                        <HeroCarousel 
+                            slides={missionTopper.slides}
+                            activeSlide={activeSlide}
+                            setActiveSlide={setActiveSlide}
+                        />
+                    </div>
+                     <InfoCardGrid 
                         title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                         items={infoCards}
+                        className="col-span-full"
                     />
                     <HeroStatement
                         title={heroStatement.title}
@@ -47,15 +47,17 @@ export default function Home() {
                         imageUrl={heroStatement.imageUrl}
                         imageHint={heroStatement.imageHint}
                         links={heroStatement.links}
+                        className="col-span-full"
                     />
                 </div>
                 <KeywordScrollLists keywords={snowflakes.keywords} />
-                 <div className="max-w-screen-2xl mx-auto px-6">
+                 <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                     <HierarchicalTease
                         header={hierarchicalTease.header}
                         articles={hierarchicalTease.articles}
+                        className="col-span-full"
                     />
-                    <section className="py-16 md:py-24 bg-background">
+                    <section className="col-span-full py-16 md:py-24 bg-background">
                         <SectionHeader 
                             title={distinction.header.title}
                             description={distinction.header.description}
