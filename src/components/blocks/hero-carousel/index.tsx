@@ -11,8 +11,8 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { CarouselCard } from './carousel-card';
-import { Button } from '../ui/button';
+import { CarouselCard } from '../carousel-card';
+import { Button } from '../../ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface HeroCarouselProps {

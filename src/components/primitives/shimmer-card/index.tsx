@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export function ShimmerCard({ className }: { className?: string }) {
   return (
     <div className={cn("group flex h-full flex-col", className)}>
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+      <div className="relative aspect-[3/2] overflow-hidden bg-muted">
          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/20 to-transparent animate-shimmer" />
       </div>
       <div className="flex-grow p-8">

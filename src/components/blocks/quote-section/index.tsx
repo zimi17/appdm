@@ -42,7 +42,7 @@ export function QuoteSection({ quote, author, role, imageUrl, imageHint, linkTex
             <LazyImage 
               src={imageUrl} 
               alt={author} 
-              className="aspect-square rounded-full"
+              className="aspect-square"
               imageClassName="object-cover rounded-full"
               data-ai-hint={imageHint}
               width={624}

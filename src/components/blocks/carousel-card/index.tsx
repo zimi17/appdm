@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { CtaLink } from '../primitives/cta-link';
+import { CtaLink } from '../../primitives/cta-link';
 
 interface CarouselCardProps {
     slide: {

@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { MenuHeader } from "./components/menu-header";
@@ -32,7 +33,7 @@ export const MenuColumn = ({
       )}
     >
       {depth > 1 && parentItem && (
-        <MenuHeader parentItem={parentItem} onBackClick={handleBackClick} depth={depth} />
+        <MenuHeader parentItem={parentItem} onBackClick={handleBackClick} />
       )}
 
       <MenuList
@@ -40,6 +41,7 @@ export const MenuColumn = ({
         onLinkClick={onLinkClick}
         activeItem={activeItem}
         depth={depth}
+        hasBorder={depth > 1}
       />
     </div>
   );

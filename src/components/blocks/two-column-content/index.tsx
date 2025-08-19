@@ -2,7 +2,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { ComponentHeader } from '../primitives/component-header';
+import { ComponentHeader } from '../../primitives/component-header';
 
 interface TwoColumnContentProps {
   title: string;
