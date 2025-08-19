@@ -1,4 +1,3 @@
-
 import { footerBlocks, footerLegalItems } from "@/lib/data/nav";
 import { SiteFooterLegal } from "./site-footer-legal";
 import { SiteFooterPrimaryCta } from "./site-footer-primary-cta";

@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 
 export interface SiteFooterLegalProps {
@@ -20,7 +19,7 @@ export function SiteFooterLegal({ items = [], copyright }: SiteFooterLegalProps)
             <div className="col-span-4 md:col-span-8 lg:col-span-4 text-center md:text-left">
                 <p>{copyrightText}</p>
             </div>
-            <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2">
+            <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-wrap justify-center lg:justify-start gap-x-4 gap-y-2">
                 {items.map((link, i) => (
                 <Link key={i} href={link.href} className="hover:text-white transition-colors">
                     {link.children}
