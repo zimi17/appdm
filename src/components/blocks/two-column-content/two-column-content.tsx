@@ -13,7 +13,7 @@ interface TwoColumnContentProps {
 export function TwoColumnContent({ title, paragraphs, className }: TwoColumnContentProps) {
   return (
     <motion.section
-      className={cn("py-16 md:py-24 bg-background text-foreground", className)}
+      className={cn("bg-background text-foreground", className)}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}

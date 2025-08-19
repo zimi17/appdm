@@ -15,7 +15,7 @@ export function MissionTopper({ titleParts, activeSlide, setActiveSlide }: Missi
 
   return (
     <section className="bg-background text-foreground py-12 md:py-16">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         <div className="max-w-5xl">
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             {titleParts.map((part, index) => {

@@ -12,6 +12,10 @@ import { DateRangePicker } from "@/components/primitives/date-range-picker/date-
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/primitives/pagination/pagination";
 import { NewsCard } from "@/components/news-events/news-card";
 
+type DateRange = {
+  from: Date | undefined;
+  to?: Date | undefined;
+}
 
 export default function NewsAndEventsPage() {
     const { hero, facets } = newsPageData;
@@ -129,7 +133,7 @@ export default function NewsAndEventsPage() {
                     imageUrl={hero.imageUrl}
                     imageHint={hero.imageHint}
                 />
-                <div className="container mx-auto px-6 py-16 md:py-24">
+                <div className="container mx-auto py-16 md:py-24">
                     <div className="grid lg:grid-cols-4 gap-12">
                         <aside className="lg:col-span-1 space-y-8 self-start sticky top-28">
                             <ArchivePageFacets 

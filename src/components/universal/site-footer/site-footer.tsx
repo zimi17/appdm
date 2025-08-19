@@ -1,3 +1,4 @@
+
 import { footerBlocks, footerLegalItems } from "@/lib/data/nav";
 import { Logo } from "@/components/primitives/logo/logo";
 import { SiteFooterBlock } from "./site-footer-block";
@@ -25,13 +26,8 @@ export function SiteFooter() {
       
       <div className="bg-secondary text-secondary-foreground">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          {/* 
-            Mobile: 4 grid (col-span-4)
-            Tablet: 8 grid (col-span-4 + col-span-4)
-            Desktop: 16 grid (col-span-4 + col-span-12)
-          */}
-          <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-8">
-            <div className="col-span-4 md:col-span-4 lg:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-4 lg:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
               <Link href="/" aria-label="Beranda" className="mb-4">
                 <Logo theme="dark" className="h-16 w-32" />
               </Link>
@@ -41,10 +37,10 @@ export function SiteFooter() {
               </p>
             </div>
 
-            <div className="col-span-4 md:col-span-4 lg:col-span-12">
-              <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-8">
+            <div className="md:col-span-8 lg:col-span-7">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 {footerBlocks.map((block, i) => (
-                  <div key={i} className="col-span-4 md:col-span-4 lg:col-span-4 text-center md:text-left">
+                  <div key={i} className="col-span-1 text-center md:text-left">
                     <SiteFooterBlock
                       title={block.title}
                       items={block.items}
@@ -52,7 +48,7 @@ export function SiteFooter() {
                   </div>
                 ))}
                 
-                <div className="col-span-4 md:col-span-4 lg:col-span-4 text-center md:text-left">
+                <div className="col-span-2 lg:col-span-1 text-center md:text-left">
                   <h3 className="font-bold text-lg text-white mb-4">Media Sosial</h3>
                   <div className="flex justify-center md:justify-start gap-2">
                     {socialLinks.map((social) => (

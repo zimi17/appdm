@@ -13,12 +13,14 @@ import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 
 export default function Academics() {
   const { hero, twoColumnContent, degreePrograms, promoBar, kurikulum, aside } = academicsPageData;
-  const breadcrumbs = [{ title: "Akademik", link: "/academics", isCurrent: true }];
+  const breadcrumbs = [{ title: "Akademik", link: "/akademik", isCurrent: true }];
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <div className="container mx-auto">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+      </div>
       <main id="main-content">
         <HeroSection 
           title={hero.title}
@@ -26,16 +28,16 @@ export default function Academics() {
           imageUrl={hero.imageUrl}
           imageHint={hero.imageHint}
         />
-        <div className="container mx-auto px-6 py-16 md:py-24">
-          <div className="grid lg:grid-cols-4 gap-12">
-            <div className="lg:col-span-3">
+        <div className="container mx-auto py-16 md:py-24">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-9">
               <TwoColumnContent
                 title={twoColumnContent.title}
                 paragraphs={twoColumnContent.paragraphs}
                 className="py-0"
               />
             </div>
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-3">
               <Aside title={aside.title}>
                 {aside.links.map((link) => (
                   <p key={link.text}>

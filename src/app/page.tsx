@@ -7,11 +7,10 @@ import { MissionTopper } from "@/components/blocks/mission-topper/mission-topper
 import { HeroCarousel } from "@/components/blocks/hero-carousel/hero-carousel";
 import { InfoCardGrid } from "@/components/blocks/info-card-grid/info-card-grid";
 import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
-import { PromoBar } from "@/components/blocks/promo-bar/promo-bar";
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
-import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease";
 import { SectionHeader } from "@/components/blocks/section-header/section-header";
 import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
 
@@ -50,7 +49,7 @@ export default function Home() {
                     articles={hierarchicalTease.articles}
                 />
                 <section className="py-16 md:py-24 bg-background">
-                    <div className="container mx-auto px-6">
+                    <div className="container mx-auto">
                         <SectionHeader 
                             title={distinction.header.title}
                             description={distinction.header.description}
@@ -62,12 +61,6 @@ export default function Home() {
                         />
                     </div>
                 </section>
-                <PromoBar
-                  title="Penerimaan Mahasiswa Baru Telah Dibuka!"
-                  description="Jelajahi program studi kami dan temukan bagaimana STIE Dwimulya dapat menjadi langkah awal kesuksesan Anda. Daftar sekarang dan jadilah bagian dari kampus perubahan."
-                  linkHref="/pendaftaran"
-                  linkText="Info Pendaftaran"
-                />
             </main>
             <SiteFooter />
         </div>

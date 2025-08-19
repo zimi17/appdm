@@ -25,7 +25,7 @@ export function HeroStatement({ title, description, imageUrl, imageHint, links }
             viewport={{ once: true, amount: 0.2 }}
             transition={{ staggerChildren: 0.2 }}
         >
-            <div className="container mx-auto px-6">
+            <div className="container mx-auto">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <motion.div 
                         className="order-2 lg:order-2"
