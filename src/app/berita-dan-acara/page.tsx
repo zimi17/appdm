@@ -10,8 +10,8 @@ import { newsPageData, mockNews } from "./berita-dan-acara-data";
 import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker/alphabetical-picker";
 import { DateRangePicker } from "@/components/primitives/date-range-picker/date-range-picker";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/primitives/pagination/pagination";
-import { NewsCard } from "@/components/news-events/news-card";
 import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
+import { ArticleTease } from "@/components/primitives/article-tease/article-tease";
 
 type DateRange = {
   from: Date | undefined;
@@ -157,7 +157,17 @@ export default function NewsAndEventsPage() {
                         </aside>
                         <div className="lg:col-span-9">
                                 <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-                                {paginatedNews.map(article => <NewsCard key={article.id} article={article}/>)}
+                                {paginatedNews.map(article => (
+                                    <ArticleTease
+                                        key={article.id}
+                                        type="Article"
+                                        title={article.title}
+                                        tease={article.description}
+                                        link="#"
+                                        image={{src: article.image, alt: article.title, hint: article.imageHint}}
+                                        overline={{label: article.category}}
+                                    />
+                                ))}
                             </div>
                             <div className="mt-16">
                                 {renderPagination()}
