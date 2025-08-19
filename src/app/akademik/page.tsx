@@ -18,24 +18,24 @@ export default function Academics() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <main id="main-content">
+      <main id="main-content" className="grid grid-cols-4 lg:grid-cols-16 gap-x-6 px-6">
+        <div className="col-span-full">
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </div>
         <HeroSection 
           title={hero.title}
           description={hero.description}
           imageUrl={hero.imageUrl}
           imageHint={hero.imageHint}
+          className="col-span-full"
         />
-        <div className="container mx-auto px-6 py-16 md:py-24">
-          <div className="grid lg:grid-cols-4 gap-12">
-            <div className="lg:col-span-3">
+        <div className="col-span-full lg:col-span-8 lg:col-start-3 py-16 md:py-24">
               <TwoColumnContent
                 title={twoColumnContent.title}
                 paragraphs={twoColumnContent.paragraphs}
-                className="py-0"
               />
-            </div>
-            <div className="lg:col-span-1">
+        </div>
+        <div className="col-span-full lg:col-span-4 lg:col-start-13 py-16 md:py-24">
               <Aside title={aside.title}>
                 {aside.links.map((link) => (
                   <p key={link.text}>
@@ -43,26 +43,25 @@ export default function Academics() {
                   </p>
                 ))}
               </Aside>
-            </div>
-          </div>
         </div>
         <CardGrid 
             title={degreePrograms.title}
             items={degreePrograms.items}
-            className="bg-card"
+            className="col-span-full bg-card"
         />
         <AccordionSection 
             title={kurikulum.title}
             items={kurikulum.items}
             linkText={kurikulum.linkText}
             linkHref={kurikulum.linkHref}
+            className="col-span-full"
         />
         <PromoBar
           title={promoBar.title}
           description={promoBar.description}
           linkHref={promoBar.linkHref}
           linkText={promoBar.linkText}
-          className="bg-secondary text-secondary-foreground"
+          className="col-span-full bg-secondary text-secondary-foreground"
           descriptionClassName="text-gray-300"
           linkClassName="text-white hover:text-gray-200"
         />

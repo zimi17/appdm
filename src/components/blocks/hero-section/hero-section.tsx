@@ -2,19 +2,21 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 interface HeroSectionProps {
   title: string;
   description: string;
   imageUrl: string;
   imageHint?: string;
+  className?: string;
 }
 
-export function HeroSection({ title, description, imageUrl, imageHint }: HeroSectionProps) {
+export function HeroSection({ title, description, imageUrl, imageHint, className }: HeroSectionProps) {
   const gradientClass = 'bg-gradient-to-t from-background via-background/80 to-transparent';
 
   return (
-    <section className="relative w-full h-[600px] flex items-center justify-center text-center overflow-hidden bg-background text-foreground">
+    <section className={cn("relative w-full h-[600px] flex items-center justify-center text-center overflow-hidden bg-background text-foreground", className)}>
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
@@ -32,7 +34,7 @@ export function HeroSection({ title, description, imageUrl, imageHint }: HeroSec
         />
         <div className={`absolute inset-0 ${gradientClass}`} />
       </motion.div>
-      <div className="relative z-10 container mx-auto px-6 max-w-4xl">
+      <div className="relative z-10 max-w-4xl">
         <motion.h1
           className="font-headline text-5xl md:text-7xl lg:text-8xl font-normal leading-none text-foreground"
           initial={{ opacity: 0, y: 30 }}

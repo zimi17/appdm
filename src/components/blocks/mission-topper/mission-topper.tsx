@@ -8,14 +8,14 @@ interface MissionTopperProps {
   titleParts: { text: string; isButton: boolean }[];
   activeSlide: number;
   setActiveSlide: (index: number) => void;
+  className?: string;
 }
 
-export function MissionTopper({ titleParts, activeSlide, setActiveSlide }: MissionTopperProps) {
+export function MissionTopper({ titleParts, activeSlide, setActiveSlide, className }: MissionTopperProps) {
   let buttonIndex = -1;
 
   return (
-    <section className="bg-background text-foreground py-12 md:py-16">
-      <div className="container mx-auto">
+    <section className={cn("bg-background text-foreground py-12 md:py-16", className)}>
         <div className="max-w-5xl">
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             {titleParts.map((part, index) => {
@@ -39,7 +39,6 @@ export function MissionTopper({ titleParts, activeSlide, setActiveSlide }: Missi
             })}
           </h1>
         </div>
-      </div>
     </section>
   );
 }
