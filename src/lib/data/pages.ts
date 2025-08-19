@@ -60,6 +60,50 @@ export const homePageData = {
       { label: "Pasar Modal" }, { label: "Inovasi Digital" }, { label: "Manajemen Strategis" }
     ],
   },
+  hierarchicalTease: {
+    header: {
+        title: "Wawasan",
+        subheading: "Riset mendalam yang dilakukan oleh fakultas STIE Dwimulya berakar pada praktik dan mendorong wawasan di persimpangan bisnis dan isu-isu paling mendesak saat ini.",
+        cta: {
+            text: "Telusuri Wawasan",
+            href: "/insights"
+        }
+    },
+    articles: [
+        {
+            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fheroes%2Fim-58818165.avif",
+            overline: "MarketWatch",
+            title: "Manipulasi IHK Bukan Kekhawatiran Terbesar Investor. Perhatikan Indikator Ekonomi Ini.",
+            meta: "Menampilkan Alberto Cavallo. Diterbitkan 12 Agustus 2025.",
+            href: "#",
+            hint: "man walking past hiring sign"
+        },
+        {
+            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fbookcovers%2FBrooks-HappinessFiles-Excerpt-2025.webp",
+            overline: "STIE Dwimulya Working Knowledge",
+            title: "Tiga Tips untuk Kehidupan Kerja yang Lebih Bahagia",
+            meta: "Oleh Arthur Brooks pada 12 Agustus 2025",
+            href: "#",
+            hint: "book cover the happiness files"
+        },
+        {
+            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fheroes%2FStanton-Gazette-Ai-2025.webp",
+            overline: "STIE Dwimulya Working Knowledge",
+            title: "Siapkah Dunia untuk Gelombang AI Berikutnya?",
+            meta: "Menampilkan Christopher Stanton. Diterbitkan 11 Agustus 2025.",
+            href: "#",
+            hint: "AI generated building windows"
+        },
+        {
+            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fheroes%2F540x540bb.webp",
+            overline: "Planet Money",
+            title: "Apa yang Terjadi Ketika Pemerintah Memanipulasi Laporan Keuangan",
+            meta: "Menampilkan Alberto Cavallo. Diterbitkan 9 Agustus 2025.",
+            href: "#",
+            hint: "books in a cooking pot"
+        }
+    ]
+  },
   quote: {
       text: "Ketika Anda membimbing orang, mereka akan membimbing orang lain, lalu mereka membimbing yang lain, dan itu memiliki dampak eksponensial yang sangat besar.",
       author: "Dr. Budi Santoso",

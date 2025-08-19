@@ -14,10 +14,11 @@ import { CardGrid } from "@/components/blocks/card-grid";
 import { SiteFooter } from "@/components/universal/site-footer";
 import { homePageData } from "@/lib/data/pages";
 import { Snowflakes } from "@/components/blocks/snowflakes";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
-    const { missionTopper, infoCards, heroStatement, quote, scienceCards, snowflakes } = homePageData;
+    const { missionTopper, infoCards, heroStatement, quote, scienceCards, snowflakes, hierarchicalTease } = homePageData;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -46,6 +47,10 @@ export default function Home() {
                     links={heroStatement.links}
                 />
                 <Snowflakes keywords={snowflakes.keywords} />
+                <HierarchicalTease
+                    header={hierarchicalTease.header}
+                    articles={hierarchicalTease.articles}
+                />
                 <PromoBar
                   title="Penerimaan Mahasiswa Baru Telah Dibuka!"
                   description="Jelajahi program studi kami dan temukan bagaimana STIE Dwimulya dapat menjadi langkah awal kesuksesan Anda. Daftar sekarang dan jadilah bagian dari kampus perubahan."
