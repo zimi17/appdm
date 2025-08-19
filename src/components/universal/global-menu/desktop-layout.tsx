@@ -12,10 +12,10 @@ const animationProps = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3, // Dipercepat dari 0.6
+      duration: 0.3, 
       ease: [0.65, 0, 0.35, 1],
       opacity: {
-        duration: 0.1, // Dipercepat dari 0.2
+        duration: 0.1, 
         ease: [0.65, 0, 0.35, 1],
       },
     },
@@ -40,12 +40,11 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
 
   return (
     <div className="h-full w-full relative overflow-hidden flex">
-      {/* Level 1 Column - 8/16 grid (50% di tablet, 37.5% di desktop) */}
+      {/* Level 1 Column */}
       <motion.div
         className={cn(
-          "h-full shrink-0 w-full md:w-1/2 lg:w-[37.5%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
+          "h-full shrink-0 w-full md:w-1/2 lg:w-[37.5%] transition-transform duration-500 ease-menu",
           l2Active && "md:border-r md:border-white/15",
-          // Slide keluar saat L3 aktif di tablet, tetap di tempat di desktop
           l3Active ? "md:-translate-x-full lg:translate-x-0" : "translate-x-0"
         )}
       >
@@ -60,7 +59,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
       {/* Level 2 Column */}
       <motion.div
         className={cn(
-          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
+          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] transition-transform duration-500 ease-menu",
           l3Active && "md:border-r md:border-white/15",
           l3Active ? "md:-translate-x-full lg:translate-x-0" : "md:translate-x-0",
           l2Active ? "flex" : "hidden"
@@ -69,7 +68,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
         <AnimatePresence mode="wait">
           {l2Active && (
             <motion.div
-              key={activeL1?.id || activeL1?.title || 'level2'} // Gunakan ID unik
+              key={activeL1?.id || activeL1?.title || 'level2'} 
               {...animationProps}
               className="h-full w-full"
             >
@@ -88,7 +87,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
       {/* Level 3 Column */}
       <motion.div
         className={cn(
-          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] transition-transform duration-500 ease-[cubic-bezier(0.65,0,0.35,1)]",
+          "h-full shrink-0 w-full md:w-1/2 lg:w-[31.25%] transition-transform duration-500 ease-menu",
           "md:absolute md:right-0 md:top-0",
           "lg:relative lg:right-auto lg:top-auto",
           l3Active && "z-10",
@@ -98,17 +97,17 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
         <AnimatePresence mode="wait">
           {l3Active && (
             <motion.div
-              key={activeL2?.id || activeL2?.title || 'level3'} // Gunakan ID unik
+              key={activeL2?.id || activeL2?.title || 'level3'}
               {...animationProps}
               className="h-full w-full"
               exit={{
                 opacity: 0,
                 y: 10,
                 transition: {
-                  duration: 0.1, // Percepat exit
+                  duration: 0.1,
                   ease: [0.65, 0, 0.35, 1],
                   opacity: {
-                    duration: 0.1, // Percepat opacity exit
+                    duration: 0.1,
                     ease: [0.65, 0, 0.35, 1]
                   }
                 }

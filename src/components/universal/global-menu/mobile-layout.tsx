@@ -12,10 +12,10 @@ const animationProps = {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.65, 0, 0.35, 1],
+        ease: 'menu',
         opacity: {
           duration: 0.2,
-          ease: [0.65, 0, 0.35, 1]
+          ease: 'menu'
         }
       }
     },
@@ -24,10 +24,10 @@ const animationProps = {
       y: 10,
       transition: {
         duration: 0.6,
-        ease: [0.65, 0, 0.35, 1],
+        ease: 'menu',
         opacity: {
           duration: 0.2,
-          ease: [0.65, 0, 0.35, 1],
+          ease: 'menu',
           delay: 0.4
         }
       }
