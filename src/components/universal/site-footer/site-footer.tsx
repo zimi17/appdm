@@ -8,7 +8,6 @@ import { SiteFooterPrimaryCta } from "./site-footer-primary-cta";
 import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 
 export function SiteFooter() {
-
   const socialLinks = [
     { href: "#", icon: Instagram, label: "Instagram" },
     { href: "#", icon: Linkedin, label: "LinkedIn" },
@@ -27,7 +26,7 @@ export function SiteFooter() {
       <div className="bg-secondary text-secondary-foreground">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-4 lg:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
               <Link href="/" aria-label="Beranda" className="mb-4">
                 <Logo theme="dark" className="h-16 w-32" />
               </Link>
@@ -36,8 +35,8 @@ export function SiteFooter() {
                 Jl. Kav. Sindangsari B1, Kec. Pabuaran, Serang 42163, Banten
               </p>
             </div>
-
-            <div className="md:col-span-8 lg:col-span-7">
+            
+            <div className="md:col-span-9">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                 {footerBlocks.map((block, i) => (
                   <div key={i} className="col-span-1 text-center md:text-left">
