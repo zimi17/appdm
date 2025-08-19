@@ -53,6 +53,13 @@ export const homePageData = {
         { href: "/initiatives", text: "Jelajahi Inisiatif & Proyek" },
     ]
   },
+  snowflakes: {
+    keywords: [
+      { label: "Manajemen Keuangan" }, { label: "Kewirausahaan" }, { label: "Bisnis Global" }, 
+      { label: "Akuntansi" }, { label: "Investasi" }, { label: "Kepemimpinan" }, 
+      { label: "Pasar Modal" }, { label: "Inovasi Digital" }, { label: "Manajemen Strategis" }
+    ],
+  },
   quote: {
       text: "Ketika Anda membimbing orang, mereka akan membimbing orang lain, lalu mereka membimbing yang lain, dan itu memiliki dampak eksponensial yang sangat besar.",
       author: "Dr. Budi Santoso",
