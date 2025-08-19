@@ -22,12 +22,12 @@ export function SiteFooterPrimaryCta({
     <div className="bg-primary text-primary-foreground">
         <Link href={href} className="group block hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300">
             <div className="container mx-auto px-6 py-4">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <span className="font-headline text-xl md:text-2xl font-bold">
+                <div className="grid grid-cols-1 md:grid-cols-16 gap-4 items-center">
+                    <span className="font-headline text-xl md:text-2xl font-bold md:col-span-4">
                         {title}
                     </span>
-                    <div className="flex items-center gap-4 text-center md:text-right">
-                        {description && <p className="text-lg opacity-90 hidden lg:block">{description}</p>}
+                    <div className="flex items-center justify-between md:col-span-12">
+                        {description && <p className="text-lg opacity-90">{description}</p>}
                         <ArrowRight className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:-rotate-45" />
                     </div>
                 </div>
