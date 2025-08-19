@@ -3,84 +3,79 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
-import { Facebook, Twitter, Linkedin, Link as LinkIcon, Share2, Mail } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 // WhatsApp Icon SVG
 const WhatsAppIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.586-1.459L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.172.198-.296.297-.495.099-.198.05-.371-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
     </svg>
 );
 
 
 interface ArticleShareToolsProps {
-    title: string;
+    url: string;
+    text: string;
     className?: string;
 }
 
-export function ArticleShareTools({ title, className }: ArticleShareToolsProps) {
-    const { toast } = useToast();
+export function ArticleShareTools({ url, text, className }: ArticleShareToolsProps) {
     const [pageUrl, setPageUrl] = useState('');
 
     useEffect(() => {
-        // This ensures the window object is available before getting the URL
-        setPageUrl(window.location.href);
-    }, []);
-
-    const handleCopyLink = () => {
-        navigator.clipboard.writeText(pageUrl);
-        toast({
-            title: "Tautan Disalin!",
-            description: "Tautan artikel telah disalin ke papan klip.",
-        });
-    };
+        // Ensure the URL is set on the client-side
+        setPageUrl(url || window.location.href);
+    }, [url]);
 
     const shareOptions = [
         { 
             name: 'WhatsApp', 
             icon: <WhatsAppIcon />,
-            href: `https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + pageUrl)}` 
+            href: `https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + pageUrl)}` 
         },
         { 
             name: 'Facebook', 
-            icon: <Facebook className="h-6 w-6" />,
+            icon: <Facebook className="h-5 w-5" />,
             href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}` 
         },
         { 
             name: 'Twitter', 
-            icon: <Twitter className="h-6 w-6" />,
-            href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(title)}` 
+            icon: <Twitter className="h-5 w-5" />,
+            href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(text)}` 
         },
         { 
             name: 'LinkedIn', 
-            icon: <Linkedin className="h-6 w-6" />,
+            icon: <Linkedin className="h-5 w-5" />,
             href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`
+        },
+        { 
+            name: 'Email', 
+            icon: <Mail className="h-5 w-5" />,
+            href: `mailto:?subject=${encodeURIComponent(text)}&body=${encodeURIComponent(pageUrl)}`
         },
     ];
 
     return (
-        <div className={className}>
-            <h3 className="font-bold text-lg mb-2">Bagikan Artikel Ini</h3>
-            <div className="flex flex-wrap gap-2">
+        <div className={cn("p-4 border-l-2 border-primary bg-background", className)}>
+            <h3 className="font-bold text-lg mb-4 text-foreground">Bagikan Artikel Ini</h3>
+            <ul className="space-y-2">
                 {shareOptions.map((option) => (
-                    <Button 
-                        key={option.name} 
-                        variant="outline" 
-                        size="icon" 
-                        asChild
-                        aria-label={`Bagikan ke ${option.name}`}
-                    >
-                         <a href={option.href} target="_blank" rel="noopener noreferrer">
-                            {option.icon}
+                    <li key={option.name}>
+                         <a 
+                            href={option.href} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                        >
+                            <div className="bg-card p-2 rounded-full group-hover:bg-primary/10">
+                                {option.icon}
+                            </div>
+                            <span className="font-medium">{option.name}</span>
                         </a>
-                    </Button>
+                    </li>
                 ))}
-                 <Button variant="outline" size="icon" onClick={handleCopyLink} aria-label="Salin tautan">
-                    <LinkIcon className="h-6 w-6" />
-                </Button>
-            </div>
+            </ul>
         </div>
     );
 }
-
