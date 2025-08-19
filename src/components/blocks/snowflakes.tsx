@@ -17,13 +17,18 @@ export function Snowflakes({ keywords }: KeywordScrollListProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [scrollPercentage, setScrollPercentage] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [sortedKeywords, setSortedKeywords] = useState<KeywordProps[]>([]);
 
-  // Memoize sorted keywords to prevent re-sorting on every render
-  const sortedKeywords = React.useMemo(() => [...keywords].sort(() => Math.random() - 0.5), [keywords]);
+  useEffect(() => {
+    // Sort keywords on the client-side only to prevent hydration mismatch
+    setSortedKeywords([...keywords].sort(() => Math.random() - 0.5));
+  }, [keywords]);
 
   // Distribute keywords into 3 rows
   const rows = React.useMemo(() => {
     const numRows = 3;
+    if (sortedKeywords.length === 0) return [[], [], []];
+
     const baseWordsPerRow = Math.floor(sortedKeywords.length / numRows);
     const extraWords = sortedKeywords.length % numRows;
     const newRows: Array<Array<KeywordProps>> = [];
