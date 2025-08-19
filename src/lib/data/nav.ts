@@ -84,22 +84,22 @@ export const footerSections = [
       links: [
         { label: "Program Studi", href: "/akademik" },
         { label: "Penerimaan", href: "/pendaftaran" },
-        { label: "Kehidupan Kampus", href: "/campus-life" },
+        { label: "Kehidupan Kampus", href: "/kehidupan-kampus" },
       ],
     },
     {
       title: "Tentang Kami",
       links: [
-        { label: "Sejarah", href: "/about" },
-        { label: "Visi & Misi", href: "/about" },
-        { label: "Kontak", href: "/contact" },
+        { label: "Sejarah", href: "/tentang" },
+        { label: "Visi & Misi", href: "/tentang/visi-misi" },
+        { label: "Kontak", href: "/kontak" },
       ],
     },
     {
       title: "Terhubung",
       links: [
         { label: "Berita & Acara", href: "/berita-dan-acara" },
-        { label: "Pusat Karir", href: "/career-center" },
+        { label: "Pusat Karir", href: "/pusat-karir" },
         { label: "Alumni", href: "/alumni" },
       ],
     },
@@ -114,3 +114,4 @@ export const footerSections = [
     { label: "Donasi", href: "#" },
     { label: "Layanan Darurat", href: "#" },
   ];
+

@@ -73,7 +73,7 @@ export const homePageData = {
         subheading: "Riset yang dilakukan oleh dosen STIE Dwimulya berfokus pada praktik dan memberikan wawasan di persimpangan antara bisnis dan isu-isu paling mendesak di tingkat regional.",
         cta: {
             text: "Telusuri Wawasan",
-            href: "/insights"
+            href: "/wawasan"
         }
     },
     articles: [
