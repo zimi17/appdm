@@ -1,10 +1,10 @@
 
-
 'use client';
 
 import { LazyImage } from "@/components/primitives/lazy-image";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export interface SupportingDetailsListItem {
   title?: ReactNode;
@@ -18,18 +18,18 @@ export interface SupportingDetailsProps {
     alt: string;
     hint?: string;
   };
+  className?: string;
 }
 
-export function SupportingDetails({ items = [], mediaAsset }: SupportingDetailsProps) {
+export function SupportingDetails({ items = [], mediaAsset, className }: SupportingDetailsProps) {
   return (
     <motion.div 
-      className="mt-12"
+      className={cn("mt-12 grid lg:grid-cols-12 gap-12 items-start", className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.15 }}
     >
-      <div className="grid lg:grid-cols-12 gap-12 items-start">
         <motion.ul 
           className="grid md:grid-cols-2 gap-x-8 gap-y-10 lg:col-span-7"
           variants={{
@@ -83,7 +83,7 @@ export function SupportingDetails({ items = [], mediaAsset }: SupportingDetailsP
             />
           </motion.div>
         )}
-      </div>
     </motion.div>
   );
 }
+

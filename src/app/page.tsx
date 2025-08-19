@@ -10,9 +10,9 @@ import { HeroStatement } from "@/components/blocks/hero-statement";
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
-import { HierarchicalTease } from "@/components/blocks/hierarchical-tease";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
 import { SectionHeader } from "@/components/blocks/section-header";
-import { SupportingDetails } from "@/components/blocks/supporting-details";
+import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -31,11 +31,13 @@ export default function Home() {
                             className="col-span-full"
                         />
                     </div>
-                    <HeroCarousel 
-                        slides={missionTopper.slides}
-                        activeSlide={activeSlide}
-                        setActiveSlide={setActiveSlide}
-                    />
+                    <div className="max-w-screen-2xl mx-auto px-6">
+                        <HeroCarousel 
+                            slides={missionTopper.slides}
+                            activeSlide={activeSlide}
+                            setActiveSlide={setActiveSlide}
+                        />
+                    </div>
                 </section>
                 
                 <InfoCardGrid 
@@ -58,7 +60,7 @@ export default function Home() {
                 />
                 <section className="py-16 md:py-24 bg-background">
                     <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                        <div className="col-span-full">
+                        <div className="col-span-full lg:col-span-14 lg:col-start-2">
                             <SectionHeader 
                                 title={distinction.header.title}
                                 description={distinction.header.description}
