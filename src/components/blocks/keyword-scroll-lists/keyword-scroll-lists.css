@@ -45,13 +45,7 @@
     border-radius: 9999px;
     transition: all 0.3s ease;
   }
-  
-  .keyword-scroll-list__row::after {
-    content: " / ";
-    color: hsl(var(--muted-foreground));
-    font-weight: normal;
-  }
-  
+    
   .keyword-scroll-list__row > .keyword-scroll-list__keyword:not(:last-child)::after {
     content: " / ";
     color: hsl(var(--muted-foreground));

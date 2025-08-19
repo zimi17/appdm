@@ -2,8 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import { SiteHeader } from "@/components/universal/site-header/site-header";
-import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { HeroSection } from "@/components/blocks/hero-section/hero-section";
 import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets";
 import { newsPageData, mockNews } from "./news-events-data";
@@ -126,57 +124,53 @@ export default function NewsAndEventsPage() {
     const availableLetters = Array.from(new Set(mockNews.map(item => item.title.charAt(0).toUpperCase()))).sort();
 
     return (
-        <div className="flex flex-col min-h-screen bg-background">
-            <SiteHeader />
-            <main id="main-content">
-                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                    <div className="col-span-full">
-                      <Breadcrumbs breadcrumbs={breadcrumbs}/>
-                    </div>
-                    <HeroSection 
-                        title={hero.title}
-                        description={hero.description}
-                        imageUrl={hero.imageUrl}
-                        imageHint={hero.imageHint}
-                        className="col-span-full"
+        <>
+            <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                <div className="col-span-full">
+                    <Breadcrumbs breadcrumbs={breadcrumbs}/>
+                </div>
+                <HeroSection 
+                    title={hero.title}
+                    description={hero.description}
+                    imageUrl={hero.imageUrl}
+                    imageHint={hero.imageHint}
+                    className="col-span-full"
+                />
+            
+                <aside className="lg:col-span-4 space-y-8 self-start sticky top-28 py-16 md:py-24">
+                    <ArchivePageFacets 
+                        title={facets.title}
+                        items={facets.items}
+                        onFacetChanged={handleFacetChanged}
                     />
-                
-                    <aside className="lg:col-span-4 space-y-8 self-start sticky top-28 py-16 md:py-24">
-                        <ArchivePageFacets 
-                            title={facets.title}
-                            items={facets.items}
-                            onFacetChanged={handleFacetChanged}
+                    <AlphabeticalPicker 
+                        availableLetters={availableLetters}
+                        onLetterSelect={handleLetterSelect}
                         />
-                        <AlphabeticalPicker 
-                            availableLetters={availableLetters}
-                            onLetterSelect={handleLetterSelect}
+                        <DateRangePicker
+                        onRangeChange={handleDateRangeChange}
+                        />
+                </aside>
+                <div className="lg:col-span-12 py-16 md:py-24">
+                        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+                        {paginatedNews.map(article => (
+                            <ArticleTease
+                                key={article.id}
+                                type="Article"
+                                title={article.title}
+                                tease={article.description}
+                                link="#"
+                                image={{src: article.image, alt: article.title, hint: article.imageHint}}
+                                overline={{label: article.category}}
+                                byline={{ publicationDate: "2024-08-15T12:00:00Z" }}
                             />
-                            <DateRangePicker
-                            onRangeChange={handleDateRangeChange}
-                            />
-                    </aside>
-                    <div className="lg:col-span-12 py-16 md:py-24">
-                            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-                            {paginatedNews.map(article => (
-                                <ArticleTease
-                                    key={article.id}
-                                    type="Article"
-                                    title={article.title}
-                                    tease={article.description}
-                                    link="#"
-                                    image={{src: article.image, alt: article.title, hint: article.imageHint}}
-                                    overline={{label: article.category}}
-                                    byline={{ publicationDate: "2024-08-15T12:00:00Z" }}
-                                />
-                            ))}
-                        </div>
-                        <div className="mt-16">
-                            {renderPagination()}
-                        </div>
+                        ))}
+                    </div>
+                    <div className="mt-16">
+                        {renderPagination()}
                     </div>
                 </div>
-            </main>
-            <SiteFooter />
-        </div>
+            </div>
+        </>
     );
 }

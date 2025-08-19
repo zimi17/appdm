@@ -29,7 +29,7 @@ const Card = ({ item, cardClassName }: { item: any, cardClassName?: string }) =>
     <div className="p-8 flex flex-col flex-grow">
       <h3 className="font-headline text-2xl mb-4">{item.title}</h3>
       <p className="text-lg mb-6 flex-grow opacity-90">{item.description}</p>
-      <CtaLink href={item.href} variant="link" className="mt-auto self-start text-primary-foreground hover:text-primary-foreground/80 group-[.hover\\:bg-accent]:text-primary-foreground group-[.hover\\:bg-accent]:hover:text-primary-foreground/80 group-[.bg-background]:text-primary group-[.bg-background]:hover:text-accent-foreground">
+      <CtaLink href={item.href} variant="link" className="mt-auto self-start text-primary-foreground hover:text-primary-foreground/80 group-[.bg-background]:text-primary group-[.bg-background]:hover:text-accent-foreground">
         {item.linkText}
       </CtaLink>
     </div>
@@ -45,14 +45,18 @@ export function CardGrid({ title, items, className, titleClassName, hrClassName,
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.2 }}
     >
+      {title && (
+      <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
         <div className="col-span-full">
-            {title && (
             <ComponentHeader title={title} titleClassName={titleClassName} hrClassName={hrClassName} />
-            )}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {items.map((item, index) => <Card key={item.title + index} item={item} cardClassName={cardClassName} />)}
-            </div>
         </div>
+      </div>
+      )}
+      <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+          <div className="col-span-full grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {items.map((item, index) => <Card key={item.title + index} item={item} cardClassName={cardClassName} />)}
+          </div>
+      </div>
     </motion.section>
   )
 }

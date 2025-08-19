@@ -36,7 +36,7 @@ export default function Home() {
             </section>
             
             <section className="bg-background py-16 md:py-24">
-                    <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                     <HeroStatement
                         title={heroStatement.title}
                         description={heroStatement.description}
@@ -60,12 +60,13 @@ export default function Home() {
 
             <section className="bg-background py-16 md:py-24">
                 <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                    <div className="col-span-full">
                         <CardGrid 
-                        title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
-                        items={infoCards}
-                        className="col-span-full"
-                        cardClassName="bg-secondary text-secondary-foreground hover:bg-accent"
-                    />
+                            title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
+                            items={infoCards}
+                            cardClassName="bg-secondary text-secondary-foreground hover:bg-accent"
+                        />
+                    </div>
                 </div>
             </section>
 

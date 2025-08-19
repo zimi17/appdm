@@ -1,15 +1,13 @@
 
-import { SiteHeader } from "@/components/universal/site-header/site-header";
+import { TwoColumnContent } from "@/components/blocks/two-column-content/two-column-content";
+import { AccordionSection } from "@/components/blocks/accordion-section/accordion-section";
+import { CardGrid } from "@/components/blocks/card-grid/card-grid";
 import { HeroSection } from "@/components/blocks/hero-section/hero-section";
 import { PromoBar } from "@/components/blocks/promo-bar/promo-bar";
-import { CardGrid } from "@/components/blocks/card-grid/card-grid";
-import { TwoColumnContent } from "@/components/blocks/two-column-content";
-import { SiteFooter } from "@/components/universal/site-footer/site-footer";
-import { AccordionSection } from "@/components/blocks/accordion-section/accordion-section";
-import { Aside } from "@/components/primitives/aside";
+import { Aside } from "@/components/primitives/aside/aside";
+import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 import { academicsPageData } from "./academics-data";
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 
 export default function Academics() {
   const { hero, twoColumnContent, degreePrograms, promoBar, kurikulum, aside } = academicsPageData;
