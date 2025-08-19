@@ -57,7 +57,7 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      <SiteFooterLegal items={footerLegalItems} copyright="Yayasan Dwimulya Sahati dan Civitas Akademika STIE Dwimulya." />
+      <SiteFooterLegal items={footerLegalItems} copyright="© {new Date().getFullYear()} Yayasan Dwimulya Sahati dan Civitas Akademika STIE Dwimulya." />
     </footer>
   );
 }
