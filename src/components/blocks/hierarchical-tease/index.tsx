@@ -2,10 +2,9 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { HierarchicalTeaseHeader } from "../primitives/hierarchical-tease-header";
-import { ArticleTease } from "../primitives/article-tease";
-import { ComponentHeader } from "../primitives/component-header";
-import { cn } from "@/lib/utils";
+import { HierarchicalTeaseHeader } from "./hierarchical-tease-header";
+import { ArticleTease } from "./article-tease";
+import { ComponentHeader } from "@/components/primitives/component-header";
 
 export function HierarchicalTease({
   header,
@@ -33,7 +32,6 @@ export function HierarchicalTease({
         />
         
         <div className="grid lg:grid-cols-2 gap-12 items-start mt-12">
-          {/* Left column for the subheading and CTA */}
           <motion.div
               variants={{
                   hidden: { opacity: 0, x: -20 },
@@ -47,7 +45,6 @@ export function HierarchicalTease({
               />
           </motion.div>
 
-          {/* Right column for the articles */}
           <div className="grid grid-cols-1 gap-8">
             <motion.div
               variants={{

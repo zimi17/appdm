@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { CtaLink } from "./cta-link";
+import { CtaLink } from "@/components/primitives/cta-link";
 
 export function HierarchicalTeaseHeader({ cta, subheading }: { cta: any, subheading?: string }) {
     return (

@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { LazyImage } from './lazy-image';
+import { LazyImage } from '@/components/primitives/lazy-image';
 import { cn } from '@/lib/utils';
 
 export function ArticleTease({ item, isFeatured = false }: { item: any, isFeatured?: boolean }) {
