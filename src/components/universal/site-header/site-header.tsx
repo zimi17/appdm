@@ -38,7 +38,7 @@ export function SiteHeader() {
             : "bg-[#002147]"
         )}
       >
-        <div className="container mx-auto px-6 h-full flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
             <div className="flex items-center flex-1">
                 <HeaderLogo />
                 <NavHotLinks />

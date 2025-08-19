@@ -11,7 +11,12 @@ import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker/
 import { DateRangePicker } from "@/components/primitives/date-range-picker/date-range-picker";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/primitives/pagination/pagination";
 import { NewsCard } from "@/components/news-events/news-card";
+import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 
+type DateRange = {
+  from: Date | undefined;
+  to?: Date | undefined;
+}
 
 export default function NewsAndEventsPage() {
     const { hero, facets } = newsPageData;
@@ -19,8 +24,9 @@ export default function NewsAndEventsPage() {
     const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
     const [dateRange, setDateRange] = useState<DateRange | undefined>();
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 6;
+    const itemsPerPage = 9;
     const totalPages = Math.ceil(mockNews.length / itemsPerPage);
+    const breadcrumbs = [{ title: "Berita & Acara", link: "/berita-dan-acara", isCurrent: true }];
 
     const handleFacetChanged = (item: FacetItemType, checked: boolean) => {
         setSelectedFacets(prev => ({
@@ -123,15 +129,19 @@ export default function NewsAndEventsPage() {
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main id="main-content">
-                <HeroSection 
+                <div className="container mx-auto px-6">
+                    <Breadcrumbs breadcrumbs={breadcrumbs}/>
+                </div>
+                 <HeroSection 
                     title={hero.title}
                     description={hero.description}
                     imageUrl={hero.imageUrl}
                     imageHint={hero.imageHint}
                 />
+                
                 <div className="container mx-auto px-6 py-16 md:py-24">
-                    <div className="grid lg:grid-cols-4 gap-12">
-                        <aside className="lg:col-span-1 space-y-8 self-start sticky top-28">
+                    <div className="grid lg:grid-cols-12 gap-12">
+                        <aside className="lg:col-span-3 space-y-8 self-start sticky top-28">
                             <ArchivePageFacets 
                                 title={facets.title}
                                 items={facets.items}
@@ -140,13 +150,13 @@ export default function NewsAndEventsPage() {
                             <AlphabeticalPicker 
                                 availableLetters={availableLetters}
                                 onLetterSelect={handleLetterSelect}
-                             />
-                             <DateRangePicker
+                                />
+                                <DateRangePicker
                                 onRangeChange={handleDateRangeChange}
-                             />
+                                />
                         </aside>
-                        <div className="lg:col-span-3">
-                             <div className="grid md:grid-cols-2 gap-8">
+                        <div className="lg:col-span-9">
+                                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {paginatedNews.map(article => <NewsCard key={article.id} article={article}/>)}
                             </div>
                             <div className="mt-16">

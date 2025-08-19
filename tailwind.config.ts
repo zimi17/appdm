@@ -14,15 +14,11 @@ const config = {
     container: {
       center: true,
       padding: "1.5rem", // 24px
-      screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1800px",
-      },
     },
     extend: {
+      screens: {
+        "2xl": "1800px",
+      },
       fontFamily: {
         body: ['"Work Sans"', 'sans-serif'],
         headline: ['"Work Sans"', 'sans-serif'],

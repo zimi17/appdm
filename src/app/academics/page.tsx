@@ -19,7 +19,9 @@ export default function Academics() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main id="main-content">
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <div className="container mx-auto px-6">
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </div>
         <HeroSection 
           title={hero.title}
           description={hero.description}
