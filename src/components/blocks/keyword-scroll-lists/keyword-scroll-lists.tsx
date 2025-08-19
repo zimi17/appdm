@@ -3,6 +3,7 @@
 
 import * as React from "react";
 import { useEffect, useState, CSSProperties, useRef } from "react";
+import './keyword-scroll-lists.css';
 
 interface KeywordProps {
   label: string;
@@ -19,18 +20,30 @@ export function KeywordScrollLists({ keywords }: KeywordScrollListProps) {
   const [sortedKeywords, setSortedKeywords] = useState<KeywordProps[]>([]);
 
   useEffect(() => {
-    // Sort keywords on the client-side only to prevent hydration mismatch
     setSortedKeywords([...keywords].sort(() => Math.random() - 0.5));
   }, [keywords]);
 
-  // Distribute keywords into rows of max 4
   const rows = React.useMemo(() => {
     if (sortedKeywords.length === 0) return [];
-
     const newRows: Array<Array<KeywordProps>> = [];
-    for (let i = 0; i < sortedKeywords.length; i += 4) {
-      newRows.push(sortedKeywords.slice(i, i + 4));
+    const numRows = 3;
+    const baseWordsPerRow = Math.floor(sortedKeywords.length / numRows);
+    const extraWords = sortedKeywords.length % numRows;
+    let currentIndex = 0;
+
+    for (let i = 0; i < numRows; i++) {
+        let wordsForThisRow = baseWordsPerRow + (i < extraWords ? 1 : 0);
+        const end = currentIndex + wordsForThisRow;
+        const rowKeywords = sortedKeywords.slice(currentIndex, end);
+        
+        while(rowKeywords.map(k => k.label).join(' / ').length < 150 && sortedKeywords.length > 0) {
+            rowKeywords.push(...rowKeywords.slice(0, wordsForThisRow));
+        }
+
+        newRows.push(rowKeywords);
+        currentIndex = end;
     }
+
     return newRows;
   }, [sortedKeywords]);
 
@@ -53,6 +66,7 @@ export function KeywordScrollLists({ keywords }: KeywordScrollListProps) {
   }
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );
@@ -60,7 +74,7 @@ export function KeywordScrollLists({ keywords }: KeywordScrollListProps) {
       return;
     }
     
-    updateVariables(); // Initial call
+    updateVariables();
     
     const onScroll = () => updateVariables();
     const onResize = () => updateVariables();
