@@ -1,51 +1,37 @@
 # Panduan Komponen Primitives
 
-Dokumen ini memberikan panduan untuk *primitives*, yaitu komponen dasar yang digabungkan untuk membuat komponen yang lebih kompleks. Pengguna utama dokumentasi ini adalah pengembang yang memperluas Design System STIE Dwimulya.
-
----
-
-## Deskripsi Primitives
-
-Primitives adalah blok bangunan elemental dari *design system*. Mereka adalah komponen terkecil yang dapat digunakan kembali dan harus dirancang dengan mempertimbangkan fleksibilitas dan konsistensi.
+Dokumen ini menyediakan panduan untuk setiap komponen dasar (primitives) yang digabungkan untuk membuat komponen yang lebih kompleks. Daftar ini berfungsi sebagai peta jalan pengembangan.
 
 ---
 
 ## Daftar Primitives & Status
 
-| Primitive | Sudah Ada? | Deskripsi |
-| :--- | :---: | :--- |
-| **Archive Page Facets** | ✅ | Menyediakan checkbox multi-pilih untuk pemfilteran faceted. |
-| **Archive Page Pagination** | ✅ | Tautan bernomor untuk memecah daftar panjang entri di beberapa halaman. |
-| **Arrow Button** | ✅ | Tombol untuk memajukan konten maju atau mundur (terintegrasi dalam Carousel, dll). |
-| **Article Share Tools** | ❌ | Alat berbagi standar untuk artikel (perlu disesuaikan untuk WhatsApp, dll). |
-| **Article Tease** | ❌ | Tautan teaser artikel standar untuk digunakan dalam daftar artikel. |
-| **Aside** | ✅ | Konten sidebar untuk halaman dan artikel. |
-| **Book Tease** | ❌ | Tautan teaser buku standar. (Tidak relevan untuk saat ini). |
-| **Breadcrumbs** | ✅ | Tautan navigasi untuk struktur halaman hierarkis. |
-| **Byline** | ❌ | Baris nama penulis artikel yang terstandardisasi. |
-| **Component Header** | ✅ | Judul terstandardisasi untuk digunakan dalam komponen. |
-| **CTA** | ✅ | Tautan Call to Action (CTA) terstandardisasi. |
-| **Embed** | ❌ | Komponen untuk menyematkan media (YouTube, dll) secara responsif. |
-| **Event Feed Tease** | ❌ | Tautan teaser acara standar untuk digunakan dalam daftar acara. |
-| **Form** | ✅ | Elemen formulir yang sudah di-styling (Input, Select, dll. dari ShadCN). |
-| **Head** | ✅ | Elemen `<head>` standar yang ditangani oleh Next.js. |
-| **Icon** | ✅ | Komponen ikonografi standar (menggunakan `lucide-react`). |
-| **Kaltura Embed** | ❌ | Embed video Kaltura. (Tidak relevan, akan menggunakan Embed generik). |
-| **Logo** | ✅ | Logo STIE Dwimulya yang terstandardisasi. |
-| **Media Asset** | ✅ | Komponen untuk gambar (`LazyImage`). |
-| **Newsletter Signup** | ❌ | Contoh formulir sederhana untuk pendaftaran newsletter. |
-| **Page Section** | ❌ | Komponen untuk mensegmentasi halaman dan komponen. |
-| **Participant Story Tease** | ❌ | Tautan teaser cerita peserta standar. |
-| **Person Tease** | ❌ | Tautan teaser orang standar (untuk direktori dosen/staf). |
-| **Podcast Tease** | ❌ | Tautan teaser podcast standar. (Tidak relevan untuk saat ini). |
-| **Program Tease** | ❌ | Tautan teaser program standar. |
-| **Quote Tease** | ❌ | Tautan teaser kutipan standar. |
-| **Search Box** | ✅ | Elemen input untuk form pencarian. |
-| **Shimmer** | ✅ | State `loading` terstandardisasi. |
-| **Sibling Page Navigation** | ❌ | Tautan navigasi untuk halaman hierarkis dengan halaman sejajar. |
-| **Social Media Links** | ✅ | Tautan standar ke akun media sosial (ada di footer). |
-| **Social Media Tease** | ❌ | Tautan teaser media sosial standar. |
-| **Tabs** | ✅ | Komponen untuk mengelompokkan beberapa panel konten. |
-| **Timeline Event** | ❌ | Acara timeline standar untuk digunakan dalam komponen Timeline Tease. |
-| **Toast** | ✅ | Pop-up standar di bagian bawah untuk notifikasi. |
-| **Tooltip** | ✅ | Komponen tooltip sederhana untuk menampilkan informasi tambahan. |
+| Primitive | Varian / Status | Deskripsi |
+| :--- | :--- | :--- |
+| **Archive Page Facets** | ✅ Sudah Ada | Menyediakan kontrol untuk pemfilteran faceted (kategori, tanggal, dll). |
+| **Archive Page Pagination** | ✅ Sudah Ada | Tautan bernomor untuk memecah daftar panjang entri di beberapa halaman. |
+| **Arrow Button**| ❌ Perlu Dibuat | Tombol panah standar untuk navigasi (misalnya, pada carousel). |
+| **Article Share Tools** | ❌ Perlu Dibuat | Alat berbagi standar untuk artikel (perlu disesuaikan untuk WhatsApp, dll). |
+| **Article Tease** | ⏳ Sebagian Ada | Tautan teaser artikel standar. Perlu varian: `Full Style`, `Text Only`. |
+| **Aside**| ✅ Sudah Ada | Konten sidebar untuk halaman dan artikel. |
+| **Breadcrumbs**| ✅ Sudah Ada | Tautan navigasi untuk struktur halaman hierarkis. |
+| **Byline**| ⏳ Sebagian Ada | Baris nama penulis dan tanggal. Perlu varian: `Authors`, `Date Only`. |
+| **Component Header**| ✅ Sudah Ada | Judul terstandardisasi untuk digunakan dalam komponen. |
+| **CTA Link**| ✅ Sudah Ada | Tautan Call to Action (CTA) terstandardisasi. |
+| **CTA List**| ✅ Sudah Ada | Daftar beberapa tautan CTA. |
+| **Embed**| ❌ Perlu Dibuat | Komponen untuk menyematkan media (YouTube, dll) secara responsif. |
+| **Event Feed Tease**| ❌ Perlu Dibuat | Tautan teaser acara standar untuk kalender atau daftar acara. |
+| **Form**| ✅ Sudah Ada | Elemen formulir yang sudah di-styling (Input, Select, dll. dari ShadCN). |
+| **Head**| ✅ Sudah Ada | Komponen `<Head>` terstruktur untuk SEO dan metadata per halaman. |
+| **Icon**| ✅ Sudah Ada | Komponen ikonografi standar (menggunakan `lucide-react`). |
+| **Logo**| ✅ Sudah Ada | Logo STIE Dwimulya yang terstandardisasi. |
+| **Media Asset**| ✅ Sudah Ada | Komponen untuk gambar (`LazyImage`). |
+| **Page Section**| ❌ Perlu Dibuat | Komponen untuk mensegmentasi halaman dan komponen secara konsisten. |
+| **Person Tease**| ❌ Perlu Dibuat | Tautan teaser orang standar (untuk direktori dosen/staf). |
+| **Pull Quote**| ⏳ Sebagian Ada | Menyoroti kutipan. Komponen `QuoteSection` sudah ada, bisa diadaptasi. |
+| **Search Box**| ✅ Sudah Ada | Elemen input untuk form pencarian. |
+| **Shimmer**| ✅ Sudah Ada | State `loading` terstandardisasi untuk komponen seperti gambar. |
+| **Social Media Links**| ✅ Sudah Ada | Tautan standar ke akun media sosial (ada di footer). |
+| **Tabs**| ✅ Sudah Ada | Komponen untuk mengelompokkan beberapa panel konten. |
+| **Toast**| ✅ Sudah Ada | Pop-up standar di bagian bawah untuk notifikasi. |
+| **Tooltip**| ✅ Sudah Ada | Komponen tooltip sederhana untuk menampilkan informasi tambahan. |
