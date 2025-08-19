@@ -1,12 +1,19 @@
+
 import { footerBlocks, footerLegalItems } from "@/lib/data/nav";
 import { Logo } from "@/components/primitives/logo/logo";
 import { SiteFooterBlock } from "./site-footer-block";
 import { SiteFooterLegal } from "./site-footer-legal";
 import Link from "next/link";
+import { SiteFooterPrimaryCta } from "./site-footer-primary-cta";
 
 export function SiteFooter() {
   return (
     <footer className="mt-auto">
+      <SiteFooterPrimaryCta 
+        title="Wujudkan Potensi Anda Bersama Kami"
+        description="Pendaftaran mahasiswa baru telah dibuka. Ambil langkah pertama menuju karier yang sukses."
+        href="/pendaftaran"
+      />
       <div className="bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-6 py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
@@ -26,7 +33,7 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      <SiteFooterLegal items={footerLegalItems} copyright="STIE Dwimulya" />
+      <SiteFooterLegal items={footerLegalItems} copyright="Yayasan Dwimulya Sahati" />
     </footer>
   );
 }

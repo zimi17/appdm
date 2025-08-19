@@ -1,7 +1,7 @@
-import Link, { LinkProps } from "next/link";
+
+import Link from "next/link";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { Facebook, Twitter, Instagram, Youtube, Linkedin, Rss } from "lucide-react";
 
 interface SiteFooterBlockItem {
   children: ReactNode;
@@ -12,25 +12,6 @@ export interface SiteFooterBlockProps {
   title?: ReactNode;
   items?: Array<SiteFooterBlockItem>;
   className?: string;
-}
-
-const SocialLinks = () => {
-    const socialLinks = [
-        { href: "#", icon: Instagram, label: "Instagram" },
-        { href: "#", icon: Rss, label: "TikTok" }, // Using RSS as placeholder for TikTok
-        { href: "#", icon: Linkedin, label: "LinkedIn" },
-        { href: "#", icon: Facebook, label: "Facebook" },
-        { href: "#", icon: Youtube, label: "YouTube" },
-    ];
-    return (
-        <div className="flex gap-3">
-             {socialLinks.map((social) => (
-                <Link key={social.label} href={social.href} aria-label={social.label}>
-                    <social.icon className="h-6 w-6 text-gray-400 hover:text-white transition-colors" />
-                </Link>
-            ))}
-        </div>
-    )
 }
 
 export function SiteFooterBlock({
@@ -49,7 +30,7 @@ export function SiteFooterBlock({
                             {children}
                         </Link>
                     ): (
-                        children === 'SocialMedia' ? <SocialLinks/> : <div className="text-muted-foreground">{children}</div>
+                        <div className="text-muted-foreground">{children}</div>
                     )}
                 </li>
             ))}

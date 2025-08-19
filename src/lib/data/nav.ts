@@ -111,9 +111,11 @@ export const footerBlocks = [
     {
         title: "Media Sosial",
         items: [
-            {
-                children: 'SocialMedia'
-            }
+            { children: "Instagram", href: "#" },
+            { children: "TikTok", href: "#" },
+            { children: "LinkedIn", href: "#" },
+            { children: "Facebook", href: "#" },
+            { children: "YouTube", href: "#" },
         ]
     }
 ];
@@ -125,7 +127,7 @@ export const footerBlocks = [
     },
     {
       children: 'Karir',
-      href: '#'
+      href: '/pusat-karir'
     },
     {
       children: 'Merek Dagang',
@@ -154,5 +156,3 @@ export const footerBlocks = [
     { label: "Donasi", href: "#" },
     { label: "Layanan Darurat", href: "#" },
   ];
-
-
