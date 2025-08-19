@@ -35,7 +35,7 @@ export const homePageData = {
         },
       ],
     },
-    infoCards: [
+    programCards: [
       { title: "Manajemen (S1)", description: "Fokus pada pengembangan pemimpin bisnis masa depan dengan keahlian praktis.", href: "/akademik", linkText: "Selengkapnya" },
       { title: "Akuntansi (S1)", description: "Mempersiapkan mahasiswa untuk karir di bidang akuntansi publik dan korporat.", href: "/akademik", linkText: "Selengkapnya" },
       { title: "Beasiswa & Bantuan", description: "Komitmen kami untuk 'Kampus Rakyat' melalui beragam skema beasiswa dan KIP-K.", href: "/pendaftaran", linkText: "Info Beasiswa" },

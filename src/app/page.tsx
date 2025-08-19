@@ -8,12 +8,12 @@ import { HeroStatement } from "@/components/blocks/hero-statement";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
 import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
-import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
+import { SupportingDetails } from "@/components/blocks/supporting-details";
 import { CardGrid } from "@/components/blocks/card-grid/card-grid";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
-    const { missionTopper, infoCards, heroStatement, snowflakes, hierarchicalTease, distinction } = homePageData;
+    const { missionTopper, programCards, heroStatement, snowflakes, hierarchicalTease, distinction } = homePageData;
 
     return (
         <>
@@ -37,6 +37,18 @@ export default function Home() {
             
             <section className="bg-background py-16 md:py-24">
                 <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                    <div className="col-span-full">
+                        <CardGrid 
+                            title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
+                            items={programCards}
+                            cardClassName="bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-background pb-16 md:pb-24">
+                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                     <HeroStatement
                         title={heroStatement.title}
                         description={heroStatement.description}
@@ -57,19 +69,7 @@ export default function Home() {
                 articles={hierarchicalTease.articles}
                 className="bg-card"
             />
-
-            <section className="bg-background py-16 md:py-24">
-                <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                    <div className="col-span-full">
-                        <CardGrid 
-                            title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
-                            items={infoCards}
-                            cardClassName="bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground"
-                        />
-                    </div>
-                </div>
-            </section>
-
+            
             <section className="bg-background py-16 md:py-24">
                 <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
                     <div className="col-span-full lg:col-span-14 lg:col-start-2">
@@ -84,3 +84,4 @@ export default function Home() {
         </>
     );
 }
+
