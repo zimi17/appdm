@@ -11,7 +11,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { CarouselCard } from '../carousel-card';
+import { CarouselCard } from '../carousel-card/carousel-card';
 import { Button } from '../../ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 

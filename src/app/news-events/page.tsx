@@ -2,15 +2,14 @@
 "use client";
 
 import { useState } from "react";
-import { SiteHeader } from "@/components/universal/site-header";
-import { SiteFooter } from "@/components/universal/site-footer";
-import { HeroSection } from "@/components/blocks/hero-section";
-import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets";
+import { SiteHeader } from "@/components/universal/site-header/site-header";
+import { SiteFooter } from "@/components/universal/site-footer/site-footer";
+import { HeroSection } from "@/components/blocks/hero-section/hero-section";
+import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets/archive-page-facets";
 import { newsPageData, mockNews } from "./news-events-data";
-import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker";
-import { DateRangePicker } from "@/components/primitives/date-range-picker";
-import { DateRange } from "react-day-picker";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/primitives/pagination";
+import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker/alphabetical-picker";
+import { DateRangePicker } from "@/components/primitives/date-range-picker/date-range-picker";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/primitives/pagination/pagination";
 import { NewsCard } from "@/components/news-events/news-card";
 
 

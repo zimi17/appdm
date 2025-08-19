@@ -1,9 +1,9 @@
 
 'use client';
 import { motion } from 'framer-motion';
-import { ComponentHeader } from '../../primitives/component-header';
-import { CtaList } from '../../primitives/cta-list';
-import { LazyImage } from '../../primitives/lazy-image';
+import { ComponentHeader } from '../../primitives/component-header/component-header';
+import { CtaList } from '../../primitives/cta-list/cta-list';
+import { LazyImage } from '../../primitives/lazy-image/lazy-image';
 
 interface HeroStatementProps {
     title: string;

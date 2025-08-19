@@ -2,9 +2,9 @@
 'use client';
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { CtaLink } from "../../primitives/cta-link";
-import { ComponentHeader } from "../../primitives/component-header";
-import { LazyImage } from "../../primitives/lazy-image";
+import { CtaLink } from "../../primitives/cta-link/cta-link";
+import { ComponentHeader } from "../../primitives/component-header/component-header";
+import { LazyImage } from "../../primitives/lazy-image/lazy-image";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },

@@ -4,8 +4,8 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { SiteHeader } from "@/components/universal/site-header";
-import { SiteFooter } from "@/components/universal/site-footer";
+import { SiteHeader } from "@/components/universal/site-header/site-header";
+import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";

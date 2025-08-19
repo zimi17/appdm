@@ -8,8 +8,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { motion } from "framer-motion";
-import { ComponentHeader } from "../../primitives/component-header";
-import { CtaLink } from "../../primitives/cta-link";
+import { ComponentHeader } from "../../primitives/component-header/component-header";
+import { CtaLink } from "../../primitives/cta-link/cta-link";
 
 interface AccordionSectionProps {
   title: string;

@@ -2,8 +2,8 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { CtaLink } from "@/components/primitives/cta-link";
-import { ComponentHeader } from "@/components/primitives/component-header";
+import { CtaLink } from "@/components/primitives/cta-link/cta-link";
+import { ComponentHeader } from "@/components/primitives/component-header/component-header";
 
 export function HierarchicalTeaseHeader({ header }: { header: any }) {
     // Varian 1: Menggunakan ComponentHeader

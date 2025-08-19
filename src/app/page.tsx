@@ -1,20 +1,19 @@
 
-
 "use client";
 
 import { useState } from "react";
-import { SiteHeader } from "@/components/universal/site-header";
-import { MissionTopper } from "@/components/blocks/mission-topper";
-import { HeroCarousel } from "@/components/blocks/hero-carousel";
-import { InfoCardGrid } from "@/components/blocks/info-card-grid";
-import { HeroStatement } from "@/components/blocks/hero-statement";
-import { PromoBar } from "@/components/blocks/promo-bar";
-import { QuoteSection } from "@/components/blocks/quote-section";
-import { CardGrid } from "@/components/blocks/card-grid";
-import { SiteFooter } from "@/components/universal/site-footer";
+import { SiteHeader } from "@/components/universal/site-header/site-header";
+import { MissionTopper } from "@/components/blocks/mission-topper/mission-topper";
+import { HeroCarousel } from "@/components/blocks/hero-carousel/hero-carousel";
+import { InfoCardGrid } from "@/components/blocks/info-card-grid/info-card-grid";
+import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
+import { PromoBar } from "@/components/blocks/promo-bar/promo-bar";
+import { QuoteSection } from "@/components/blocks/quote-section/quote-section";
+import { CardGrid } from "@/components/blocks/card-grid/card-grid";
+import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
-import { Snowflakes } from "@/components/blocks/snowflakes";
-import { HierarchicalTease } from "@/components/blocks/hierarchical-tease";
+import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
@@ -37,7 +36,6 @@ export default function Home() {
                 <InfoCardGrid 
                     title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                     items={infoCards}
-                    titleClassName="font-bold"
                 />
                 <HeroStatement
                     title={heroStatement.title}
@@ -46,7 +44,7 @@ export default function Home() {
                     imageHint={heroStatement.imageHint}
                     links={heroStatement.links}
                 />
-                <Snowflakes keywords={snowflakes.keywords} />
+                <KeywordScrollLists keywords={snowflakes.keywords} />
                 <HierarchicalTease
                     header={hierarchicalTease.header}
                     articles={hierarchicalTease.articles}
