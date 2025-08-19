@@ -25,7 +25,7 @@ export function SiteFooter() {
       />
       
       <div className="bg-secondary text-secondary-foreground">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="max-w-screen-2xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <Link href="/" aria-label="Beranda" className="mb-4">

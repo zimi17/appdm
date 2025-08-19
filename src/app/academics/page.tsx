@@ -19,7 +19,7 @@ export default function Academics() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
       <main id="main-content">
-        <div className="container mx-auto px-6">
+        <div className="max-w-screen-2xl mx-auto px-6">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </div>
         <HeroSection 
@@ -28,7 +28,7 @@ export default function Academics() {
           imageUrl={hero.imageUrl}
           imageHint={hero.imageHint}
         />
-        <div className="container mx-auto px-6 py-16 md:py-24">
+        <div className="max-w-screen-2xl mx-auto px-6 py-16 md:py-24">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8">
               <TwoColumnContent

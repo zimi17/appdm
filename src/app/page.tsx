@@ -22,7 +22,7 @@ export default function Home() {
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main id="main-content">
-                <div className="max-w-7xl mx-auto px-6">
+                <div className="max-w-screen-2xl mx-auto px-6">
                     <MissionTopper 
                         titleParts={missionTopper.titleParts} 
                         activeSlide={activeSlide}
@@ -34,7 +34,7 @@ export default function Home() {
                     activeSlide={activeSlide}
                     setActiveSlide={setActiveSlide}
                 />
-                 <div className="max-w-7xl mx-auto px-6">
+                 <div className="max-w-screen-2xl mx-auto px-6">
                     <InfoCardGrid 
                         title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                         items={infoCards}
@@ -48,7 +48,7 @@ export default function Home() {
                     />
                 </div>
                 <KeywordScrollLists keywords={snowflakes.keywords} />
-                 <div className="max-w-7xl mx-auto px-6">
+                 <div className="max-w-screen-2xl mx-auto px-6">
                     <HierarchicalTease
                         header={hierarchicalTease.header}
                         articles={hierarchicalTease.articles}

@@ -3,9 +3,9 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { HeaderLogo } from "../header-logo/header-logo";
-import { NavHotLinks } from "../nav-hot-links/nav-hot-links";
-import { ActionButtons } from "../action-buttons/action-buttons";
+import { HeaderLogo } from "./header-logo";
+import { NavHotLinks } from "./nav-hot-links";
+import { ActionButtons } from "./action-buttons";
 import { GlobalMenu } from "../global-menu/global-menu";
 
 export function SiteHeader() {
@@ -38,7 +38,7 @@ export function SiteHeader() {
             : "bg-[#002147]"
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
+        <div className="max-w-screen-2xl mx-auto px-6 h-full flex justify-between items-center">
             <div className="flex items-center flex-1">
                 <HeaderLogo />
                 <NavHotLinks />

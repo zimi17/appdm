@@ -21,7 +21,7 @@ export function SiteFooterPrimaryCta({
   return (
     <div className="bg-primary text-primary-foreground group hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300">
       <Link href={href}>
-        <div className="max-w-7xl mx-auto px-6 py-4 md:py-6">
+        <div className="max-w-screen-2xl mx-auto px-6 py-4 md:py-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 items-center">
             <div className="md:col-span-4">
               <span className="font-headline text-xl md:text-2xl font-bold">
