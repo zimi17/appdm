@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { motion } from "framer-motion";
@@ -26,12 +27,12 @@ export function HierarchicalTease({
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.2 }}
     >
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-4 lg:sticky top-28">
+        <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+            <div className="col-span-full lg:col-span-4 lg:sticky top-28">
               <HierarchicalTeaseHeader header={header}/>
             </div>
 
-            <div className="lg:col-span-8">
+            <div className="col-span-full lg:col-span-12">
                 <div className="grid grid-cols-1 gap-8">
                     <motion.div
                     variants={{

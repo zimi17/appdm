@@ -34,10 +34,14 @@ export function InfoCardGrid({ title, items, className }: { title: string, items
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.1 }}
     >
-      <ComponentHeader title={title} className="max-w-2xl" titleClassName="font-bold"/>
-      <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {items.map(item => <Card key={item.title} item={item} />)}
-      </ul>
+      <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+        <div className="col-span-full">
+            <ComponentHeader title={title} className="max-w-2xl" titleClassName="font-bold"/>
+            <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {items.map(item => <Card key={item.title} item={item} />)}
+            </ul>
+        </div>
+      </div>
     </motion.section>
   )
 }

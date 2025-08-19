@@ -1,4 +1,5 @@
 
+
 'use client';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -23,9 +24,9 @@ export function PromoBar({ title, description, linkText, linkHref, className, de
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-        <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 border-t border-b border-border py-8">
-            <h2 className="font-headline text-4xl text-foreground md:col-span-4">{title}</h2>
-            <p className={cn("text-lg text-muted-foreground md:col-span-8", descriptionClassName)}>
+        <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6 items-center border-t border-b border-border py-8">
+            <h2 className="font-headline text-4xl text-foreground col-span-full md:col-span-4">{title}</h2>
+            <p className={cn("text-lg text-muted-foreground col-span-full md:col-span-12", descriptionClassName)}>
               {description} <CtaLink href={linkHref} className={cn("text-primary font-bold hover:underline whitespace-nowrap", linkClassName)}>{linkText}</CtaLink>
             </p>
         </div>

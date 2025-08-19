@@ -5,10 +5,10 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/universal/site-header/site-header";
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { HeroSection } from "@/components/blocks/hero-section/hero-section";
-import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets/archive-page-facets";
+import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets";
 import { newsPageData, mockNews } from "./berita-dan-acara-data";
-import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker/alphabetical-picker";
-import { DateRangePicker } from "@/components/primitives/date-range-picker/date-range-picker";
+import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker";
+import { DateRangePicker } from "@/components/primitives/date-range-picker";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/ui/pagination";
 import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 import { ArticleTease } from "@/components/primitives/article-tease/article-tease";
@@ -129,7 +129,7 @@ export default function NewsAndEventsPage() {
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main id="main-content">
-                <div className="max-w-screen-2xl mx-auto px-6">
+                <div className="px-6">
                     <Breadcrumbs breadcrumbs={breadcrumbs}/>
                 </div>
                  <HeroSection 
@@ -139,9 +139,9 @@ export default function NewsAndEventsPage() {
                     imageHint={hero.imageHint}
                 />
                 
-                <div className="max-w-screen-2xl mx-auto px-6 py-16 md:py-24">
-                    <div className="grid lg:grid-cols-12 gap-12">
-                        <aside className="lg:col-span-3 space-y-8 self-start sticky top-28">
+                <div className="py-16 md:py-24">
+                    <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+                        <aside className="col-span-full lg:col-span-4 space-y-8 self-start sticky top-28">
                             <ArchivePageFacets 
                                 title={facets.title}
                                 items={facets.items}
@@ -155,7 +155,7 @@ export default function NewsAndEventsPage() {
                                 onRangeChange={handleDateRangeChange}
                                 />
                         </aside>
-                        <div className="lg:col-span-9">
+                        <div className="col-span-full lg:col-span-12 mt-12 lg:mt-0">
                                 <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
                                 {paginatedNews.map(article => (
                                     <ArticleTease
