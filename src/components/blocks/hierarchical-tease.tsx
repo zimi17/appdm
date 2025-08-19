@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import { HierarchicalTeaseHeader } from "../primitives/hierarchical-tease-header";
 import { ArticleTease } from "../primitives/article-tease";
+import { ComponentHeader } from "../primitives/component-header";
 
 export function HierarchicalTease({
   header,
@@ -24,8 +25,14 @@ export function HierarchicalTease({
       transition={{ staggerChildren: 0.2 }}
     >
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-[2fr_3fr] gap-12">
-          <HierarchicalTeaseHeader {...header} />
+        <ComponentHeader 
+          title={header.title}
+          description={header.subheading}
+          hrClassName="border-primary"
+          descriptionClassName="text-muted-foreground"
+        />
+        <div className="grid lg:grid-cols-[2fr_3fr] gap-12 items-start mt-12">
+          <HierarchicalTeaseHeader {...header} cta={header.cta} />
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div
               className="md:col-span-2"

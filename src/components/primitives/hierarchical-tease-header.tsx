@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import { CtaLink } from "./cta-link";
+import { ComponentHeader } from "./component-header";
 
 export function HierarchicalTeaseHeader({ title, subheading, cta }: { title: string, subheading: string, cta: any }) {
     return (
@@ -14,8 +15,7 @@ export function HierarchicalTeaseHeader({ title, subheading, cta }: { title: str
             }}
             transition={{ duration: 0.5 }}
         >
-            <h2 className="font-headline text-5xl font-bold">{title}</h2>
-            <p className="mt-4 text-lg text-muted-foreground">{subheading}</p>
+            {/* The main title is now rendered by ComponentHeader in the parent component. We keep this for structure but it can be simplified if not needed. */}
             <div className="mt-6">
                 <CtaLink href={cta.href} variant="link" className="text-primary hover:text-accent">
                     {cta.text}

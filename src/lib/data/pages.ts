@@ -71,7 +71,7 @@ export const homePageData = {
     },
     articles: [
         {
-            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fheroes%2Fim-58818165.avif",
+            image: "https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg",
             overline: "MarketWatch",
             title: "Manipulasi IHK Bukan Kekhawatiran Terbesar Investor. Perhatikan Indikator Ekonomi Ini.",
             meta: "Menampilkan Alberto Cavallo. Diterbitkan 12 Agustus 2025.",
@@ -79,7 +79,7 @@ export const homePageData = {
             hint: "man walking past hiring sign"
         },
         {
-            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fbookcovers%2FBrooks-HappinessFiles-Excerpt-2025.webp",
+            image: "https://images.pexels.com/photos/6146999/pexels-photo-6146999.jpeg",
             overline: "STIE Dwimulya Working Knowledge",
             title: "Tiga Tips untuk Kehidupan Kerja yang Lebih Bahagia",
             meta: "Oleh Arthur Brooks pada 12 Agustus 2025",
@@ -87,7 +87,7 @@ export const homePageData = {
             hint: "book cover the happiness files"
         },
         {
-            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fheroes%2FStanton-Gazette-Ai-2025.webp",
+            image: "https://images.pexels.com/photos/8199653/pexels-photo-8199653.jpeg",
             overline: "STIE Dwimulya Working Knowledge",
             title: "Siapkah Dunia untuk Gelombang AI Berikutnya?",
             meta: "Menampilkan Christopher Stanton. Diterbitkan 11 Agustus 2025.",
@@ -95,7 +95,7 @@ export const homePageData = {
             hint: "AI generated building windows"
         },
         {
-            image: "https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_3:2/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fnews%2FPublishingImages%2Fheroes%2F540x540bb.webp",
+            image: "https://images.pexels.com/photos/8567003/pexels-photo-8567003.jpeg",
             overline: "Planet Money",
             title: "Apa yang Terjadi Ketika Pemerintah Memanipulasi Laporan Keuangan",
             meta: "Menampilkan Alberto Cavallo. Diterbitkan 9 Agustus 2025.",
