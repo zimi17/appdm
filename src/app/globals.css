@@ -175,7 +175,9 @@
   }
 
   .keyword-scroll-list__row {
-    @apply text-4xl md:text-5xl lg:text-7xl whitespace-nowrap inline-block font-headline tracking-tighter;
+    @apply text-4xl md:text-5xl lg:text-[5.75rem] whitespace-nowrap inline-block font-headline p-3;
+    line-height: 1;
+    letter-spacing: -0.03em;
     
     @media (prefers-reduced-motion: no-preference) {
       &:nth-child(odd) {

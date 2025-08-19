@@ -3,7 +3,6 @@
 
 import * as React from "react";
 import { useEffect, useState, CSSProperties, useRef } from "react";
-import { cn } from "@/lib/utils";
 
 interface KeywordProps {
   label: string;
@@ -24,28 +23,13 @@ export function KeywordScrollLists({ keywords }: KeywordScrollListProps) {
     setSortedKeywords([...keywords].sort(() => Math.random() - 0.5));
   }, [keywords]);
 
-  // Distribute keywords into 3 rows
+  // Distribute keywords into rows of max 4
   const rows = React.useMemo(() => {
-    const numRows = 3;
-    if (sortedKeywords.length === 0) return [[], [], []];
+    if (sortedKeywords.length === 0) return [];
 
-    const baseWordsPerRow = Math.floor(sortedKeywords.length / numRows);
-    const extraWords = sortedKeywords.length % numRows;
     const newRows: Array<Array<KeywordProps>> = [];
-    let currentIndex = 0;
-
-    for (let i = 0; i < numRows; i++) {
-      const wordsForThisRow = baseWordsPerRow + (i < extraWords ? 1 : 0);
-      const end = currentIndex + wordsForThisRow;
-      const rowKeywords = sortedKeywords.slice(currentIndex, end);
-      
-      // Duplicate keywords to ensure the row is long enough for the scroll effect
-      while(rowKeywords.map(k => k.label).join(' / ').length < 150 && sortedKeywords.length > 0) {
-        rowKeywords.push(...rowKeywords.slice(0, wordsForThisRow));
-      }
-
-      newRows.push(rowKeywords);
-      currentIndex = end;
+    for (let i = 0; i < sortedKeywords.length; i += 4) {
+      newRows.push(sortedKeywords.slice(i, i + 4));
     }
     return newRows;
   }, [sortedKeywords]);

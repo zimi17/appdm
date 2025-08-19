@@ -55,9 +55,18 @@ export const homePageData = {
   },
   snowflakes: {
     keywords: [
-      { label: "Manajemen Keuangan" }, { label: "Kewirausahaan" }, { label: "Bisnis Global" }, 
-      { label: "Akuntansi" }, { label: "Investasi" }, { label: "Kepemimpinan" }, 
-      { label: "Pasar Modal" }, { label: "Inovasi Digital" }, { label: "Manajemen Strategis" }
+        { label: "Manajemen Keuangan" },
+        { label: "Kewirausahaan" },
+        { label: "Akuntansi Forensik" },
+        { label: "Pasar Modal Syariah" },
+        { label: "Manajemen SDM" },
+        { label: "Tata Kelola Dana Desa" },
+        { label: "Perbankan Syariah" },
+        { label: "Pemasaran Digital" },
+        { label: "Manajemen Strategis" },
+        { label: "Analisis Investasi" },
+        { label: "Perpajakan" },
+        { label: "Inovasi Bisnis" }
     ],
   },
   hierarchicalTease: {
