@@ -1,5 +1,4 @@
 
-
 import { footerBlocks, footerLegalItems } from "@/lib/data/nav";
 import { Logo } from "@/components/primitives/logo/logo";
 import { SiteFooterBlock } from "./site-footer-block";
@@ -11,8 +10,8 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto">
       <SiteFooterPrimaryCta 
-        title="Wujudkan Potensi Anda Bersama Kami"
-        description="Pendaftaran mahasiswa baru telah dibuka."
+        title="Daftar Sekarang"
+        description="Mulai perjalanan Anda menuju karier yang pasti dalam 6 bulan."
         href="/pendaftaran"
       />
       <div className="bg-secondary text-secondary-foreground">
