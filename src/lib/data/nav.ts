@@ -3,7 +3,7 @@ export const navLinks = [
   {
     title: "Akademik",
     description: "Belajar di STIE Dwimulya dapat terjadi untuk setiap jenis pembelajar, pada setiap fase kehidupan.",
-    href: "/akademics",
+    href: "/akademik",
     sublinks: [
       {
         title: "Program Studi",
@@ -61,19 +61,19 @@ export const navLinks = [
   {
     title: "Pendaftaran",
     description: "Informasi mengenai proses pendaftaran di STIE Dwimulya.",
-    href: "/admissions"
+    href: "/pendaftaran"
   },
   {
     title: "Kontak",
     description: "Hubungi kami untuk informasi lebih lanjut.",
-    href: "/contact"
+    href: "/kontak"
   }
 ];
 
 
 export const hotLinks = [
   {
-    href: "/admissions",
+    href: "/pendaftaran",
     text: "Penerimaan Mahasiswa Baru",
   },
 ];
@@ -82,8 +82,8 @@ export const footerSections = [
     {
       title: "Jelajahi",
       links: [
-        { label: "Program Studi", href: "/academics" },
-        { label: "Penerimaan", href: "/admissions" },
+        { label: "Program Studi", href: "/akademik" },
+        { label: "Penerimaan", href: "/pendaftaran" },
         { label: "Kehidupan Kampus", href: "/campus-life" },
       ],
     },
@@ -98,7 +98,7 @@ export const footerSections = [
     {
       title: "Terhubung",
       links: [
-        { label: "Berita & Acara", href: "/news-events" },
+        { label: "Berita & Acara", href: "/berita-dan-acara" },
         { label: "Pusat Karir", href: "/career-center" },
         { label: "Alumni", href: "/alumni" },
       ],
@@ -108,7 +108,7 @@ export const footerSections = [
   export const quickLinks = [
     { label: "Peta Kampus", href: "#" },
     { label: "Direktori", href: "#" },
-    { label: "Berita", href: "/news-events" },
+    { label: "Berita", href: "/berita-dan-acara" },
     { label: "Karir", href: "#" },
     { label: "Alumni", href: "#" },
     { label: "Donasi", href: "#" },

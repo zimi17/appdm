@@ -13,7 +13,7 @@ export const homePageData = {
           title: "Akses Pendidikan Terbuka",
           description: "Program S1 Manajemen dan Akuntansi kami dirancang untuk semua kalangan, dengan dukungan beasiswa penuh.",
           linkText: "Jelajahi Program Studi",
-          linkHref: "/academics",
+          linkHref: "/akademik",
           imageUrl: "https://images.pexels.com/photos/8199132/pexels-photo-8199132.jpeg",
           imageHint: "students classroom"
         },
@@ -21,7 +21,7 @@ export const homePageData = {
           title: "Karier dan Keahlian Praktis",
           description: "Kurikulum yang relevan dengan industri dan sertifikasi BNSP untuk memastikan lulusan siap kerja.",
           linkText: "Lihat Unit Pengembangan Karir",
-          linkHref: "/services/cdu",
+          linkHref: "/layanan/cdu",
           imageUrl: "https://images.pexels.com/photos/5212697/pexels-photo-5212697.jpeg",
           imageHint: "students collaborating"
         },
@@ -29,17 +29,17 @@ export const homePageData = {
           title: "Membuat Dampak Nyata",
           description: "Melalui penelitian dan pengabdian, kami berkontribusi langsung pada pemberdayaan ekonomi masyarakat Banten.",
           linkText: "Pelajari Pengabdian Kami",
-          linkHref: "/about",
+          linkHref: "/tentang",
           imageUrl: "https://images.pexels.com/photos/7972525/pexels-photo-7972525.jpeg",
           imageHint: "community service"
         },
       ],
     },
     infoCards: [
-      { title: "Manajemen (S1)", description: "Fokus pada pengembangan pemimpin bisnis masa depan dengan keahlian praktis.", href: "/academics", linkText: "Selengkapnya" },
-      { title: "Akuntansi (S1)", description: "Mempersiapkan mahasiswa untuk karir di bidang akuntansi publik dan korporat.", href: "/academics", linkText: "Selengkapnya" },
-      { title: "Biaya Terjangkau", description: "Komitmen kami untuk 'Kampus Rakyat' melalui beragam skema beasiswa dan KIP-K.", href: "/admissions", linkText: "Info Beasiswa" },
-      { title: "Sertifikasi BNSP", description: "Tingkatkan daya saing Anda dengan sertifikasi profesi dari Career Development Unit (CDU) kami.", href: "/services/cdu", linkText: "Lihat Sertifikasi" },
+      { title: "Manajemen (S1)", description: "Fokus pada pengembangan pemimpin bisnis masa depan dengan keahlian praktis.", href: "/akademik", linkText: "Selengkapnya" },
+      { title: "Akuntansi (S1)", description: "Mempersiapkan mahasiswa untuk karir di bidang akuntansi publik dan korporat.", href: "/akademik", linkText: "Selengkapnya" },
+      { title: "Biaya Terjangkau", description: "Komitmen kami untuk 'Kampus Rakyat' melalui beragam skema beasiswa dan KIP-K.", href: "/pendaftaran", linkText: "Info Beasiswa" },
+      { title: "Sertifikasi BNSP", description: "Tingkatkan daya saing Anda dengan sertifikasi profesi dari Career Development Unit (CDU) kami.", href: "/layanan/cdu", linkText: "Lihat Sertifikasi" },
   ],
   heroStatement: {
     title: "Kampus Rakyat, Kampus Perubahan",
@@ -47,8 +47,8 @@ export const homePageData = {
     imageUrl: "https://images.pexels.com/photos/32907649/pexels-photo-32907649.jpeg",
     imageHint: "campus building",
     links: [
-        { href: "/about", text: "Jelajahi Sejarah & Visi Kami" },
-        { href: "/academics", text: "Jelajahi Keunggulan Akademik" },
+        { href: "/tentang", text: "Jelajahi Sejarah & Visi Kami" },
+        { href: "/akademik", text: "Jelajahi Keunggulan Akademik" },
     ]
   },
   snowflakes: {
@@ -110,7 +110,7 @@ export const homePageData = {
       imageUrl: "https://images.pexels.com/photos/6281165/pexels-photo-6281165.jpeg",
       imageHint: "educator portrait",
       linkText: "Baca lebih lanjut tentang pimpinan kami",
-      linkHref: "/about"
+      linkHref: "/tentang"
   },
   scienceCards: [
     { image: "https://images.pexels.com/photos/8199164/pexels-photo-8199164.jpeg", hint: "community discussion", title: "Pendampingan BUMDes", description: "Mahasiswa kami secara aktif terlibat dalam program pendampingan Badan Usaha Milik Desa untuk meningkatkan perekonomian lokal.", href: "#", linkText: "Lihat Program Kami" },

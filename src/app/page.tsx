@@ -52,7 +52,7 @@ export default function Home() {
                 <PromoBar
                   title="Penerimaan Mahasiswa Baru Telah Dibuka!"
                   description="Jelajahi program studi kami dan temukan bagaimana STIE Dwimulya dapat menjadi langkah awal kesuksesan Anda. Daftar sekarang dan jadilah bagian dari kampus perubahan."
-                  linkHref="/admissions"
+                  linkHref="/pendaftaran"
                   linkText="Info Pendaftaran"
                 />
                 <QuoteSection
