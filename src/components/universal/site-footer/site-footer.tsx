@@ -38,23 +38,22 @@ export function SiteFooter() {
             </div>
             
             {footerBlocks.map((block, i) => (
-                <div key={i} className="text-center md:text-left">
-                    <SiteFooterBlock
-                    title={block.title}
-                    items={block.items}
-                    />
-            </div>
+              <SiteFooterBlock
+                key={i}
+                title={block.title}
+                items={block.items}
+              />
             ))}
             
             <div className="text-center md:text-left">
-            <h3 className="font-bold text-lg text-white mb-4">Media Sosial</h3>
-            <div className="flex justify-center md:justify-start gap-2">
-                {socialLinks.map((social) => (
-                <Link key={social.label} href={social.href} aria-label={social.label} className="p-2 rounded-full border border-gray-600 hover:border-white hover:text-white text-gray-400 transition-colors">
-                    <social.icon className="h-5 w-5" />
-                </Link>
-                ))}
-            </div>
+              <h3 className="font-bold text-lg text-white mb-4">Media Sosial</h3>
+              <div className="flex justify-center md:justify-start gap-2">
+                  {socialLinks.map((social) => (
+                    <Link key={social.label} href={social.href} aria-label={social.label} className="p-2 rounded-full border border-gray-600 hover:border-white hover:text-white text-gray-400 transition-colors">
+                        <social.icon className="h-5 w-5" />
+                    </Link>
+                  ))}
+              </div>
             </div>
           </div>
         </div>
