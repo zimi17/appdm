@@ -13,7 +13,7 @@ const cardVariants = {
 
 const Card = ({ item, cardClassName }: { item: any, cardClassName?: string }) => (
   <motion.div 
-    className={cn("flex flex-col h-full group bg-background transition-colors duration-300 hover:bg-card", cardClassName)}
+    className={cn("flex flex-col h-full group transition-colors duration-300", cardClassName)}
     variants={cardVariants}
   >
     {item.image && (
@@ -29,7 +29,7 @@ const Card = ({ item, cardClassName }: { item: any, cardClassName?: string }) =>
     <div className="p-8 flex flex-col flex-grow">
       <h3 className="font-headline text-2xl mb-4">{item.title}</h3>
       <p className="text-lg mb-6 flex-grow opacity-90">{item.description}</p>
-      <CtaLink href={item.href} variant="link" className="mt-auto self-start text-primary-foreground hover:text-primary-foreground/80 group-[.bg-background]:text-primary group-[.bg-background]:hover:text-accent-foreground">
+      <CtaLink href={item.href} variant="link" className="mt-auto self-start text-primary group-hover:text-primary">
         {item.linkText}
       </CtaLink>
     </div>

@@ -55,7 +55,7 @@ export default function Home() {
             <HierarchicalTease
                 header={hierarchicalTease.header}
                 articles={hierarchicalTease.articles}
-                className="bg-secondary text-secondary-foreground"
+                className="bg-card"
             />
 
             <section className="bg-background py-16 md:py-24">
@@ -64,7 +64,7 @@ export default function Home() {
                         <CardGrid 
                             title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                             items={infoCards}
-                            cardClassName="bg-secondary text-secondary-foreground hover:bg-accent"
+                            cardClassName="bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground"
                         />
                     </div>
                 </div>

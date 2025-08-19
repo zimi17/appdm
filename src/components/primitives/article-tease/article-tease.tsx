@@ -49,7 +49,7 @@ export function ArticleTease({
                 </span>
             )}
             <HeadingLevel className={cn(
-                "font-headline font-bold text-foreground",
+                "font-headline font-bold",
                 style === 'full' ? 'text-xl md:text-2xl' : 'text-xl'
             )}>
                 <Link href={link} className="hover:underline">
@@ -75,7 +75,7 @@ export function ArticleTease({
     
     return (
         <article className={cn(
-            'flex flex-col group bg-card overflow-hidden rounded-lg transition-shadow duration-300 hover:shadow-xl h-full',
+            'flex flex-col group bg-card overflow-hidden transition-shadow duration-300 hover:shadow-xl h-full',
             className
         )}>
             {image && (

@@ -14,7 +14,7 @@ export function SiteFooterLegal({ items = [], copyright }: SiteFooterLegalProps)
   const copyrightText = copyright || `© ${currentYear} Yayasan Dwimulya Sahati dan Civitas Akademika STIE Dwimulya.`;
 
   return (
-    <div className="bg-secondary text-secondary-foreground">
+    <div className="bg-brand-primary text-primary-foreground">
       <div className="max-w-screen-2xl mx-auto px-6 py-4 border-t border-white/10 text-sm text-muted-foreground">
         <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-y-4 items-baseline gap-x-8">
           <div className="col-span-4 md:col-span-8 lg:col-span-4 text-center md:text-left">

@@ -1,11 +1,12 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { HeaderLogo } from "./header-logo";
-import { NavHotLinks } from "./nav-hot-links";
-import { ActionButtons } from "./action-buttons";
-import { GlobalMenu } from "./global-menu";
+import { HeaderLogo } from "./site-header/header-logo";
+import { NavHotLinks } from "./site-header/nav-hot-links";
+import { ActionButtons } from "./site-header/action-buttons";
+import { GlobalMenu } from "./global-menu/global-menu";
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,21 +34,16 @@ export function SiteHeader() {
         className={cn(
           "site-header sticky top-0 z-[99] transition-all duration-300 h-[90px]",
           isScrolled
-            ? "bg-[#002147]/80 backdrop-blur-sm shadow-md"
-            : "bg-[#002147]"
+            ? "bg-brand-primary/80 backdrop-blur-sm shadow-md"
+            : "bg-brand-primary"
         )}
       >
-        <div className="flex h-full justify-between items-center px-6">
-          {/* Logo dengan padding kiri dihapus */}
-          <div className="pl-0"> {/* Pastikan logo menempel ke kiri */}
-            <HeaderLogo />
-          </div>
-
-          {/* Menu dan tombol */}
-          <div className="flex items-center flex-1">
-            <NavHotLinks />
-          </div>
-          <ActionButtons onMenuOpen={setIsNavOpen} />
+        <div className="max-w-screen-2xl mx-auto px-6 h-full flex justify-between items-center">
+            <div className="flex items-center flex-1">
+                <HeaderLogo />
+                <NavHotLinks />
+            </div>
+            <ActionButtons onMenuOpen={setIsNavOpen} />
         </div>
       </header>
 

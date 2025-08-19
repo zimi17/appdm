@@ -1,3 +1,4 @@
+
 import { footerBlocks, footerLegalItems } from "@/lib/data/nav";
 import { SiteFooterLegal } from "./site-footer-legal";
 import { SiteFooterPrimaryCta } from "./site-footer-primary-cta";
@@ -23,7 +24,7 @@ export function SiteFooter() {
         href="/pendaftaran"
       />
       
-      <div className="bg-secondary text-secondary-foreground">
+      <div className="bg-brand-primary text-primary-foreground">
         <div className="max-w-screen-2xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">

@@ -22,15 +22,15 @@ const animationProps = {
   },
   exit: {
     opacity: 0,
-    y: 10,
+    y: -10,
     transition: {
       duration: 0.3,
       ease: [0.65, 0, 0.35, 1],
       opacity: {
         duration: 0.1,
-        ease: [0.65, 0, 0.35, 1],
-      },
-    },
+        ease: [0.65, 0, 0.35, 1]
+      }
+    }
   },
 };
 
@@ -102,7 +102,7 @@ export const DesktopLayout = ({ activeL1, activeL2, handleNavLinkClick }: any) =
               className="h-full w-full"
               exit={{
                 opacity: 0,
-                y: 10,
+                y: -10,
                 transition: {
                   duration: 0.1,
                   ease: [0.65, 0, 0.35, 1],

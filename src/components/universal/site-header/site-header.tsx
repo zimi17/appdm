@@ -34,8 +34,8 @@ export function SiteHeader() {
         className={cn(
           "site-header sticky top-0 z-[99] transition-all duration-300 h-[90px]",
           isScrolled
-            ? "bg-[#002147]/80 backdrop-blur-sm shadow-md"
-            : "bg-[#002147]"
+            ? "bg-brand-primary/80 backdrop-blur-sm shadow-md"
+            : "bg-brand-primary"
         )}
       >
         <div className="max-w-screen-2xl mx-auto px-6 h-full flex justify-between items-center">

@@ -12,9 +12,9 @@ interface CtaLinkProps extends ButtonProps {
 export function CtaLink({ href, children, className, variant, ...props }: CtaLinkProps) {
     if(variant === 'link' || !variant) {
         return (
-            <Link href={href} className={cn("text-primary font-bold self-start hover:underline group flex items-center gap-2", className)}>
+            <Link href={href} className={cn("font-bold self-start hover:underline group flex items-center gap-2", className)}>
                 {children}
-                <ArrowRight className="h-4 w-4 transform transition-transform group-hover:animate-swipe" />
+                <ArrowRight className="h-4 w-4 transform transition-transform group-hover:translate-x-1" />
             </Link>
         )
     }
