@@ -20,9 +20,9 @@ export function SiteFooterPrimaryCta({
 
   return (
     <div className="bg-primary text-primary-foreground group hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300">
-      <Link href={href} className="block">
+      <Link href={href ?? "#"}>
         <div className="max-w-7xl mx-auto px-6 py-4 md:py-6">
-          <div className="grid grid-cols-12 gap-x-6 items-center">
+           <div className="grid grid-cols-1 md:grid-cols-12 gap-x-6 items-center">
             <div className="col-span-12 md:col-span-4">
               <span className="font-headline text-xl md:text-2xl font-bold">
                 {title}
@@ -31,7 +31,7 @@ export function SiteFooterPrimaryCta({
             <div className="col-span-12 md:col-span-8">
               <div className="flex items-center justify-between">
                 {description && <p className="text-lg opacity-90">{description}</p>}
-                <ArrowRight className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:-rotate-45 shrink-0" />
+                <ArrowRight className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:-rotate-45 shrink-0 ml-4" />
               </div>
             </div>
           </div>

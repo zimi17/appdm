@@ -60,12 +60,12 @@ export function HeroCarousel({ slides, activeSlide, setActiveSlide }: HeroCarous
   }, [api]);
 
   return (
-    <section className="relative w-full px-6 mb-2 md:mb-24">
+    <section className="relative w-full col-span-full">
       <Carousel
         setApi={setApi}
         plugins={[autoplayPlugin.current]}
         opts={{ loop: true }}
-        className="w-full max-w-screen-xl mx-auto relative aspect-video overflow-hidden"
+        className="w-full relative aspect-video overflow-hidden"
       >
         <CarouselContent className="h-full">
           {slides.map((slide, index) => (

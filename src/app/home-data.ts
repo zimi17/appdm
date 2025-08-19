@@ -86,7 +86,7 @@ export const homePageData = {
             hint: "small business digital"
         },
         {
-            image: "https://images.pexels.com/photos/6146999/pexels-photo-6146999.jpeg",
+            image: "https://images.pexels.com/photos/8199147/pexels-photo-8199147.jpeg",
             overline: "Manajemen SDM",
             title: "Tiga Strategi Meningkatkan Kinerja Karyawan pada Industri Lokal",
             meta: "Oleh Asep Saepulloh pada 12 Agustus 2025",
@@ -142,17 +142,4 @@ export const homePageData = {
       }
     }
   },
-  quote: {
-      text: "Pendidikan adalah kunci untuk membuka potensi lokal. Kami berdedikasi untuk menciptakan pemimpin yang tidak hanya unggul secara akademis, tetapi juga memiliki kepedulian untuk membangun komunitasnya.",
-      author: "Dr. H. Rachmat Maulana, S.Sos., M.Si.",
-      role: "Ketua STIE Dwimulya",
-      imageUrl: "https://images.pexels.com/photos/6281165/pexels-photo-6281165.jpeg",
-      imageHint: "educator portrait",
-      linkText: "Baca lebih lanjut tentang pimpinan kami",
-      linkHref: "/tentang"
-  },
-  scienceCards: [
-    { image: "https://images.pexels.com/photos/8199164/pexels-photo-8199164.jpeg", hint: "community discussion", title: "Pendampingan BUMDes", description: "Mahasiswa kami secara aktif terlibat dalam program pendampingan Badan Usaha Milik Desa untuk meningkatkan perekonomian lokal.", href: "#", linkText: "Lihat Program Kami" },
-    { image: "https://images.pexels.com/photos/33461675/pexels-photo-33461675.jpeg", hint: "business planning", title: "Inkubator Bisnis & Kewirausahaan", description: "Mengembangkan jiwa wirausaha mahasiswa melalui pelatihan, bimbingan, dan kompetisi rencana bisnis.", href: "#", linkText: "Pelajari Lebih Lanjut" },
-  ],
 }
