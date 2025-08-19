@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { HierarchicalTeaseHeader } from "../primitives/hierarchical-tease-header";
 import { ArticleTease } from "../primitives/article-tease";
 import { ComponentHeader } from "../primitives/component-header";
+import { cn } from "@/lib/utils";
 
 export function HierarchicalTease({
   header,
@@ -14,7 +15,7 @@ export function HierarchicalTease({
   articles: any[];
 }) {
   const featuredArticle = articles[0];
-  const otherArticles = articles.slice(1, 3); // Display 2 smaller articles
+  const otherArticles = articles.slice(1, 3);
 
   return (
     <motion.section
@@ -25,17 +26,14 @@ export function HierarchicalTease({
       transition={{ staggerChildren: 0.2 }}
     >
       <div className="container mx-auto px-6">
-        {/* Header is now correctly positioned at the top of the section */}
         <ComponentHeader 
           title={header.title}
-          description={header.subheading}
           hrClassName="border-primary"
-          descriptionClassName="text-muted-foreground"
+          titleClassName="text-white"
         />
         
-        {/* Main grid for content */}
         <div className="grid lg:grid-cols-2 gap-12 items-start mt-12">
-          {/* Left column for the CTA and any other header-related info */}
+          {/* Left column for the subheading and CTA */}
           <motion.div
               variants={{
                   hidden: { opacity: 0, x: -20 },
@@ -43,7 +41,10 @@ export function HierarchicalTease({
               }}
               transition={{ duration: 0.5 }}
           >
-              <HierarchicalTeaseHeader cta={header.cta} />
+              <HierarchicalTeaseHeader 
+                subheading={header.subheading}
+                cta={header.cta} 
+              />
           </motion.div>
 
           {/* Right column for the articles */}
