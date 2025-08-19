@@ -16,8 +16,9 @@ function ArticleTeaseDesc({ tease }: { tease: ReactNode }) {
       return (
         <p
           className="mt-2 text-muted-foreground"
-          dangerouslySetInnerHTML={{ __html: tease }}
-        />
+        >
+            {tease}
+        </p>
       );
     }
   
@@ -48,10 +49,10 @@ export function ArticleTease({
                 </span>
             )}
             <HeadingLevel className={cn(
-                "font-headline font-bold",
+                "font-headline font-bold text-foreground",
                 style === 'full' ? 'text-xl md:text-2xl' : 'text-xl'
             )}>
-                <Link href={link} className="hover:underline text-foreground">
+                <Link href={link} className="hover:underline">
                     {title}
                 </Link>
             </HeadingLevel>
@@ -74,7 +75,7 @@ export function ArticleTease({
     
     return (
         <article className={cn(
-            'flex flex-col group bg-card overflow-hidden rounded-lg transition-shadow duration-300 hover:shadow-xl',
+            'flex flex-col group bg-card overflow-hidden rounded-lg transition-shadow duration-300 hover:shadow-xl h-full',
             className
         )}>
             {image && (

@@ -61,14 +61,14 @@ export default function NewsAndEventsPage() {
             for (let i = 1; i <= totalPages; i++) {
                 pageNumbers.push(
                     <PaginationItem key={i}>
-                        <PaginationLink href="#" isActive={i === currentPage} onClick={() => handlePageChange(i)}>{i}</PaginationLink>
+                        <PaginationLink href="#" isActive={i === currentPage} onClick={(e) => { e.preventDefault(); handlePageChange(i)}}>{i}</PaginationLink>
                     </PaginationItem>
                 );
             }
         } else {
             pageNumbers.push(
                 <PaginationItem key={1}>
-                    <PaginationLink href="#" isActive={1 === currentPage} onClick={() => handlePageChange(1)}>1</PaginationLink>
+                    <PaginationLink href="#" isActive={1 === currentPage} onClick={(e) => { e.preventDefault(); handlePageChange(1)}}>1</PaginationLink>
                 </PaginationItem>
             );
 
@@ -92,7 +92,7 @@ export default function NewsAndEventsPage() {
             for (let i = startPage; i <= endPage; i++) {
                 pageNumbers.push(
                     <PaginationItem key={i}>
-                        <PaginationLink href="#" isActive={i === currentPage} onClick={() => handlePageChange(i)}>{i}</PaginationLink>
+                        <PaginationLink href="#" isActive={i === currentPage} onClick={(e) => { e.preventDefault(); handlePageChange(i)}}>{i}</PaginationLink>
                     </PaginationItem>
                 );
             }
@@ -103,7 +103,7 @@ export default function NewsAndEventsPage() {
 
             pageNumbers.push(
                 <PaginationItem key={totalPages}>
-                    <PaginationLink href="#" isActive={totalPages === currentPage} onClick={() => handlePageChange(totalPages)}>{totalPages}</PaginationLink>
+                    <PaginationLink href="#" isActive={totalPages === currentPage} onClick={(e) => { e.preventDefault(); handlePageChange(totalPages)}}>{totalPages}</PaginationLink>
                 </PaginationItem>
             );
         }
@@ -112,11 +112,11 @@ export default function NewsAndEventsPage() {
             <Pagination>
                 <PaginationContent>
                     <PaginationItem>
-                        <PaginationPrevious href="#" onClick={() => handlePageChange(Math.max(1, currentPage - 1))} className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''} />
+                        <PaginationPrevious href="#" onClick={(e) => { e.preventDefault(); handlePageChange(Math.max(1, currentPage - 1))}} className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''} />
                     </PaginationItem>
                     {pageNumbers}
                     <PaginationItem>
-                        <PaginationNext href="#" onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))} className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}/>
+                        <PaginationNext href="#" onClick={(e) => { e.preventDefault(); handlePageChange(Math.min(totalPages, currentPage + 1))}} className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}/>
                     </PaginationItem>
                 </PaginationContent>
             </Pagination>
@@ -166,6 +166,7 @@ export default function NewsAndEventsPage() {
                                         link="#"
                                         image={{src: article.image, alt: article.title, hint: article.imageHint}}
                                         overline={{label: article.category}}
+                                        byline={{ publicationDate: "2024-08-15T12:00:00Z" }}
                                     />
                                 ))}
                             </div>
