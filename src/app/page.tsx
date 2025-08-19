@@ -8,8 +8,6 @@ import { HeroCarousel } from "@/components/blocks/hero-carousel/hero-carousel";
 import { InfoCardGrid } from "@/components/blocks/info-card-grid/info-card-grid";
 import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
 import { PromoBar } from "@/components/blocks/promo-bar/promo-bar";
-import { QuoteSection } from "@/components/blocks/quote-section/quote-section";
-import { CardGrid } from "@/components/blocks/card-grid/card-grid";
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
@@ -19,7 +17,7 @@ import { SupportingDetails } from "@/components/blocks/supporting-details/suppor
 
 export default function Home() {
     const [activeSlide, setActiveSlide] = useState(0);
-    const { missionTopper, infoCards, heroStatement, quote, scienceCards, snowflakes, hierarchicalTease, distinction } = homePageData;
+    const { missionTopper, infoCards, heroStatement, snowflakes, hierarchicalTease, distinction } = homePageData;
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -70,25 +68,8 @@ export default function Home() {
                   linkHref="/pendaftaran"
                   linkText="Info Pendaftaran"
                 />
-                <QuoteSection
-                  quote={quote.text}
-                  author={quote.author}
-                  role={quote.role}
-                  imageUrl={quote.imageUrl}
-                  imageHint={quote.imageHint}
-                  linkHref={quote.linkHref}
-                  linkText={quote.linkText}
-                />
-                 <CardGrid 
-                    title="Sorotan Akademik"
-                    items={scienceCards}
-                    className="bg-secondary"
-                    titleClassName="text-white"
-                    hrClassName="border-white"
-                />
             </main>
             <SiteFooter />
         </div>
     );
 }
-

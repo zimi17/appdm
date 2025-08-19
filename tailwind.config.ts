@@ -18,7 +18,11 @@ const config = {
       },
     },
     extend: {
-       fontFamily: {
+      gridTemplateColumns: {
+        '8': 'repeat(8, minmax(0, 1fr))',
+        '16': 'repeat(16, minmax(0, 1fr))',
+      },
+      fontFamily: {
         body: ['"Work Sans"', 'sans-serif'],
         headline: ['"Work Sans"', 'sans-serif'],
         "serif-body": ['"Source Serif 4"', 'serif'],
