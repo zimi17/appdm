@@ -10,7 +10,7 @@ import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
-import { HierarchicalTease } from "@/components/blocks/hierarchical-tease";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
 import { SectionHeader } from "@/components/blocks/section-header/section-header";
 import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
 

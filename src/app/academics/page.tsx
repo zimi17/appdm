@@ -13,7 +13,7 @@ import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 
 export default function Academics() {
   const { hero, twoColumnContent, degreePrograms, promoBar, kurikulum, aside } = academicsPageData;
-  const breadcrumbs = [{ title: "Akademik", link: "/akademik", isCurrent: true }];
+  const breadcrumbs = [{ title: "Akademik", link: "/academik", isCurrent: true }];
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -28,24 +28,24 @@ export default function Academics() {
           imageUrl={hero.imageUrl}
           imageHint={hero.imageHint}
         />
-        <div className="max-w-screen-2xl mx-auto px-6 py-16 md:py-24">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-8">
-              <TwoColumnContent
-                title={twoColumnContent.title}
-                paragraphs={twoColumnContent.paragraphs}
-              />
+        <div className="max-w-screen-2xl mx-auto px-6">
+            <div className="grid lg:grid-cols-12 gap-12 py-16 md:py-24">
+                <div className="lg:col-span-8">
+                <TwoColumnContent
+                    title={twoColumnContent.title}
+                    paragraphs={twoColumnContent.paragraphs}
+                />
+                </div>
+                <div className="lg:col-span-4">
+                <Aside title={aside.title}>
+                    {aside.links.map((link) => (
+                    <p key={link.text}>
+                        <Link href={link.href}>{link.text}</Link>
+                    </p>
+                    ))}
+                </Aside>
+                </div>
             </div>
-            <div className="lg:col-span-4">
-              <Aside title={aside.title}>
-                {aside.links.map((link) => (
-                  <p key={link.text}>
-                    <Link href={link.href}>{link.text}</Link>
-                  </p>
-                ))}
-              </Aside>
-            </div>
-          </div>
         </div>
         <CardGrid 
             title={degreePrograms.title}

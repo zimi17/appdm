@@ -129,7 +129,9 @@ export default function NewsAndEventsPage() {
         <div className="flex flex-col min-h-screen bg-background">
             <SiteHeader />
             <main id="main-content">
-                <Breadcrumbs breadcrumbs={breadcrumbs}/>
+                <div className="max-w-screen-2xl mx-auto px-6">
+                    <Breadcrumbs breadcrumbs={breadcrumbs}/>
+                </div>
                  <HeroSection 
                     title={hero.title}
                     description={hero.description}
@@ -137,7 +139,7 @@ export default function NewsAndEventsPage() {
                     imageHint={hero.imageHint}
                 />
                 
-                <div className="container mx-auto px-6 py-16 md:py-24">
+                <div className="max-w-screen-2xl mx-auto px-6 py-16 md:py-24">
                     <div className="grid lg:grid-cols-12 gap-12">
                         <aside className="lg:col-span-3 space-y-8 self-start sticky top-28">
                             <ArchivePageFacets 
