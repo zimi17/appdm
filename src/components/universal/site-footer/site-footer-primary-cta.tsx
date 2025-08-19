@@ -4,6 +4,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export interface SiteFooterPrimaryCtaProps {
   title?: ReactNode;
@@ -20,21 +21,18 @@ export function SiteFooterPrimaryCta({
 
   return (
     <div className="bg-primary text-primary-foreground group hover:bg-secondary hover:text-secondary-foreground transition-colors duration-300">
-      <Link href={href}>
+      <Link href={href} className="block">
         <div className="max-w-7xl mx-auto px-6 py-4 md:py-6">
-          {/* Mobile: 4 grid dengan konfigurasi 4,4 */}
-          {/* Tablet: 8 grid dengan konfigurasi 4,4 */}
-          {/* Desktop: 16 grid dengan konfigurasi 4,12 */}
-          <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-4 items-center">
-            <div className="col-span-4 md:col-span-4 lg:col-span-4">
+          <div className="grid grid-cols-12 gap-x-4 items-center">
+            <div className="col-span-12 md:col-span-4">
               <span className="font-headline text-xl md:text-2xl font-bold">
                 {title}
               </span>
             </div>
-            <div className="col-span-4 md:col-span-4 lg:col-span-8">
+            <div className="col-span-12 md:col-span-8">
               <div className="flex items-center justify-between">
                 {description && <p className="text-lg opacity-90">{description}</p>}
-                <ArrowRight className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:-rotate-45" />
+                <ArrowRight className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:-rotate-45 shrink-0" />
               </div>
             </div>
           </div>

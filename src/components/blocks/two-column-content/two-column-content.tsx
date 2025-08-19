@@ -7,13 +7,12 @@ import { ComponentHeader } from '../../primitives/component-header/component-hea
 interface TwoColumnContentProps {
   title: string;
   paragraphs: string[];
-  className?: string;
 }
 
-export function TwoColumnContent({ title, paragraphs, className }: TwoColumnContentProps) {
+export function TwoColumnContent({ title, paragraphs }: TwoColumnContentProps) {
   return (
     <motion.section
-      className={cn("bg-background text-foreground", className)}
+      className={cn("bg-transparent text-foreground")}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}

@@ -49,7 +49,7 @@ export default function Home() {
                     articles={hierarchicalTease.articles}
                 />
                 <section className="py-16 md:py-24 bg-background">
-                    <div className="container mx-auto">
+                    <div className="container mx-auto px-6">
                         <SectionHeader 
                             title={distinction.header.title}
                             description={distinction.header.description}

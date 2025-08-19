@@ -24,12 +24,12 @@ export function HierarchicalTease({
       transition={{ staggerChildren: 0.2 }}
     >
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="lg:sticky top-28">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-4 lg:sticky top-28">
               <HierarchicalTeaseHeader header={header}/>
             </div>
 
-            <div className="grid grid-cols-1 gap-8">
+            <div className="lg:col-span-8 grid grid-cols-1 gap-8">
                 <motion.div
                 variants={{
                     hidden: { opacity: 0, y: 20 },

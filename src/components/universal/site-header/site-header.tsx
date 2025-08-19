@@ -38,14 +38,9 @@ export function SiteHeader() {
             : "bg-[#002147]"
         )}
       >
-        <div className="flex h-full justify-between items-center px-6">
-          {/* Logo dengan padding kiri dihapus */}
-          <div className="pl-0"> {/* Pastikan logo menempel ke kiri */}
-            <HeaderLogo />
-          </div>
-
-          {/* Menu dan tombol */}
+        <div className="flex h-full justify-between items-center container mx-auto px-6">
           <div className="flex items-center flex-1">
+            <HeaderLogo />
             <NavHotLinks />
           </div>
           <ActionButtons onMenuOpen={setIsNavOpen} />

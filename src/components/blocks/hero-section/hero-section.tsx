@@ -32,7 +32,7 @@ export function HeroSection({ title, description, imageUrl, imageHint }: HeroSec
         />
         <div className={`absolute inset-0 ${gradientClass}`} />
       </motion.div>
-      <div className="relative z-10 p-4 max-w-4xl mx-auto">
+      <div className="relative z-10 container mx-auto px-6 max-w-4xl">
         <motion.h1
           className="font-headline text-5xl md:text-7xl lg:text-8xl font-normal leading-none text-foreground"
           initial={{ opacity: 0, y: 30 }}
