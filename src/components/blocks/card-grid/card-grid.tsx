@@ -35,7 +35,7 @@ const Card = ({ item }: { item: any }) => (
 export function CardGrid({ title, items, className, titleClassName, hrClassName }: { title?: string, items: any[], className?: string, titleClassName?: string, hrClassName?:string }) {
   return (
     <motion.section 
-      className={cn("py-16 md:py-24", className)}
+      className={cn("py-16 md:py-24 bg-background", className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
