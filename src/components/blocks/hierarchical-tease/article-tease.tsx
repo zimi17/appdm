@@ -1,28 +1,20 @@
 
 'use client';
 
-import Link from 'next/link';
-import { LazyImage } from '@/components/primitives/lazy-image/lazy-image';
-import { cn } from '@/lib/utils';
+import { ArticleTease as ArticleTeasePrimitive } from '@/components/primitives/article-tease/article-tease';
 
 export function ArticleTease({ item, isFeatured = false }: { item: any, isFeatured?: boolean }) {
     return (
-        <div className="flex flex-col group">
-            <LazyImage 
-                src={item.image} 
-                alt={item.title} 
-                className={cn("w-full aspect-[3/2]")}
-                imageClassName="object-cover group-hover:scale-105 transition-transform duration-300"
-                data-ai-hint={item.hint}
-                fill 
-            />
-            <div className="mt-4">
-                <p className="text-sm font-semibold text-primary">{item.overline}</p>
-                <h3 className={cn("font-headline font-bold mt-1", isFeatured ? "text-3xl" : "text-xl")}>
-                    <Link href={item.href} className="hover:underline text-white">{item.title}</Link>
-                </h3>
-                <p className="text-sm text-muted-foreground mt-2">{item.meta}</p>
-            </div>
-        </div>
+        <ArticleTeasePrimitive
+            type="Article"
+            title={item.title}
+            tease={isFeatured ? item.description : undefined}
+            link={item.href}
+            image={{src: item.image, alt: item.title, hint: item.hint}}
+            overline={{label: item.overline}}
+            byline={{authors: [{name: item.meta.split(' pada ')[0].replace('Oleh ','')}], publicationDate: new Date().toISOString()}}
+            style="full"
+            className="bg-transparent hover:bg-transparent shadow-none hover:shadow-none"
+        />
     )
 }

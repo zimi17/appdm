@@ -9,7 +9,7 @@ import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components
 import { newsPageData, mockNews } from "./berita-dan-acara-data";
 import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker/alphabetical-picker";
 import { DateRangePicker } from "@/components/primitives/date-range-picker/date-range-picker";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/primitives/pagination/pagination";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/ui/pagination";
 import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 import { ArticleTease } from "@/components/primitives/article-tease/article-tease";
 

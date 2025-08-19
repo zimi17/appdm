@@ -1,37 +1,37 @@
+
 'use client';
 
 import { format } from 'date-fns';
+import { id } from 'date-fns/locale';
 import Link from 'next/link';
+import { type BylineProps } from '../article-tease/types';
 
-interface Author {
-    name: string;
-    link?: string;
-}
-
-export interface BylineProps {
-    authors: Author[];
-    publicationDate: string;
-}
-
-export function Byline({ authors, publicationDate }: BylineProps) {
-    const formattedDate = format(new Date(publicationDate), "MMMM d, yyyy");
+export function Byline({ authors, publicationDate, disableLinks = false }: BylineProps) {
+    const formattedDate = format(new Date(publicationDate), "d MMMM yyyy", { locale: id });
 
     const authorList = authors.map((author, index) => {
-        const authorName = author.link ? <Link href={author.link} className="hover:underline">{author.name}</Link> : <span>{author.name}</span>;
+        const authorName = !disableLinks && author.link ? (
+            <Link href={author.link} className="hover:underline">{author.name}</Link>
+        ) : (
+            <span>{author.name}</span>
+        );
         
-        if (index === 0) {
-            return <span key={author.name} className="hbs-byline__author">{authorName}</span>;
-        } else if (index === authors.length - 1) {
-            return <span key={author.name} className="hbs-byline__author">, and {authorName}</span>;
-        } else {
-            return <span key={author.name} className="hbs-byline__author">, {authorName}</span>;
+        let separator = '';
+        if (authors.length > 1) {
+            if (index < authors.length - 2) {
+                separator = ', ';
+            } else if (index === authors.length - 2) {
+                separator = ' dan ';
+            }
         }
+        
+        return <span key={author.name} className="inline">{authorName}{separator}</span>;
     });
 
     return (
-        <div className="hbs-byline">
-            <p className="hbs-byline__text text-sm text-muted-foreground">
-                By {authorList} on <time dateTime={publicationDate}>{formattedDate}</time>
+        <div className="text-sm text-muted-foreground">
+            <p>
+                Oleh {authorList} pada <time dateTime={publicationDate}>{formattedDate}</time>
             </p>
         </div>
     );
