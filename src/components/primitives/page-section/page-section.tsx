@@ -3,12 +3,12 @@
 
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { SectionHeader, type SectionHeaderProps } from "@/components/blocks/section-header/section-header";
+import { ComponentHeader, type ComponentHeaderProps } from "@/components/primitives/component-header/component-header";
 
 export interface PageSectionProps {
-  header?: SectionHeaderProps;
+  header?: ComponentHeaderProps;
   children?: ReactNode;
-  theme?: 'light' | 'white' | 'dark' | 'black' | 'crimson';
+  theme?: 'light' | 'white' | 'dark' | 'black';
   spacing?: 'both' | 'top' | 'bottom' | 'none';
   className?: string;
 }
@@ -27,18 +27,27 @@ export function PageSection({
       none: 'py-0',
   }
 
+  const themeClasses = {
+      light: 'bg-muted text-foreground',
+      white: 'bg-background text-foreground',
+      dark: 'bg-card text-card-foreground',
+      black: 'bg-black text-white'
+  }
+
   return (
     <section 
         className={cn(
             'transition-colors duration-300',
             spacingClasses[spacing],
+            themeClasses[theme],
             className
         )} 
-        data-theme={theme}
     >
-      <div className="container mx-auto px-6">
-        {header && <SectionHeader {...header} />}
-        {children && <div>{children}</div>}
+      <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+        <div className="col-span-full">
+            {header && <ComponentHeader {...header} />}
+            {children && <div>{children}</div>}
+        </div>
       </div>
     </section>
   );

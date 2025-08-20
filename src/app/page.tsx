@@ -7,7 +7,9 @@ import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
 import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
 import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
-import { CardGrid } from "@/components/blocks/card-grid/card-grid";
+import { PageSection } from "@/components/primitives/page-section/page-section";
+import { TeaseRow } from "@/components/blocks/tease-row/tease-row";
+import { ComponentHeader } from "@/components/primitives/component-header/component-header";
 
 export default function Home() {
     const { missionTopper, programCards, heroStatement, snowflakes, hierarchicalTease, distinction } = homePageData;
@@ -20,16 +22,14 @@ export default function Home() {
             />
             
             <div className="landing-page-body__wrapper">
-              <section className="bg-background py-16 md:py-24">
-                  <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                      <div className="col-span-full">
-                          <CardGrid 
-                              items={programCards}
-                              cardClassName="bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground"
-                          />
-                      </div>
-                  </div>
-              </section>
+              <PageSection theme="white">
+                <ComponentHeader 
+                    title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
+                    isSmall={false}
+                    className="max-w-4xl"
+                />
+                <TeaseRow items={programCards} />
+              </PageSection>
 
               <section className="bg-background pb-16 md:pb-24">
                   <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
