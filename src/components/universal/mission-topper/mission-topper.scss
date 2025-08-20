@@ -1,6 +1,7 @@
-@import "../../../styles/abstracts/variables";
-@import "../../../styles/abstracts/mixins/fluid-size";
-@import "../../../styles/abstracts/mixins/mq";
+
+@import "../../../styles/abstracts/_variables.scss";
+@import "../../../styles/abstracts/mixins/_fluid-size.scss";
+@import "../../../styles/abstracts/mixins/_mq.scss";
 
 .hbs-mission-topper {
   .hbs-mission-topper__title {

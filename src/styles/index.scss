@@ -1,45 +1,41 @@
 // Main Manifest File
 
 // 1. CSS Reset
-@import 'reset';
+@import '_reset.scss';
 
 // 2. Abstracts (Variables, Mixins, Functions, Themes)
-@import 'abstracts/variables';
-@import 'abstracts/themes';
-// Import all mixins
-@import 'abstracts/mixins/border';
-@import 'abstracts/mixins/button';
-@import 'abstracts/mixins/checkbox';
-@import 'abstracts/mixins/field-size';
-@import 'abstracts/mixins/fluid-size';
-@import 'abstracts/mixins/grid';
-@import 'abstracts/mixins/hide-scrollbars';
-@import 'abstracts/mixins/hide';
-@import 'abstracts/mixins/hover';
-@import 'abstracts/mixins/layout';
-@import 'abstracts/mixins/line';
-@import 'abstracts/mixins/link';
-@import 'abstracts/mixins/list-reset';
-@import 'abstracts/mixins/mq';
-@import 'abstracts/mixins/pseudo';
-@import 'abstracts/mixins/reset-input';
-@import 'abstracts/mixins/rich-text';
-@import 'abstracts/mixins/shorthander';
-@import 'abstracts/mixins/size';
-@import 'abstracts/mixins/typography';
+@import 'abstracts/_variables.scss';
+@import 'abstracts/_themes.scss';
+@import 'abstracts/mixins/_fluid-size.scss';
+@import 'abstracts/mixins/_border.scss';
+@import 'abstracts/mixins/_button.scss';
+@import 'abstracts/mixins/_checkbox.scss';
+@import 'abstracts/mixins/_field-size.scss';
+@import 'abstracts/mixins/_grid.scss';
+@import 'abstracts/mixins/_hide-scrollbars.scss';
+@import 'abstracts/mixins/_hide.scss';
+@import 'abstracts/mixins/_hover.scss';
+@import 'abstracts/mixins/_layout.scss';
+@import 'abstracts/mixins/_line.scss';
+@import 'abstracts/mixins/_link.scss';
+@import 'abstracts/mixins/_list-reset.scss';
+@import 'abstracts/mixins/_mq.scss';
+@import 'abstracts/mixins/_pseudo.scss';
+@import 'abstracts/mixins/_reset-input.scss';
+@import 'abstracts/mixins/_rich-text.scss';
+@import 'abstracts/mixins/_shorthander.scss';
+@import 'abstracts/mixins/_size.scss';
+@import 'abstracts/mixins/_typography.scss';
 
 
 // 3. Base (Global styles, fonts, animations)
-@import 'base/fonts';
-@import 'base/global';
-@import 'base/type-global';
-@import 'base/animations';
-@import 'base/print';
+@import 'base/_fonts.scss';
+@import 'base/_global.scss';
+@import 'base/_type-global.scss';
+@import 'base/_animations.scss';
+@import 'base/_print.scss';
 
 
 // 4. Utilities
-@import 'utilities/hbs-aside';
-@import 'utilities/hbs-topper-wrapper';
-
-// Note: Component-specific styles are now co-located with their components
-// and imported directly into the component files. This file is for global styles.
+@import 'utilities/_hbs-aside.scss';
+@import 'utilities/_hbs-topper-wrapper.scss';

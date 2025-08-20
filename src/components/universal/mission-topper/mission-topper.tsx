@@ -59,13 +59,13 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
   let buttonIndex = -1;
 
   return (
-    <section className="hbs-mission-topper bg-card text-card-foreground" data-theme="dark" data-region="topper-mission">
+    <section className="hbs-mission-topper bg-background text-foreground" data-theme="light" data-region="topper-mission">
       <div className="hbs-mission-topper__content">
         <h1 className="sr-only">STIE Dwimulya</h1>
         
         <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
           <div className="col-span-full py-12 md:py-16">
-            <div className="max-w-5xl">
+            <div className="max-w-7xl">
               <div className="hbs-mission-topper__title">
                 {titleParts.map((part, index) => {
                   if (part.isButton) {
@@ -77,7 +77,7 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
                         onClick={() => handleTitleButtonClick(slideIndex)}
                         className={cn(
                           "hbs-mission-topper__has-details underline decoration-transparent underline-offset-4 decoration-4 transition-all duration-300",
-                          activeSlide === slideIndex ? "text-primary decoration-primary" : "text-white hover:decoration-muted-foreground/50"
+                          activeSlide === slideIndex ? "text-primary decoration-primary" : "text-foreground hover:decoration-muted-foreground/50"
                         )}
                         aria-label={part.text}
                         aria-description="advance to this slide in the carousel"
@@ -86,14 +86,14 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
                       </button>
                     );
                   }
-                  return <span key={index} className="text-white">{part.text}</span>;
+                  return <span key={index}>{part.text}</span>;
                 })}
               </div>
             </div>
           </div>
         </div>
         
-        <div className="hbs-mission-topper__media relative w-full">
+        <div className="hbs-mission-topper__media relative w-full px-6">
             <Carousel
                 setApi={setApi}
                 plugins={[autoplayPlugin.current]}
