@@ -3,7 +3,6 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { CtaLink } from "@/components/primitives/cta-link/cta-link";
 import { ArrowRight } from "lucide-react";
 
 const cardVariants = {
@@ -16,11 +15,14 @@ const Card = ({ item }: { item: any }) => (
     className="flex"
     variants={cardVariants}
   >
-    <a href={item.href} className="flex flex-col h-full p-8 group transition-colors duration-300 bg-secondary text-secondary-foreground hover:bg-accent w-full">
-      <h3 className="font-headline text-2xl font-bold mb-4">{item.title}</h3>
-      <p className="text-lg mb-6 flex-grow opacity-90">{item.description}</p>
+    <a 
+      href={item.href} 
+      className="flex flex-col h-full p-8 group transition-colors duration-300 bg-secondary text-secondary-foreground hover:bg-brand-primary w-full"
+    >
+      <h3 className="font-headline text-2xl font-bold mb-4 group-hover:text-white transition-colors duration-300">{item.title}</h3>
+      <p className="text-lg mb-6 flex-grow opacity-90 group-hover:text-white transition-colors duration-300">{item.description}</p>
       <div className="mt-auto self-start">
-        <ArrowRight className="h-6 w-6 transform transition-transform group-hover:translate-x-2" />
+        <ArrowRight className="h-6 w-6 transform transition-all duration-300 group-hover:translate-x-2 group-hover:text-white" />
       </div>
     </a>
   </motion.li>
