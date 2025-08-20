@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 const config = {
@@ -46,24 +45,11 @@ const config = {
       fontFamily: {
         body: ['"Work Sans"', 'sans-serif'],
         headline: ['"Work Sans"', 'sans-serif'],
-        article: ['"Source Serif Pro"', 'serif'], // Fixed name
-        mono: ['"Roboto Mono"', 'monospace'],     // Added mono
+        article: ['"Source Serif Pro"', 'serif'],
+        mono: ['"Roboto Mono"', 'monospace'],
       },
       colors: {
-        // STIE Dwimulya Brand Colors
-        'brand-primary': '#002147',    // Oxford Blue
-        'brand-accent': '#D4A017',     // Goldenrod  
-        'brand-gray-50': '#F8F9FA',
-        'brand-gray-100': '#E9ECEF',
-        'brand-gray-200': '#DEE2E6', 
-        'brand-gray-300': '#CED4DA',
-        'brand-gray-400': '#ADB5BD',
-        'brand-gray-500': '#6C757D',
-        'brand-gray-600': '#495057',
-        'brand-gray-700': '#343A40',
-        'brand-gray-800': '#212529',
-        'brand-gray-900': '#1A1E21',
-        // ShadCN Colors (keep existing)
+        // ShadCN Colors now using CSS variables
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -97,18 +83,22 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brand Colors for specific use cases (if needed outside of theme)
+        'brand-primary': '#002147',
+        'brand-accent': '#D4A017',
+        'brand-gray-800': '#212529',
       },
       spacing: {
-        '18': '4.5rem',   // 72px - missing in default
-        '88': '22rem',    // 352px - large sections  
-        '100': '25rem',   // 400px - hero sections
-        '128': '32rem',   // 512px - extra large
+        '18': '4.5rem',
+        '88': '22rem',
+        '100': '25rem',
+        '128': '32rem',
       },
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))',
         '14': 'repeat(14, minmax(0, 1fr))',
         '15': 'repeat(15, minmax(0, 1fr))', 
-        '16': 'repeat(16, minmax(0, 1fr))', // 16-column grid untuk desktop
+        '16': 'repeat(16, minmax(0, 1fr))',
       },
       boxShadow: {
         'brand': '0 4px 6px -1px rgba(0, 33, 71, 0.1), 0 2px 4px -1px rgba(0, 33, 71, 0.06)',
@@ -122,8 +112,8 @@ const config = {
       },
       transitionTimingFunction: {
         'menu': 'cubic-bezier(0.65, 0, 0.35, 1)',
-        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',          // smooth interactions
-        'bounce-subtle': 'cubic-bezier(0.34, 1.56, 0.64, 1)', // subtle bounce
+        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'bounce-subtle': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
       },
       keyframes: {
         "accordion-down": {

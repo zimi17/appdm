@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 @tailwind base;
@@ -7,65 +6,58 @@
 
 @layer base {
   :root {
-    --background: 0 0% 97%; /* #F8F8F8 - Putih Pudar */
-    --foreground: 220 13% 13%; /* #1c1c21 - Hitam Brand Gelap (sedikit diubah dari #222222) */
-    
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 220 13% 13%;
-
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 13%;
-
-    --primary: 215 100% 14%; /* #002147 - Biru Oxford */
-    --primary-foreground: 0 0% 97%; /* Putih Pudar */
-
-    --secondary: 45 74% 52%; /* #DAA520 - Golden Rod */
-    --secondary-foreground: 215 100% 14%; /* Biru Oxford */
-
-    --muted: 220 9% 94%;
-    --muted-foreground: 220 9% 45%;
-
-    --accent: 45 74% 57%; /* Golden Rod lebih terang untuk hover */
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 215 100% 14%; /* Oxford Blue */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 45 74% 52%; /* Goldenrod */
+    --secondary-foreground: 215 100% 14%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 45 74% 57%; /* Lighter Goldenrod */
     --accent-foreground: 215 100% 14%;
-
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 9% 89%;
-    --input: 220 9% 89%;
-    --ring: 45 74% 52%;
-
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 100% 14%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 220 13% 13%;
-    --foreground: 0 0% 97%;
-    
-    --card: 220 13% 15%;
-    --card-foreground: 0 0% 97%;
-
-    --popover: 220 13% 13%;
-    --popover-foreground: 0 0% 97%;
-
-    --primary: 0 0% 97%;
-    --primary-foreground: 220 13% 13%;
-
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
     --secondary: 45 74% 52%;
-    --secondary-foreground: 220 13% 13%;
-
-    --muted: 220 13% 20%;
-    --muted-foreground: 0 0% 80%;
-
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
     --accent: 45 74% 57%;
-    --accent-foreground: 220 13% 13%;
-
+    --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 13% 25%;
-    --input: 220 13% 25%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
     --ring: 45 74% 52%;
+  }
+
+  [data-theme="light"] {
+    --c-bg: hsl(0 0% 100%);
+    --c-text: hsl(222.2 84% 4.9%);
+  }
+
+  [data-theme="dark"] {
+    --c-bg: hsl(222.2 84% 4.9%);
+    --c-text: hsl(210 40% 98%);
   }
 }
 

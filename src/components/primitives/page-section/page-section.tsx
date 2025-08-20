@@ -20,13 +20,6 @@ export function PageSection({
   spacing = 'both',
   className,
 }: PageSectionProps) {
-  const themeClasses = {
-    light: 'bg-background text-foreground',
-    white: 'bg-card text-card-foreground',
-    dark: 'bg-brand-gray-800 text-white',
-    black: 'bg-black text-white',
-    crimson: 'bg-red-700 text-white',
-  };
 
   const spacingClasses = {
       both: 'py-16 md:py-24',
@@ -34,6 +27,16 @@ export function PageSection({
       bottom: 'pb-16 md:pb-24',
       none: 'py-0',
   }
+
+  // Instead of swapping Tailwind classes, we now set the data-theme attribute.
+  // The actual color changes are handled by CSS variables in globals.css.
+  const themeClasses = {
+    light: 'bg-background text-foreground',
+    white: 'bg-card text-card-foreground',
+    dark: 'bg-brand-gray-800 text-white',
+    black: 'bg-black text-white',
+    crimson: 'bg-red-700 text-white',
+  };
 
   return (
     <section 
