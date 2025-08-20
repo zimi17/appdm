@@ -16,7 +16,7 @@ const Card = ({ item }: { item: any }) => (
     className="flex"
     variants={cardVariants}
   >
-    <a href={item.href} className="flex flex-col h-full p-8 group transition-colors duration-300 bg-[#a51c30] text-white hover:bg-[#a51c30]/90 w-full">
+    <a href={item.href} className="flex flex-col h-full p-8 group transition-colors duration-300 bg-secondary text-secondary-foreground hover:bg-accent w-full">
       <h3 className="font-headline text-2xl font-bold mb-4">{item.title}</h3>
       <p className="text-lg mb-6 flex-grow opacity-90">{item.description}</p>
       <div className="mt-auto self-start">
