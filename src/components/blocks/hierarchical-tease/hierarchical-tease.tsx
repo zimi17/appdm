@@ -1,61 +1,85 @@
+
 'use client';
 
+import './hierarchical-tease.scss';
 import { motion } from "framer-motion";
-import { HierarchicalTeaseHeader } from "./hierarchical-tease-header";
-import { ArticleTease } from "./article-tease";
-import { cn } from "@/lib/utils";
+import { ArticleTease } from "@/components/primitives/article-tease/article-tease";
+import { TeaseFeed } from "@/components/blocks/tease-feed/tease-feed";
+import { HierarchicalTeaseHeader, HierarchicalTeaseHeaderProps } from "./hierarchical-tease-header";
+import { ArticleTeaseProps } from '@/components/primitives/article-tease/types';
+
+export interface HierarchicalTeaseProps {
+  header?: HierarchicalTeaseHeaderProps;
+  articles: Array<any>;
+  feedTeaseStyle?: "expanded" | "compressed" | "text-only";
+}
 
 export function HierarchicalTease({
   header,
   articles,
-  className
-}: {
-  header: any;
-  articles: any[];
-  className?: string;
-}) {
+  feedTeaseStyle = "expanded",
+}: HierarchicalTeaseProps) {
   const featuredArticle = articles[0];
   const otherArticles = articles.slice(1, 3);
 
+  const featuredArticleProps: ArticleTeaseProps | null = featuredArticle ? {
+    type: "Article",
+    title: featuredArticle.title,
+    tease: featuredArticle.meta,
+    link: featuredArticle.href,
+    image: { src: featuredArticle.image, alt: featuredArticle.title, hint: featuredArticle.hint },
+    overline: { label: featuredArticle.overline },
+    byline: { publicationDate: "2024-08-15T12:00:00Z" },
+    style: "full",
+    className: "bg-transparent shadow-none",
+    HeadingLevel: header ? "h3" : "h2",
+  } : null;
+
   return (
-    <motion.section
-      className={cn("bg-card text-foreground py-16 md:py-24", className)}
+    <motion.div
+      className="hbs-hierarchical-tease"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ staggerChildren: 0.2 }}
     >
-        <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-            <div className="col-span-full lg:col-span-4 lg:sticky top-28">
-              <HierarchicalTeaseHeader header={header}/>
-            </div>
-
-            <div className="col-span-full lg:col-span-12">
-                <div className="grid grid-cols-1 gap-8">
-                    <motion.div
-                    variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 },
-                    }}
-                    >
-                    <ArticleTease item={featuredArticle} isFeatured={true} />
-                    </motion.div>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {otherArticles.map((article, index) => (
-                        <motion.div
-                            key={index}
-                            variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { opacity: 1, y: 0 },
-                            }}
-                        >
-                            <ArticleTease item={article} />
-                        </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </motion.section>
+      {header && <HierarchicalTeaseHeader {...header} />}
+      <div className="hbs-hierarchical-tease__articles">
+        <motion.div 
+            className="hbs-hierarchical-tease__big-preview"
+            variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+            }}
+        >
+          {featuredArticleProps && <ArticleTease {...featuredArticleProps} />}
+        </motion.div>
+        <motion.div 
+            className="hbs-hierarchical-tease__small-preview"
+            variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+            }}
+        >
+          <TeaseFeed
+            HeadingLevelTease={header ? "h3" : "h2"}
+            items={otherArticles.map((article) => ({
+              name: "ArticleTease",
+              props: { 
+                type: "Article",
+                title: article.title,
+                tease: article.meta,
+                link: article.href,
+                image: { src: article.image, alt: article.title, hint: article.hint },
+                overline: { label: article.overline },
+                byline: { publicationDate: "2024-08-15T12:00:00Z" },
+                style: feedTeaseStyle 
+              },
+            }))}
+          />
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
+
