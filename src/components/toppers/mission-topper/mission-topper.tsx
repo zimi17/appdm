@@ -60,7 +60,7 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
 
   return (
     <section className="hbs-mission-topper" data-theme="light" data-region="topper-mission">
-      <div className="hbs-mission-topper__content">
+      <div className="hbs-mission-topper__content max-w-screen-2xl mx-auto">
         <h1 className="sr-only">STIE Dwimulya</h1>
         
         <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
