@@ -1,8 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
-import { MissionTopper } from "@/components/blocks/mission-topper/mission-topper";
+import { MissionTopper } from "@/components/toppers/mission-topper/mission-topper";
 import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
