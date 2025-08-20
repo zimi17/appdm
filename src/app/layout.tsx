@@ -1,12 +1,10 @@
-
 import type { Metadata } from 'next';
-import './globals.css';
-import '@/styles/main.css';
 import { Toaster } from "@/components/ui/toaster"
 import { StoreProvider } from '@/store/store-provider';
 import { SiteHeader } from '@/components/universal/site-header/site-header';
 import { SiteFooter } from '@/components/universal/site-footer/site-footer';
-import { PageHead } from '@/components/primitives/page-head/page-head';
+import '@/app/globals.css';
+import '@/styles/index.scss';
 
 // Default metadata can still be defined here as a fallback
 export const metadata: Metadata = {

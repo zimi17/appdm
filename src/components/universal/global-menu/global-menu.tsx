@@ -11,7 +11,6 @@ import { navLinks, quickLinks } from "@/lib/data/nav";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { DesktopLayout } from "./desktop-layout";
 import { MobileLayout } from "./mobile-layout";
-import "./global-menu.css";
 
 export function GlobalMenu({
   isOpen,

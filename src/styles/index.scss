@@ -1,0 +1,44 @@
+// Main Manifest File
+
+// 1. CSS Reset
+@import 'reset';
+
+// 2. Abstracts (Variables, Mixins, Functions, Themes)
+@import 'abstracts/variables';
+@import 'abstracts/themes';
+// Import all mixins
+@import 'abstracts/mixins/border';
+@import 'abstracts/mixins/button';
+@import 'abstracts/mixins/checkbox';
+@import 'abstracts/mixins/field-size';
+@import 'abstracts/mixins/grid';
+@import 'abstracts/mixins/hide-scrollbars';
+@import 'abstracts/mixins/hide';
+@import 'abstracts/mixins/hover';
+@import 'abstracts/mixins/layout';
+@import 'abstracts/mixins/line';
+@import 'abstracts/mixins/link';
+@import 'abstracts/mixins/list-reset';
+@import 'abstracts/mixins/mq';
+@import 'abstracts/mixins/pseudo';
+@import 'abstracts/mixins/reset-input';
+@import 'abstracts/mixins/rich-text';
+@import 'abstracts/mixins/shorthander';
+@import 'abstracts/mixins/size';
+@import 'abstracts/mixins/typography';
+
+
+// 3. Base (Global styles, fonts, animations)
+@import 'base/fonts';
+@import 'base/global';
+@import 'base/type-global';
+@import 'base/animations';
+@import 'base/print';
+
+
+// 4. Utilities
+@import 'utilities/hbs-aside';
+@import 'utilities/hbs-topper-wrapper';
+
+// Note: Component-specific styles are now co-located with their components
+// and imported directly into the component files. This file is for global styles.
