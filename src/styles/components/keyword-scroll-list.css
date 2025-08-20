@@ -1,4 +1,3 @@
-
 .keyword-scroll-list-container {
     --transition-speed: 1s;
     --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -12,7 +11,7 @@
   .keyword-scroll-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Reduced gap */
+    gap: 1.5rem;
     white-space: nowrap;
     user-select: none;
     will-change: transform;
@@ -61,4 +60,3 @@
       animation: none;
     }
   }
-  

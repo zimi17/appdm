@@ -1,4 +1,3 @@
-
 'use client';
 import { motion } from 'framer-motion';
 import { CtaList } from '../../primitives/cta-list/cta-list';
@@ -46,8 +45,7 @@ export function HeroStatement({ title, description, imageUrl, imageHint, links, 
                 variants={{ hidden: { opacity: 0, x: 50 }, visible: { opacity: 1, x: 0 } }}
                 transition={{duration: 0.5}}
             >
-                <ComponentHeader title={title} hrClassName="border-primary" titleClassName="font-bold" />
-                <p className="text-lg text-muted-foreground mt-4">{description}</p>
+                <ComponentHeader title={title} description={description} />
                 <CtaList items={links} />
             </motion.div>
         </motion.div>

@@ -1,4 +1,3 @@
-
 'use client';
 // Placeholder for TeaseFeed component
 export function TeaseFeed() {

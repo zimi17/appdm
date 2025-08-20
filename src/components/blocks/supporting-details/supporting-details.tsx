@@ -1,4 +1,3 @@
-
 'use client';
 
 import { LazyImage } from "@/components/primitives/lazy-image/lazy-image";
@@ -37,7 +36,7 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.15 }}
     >
-       <ComponentHeader title={header.title} description={header.description} cta={header.cta}/>
+       <ComponentHeader title={header.title} description={header.description} link={header.cta.href} linkText={header.cta.text}/>
       <div className="grid lg:grid-cols-12 gap-12 items-start">
         <motion.ul 
           className="grid md:grid-cols-2 gap-x-8 gap-y-10 lg:col-span-7"

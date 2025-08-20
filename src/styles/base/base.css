@@ -1,0 +1,18 @@
+@layer base {
+  body {
+    @apply antialiased flex flex-col min-h-screen;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+  }
+
+  article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+    display: block;
+  }
+}
+
+.ease-menu {
+  transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}

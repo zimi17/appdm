@@ -1,4 +1,3 @@
-
 'use client';
 // Placeholder for PullQuote component
 export function PullQuote() {
