@@ -3,6 +3,7 @@
 
 import * as React from "react";
 import { useEffect, useState, CSSProperties, useRef } from "react";
+import './keyword-scroll-list.css';
 
 interface KeywordProps {
   label: string;
@@ -89,7 +90,7 @@ export function KeywordScrollLists({ keywords }: KeywordScrollListProps) {
 
   return (
     <div
-      className="keyword-scroll-list-container"
+      className="keyword-scroll-list-container col-span-full"
       data-chromatic="ignore"
       style={
         {

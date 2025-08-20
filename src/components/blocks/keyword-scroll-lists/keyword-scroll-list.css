@@ -1,0 +1,74 @@
+
+.keyword-scroll-list-container {
+  --transition-speed: 1s;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --scroll-speed: 0.1;
+  --scroll-speed-slow: 0.05;
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 0;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  width: calc(100% + 4rem);
+}
+
+.keyword-scroll-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  white-space: nowrap;
+  user-select: none;
+  will-change: transform;
+  opacity: 1;
+  transition: opacity var(--transition-speed) var(--transition-easing);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+    .keyword-scroll-list {
+        font-size: 1.875rem; /* 30px */
+    }
+}
+
+.keyword-scroll-list__row {
+    @apply text-2xl md:text-3xl lg:text-5xl;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: hsl(var(--muted-foreground));
+}
+
+.keyword-scroll-list__row:nth-child(even) {
+  transform: translateX(calc(-1 * var(--scroll-speed-slow) * var(--window-width) * var(--keyword-scroll-offset)));
+}
+
+.keyword-scroll-list__row:nth-child(odd) {
+  transform: translateX(calc(var(--scroll-speed-slow) * var(--window-width) * var(--keyword-scroll-offset)));
+}
+
+.keyword-scroll-list__keyword {
+    text-decoration: none;
+}
+  
+.keyword-scroll-list__keyword:not(:last-child)::after {
+    content: "";
+    height: 0.95em;
+    border-right: 1px solid;
+    color: hsl(var(--primary));
+    display: inline-block;
+    margin-bottom: -0.15em;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    transform: rotate(15deg);
+}
+
+@media (prefers-reduced-motion) {
+  .keyword-scroll-list {
+    animation: none;
+  }
+  .keyword-scroll-list__row {
+    animation: none;
+  }
+}

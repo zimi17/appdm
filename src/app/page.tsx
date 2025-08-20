@@ -31,22 +31,17 @@ export default function Home() {
                 <TeaseRow items={programCards} />
               </PageSection>
 
-              <section className="bg-background pb-16 md:pb-24">
-                  <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                      <HeroStatement
-                          title={heroStatement.title}
-                          description={heroStatement.description}
-                          imageUrl={heroStatement.imageUrl}
-                          imageHint={heroStatement.imageHint}
-                          links={heroStatement.links}
-                          className="col-span-full"
-                      />
-                  </div>
-              </section>
-
-              <section className="bg-background">
+              <PageSection theme="light">
+                  <HeroStatement
+                      title={heroStatement.title}
+                      description={heroStatement.description}
+                      imageUrl={heroStatement.imageUrl}
+                      imageHint={heroStatement.imageHint}
+                      links={heroStatement.links}
+                      className="col-span-full"
+                  />
                   <KeywordScrollLists keywords={snowflakes.keywords} />
-              </section>
+              </PageSection>
               
               <HierarchicalTease
                   header={hierarchicalTease.header}
