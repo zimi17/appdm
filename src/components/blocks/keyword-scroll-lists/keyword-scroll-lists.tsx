@@ -3,7 +3,6 @@
 
 import * as React from "react";
 import { useEffect, useState, CSSProperties, useRef } from "react";
-import './keyword-scroll-lists.css';
 
 interface KeywordProps {
   label: string;

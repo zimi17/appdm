@@ -1,6 +1,7 @@
 
 import type { Metadata } from 'next';
 import './globals.css';
+import '@/styles/main.css';
 import { Toaster } from "@/components/ui/toaster"
 import { StoreProvider } from '@/store/store-provider';
 import { SiteHeader } from '@/components/universal/site-header/site-header';
