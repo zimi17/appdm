@@ -59,7 +59,7 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
   let buttonIndex = -1;
 
   return (
-    <section className="hbs-mission-topper bg-background text-foreground" data-theme="light" data-region="topper-mission">
+    <section className="hbs-mission-topper" data-theme="light" data-region="topper-mission">
       <div className="hbs-mission-topper__content">
         <h1 className="sr-only">STIE Dwimulya</h1>
         
@@ -134,9 +134,9 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
                         transition={{ duration: 0.5, ease: "easeInOut" }}
                     >
                          <Link href={slides[activeSlide].linkHref} className="block group cursor-pointer">
-                            <div className="w-full max-w-sm bg-background/90 backdrop-blur-sm p-4 transition-colors duration-300 group-hover:bg-card">
+                            <div className="w-full max-w-sm bg-card/90 backdrop-blur-sm p-4 transition-colors duration-300 group-hover:bg-card">
                                 <p className="mb-6 text-base font-normal text-card-foreground">{slides[activeSlide].description}</p>
-                                <span className="text-primary font-bold self-start group-hover:underline flex items-center gap-2">
+                                <span className="text-secondary font-bold self-start group-hover:underline flex items-center gap-2">
                                     {slides[activeSlide].linkText}
                                 </span>
                             </div>
