@@ -1,0 +1,28 @@
+@import "../../../styles/abstracts/variables";
+@import "../../../styles/abstracts/mixins/fluid-size";
+@import "../../../styles/abstracts/mixins/mq";
+
+.hbs-mission-topper {
+  .hbs-mission-topper__title {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+
+    @include fluid-type((
+      $bp-mobile: 36px,
+      $bp-tablet: 48px,
+      $bp-desktop-lg: 60px
+    ));
+  }
+
+  .hbs-mission-topper__has-details {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+}
