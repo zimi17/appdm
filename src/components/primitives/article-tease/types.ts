@@ -37,7 +37,7 @@ export interface ArticleTeaseProps {
     };
     tease?: ReactNode;
     image?: MediaAssetImageProps;
-    style?: "full" | "text-only";
+    style?: "full" | "expanded" | "compressed" | "text-only";
     HeadingLevel?: 'h2' | 'h3' | 'h4';
     className?: string;
 }

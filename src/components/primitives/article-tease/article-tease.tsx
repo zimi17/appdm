@@ -14,16 +14,14 @@ function ArticleTeaseDesc({ tease }: { tease: ReactNode }) {
   
     if (typeof tease === "string") {
       return (
-        <p
-          className="mt-2 text-muted-foreground"
-        >
+        <p className="mt-2 text-muted-foreground text-base md:text-lg">
             {tease}
         </p>
       );
     }
   
     return (
-      <div className="mt-2 text-muted-foreground">
+      <div className="mt-2 text-muted-foreground text-base md:text-lg">
         {tease}
       </div>
     );
@@ -42,7 +40,7 @@ export function ArticleTease({
 }: ArticleTeaseProps) {
     
     const content = (
-        <div className="flex flex-col p-4 flex-grow">
+        <div className="flex flex-col p-4 flex-grow justify-center">
             {overline?.label && (
                 <span className="text-sm font-semibold text-primary mb-2">
                     {overline.link ? <Link href={overline.link} className="hover:underline">{overline.label}</Link> : overline.label}
@@ -50,7 +48,7 @@ export function ArticleTease({
             )}
             <HeadingLevel className={cn(
                 "font-headline font-bold",
-                style === 'full' ? 'text-xl md:text-2xl' : 'text-xl'
+                style === 'full' ? 'text-2xl md:text-3xl' : 'text-xl'
             )}>
                 <Link href={link} className="hover:underline">
                     {title}
@@ -58,7 +56,7 @@ export function ArticleTease({
             </HeadingLevel>
             {tease && <ArticleTeaseDesc tease={tease} />}
             {byline && (
-                <div className="mt-4 text-xs">
+                <div className="mt-4 text-sm text-muted-foreground">
                     <Byline {...byline} />
                 </div>
             )}
@@ -67,12 +65,42 @@ export function ArticleTease({
 
     if (style === 'text-only') {
         return (
-            <div className={cn('flex flex-col', className)}>
+            <article className={cn('flex flex-col', className)}>
                 {content}
-            </div>
+            </article>
         );
     }
     
+    // Default "full" style with horizontal layout
+    if (style === 'full') {
+        return (
+            <article className={cn(
+                'group bg-card overflow-hidden transition-shadow duration-300 hover:shadow-xl',
+                'grid md:grid-cols-12 gap-6 items-center',
+                className
+            )}>
+                <div className="md:col-span-8 order-2 md:order-1">
+                    {content}
+                </div>
+                {image && (
+                    <div className="md:col-span-4 order-1 md:order-2">
+                        <Link href={link} className="block relative aspect-[4/3]" aria-hidden="true" tabIndex={-1}>
+                            <LazyImage 
+                                src={image.src} 
+                                alt={image.alt} 
+                                className="w-full h-full"
+                                imageClassName="object-cover group-hover:scale-105 transition-transform duration-300" 
+                                data-ai-hint={image.hint}
+                                fill
+                            />
+                        </Link>
+                    </div>
+                )}
+            </article>
+        )
+    }
+
+    // Fallback for other styles (compressed, expanded) - currently vertical card
     return (
         <article className={cn(
             'flex flex-col group bg-card overflow-hidden transition-shadow duration-300 hover:shadow-xl h-full',
