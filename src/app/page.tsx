@@ -44,12 +44,7 @@ export default function Home() {
               
               <PageSection theme="dark">
                 <HierarchicalTease
-                    header={{
-                        title: hierarchicalTease.header.title,
-                        subheading: hierarchicalTease.header.subheading,
-                        link: hierarchicalTease.header.cta.href,
-                        linkText: hierarchicalTease.header.cta.text,
-                    }}
+                    header={hierarchicalTease.header}
                     articles={hierarchicalTease.articles}
                 />
               </PageSection>
@@ -57,7 +52,7 @@ export default function Home() {
               <section className="bg-background py-16 md:py-24">
                   <div className="max-w-screen-2xl mx-auto">
                     <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                        <div className="col-span-full lg:col-span-14 lg:col-start-2">
+                        <div className="col-span-full">
                             <SupportingDetails
                                 header={distinction.header}
                                 items={distinction.details.items}
