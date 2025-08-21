@@ -20,7 +20,7 @@ export function HierarchicalTease({
   feedTeaseStyle = "expanded",
 }: HierarchicalTeaseProps) {
   const featuredArticle = articles[0];
-  const otherArticles = articles.slice(1, 3);
+  const otherArticles = articles.slice(1, 4);
 
   const featuredArticleProps: ArticleTeaseProps | null = featuredArticle ? {
     type: "Article",

@@ -101,6 +101,14 @@ export const homePageData = {
             href: "#",
             hint: "village governance"
         },
+        {
+            image: "https://images.pexels.com/photos/6550164/pexels-photo-6550164.jpeg",
+            overline: "Perbankan Syariah",
+            title: "Peluang dan Risiko dalam Instrumen Keuangan Syariah Modern",
+            meta: "Oleh Ahmad Eko Adi. Diterbitkan 10 Agustus 2025.",
+            href: "#",
+            hint: "islamic finance"
+        }
     ]
   },
   distinction: {
