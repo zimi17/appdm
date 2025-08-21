@@ -1,3 +1,4 @@
+
 'use client';
 
 import { LazyImage } from "@/components/primitives/lazy-image/lazy-image";
@@ -37,21 +38,14 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.15 }}
     >
-      <div className="md:flex md:justify-between md:items-end mb-12">
-        <div className="md:w-1/2">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
-                {header.title}
-            </h2>
-        </div>
-        <div className="md:w-1/2 lg:w-5/12 mt-4 md:mt-0">
-            <p className="text-lg text-muted-foreground">{header.description}</p>
-            <CtaLink href={header.cta.href} className="mt-4">
-                {header.cta.text}
-            </CtaLink>
-        </div>
-      </div>
+        <ComponentHeader
+            title={header.title}
+            description={header.description}
+            link={header.cta.href}
+            linkText={header.cta.text}
+        />
 
-      <div className="grid lg:grid-cols-12 gap-x-12 items-start">
+      <div className="grid lg:grid-cols-12 gap-x-12 items-start mt-12">
         <motion.ul 
           className="grid md:grid-cols-2 gap-x-8 gap-y-12 lg:col-span-7"
           variants={{
@@ -71,10 +65,10 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
                 visible: { opacity: 1, y: 0 }
               }}
             >
-              <div className="item-decorator shrink-0 border-t-2 border-primary w-1/5 mt-2"></div>
+              <div className="item-decorator shrink-0 border-t-2 border-secondary w-1/5 mt-2"></div>
               <div>
                 {item.title && (
-                  <h3 className="text-xl font-bold font-headline text-foreground">
+                  <h3 className="text-xl font-bold font-headline">
                     {item.title}
                   </h3>
                 )}
@@ -115,3 +109,4 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
     </motion.div>
   );
 }
+
