@@ -31,7 +31,6 @@ export interface SupportingDetailsProps {
 export function SupportingDetails({ header, items = [], mediaAsset }: SupportingDetailsProps) {
   return (
     <motion.div 
-      className="mt-12"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -81,7 +80,7 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
 
         {mediaAsset && (
           <motion.div 
-            className="row-start-1 lg:row-start-auto lg:col-span-5"
+            className="row-start-1 lg:row-start-auto lg:col-span-5 mt-12 lg:mt-0"
             variants={{
               hidden: { opacity: 0, scale: 0.95 },
               visible: { opacity: 1, scale: 1 }
@@ -99,17 +98,6 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
           </motion.div>
         )}
       </div>
-      <style jsx>{`
-        .supporting-details-item::before {
-          content: " ";
-          display: block;
-          height: 0;
-          width: 20%;
-          border-top: 2px solid hsl(var(--secondary));
-          flex-shrink: 0;
-          margin-top: 0.5em;
-        }
-      `}</style>
     </motion.div>
   );
 }

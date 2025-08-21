@@ -43,14 +43,25 @@ export function PageSection({
             className
         )} 
     >
-      <div className="max-w-screen-2xl mx-auto">
-        <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
+      <div className="max-w-screen-2xl mx-auto px-6">
+        <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6">
             <div className="col-span-full">
                 {header && <ComponentHeader {...header} />}
                 {children && <div>{children}</div>}
             </div>
         </div>
       </div>
+      <style jsx global>{`
+        .supporting-details-item::before {
+          content: " ";
+          display: block;
+          height: 0;
+          width: 3rem;
+          border-top: 2px solid hsl(var(--secondary));
+          flex-shrink: 0;
+          margin-top: 0.5em;
+        }
+      `}</style>
     </section>
   );
 }
