@@ -5,12 +5,22 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Search, Menu, Bell } from "lucide-react";
+import { Search, Menu, Bell, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { SearchBox } from "@/components/primitives/search-box/search-box";
+import { useRouter } from 'next/navigation';
 
 export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) => void }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const router = useRouter();
+
+  const handleSearch = (term: string) => {
+    if (term.trim()) {
+      router.push(`/search?q=${term}`);
+      setIsSearchOpen(false);
+    }
+  };
 
   return (
     <div className="flex items-center gap-2">
@@ -59,18 +69,23 @@ export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) =>
         </SheetTrigger>
       </Sheet>
 
-      {/* Search Overlay could be its own component too */}
+      {/* Search Overlay */}
       <div className={cn("fixed inset-0 bg-black/90 z-[100] p-8 transition-transform duration-300", isSearchOpen ? "translate-y-0" : "-translate-y-full")}>
         <div className="flex justify-end">
           <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(false)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-white"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>
+            <X className="h-8 w-8 text-white" />
           </Button>
         </div>
         <div className="flex flex-col items-center justify-center h-full -mt-16">
-          <input type="text" placeholder="Search Dwimulya Hub" className="bg-transparent border-b-2 border-white text-white text-3xl w-full max-w-2xl text-center placeholder-gray-400 outline-none pb-2" />
+            <div className="w-full max-w-2xl">
+                <SearchBox
+                    placeholder="Cari di STIE Dwimulya..."
+                    handleSearch={handleSearch}
+                />
+            </div>
           <div className="mt-8 text-center">
-            <h4 className="text-gray-400 mb-4">Quick Links</h4>
-            <Link href="#" className="text-white text-lg font-semibold hover:text-primary">A to Z index</Link>
+            <h4 className="text-gray-400 mb-4">Tautan Cepat</h4>
+            <Link href="/direktori" onClick={() => setIsSearchOpen(false)} className="text-white text-lg font-semibold hover:text-primary">Direktori A-Z</Link>
           </div>
         </div>
       </div>
