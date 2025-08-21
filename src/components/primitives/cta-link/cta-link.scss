@@ -1,10 +1,5 @@
 
-@import "../../../styles/abstracts/_variables.scss";
 @import "../../../styles/abstracts/mixins/_hover.scss";
-@import "../../../styles/abstracts/mixins/_typography.scss";
-@import "../../../styles/abstracts/mixins/_link.scss";
-@import "../../../styles/abstracts/mixins/_size.scss";
-@import "../../../styles/base/_animations.scss";
 
 .hbs-cta-link {
   align-items: baseline;
@@ -31,14 +26,15 @@
 
 .hbs-cta-link__text {
   flex-shrink: 0;
-  font-weight: 600; // semibold
+  font-weight: 600;
   margin-bottom: 0;
   max-width: 100%;
 }
 
 .hbs-cta-link__icon {
-  @include size(0.7em);
-  margin-left: $spacing-xs;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.25rem;
   flex-shrink: 0;
   transform: translateY(-1px);
   transition: transform 0.2s ease-in-out;
@@ -77,7 +73,7 @@
 
 .hbs-cta-link--primary-button,
 .hbs-cta-link--secondary-button {
-  @include unlink;
+  text-decoration: none;
   border-radius: 3px;
   padding: 9px 15px;
   transition: all 0.2s ease-in-out;
@@ -129,7 +125,7 @@
 }
 
 .hbs-cta-link--small {
-  font-size: 0.875rem; // text-sm
+  font-size: 0.875rem;
   align-items: center;
 
   .hbs-cta-link__text {
@@ -140,6 +136,5 @@
 .hbs-cta-link__text .hbs-cta-link__text-last {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.25rem; // gap-1
+  gap: 0.25rem;
 }
-
