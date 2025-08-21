@@ -89,7 +89,7 @@ function SearchResults() {
 
 export default function SearchPage() {
   const breadcrumbs = [
-    { title: "Beranda", href: "/" },
+    { title: "Beranda", link: "/" },
     { title: "Pencarian", link: "/search", isCurrent: true },
   ];
 
