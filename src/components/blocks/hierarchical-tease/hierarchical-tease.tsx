@@ -54,12 +54,8 @@ export function HierarchicalTease({
         >
           {featuredArticleProps && <ArticleTease {...featuredArticleProps} />}
         </motion.div>
-        <motion.div 
+        <div 
             className="hbs-hierarchical-tease__small-preview"
-            variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-            }}
         >
           <TeaseFeed
             HeadingLevelTease={header ? "h3" : "h2"}
@@ -77,9 +73,8 @@ export function HierarchicalTease({
               },
             }))}
           />
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );
 }
-

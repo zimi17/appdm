@@ -42,18 +42,18 @@ export function HierarchicalTeaseHeader({
 
     return (
         <motion.div 
-            className="flex flex-col justify-center h-full"
+            className="hbs-hierarchical-tease__content"
             variants={{
                 hidden: { opacity: 0, x: -20 },
                 visible: { opacity: 1, x: 0 }
             }}
             transition={{ duration: 0.5 }}
         >
-            {overline && <p className="text-sm font-semibold text-primary mb-2">{overline}</p>}
-            {title && <h2 className="font-headline text-4xl text-white font-bold">{title}</h2>}
-            {subheading && <div className="text-muted-foreground text-lg mt-4">{subheading}</div>}
+            {overline && <p className="hbs-hierarchical-tease__overline">{overline}</p>}
+            {title && <h2 className="hbs-hierarchical-tease__title">{title}</h2>}
+            {subheading && <div className="hbs-hierarchical-tease__subheading">{subheading}</div>}
             {link && linkText && (
-                 <div className="mt-6">
+                 <div className="hbs-hierarchical-tease__cta">
                     <CtaLink href={link} variant="link" className="text-primary hover:text-accent font-bold">
                         {linkText}
                     </CtaLink>
