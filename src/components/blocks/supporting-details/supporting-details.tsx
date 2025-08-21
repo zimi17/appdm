@@ -5,7 +5,6 @@ import { LazyImage } from "@/components/primitives/lazy-image/lazy-image";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ComponentHeader } from "@/components/primitives/component-header/component-header";
-import { CtaLink } from "@/components/primitives/cta-link/cta-link";
 
 export interface SupportingDetailsListItem {
   title?: ReactNode;
@@ -43,6 +42,7 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
             description={header.description}
             link={header.cta.href}
             linkText={header.cta.text}
+            isSmall={false}
         />
 
       <div className="grid lg:grid-cols-12 gap-x-12 items-start mt-12">
@@ -65,7 +65,6 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
                 visible: { opacity: 1, y: 0 }
               }}
             >
-              <div className="item-decorator shrink-0 border-t-2 border-secondary w-1/5 mt-2"></div>
               <div>
                 {item.title && (
                   <h3 className="text-xl font-bold font-headline">
@@ -101,12 +100,16 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
         )}
       </div>
       <style jsx>{`
-        .supporting-details-item .item-decorator {
+        .supporting-details-item::before {
+          content: " ";
+          display: block;
+          height: 0;
+          width: 20%;
+          border-top: 2px solid hsl(var(--secondary));
           flex-shrink: 0;
-          transform: translateY(0.5em); /* visual alignment */
+          margin-top: 0.5em;
         }
       `}</style>
     </motion.div>
   );
 }
-
