@@ -4,6 +4,7 @@ import { LazyImage } from "@/components/primitives/lazy-image/lazy-image";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ComponentHeader } from "@/components/primitives/component-header/component-header";
+import { CtaLink } from "@/components/primitives/cta-link/cta-link";
 
 export interface SupportingDetailsListItem {
   title?: ReactNode;
@@ -36,10 +37,23 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
       viewport={{ once: true, amount: 0.2 }}
       transition={{ staggerChildren: 0.15 }}
     >
-       <ComponentHeader title={header.title} description={header.description} link={header.cta.href} linkText={header.cta.text}/>
-      <div className="grid lg:grid-cols-12 gap-12 items-start">
+      <div className="md:flex md:justify-between md:items-end mb-12">
+        <div className="md:w-1/2">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
+                {header.title}
+            </h2>
+        </div>
+        <div className="md:w-1/2 lg:w-5/12 mt-4 md:mt-0">
+            <p className="text-lg text-muted-foreground">{header.description}</p>
+            <CtaLink href={header.cta.href} className="mt-4">
+                {header.cta.text}
+            </CtaLink>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-12 gap-x-12 items-start">
         <motion.ul 
-          className="grid md:grid-cols-2 gap-x-8 gap-y-10 lg:col-span-7"
+          className="grid md:grid-cols-2 gap-x-8 gap-y-12 lg:col-span-7"
           variants={{
             visible: {
               transition: {
@@ -51,13 +65,13 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
           {items.map((item, i) => (
             <motion.li 
               key={i} 
-              className="flex items-baseline gap-4"
+              className="supporting-details-item flex gap-4"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
             >
-              <div className="w-16 shrink-0 border-t-2 border-primary translate-y-3"></div>
+              <div className="item-decorator shrink-0 border-t-2 border-primary w-1/5 mt-2"></div>
               <div>
                 {item.title && (
                   <h3 className="text-xl font-bold font-headline text-foreground">
@@ -92,6 +106,12 @@ export function SupportingDetails({ header, items = [], mediaAsset }: Supporting
           </motion.div>
         )}
       </div>
+      <style jsx>{`
+        .supporting-details-item .item-decorator {
+          flex-shrink: 0;
+          transform: translateY(0.5em); /* visual alignment */
+        }
+      `}</style>
     </motion.div>
   );
 }
