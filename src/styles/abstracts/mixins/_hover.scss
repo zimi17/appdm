@@ -1,1 +1,8 @@
-// Hover Mixin Placeholder
+// Hover Mixin
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}

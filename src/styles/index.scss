@@ -1,3 +1,4 @@
+
 // Main Manifest File
 
 // 1. CSS Reset
@@ -39,3 +40,6 @@
 // 4. Utilities
 @import 'utilities/_hbs-aside.scss';
 @import 'utilities/_hbs-topper-wrapper.scss';
+
+// 5. Components
+@import '../components/primitives/cta-link/cta-link.scss';
