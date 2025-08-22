@@ -11,7 +11,7 @@ if (!projectId || !dataset) {
 }
 
 export const client = createClient({
-  projectId: projectId || "3966wvah",
+  projectId: projectId || "3966wvah", // Fallback, ganti dengan ID Anda
   dataset: dataset || "production",
   apiVersion: "2024-01-01",
   useCdn: process.env.NODE_ENV === 'production',
