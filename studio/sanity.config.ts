@@ -9,7 +9,7 @@ export default defineConfig({
   title: 'studio-website-stie-dwimulya',
 
   // Ganti dengan projectId dan dataset Anda
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-project-id', 
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '3966wvah', 
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
 
   plugins: [structureTool(), visionTool()],
