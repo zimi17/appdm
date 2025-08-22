@@ -1,6 +1,4 @@
 
-"use client";
-
 import { MissionTopper } from "@/components/toppers/mission-topper/mission-topper";
 import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
 import { homePageData } from "./home-data";
@@ -9,11 +7,13 @@ import { SupportingDetails } from "@/components/blocks/supporting-details/suppor
 import { PageSection } from "@/components/primitives/page-section/page-section";
 import { TeaseRow } from "@/components/blocks/tease-row/tease-row";
 import { ComponentHeader } from "@/components/primitives/component-header/component-header";
-import { SanityHierarchicalTease } from "./components/sanity-hierarchical-tease";
+import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
+import { getHomepageInsights } from "@/lib/sanity-queries";
 
 
-export default function Home() {
+export default async function Home() {
     const { missionTopper, programCards, heroStatement, snowflakes, distinction } = homePageData;
+    const insights = await getHomepageInsights();
 
     return (
         <main id="main-content">
@@ -22,8 +22,7 @@ export default function Home() {
               slides={missionTopper.slides}
             />
             
-            <div className="landing-page-body__wrapper">
-              <PageSection theme="white">
+            <PageSection>
                 <ComponentHeader 
                     title="Pendidikan dinamis dan imersif untuk para pemimpin di setiap tingkatan"
                     isSmall={false}
@@ -44,24 +43,21 @@ export default function Home() {
               </PageSection>
               
               <PageSection theme="dark">
-                <SanityHierarchicalTease />
+                <HierarchicalTease
+                    header={homePageData.hierarchicalTease.header}
+                    articles={insights}
+                />
               </PageSection>
               
-              <section className="bg-background py-16 md:py-24">
-                  <div className="max-w-screen-2xl mx-auto">
-                    <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
-                        <div className="col-span-full">
-                            <SupportingDetails
-                                header={distinction.header}
-                                items={distinction.details.items}
-                                mediaAsset={distinction.details.mediaAsset}
-                            />
-                        </div>
-                    </div>
-                  </div>
-              </section>
-            </div>
+              <PageSection className="bg-background">
+                <div className="col-span-full">
+                    <SupportingDetails
+                        header={distinction.header}
+                        items={distinction.details.items}
+                        mediaAsset={distinction.details.mediaAsset}
+                    />
+                </div>
+              </PageSection>
         </main>
     );
 }
-

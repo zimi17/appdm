@@ -75,41 +75,7 @@ export const homePageData = {
             text: "Telusuri Wawasan",
             href: "/wawasan"
         }
-    },
-    articles: [
-        {
-            image: "https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg",
-            overline: "Publikasi Dwimulya",
-            title: "Bagaimana Digitalisasi UMKM Mendorong Ekonomi Serang Pasca-Pandemi?",
-            meta: "Oleh Bambang Arianto. Diterbitkan 12 Agustus 2025.",
-            href: "#",
-            hint: "small business digital"
-        },
-        {
-            image: "https://images.pexels.com/photos/8199147/pexels-photo-8199147.jpeg",
-            overline: "Manajemen SDM",
-            title: "Tiga Strategi Meningkatkan Kinerja Karyawan pada Industri Lokal",
-            meta: "Oleh Asep Saepulloh pada 12 Agustus 2025",
-            href: "#",
-            hint: "employee performance"
-        },
-        {
-            image: "https://images.pexels.com/photos/8199653/pexels-photo-8199653.jpeg",
-            overline: "Akuntansi Sektor Publik",
-            title: "Transparansi Dana Desa: Tantangan dan Solusi",
-            meta: "Menampilkan Dr. Rachmat Maulana. Diterbitkan 11 Agustus 2025.",
-            href: "#",
-            hint: "village governance"
-        },
-        {
-            image: "https://images.pexels.com/photos/6550164/pexels-photo-6550164.jpeg",
-            overline: "Perbankan Syariah",
-            title: "Peluang dan Risiko dalam Instrumen Keuangan Syariah Modern",
-            meta: "Oleh Ahmad Eko Adi. Diterbitkan 10 Agustus 2025.",
-            href: "#",
-            hint: "islamic finance"
-        }
-    ]
+    }
   },
   distinction: {
     header: {
