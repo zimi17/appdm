@@ -2,19 +2,24 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import wawasan from './schemas/wawasan' // Impor skema baru
+import wawasan from './schemas/wawasan'
+
+// IMPORTANT: This configuration is for the Sanity Studio and should not depend
+// on Next.js environment variables. You should replace the placeholder values
+// here with your actual Sanity project ID and dataset.
+const projectId = '3966wvah'; // Ganti dengan ID proyek Sanity Anda
+const dataset = 'production'; // Ganti dengan dataset Sanity Anda
 
 export default defineConfig({
   name: 'default',
-  title: 'studio-website-stie-dwimulya',
+  title: 'STIE Dwimulya Website Studio',
 
-  // Ganti dengan projectId dan dataset Anda
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '3966wvah', 
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  projectId: projectId,
+  dataset: dataset,
 
   plugins: [structureTool(), visionTool()],
 
   schema: {
-    types: [wawasan], // Daftarkan skema di sini
+    types: [wawasan],
   },
 })

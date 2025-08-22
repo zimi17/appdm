@@ -14,7 +14,7 @@ Ikuti petunjuk untuk login dan memilih proyek. Setelah selesai, Anda akan memili
 
 ## 2. Menjalankan Sanity Studio Secara Lokal (Terintegrasi)
 
-Berkat konfigurasi `rewrites` di `next.config.ts`, kita bisa mengakses Studio melalui aplikasi utama kita.
+Berkat konfigurasi `rewrites` di `next.config.ts`, kita bisa mengakses Studio melalui aplikasi utama kita. Ini adalah alur kerja yang direkomendasikan untuk pengembangan.
 
 **Alur Kerja Pengembangan:**
 
@@ -31,7 +31,7 @@ Berkat konfigurasi `rewrites` di `next.config.ts`, kita bisa mengakses Studio me
     ```
     Studio akan berjalan di port `3333`, tetapi Anda tidak perlu mengaksesnya langsung.
 
-3.  **Akses Studio:** Sekarang, buka browser Anda dan navigasikan ke rute `/studio` pada aplikasi utama Anda, misalnya: `https://[URL_CLOUD_WORKSTATION_ANDA]/studio`. Anda akan melihat antarmuka Sanity CMS yang berjalan dengan lancar.
+3.  **Akses Studio:** Sekarang, buka browser Anda dan navigasikan ke rute `/studio` pada URL aplikasi utama Anda, misalnya: `https://[URL_CLOUD_WORKSTATION_ANDA]/studio`. Anda akan melihat antarmuka Sanity CMS yang berjalan dengan lancar.
 
 ## 3. Membuat Skema Konten (Schema)
 
@@ -116,22 +116,23 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import wawasan from './schemas/wawasan' // Impor skema baru
 
+// Ganti placeholder di bawah ini dengan kredensial Sanity Anda.
+const projectId = '3966wvah'; 
+const dataset = 'production';
+
 export default defineConfig({
   name: 'default',
   title: 'studio-website-stie-dwimulya',
-
-  // Ganti dengan projectId dan dataset Anda
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-project-id', 
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
-
+  basePath: '/studio', // Penting untuk routing yang benar
+  projectId: projectId, 
+  dataset: dataset,
   plugins: [structureTool(), visionTool()],
-
   schema: {
     types: [wawasan], // Daftarkan skema di sini
   },
 })
 ```
-**Penting:** Ganti `your-project-id` dengan Project ID Sanity Anda yang sebenarnya, atau lebih baik lagi, atur di file `.env` Anda.
+**Penting:** Ganti `3966wvah` dengan Project ID Sanity Anda yang sebenarnya.
 
 Setelah menyimpan file ini, Studio akan memuat ulang. Anda sekarang dapat membuat postingan "Wawasan & Penelitian" baru dari dalam CMS. Lanjutkan dan buat beberapa entri agar kita memiliki data untuk ditampilkan.
 
@@ -159,7 +160,7 @@ if (!projectId || !dataset) {
 }
 
 export const client = createClient({
-  projectId: projectId || "your-project-id", // Fallback, ganti dengan ID Anda
+  projectId: projectId || "3966wvah", // Fallback, ganti dengan ID Anda
   dataset: dataset || "production",
   apiVersion: "2024-01-01",
   useCdn: process.env.NODE_ENV === 'production',
@@ -179,7 +180,6 @@ export function urlFor(source: SanityImageSource) {
   }
   return builder.image(source)
 }
-
 ```
 **Penting:** Buat file `.env` di root proyek Anda dan tambahkan kredensial Anda di sana:
 ```
