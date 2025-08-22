@@ -143,6 +143,4 @@ export const footerBlocks = [
     { label: "Berita", href: "/berita-dan-acara" },
     { label: "Karir", href: "/pusat-karir" },
     { label: "Alumni", href: "/alumni" },
-    { label: "Donasi", href: "#" },
-    { label: "Layanan Darurat", href: "#" },
   ];

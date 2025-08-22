@@ -1,0 +1,17 @@
+import { createClient } from "next-sanity";
+import imageUrlBuilder from '@sanity/image-url'
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+export const client = createClient({
+  // Ganti dengan projectId dan dataset Anda
+  projectId: "PROJECT_ID_ANDA",
+  dataset: "production",
+  apiVersion: "2024-01-01",
+  useCdn: process.env.NODE_ENV === 'production',
+});
+
+const builder = imageUrlBuilder(client)
+
+export function urlFor(source: SanityImageSource) {
+  return builder.image(source)
+}

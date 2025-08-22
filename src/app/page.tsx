@@ -5,14 +5,15 @@ import { MissionTopper } from "@/components/toppers/mission-topper/mission-toppe
 import { HeroStatement } from "@/components/blocks/hero-statement/hero-statement";
 import { homePageData } from "./home-data";
 import { KeywordScrollLists } from "@/components/blocks/keyword-scroll-lists/keyword-scroll-lists";
-import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
 import { SupportingDetails } from "@/components/blocks/supporting-details/supporting-details";
 import { PageSection } from "@/components/primitives/page-section/page-section";
 import { TeaseRow } from "@/components/blocks/tease-row/tease-row";
 import { ComponentHeader } from "@/components/primitives/component-header/component-header";
+import { SanityHierarchicalTease } from "./components/sanity-hierarchical-tease";
+
 
 export default function Home() {
-    const { missionTopper, programCards, heroStatement, snowflakes, hierarchicalTease, distinction } = homePageData;
+    const { missionTopper, programCards, heroStatement, snowflakes, distinction } = homePageData;
 
     return (
         <main id="main-content">
@@ -43,10 +44,7 @@ export default function Home() {
               </PageSection>
               
               <PageSection theme="dark">
-                <HierarchicalTease
-                    header={hierarchicalTease.header}
-                    articles={hierarchicalTease.articles}
-                />
+                <SanityHierarchicalTease />
               </PageSection>
               
               <section className="bg-background py-16 md:py-24">
@@ -66,3 +64,4 @@ export default function Home() {
         </main>
     );
 }
+
