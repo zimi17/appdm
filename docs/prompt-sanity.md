@@ -10,30 +10,33 @@ Jalankan perintah ini di terminal dari direktori root proyek:
 ```sh
 npm create sanity@latest -- --template clean --typescript --output-path studio
 ```
-Ikuti petunjuk untuk login dan memilih proyek. Setelah selesai, Anda akan memiliki folder `studio` baru.
+Ikuti petunjuk untuk login dan memilih proyek. Setelah selesai, Anda akan memiliki folder `studio` baru di root proyek Anda.
 
 ## 2. Menjalankan Sanity Studio Secara Lokal
 
-Untuk mengkonfigurasi CMS Anda, jalankan server pengembangan Sanity Studio.
+Untuk mengkonfigurasi dan mengelola konten Anda, jalankan server pengembangan Sanity Studio. Ini adalah server yang **berbeda** dari server Next.js Anda.
 
+Dari direktori root proyek Anda, jalankan perintah berikut di terminal:
 ```sh
 cd studio
 npm run dev
 ```
-Buka [http://localhost:3333](http://localhost:3333) di browser Anda dan login menggunakan akun yang sama dengan yang Anda gunakan untuk CLI.
+Buka browser Anda dan navigasikan ke **[http://localhost:3333](http://localhost:3333)**. Anda akan diminta untuk login menggunakan akun Sanity Anda. Ini adalah antarmuka CMS Anda.
+
+**Penting:** Rute `/studio` pada aplikasi web utama Anda (yang berjalan di port lain seperti 9002) tidak akan berfungsi. Studio berjalan sebagai aplikasi terpisah pada port 3333.
 
 ## 3. Membuat Skema Konten (Schema)
 
-Saat ini, halaman utama menampilkan artikel "Wawasan & Penelitian" dari data statis di `src/app/home-data.ts`. Kita akan membuat skema di Sanity untuk mengelola konten ini.
+Saat ini, halaman utama menampilkan artikel "Wawasan & Penelitian" dari data statis. Kita akan membuat skema di Sanity untuk mengelola konten ini.
 
-Buat file baru di `studio/schemas/post.ts` dan tambahkan kode berikut:
+Buat file baru di `studio/schemas/wawasan.ts` dan tambahkan kode berikut:
 
 ```typescript
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'post',
-  title: 'Postingan Wawasan & Penelitian',
+  name: 'wawasan',
+  title: 'Wawasan & Penelitian',
   type: 'document',
   fields: [
     defineField({
@@ -68,12 +71,14 @@ export default defineType({
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'hint',
-      title: 'Petunjuk Gambar (Hint)',
-      type: 'string',
-      description: 'Deskripsi singkat untuk gambar, cth: "small business digital"',
+      fields: [
+        {
+          name: 'hint',
+          title: 'Petunjuk Gambar (Hint)',
+          type: 'string',
+          description: 'Deskripsi singkat untuk gambar, cth: "small business digital"',
+        }
+      ]
     }),
     defineField({
       name: 'publishedAt',
@@ -95,30 +100,30 @@ export default defineType({
 
 ## 4. Mendaftarkan Skema ke Studio
 
-Sekarang, daftarkan skema `post` yang baru dibuat ke Studio Anda. Buka file `studio/sanity.config.ts` dan perbarui seperti ini:
+Sekarang, daftarkan skema `wawasan` yang baru dibuat ke Studio Anda. Buka file `studio/sanity.config.ts` dan perbarui seperti ini:
 
 ```typescript
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import post from './schemas/post' // Impor skema baru
+import wawasan from './schemas/wawasan' // Impor skema baru
 
 export default defineConfig({
   name: 'default',
   title: 'studio-website-stie-dwimulya',
 
   // Ganti dengan projectId dan dataset Anda
-  projectId: 'PROJECT_ID_ANDA', 
-  dataset: 'production',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-project-id', 
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
 
   plugins: [structureTool(), visionTool()],
 
   schema: {
-    types: [post], // Daftarkan skema di sini
+    types: [wawasan], // Daftarkan skema di sini
   },
 })
 ```
-**Penting:** Ganti `PROJECT_ID_ANDA` dengan Project ID Sanity Anda.
+**Penting:** Ganti `your-project-id` dengan Project ID Sanity Anda yang sebenarnya, atau lebih baik lagi, atur di file `.env.local` Anda.
 
 Setelah menyimpan file ini, Studio akan memuat ulang. Anda sekarang dapat membuat postingan "Wawasan & Penelitian" baru dari dalam CMS. Lanjutkan dan buat beberapa entri agar kita memiliki data untuk ditampilkan.
 
@@ -131,17 +136,23 @@ Dari direktori root proyek (bukan direktori `studio`), jalankan:
 npm install next-sanity @sanity/image-url
 ```
 
-Selanjutnya, buat file klien Sanity. Buat file baru di `src/lib/sanity-client.ts`:
+Selanjutnya, buat file klien Sanity di `src/lib/sanity-client.ts`. Pastikan file tersebut terlihat seperti ini:
 
 ```typescript
 import { createClient } from "next-sanity";
 import imageUrlBuilder from '@sanity/image-url'
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+
+if (!projectId || !dataset) {
+  console.warn("Sanity projectId or dataset not set. Check your .env.local file.");
+}
+
 export const client = createClient({
-  // Ganti dengan projectId dan dataset Anda
-  projectId: "PROJECT_ID_ANDA",
-  dataset: "production",
+  projectId: projectId || "your-project-id", // Fallback, ganti dengan ID Anda
+  dataset: dataset || "production",
   apiVersion: "2024-01-01",
   useCdn: process.env.NODE_ENV === 'production',
 });
@@ -149,96 +160,81 @@ export const client = createClient({
 const builder = imageUrlBuilder(client)
 
 export function urlFor(source: SanityImageSource) {
+  if (!source) {
+    return {
+      width: () => ({
+        height: () => ({
+          url: () => "https://placehold.co/800x600.png"
+        })
+      })
+    };
+  }
   return builder.image(source)
 }
+
 ```
-**Penting:** Ganti `PROJECT_ID_ANDA` lagi di sini.
+**Penting:** Buat file `.env.local` di root proyek Anda dan tambahkan kredensial Anda di sana:
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
+NEXT_PUBLIC_SANITY_DATASET=production
+```
 
 ## 6. Mengambil Data Sanity di Komponen
 
-Kita akan membuat komponen baru yang mengambil data dari Sanity, lalu mengganti komponen statis yang ada di halaman utama.
+Kita akan membuat fungsi query di `src/lib/sanity-queries.ts` dan memanggilnya di halaman utama.
 
-Buat file baru di `src/app/components/sanity-hierarchical-tease.tsx`:
+Buka `src/lib/sanity-queries.ts` dan pastikan isinya seperti berikut:
+```typescript
+import { client, urlFor } from "./sanity-client";
 
-```tsx
-import { client, urlFor } from "@/lib/sanity-client";
-import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
-import { homePageData } from "../home-data"; // Kita masih butuh header dari sini
-
-// Definisikan tipe data yang akan kita ambil
 export interface SanityPost {
   _id: string;
-  title: string;
-  overline: string;
-  meta: string;
-  hint: string;
-  image: any; // Tipe gambar Sanity
-  // href akan kita bangun secara manual jika diperlukan
+  title?: string;
+  overline?: string;
+  meta?: string;
+  hint?: string;
+  image?: any;
+  href?: string;
 }
 
-const POSTS_QUERY = `*[_type == "post"]|order(publishedAt desc)[0...4]{
+const POSTS_QUERY = `*[_type == "wawasan"]|order(publishedAt desc)[0...4]{
   _id,
   title,
   overline,
   meta,
-  hint,
-  image
+  "hint": image.hint,
+  image,
+  "href": "/" + slug.current
 }`;
 
-export async function SanityHierarchicalTease() {
-  const sanityArticles = await client.fetch<SanityPost[]>(POSTS_QUERY);
-
-  // Transformasi data Sanity agar sesuai dengan format yang diharapkan oleh komponen HierarchicalTease
-  const transformedArticles = sanityArticles.map(article => ({
-    ...article,
-    href: "#", // Atau bangun URL dari slug jika ada
-    // Penting: ubah objek gambar Sanity menjadi URL string
-    image: article.image ? urlFor(article.image).width(800).height(600).url() : "https://placehold.co/800x600.png"
-  }));
-
-  return (
-    <HierarchicalTease
-      header={homePageData.hierarchicalTease.header}
-      articles={transformedArticles}
-    />
-  );
+export async function getHomepageInsights(): Promise<SanityPost[]> {
+  // ... (implementasi ada di file yang ada)
 }
-
 ```
 
 ## 7. Memperbarui Halaman Utama
 
-Terakhir, buka `src/app/page.tsx` dan ganti komponen `HierarchicalTease` yang statis dengan komponen baru yang mengambil data dari Sanity.
-
-1.  Ubah `Home` menjadi `async function`.
-2.  Impor `SanityHierarchicalTease`.
-3.  Ganti pemanggilan komponennya.
+Terakhir, buka `src/app/page.tsx` dan ganti `HierarchicalTease` yang statis dengan data dari Sanity. Pastikan fungsi `Home` adalah `async`.
 
 ```tsx
 // src/app/page.tsx
-
-// ...impor lainnya
 import { HierarchicalTease } from "@/components/blocks/hierarchical-tease/hierarchical-tease";
-import { SanityHierarchicalTease } from "./components/sanity-hierarchical-tease"; // Impor komponen baru
-import { PageSection } from "@/components/primitives/page-section/page-section";
+import { getHomepageInsights } from "@/lib/sanity-queries";
+// ...impor lainnya
 
-// Ubah fungsi ini menjadi async
 export default async function Home() {
-    const { missionTopper, programCards, heroStatement, snowflakes, distinction } = homePageData;
+    // ...data statis lainnya
+    const insights = await getHomepageInsights();
 
     return (
         <main id="main-content">
             {/* ...komponen lainnya tetap sama */}
             
             <PageSection theme="dark">
-              {/* Ganti komponen ini */}
-              {/* 
-                <HierarchicalTease
-                    header={homePageData.hierarchicalTease.header}
-                    articles={homePageData.hierarchicalTease.articles}
-                />
-              */}
-              <SanityHierarchicalTease />
+              <HierarchicalTease
+                  header={homePageData.hierarchicalTease.header}
+                  articles={insights}
+              />
             </PageSection>
             
             {/* ...sisa komponen */}
