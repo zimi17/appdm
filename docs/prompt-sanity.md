@@ -12,18 +12,26 @@ npm create sanity@latest -- --template clean --typescript --output-path studio
 ```
 Ikuti petunjuk untuk login dan memilih proyek. Setelah selesai, Anda akan memiliki folder `studio` baru di root proyek Anda.
 
-## 2. Menjalankan Sanity Studio Secara Lokal
+## 2. Menjalankan Sanity Studio Secara Lokal (Terintegrasi)
 
-Untuk mengkonfigurasi dan mengelola konten Anda, jalankan server pengembangan Sanity Studio. Ini adalah server yang **berbeda** dari server Next.js Anda.
+Berkat konfigurasi `rewrites` di `next.config.ts`, kita bisa mengakses Studio melalui aplikasi utama kita.
 
-Dari direktori root proyek Anda, jalankan perintah berikut di terminal:
-```sh
-cd studio
-npm run dev
-```
-Buka browser Anda dan navigasikan ke **[http://localhost:3333](http://localhost:3333)**. Anda akan diminta untuk login menggunakan akun Sanity Anda. Ini adalah antarmuka CMS Anda.
+**Alur Kerja Pengembangan:**
 
-**Penting:** Rute `/studio` pada aplikasi web utama Anda (yang berjalan di port lain seperti 9002) tidak akan berfungsi. Studio berjalan sebagai aplikasi terpisah pada port 3333.
+1.  **Terminal 1 (Aplikasi Utama):** Dari direktori root proyek Anda, jalankan server Next.js seperti biasa.
+    ```sh
+    npm run dev
+    ```
+    Aplikasi Anda akan berjalan di port `9002` (atau port default Anda).
+
+2.  **Terminal 2 (Sanity Studio):** Buka terminal baru, masuk ke direktori `studio`, dan jalankan server pengembangan Sanity.
+    ```sh
+    cd studio
+    npm run dev
+    ```
+    Studio akan berjalan di port `3333`, tetapi Anda tidak perlu mengaksesnya langsung.
+
+3.  **Akses Studio:** Sekarang, buka browser Anda dan navigasikan ke rute `/studio` pada aplikasi utama Anda, misalnya: `https://[URL_CLOUD_WORKSTATION_ANDA]/studio`. Anda akan melihat antarmuka Sanity CMS yang berjalan dengan lancar.
 
 ## 3. Membuat Skema Konten (Schema)
 
@@ -123,7 +131,7 @@ export default defineConfig({
   },
 })
 ```
-**Penting:** Ganti `your-project-id` dengan Project ID Sanity Anda yang sebenarnya, atau lebih baik lagi, atur di file `.env.local` Anda.
+**Penting:** Ganti `your-project-id` dengan Project ID Sanity Anda yang sebenarnya, atau lebih baik lagi, atur di file `.env` Anda.
 
 Setelah menyimpan file ini, Studio akan memuat ulang. Anda sekarang dapat membuat postingan "Wawasan & Penelitian" baru dari dalam CMS. Lanjutkan dan buat beberapa entri agar kita memiliki data untuk ditampilkan.
 
@@ -173,7 +181,7 @@ export function urlFor(source: SanityImageSource) {
 }
 
 ```
-**Penting:** Buat file `.env.local` di root proyek Anda dan tambahkan kredensial Anda di sana:
+**Penting:** Buat file `.env` di root proyek Anda dan tambahkan kredensial Anda di sana:
 ```
 NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
 NEXT_PUBLIC_SANITY_DATASET=production
