@@ -1,5 +1,6 @@
 
 import { client, urlFor } from "./sanity-client";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 // Definisikan tipe data yang akan kita ambil
 export interface SanityPost {
@@ -10,6 +11,14 @@ export interface SanityPost {
   hint?: string;
   image?: any; // Tipe gambar Sanity
   href?: string;
+}
+
+export interface SanityPage {
+    _id: string;
+    title: string;
+    slug: { current: string };
+    content: any[];
+    metaDescription?: string;
 }
 
 const POSTS_QUERY = `*[_type == "wawasan"]|order(publishedAt desc)[0...4]{
@@ -45,7 +54,7 @@ export async function getHomepageInsights(): Promise<SanityPost[]> {
     const transformedArticles = sanityArticles.map(article => ({
       ...article,
       // Penting: ubah objek gambar Sanity menjadi URL string
-      image: urlFor(article.image).width(800).height(600).url(),
+      image: urlFor(article.image as SanityImageSource).width(800).height(600).url(),
       href: article.href || "#"
     }));
 
@@ -74,4 +83,28 @@ export async function getHomepageInsights(): Promise<SanityPost[]> {
     }));
     return placeholders;
   }
+}
+
+
+const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0]{
+    _id,
+    title,
+    slug,
+    content,
+    metaDescription
+}`;
+
+export async function getPageBySlug(slug: string): Promise<SanityPage | null> {
+    if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || !process.env.NEXT_PUBLIC_SANITY_DATASET) {
+      console.warn("Sanity not configured. Returning null for page data.");
+      return null;
+    }
+
+    try {
+        const page = await client.fetch<SanityPage>(PAGE_QUERY, { slug });
+        return page;
+    } catch (error) {
+        console.error(`Failed to fetch page data for slug "${slug}":`, error);
+        return null;
+    }
 }

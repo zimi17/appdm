@@ -1,25 +1,33 @@
-
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import wawasan from './schemas/wawasan'
+import page from './schemas/page'
+import hero from './schemas/blocks/hero'
+import twoColumnContent from './schemas/blocks/two-column-content'
+import cardGrid from './schemas/blocks/card-grid'
+import accordionSection from './schemas/blocks/accordion-section'
+import promoBar from './schemas/blocks/promo-bar'
 
-// IMPORTANT: This configuration is for the Sanity Studio and should not depend
-// on Next.js environment variables. You should replace the placeholder values
-// here with your actual Sanity project ID and dataset.
-const projectId = '3966wvah'; // Ganti dengan ID proyek Sanity Anda
-const dataset = 'production'; // Ganti dengan dataset Sanity Anda
+const projectId = '3966wvah';
+const dataset = 'production';
 
 export default defineConfig({
   name: 'default',
   title: 'STIE Dwimulya Website Studio',
-
-  projectId: projectId,
+  basePath: '/studio',
+  projectId: projectId, 
   dataset: dataset,
-
   plugins: [structureTool(), visionTool()],
-
   schema: {
-    types: [wawasan],
+    types: [
+        wawasan, 
+        page,
+        hero,
+        twoColumnContent,
+        cardGrid,
+        accordionSection,
+        promoBar
+    ],
   },
 })
