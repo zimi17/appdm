@@ -7,13 +7,5 @@ export default defineCliConfig({
   api: {
     projectId,
     dataset
-  },
-  project: {
-    basePath: '/studio'
-  },
-  // Tells the CLI that the studio configuration is in the /studio directory
-  vite: (config) => ({
-    ...config,
-    root: __dirname + '/studio',
-  }),
+  }
 })
