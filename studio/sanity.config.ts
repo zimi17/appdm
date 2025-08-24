@@ -10,8 +10,8 @@ import cardGrid from './schemas/blocks/card-grid'
 import accordionSection from './schemas/blocks/accordion-section'
 import promoBar from './schemas/blocks/promo-bar'
 
-const projectId = '3966wvah';
-const dataset = 'production';
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '3966wvah';
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 
 export default defineConfig({
   name: 'default',
