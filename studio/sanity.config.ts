@@ -1,5 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
+import {presentationTool} from 'sanity-plugin-presentation'
 import {visionTool} from '@sanity/vision'
 import wawasan from './schemas/wawasan'
 import page from './schemas/page'
@@ -18,7 +19,17 @@ export default defineConfig({
   basePath: '/studio',
   projectId: projectId, 
   dataset: dataset,
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool(), 
+    visionTool(),
+    presentationTool({
+      previewUrl: {
+        draftMode: {
+          enable: '/api/draft',
+        },
+      },
+    }),
+  ],
   schema: {
     types: [
         wawasan, 

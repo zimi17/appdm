@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "sanity:dev": "sanity dev --cwd studio"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.14.1",
@@ -38,6 +39,7 @@
     "@radix-ui/react-tooltip": "^1.1.8",
     "@reduxjs/toolkit": "^2.2.6",
     "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.50.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
@@ -54,11 +56,11 @@
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.54.2",
     "react-is": "^18.3.1",
     "react-redux": "^9.1.2",
     "recharts": "^2.15.1",
     "sanity": "^3.50.2",
+    "sanity-plugin-presentation": "^2.1.1",
     "styled-components": "^6.1.11",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
