@@ -1,6 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
-import {presentationTool} from 'sanity-plugin-presentation'
+import {presentationTool} from 'sanity/presentation'
 import {visionTool} from '@sanity/vision'
 import wawasan from './schemas/wawasan'
 import page from './schemas/page'
@@ -16,7 +16,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 export default defineConfig({
   name: 'default',
   title: 'STIE Dwimulya Website Studio',
-  basePath: '/studio',
+  basePath: process.env.NEXT_PUBLIC_SANITY_STUDIO_BASE_PATH || '/studio',
   projectId: projectId, 
   dataset: dataset,
   plugins: [

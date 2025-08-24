@@ -8,5 +8,5 @@ const studioConfig = {missingConfigFile: true}
 renderStudio(
   document.getElementById("sanity"),
   studioConfig,
-  {reactStrictMode: false, basePath: "/"}
+  {reactStrictMode: false, basePath: "/studio/"}
 )
