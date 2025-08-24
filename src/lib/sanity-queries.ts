@@ -1,6 +1,7 @@
 
-import { client, urlFor } from "./sanity-client";
+import { client, getPreviewClient, urlFor } from "./sanity-client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { draftMode } from 'next/headers'
 
 // Definisikan tipe data yang akan kita ambil
 export interface SanityPost {
@@ -32,6 +33,9 @@ const POSTS_QUERY = `*[_type == "wawasan"]|order(publishedAt desc)[0...4]{
 }`;
 
 export async function getHomepageInsights(): Promise<SanityPost[]> {
+  const { isEnabled } = draftMode();
+  const currentClient = isEnabled ? getPreviewClient() : client;
+
   // Gracefully handle if Sanity is not configured
   if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || !process.env.NEXT_PUBLIC_SANITY_DATASET) {
     console.warn("Sanity not configured. Returning placeholder data for insights.");
@@ -48,7 +52,7 @@ export async function getHomepageInsights(): Promise<SanityPost[]> {
   }
 
   try {
-    const sanityArticles = await client.fetch<SanityPost[]>(POSTS_QUERY);
+    const sanityArticles = await currentClient.fetch<SanityPost[]>(POSTS_QUERY);
 
     // Transformasi data Sanity agar sesuai dengan format yang diharapkan komponen
     const transformedArticles = sanityArticles.map(article => ({
@@ -95,13 +99,16 @@ const PAGE_QUERY = `*[_type == "page" && slug.current == $slug][0]{
 }`;
 
 export async function getPageBySlug(slug: string): Promise<SanityPage | null> {
+    const { isEnabled } = draftMode();
+    const currentClient = isEnabled ? getPreviewClient() : client;
+
     if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || !process.env.NEXT_PUBLIC_SANITY_DATASET) {
       console.warn("Sanity not configured. Returning null for page data.");
       return null;
     }
 
     try {
-        const page = await client.fetch<SanityPage>(PAGE_QUERY, { slug });
+        const page = await currentClient.fetch<SanityPage>(PAGE_QUERY, { slug });
         return page;
     } catch (error) {
         console.error(`Failed to fetch page data for slug "${slug}":`, error);

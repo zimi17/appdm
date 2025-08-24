@@ -24,6 +24,7 @@ export default defineConfig({
     visionTool(),
     presentationTool({
       previewUrl: {
+        origin: typeof(window) === 'undefined' ? 'http://localhost:9002' : window.location.origin,
         draftMode: {
           enable: '/api/draft',
         },

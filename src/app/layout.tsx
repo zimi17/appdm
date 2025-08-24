@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import { draftMode } from 'next/headers'
 import { Toaster } from "@/components/ui/toaster"
 import { StoreProvider } from '@/store/store-provider';
 import { SiteHeader } from '@/components/universal/site-header/site-header';
 import { SiteFooter } from '@/components/universal/site-footer/site-footer';
+import { VisualEditing } from 'next-sanity'
 import '@/app/globals.css';
 import '@/styles/index.scss';
 
@@ -32,6 +34,9 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </StoreProvider>
+        {draftMode().isEnabled && (
+          <VisualEditing />
+        )}
         <Toaster />
       </body>
     </html>
