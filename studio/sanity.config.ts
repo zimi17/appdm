@@ -16,13 +16,14 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
 export default defineConfig({
   name: 'default',
   title: 'STIE Dwimulya Website Studio',
-  basePath: process.env.NEXT_PUBLIC_SANITY_STUDIO_BASE_PATH || '/studio',
+  basePath: '/studio',
   projectId: projectId, 
   dataset: dataset,
   plugins: [
     structureTool(), 
     visionTool(),
     presentationTool({
+      basePath: '/studio', // This line is crucial
       previewUrl: {
         origin: typeof(window) === 'undefined' ? 'http://localhost:9002' : window.location.origin,
         draftMode: {
