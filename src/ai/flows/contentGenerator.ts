@@ -1,9 +1,8 @@
 
-import { defineFlow } from 'genkit';
 import { ai } from '../genkit';
 import { z } from 'zod';
 
-export const contentGeneratorFlow = defineFlow(
+export const contentGeneratorFlow = ai.defineFlow(
   {
     name: 'contentGeneratorFlow',
     inputSchema: z.object({ topic: z.string() }),
