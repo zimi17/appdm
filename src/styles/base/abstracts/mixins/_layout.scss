@@ -1,0 +1,93 @@
+@use "sass:math";
+@use '../variables' as *;
+@use './shorthander' as *;
+@use './mq' as *;
+@use './fluid-size' as *;
+
+@mixin site-max-width {
+  @include margin(x auto);
+  
+  & {
+    max-width: $site-max-width;
+  }
+}
+
+@mixin topper-spacing($h: h1) {
+  $start: $spacing-xl;
+  $end: $spacing-xxl;
+
+  @if $h == h1 or $h == h2 {
+    $start: $spacing-xl;
+    $end: $spacing-xxxl;
+  }
+
+  @if $h == giant {
+    $start: $spacing-xl;
+    $end: $spacing-xxxxl;
+  }
+
+  @include fluid(
+    padding-top,
+    (
+      $bp-mobile: $start,
+      $bp-desktop-xl: $end,
+    )
+  );
+}
+
+$block-spacing-sm: var(--block-spacing-sm);
+$block-spacing-md: var(--block-spacing-md);
+$block-spacing-lg: var(--block-spacing-lg);
+$block-spacing-xl: var(--block-spacing-xl);
+
+$block-spacing-offset-sm: var(--block-spacing-offset-sm);
+$block-spacing-offset-md: var(--block-spacing-offset-md);
+$block-spacing-offset-lg: var(--block-spacing-offset-lg);
+$block-spacing-offset-xl: var(--block-spacing-offset-xl);
+
+@mixin block-spacing($direction: both, $prop: padding, $size: md) {
+  $value: $block-spacing-md;
+
+  @if $size == sm {
+    $value: $block-spacing-sm;
+  } @else if $size == md {
+    $value: $block-spacing-md;
+  } @else if $size == lg {
+    $value: $block-spacing-lg;
+  } @else if $size == xl {
+    $value: $block-spacing-xl;
+  }
+
+  @if $direction == both {
+    #{$prop}-top: $value;
+    #{$prop}-bottom: $value;
+  } @else {
+    #{$prop}-#{$direction}: $value;
+  }
+}
+
+@mixin breakout-full {
+  @include margin((x, x, x, $grid-padding-mobile * -2));
+  
+  & {
+    width: 100vw;
+  }
+
+  @include mq($bp-tablet) {
+    @include margin((x, x, x, $grid-padding * -2));
+  }
+
+  @include mq($bp-desktop) {
+    & {
+      margin-left: calc(
+        (100% + #{$grid-padding} * 2) * #{math.div(-4, 9)} - #{$grid-padding} * 2
+      );
+    }
+  }
+
+  @include mq($bp-desktop-xl) {
+    & {
+      margin-left: calc(50% - 50vw);
+    }
+  }
+}

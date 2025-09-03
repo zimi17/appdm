@@ -1,0 +1,21 @@
+@use '../variables' as *;
+@use './pseudo' as *;
+@use './size' as *;
+
+@mixin line($size: 0) {
+  &::after {
+    border-bottom: $border-light;
+    bottom: 0.55em;
+    margin-left: $spacing-xs;
+    pointer-events: none;
+    position: absolute;
+    transform: scaleX($size);
+    transform-origin: left;
+    transition:
+      transform $transition,
+      border-color $transition;
+    z-index: -1;
+    @include pseudo;
+    @include size(100%, 0);
+  }
+}

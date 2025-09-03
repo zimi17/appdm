@@ -1,0 +1,86 @@
+// Enhanced Responsive Mixins
+// =============================================================================
+// Modern responsive patterns with better performance
+
+// Enhanced Media Query Mixin
+@mixin mq-enhanced($breakpoint, $type: min) {
+  $breakpoints: (
+    'xs': 0,
+    'sm': 640px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1280px,
+    '2xl': 1536px,
+  );
+  
+  @if map-has-key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+    
+    @if $type == min {
+      @if $value == 0 {
+        @content;
+      } @else {
+        @media (min-width: $value) {
+          @content;
+        }
+      }
+    } @else if $type == max {
+      @if $value != 0 {
+        @media (max-width: #{$value - 1px}) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+// Reduced Motion Support
+@mixin mq-reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin mq-motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// Dark Mode
+@mixin mq-dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// High Contrast
+@mixin mq-high-contrast {
+  @media (prefers-contrast: high) {
+    @content;
+  }
+}
+
+// Hover Capability
+@mixin mq-hover-capable {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+// Touch Device
+@mixin mq-touch-device {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+// Fluid Typography
+@mixin fluid-type($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  font-size: clamp(#{$min-size}, #{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-width}) / (#{strip-unit($max-width)} - #{strip-unit($min-width)})), #{$max-size});
+}
+
+// Strip unit helper
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}

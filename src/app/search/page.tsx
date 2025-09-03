@@ -2,7 +2,7 @@
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { TeaseFeed } from '@/components/blocks/tease-feed/tease-feed';
 import { type ArticleTeaseProps } from '@/components/primitives/article-tease/types';
 import { Breadcrumbs } from '@/components/primitives/breadcrumbs/breadcrumbs';
@@ -51,7 +51,6 @@ function SearchResults() {
         {paginatedResults.length > 0 ? (
            <TeaseFeed
               items={paginatedResults.map((props) => ({ name: 'ArticleTease', props }))}
-              feedTeaseStyle="full"
             />
         ) : (
           query && <p>Tidak ada hasil ditemukan.</p>
@@ -88,15 +87,59 @@ function SearchResults() {
 }
 
 export default function SearchPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentQuery = searchParams.get('q') || '';
+
   const breadcrumbs = [
     { title: "Beranda", link: "/" },
     { title: "Pencarian", link: "/search", isCurrent: true },
   ];
 
+  const handleSearch = (query: string) => {
+    if (query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
   return (
     <main>
-      <SearchTopper />
+      <SearchTopper
+        title="Pencarian"
+        placeholder="Cari artikel, berita, dan konten lainnya..."
+        onSearch={handleSearch}
+        showSuggestions={false}
+        showFilters={false}
+      />
       <div className="py-12">
+        {/* Search Form for additional search capability */}
+        <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6 mb-8">
+          <div className="col-span-full lg:col-span-8 lg:col-start-5">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const query = formData.get('search') as string;
+                handleSearch(query);
+              }}
+              className="flex gap-2"
+            >
+              <input
+                type="text"
+                name="search"
+                defaultValue={currentQuery}
+                placeholder="Ketik kata kunci pencarian..."
+                className="flex-1 px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Cari
+              </button>
+            </form>
+          </div>
+        </div>
         <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 px-6">
             <div className="col-span-full">
                 <Breadcrumbs breadcrumbs={breadcrumbs} />

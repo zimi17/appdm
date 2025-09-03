@@ -1,8 +1,0 @@
-// Media Query Mixin
-@import '../variables';
-
-@mixin mq($breakpoint) {
-  @media (min-width: $breakpoint) {
-    @content;
-  }
-}

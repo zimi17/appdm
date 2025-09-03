@@ -1,0 +1,95 @@
+// Main SCSS Entry Point
+// =============================================================================
+// ITCSS (Inverted Triangle CSS) Architecture
+// Organized from generic to specific, low to high specificity
+
+@use "sass:meta";
+
+// =============================================================================
+// 1. SETTINGS
+// =============================================================================
+// Global configuration, design tokens, and feature flags
+@use "01-settings/config" as config;
+@use "01-settings/design-tokens" as tokens;
+
+// =============================================================================
+// 2. TOOLS
+// =============================================================================
+// Functions, mixins, and other helpers (no CSS output)
+@use "02-tools/functions/functions" as fn;
+@use "02-tools/mixins/layout" as layout;
+@use "02-tools/mixins/responsive" as mq;
+
+// =============================================================================
+// 3. GENERIC
+// =============================================================================
+// CSS resets, normalize, box-sizing (first actual CSS output)
+@use "03-generic/reset";
+
+// =============================================================================
+// 4. ELEMENTS
+// =============================================================================
+// Base HTML elements (h1-h6, p, a, etc.)
+// These are currently in the base folder from old structure
+@use "../styles/base/global/global";
+@use "../styles/base/global/type-global";
+@use "../styles/base/global/animations";
+
+// =============================================================================
+// 5. OBJECTS
+// =============================================================================
+// Layout-related patterns (containers, grids, media objects)
+// These will be created as we migrate
+
+// =============================================================================
+// 6. COMPONENTS
+// =============================================================================
+// UI Components (buttons, cards, forms, etc.)
+// Only global/shared component styles go here
+// Component-specific styles should stay with their components
+
+// Legacy component imports (will be refactored)
+@use "../components/primitives/cta-link/cta-link.scss";
+@use "../components/primitives/search-box/search-box.scss";
+@use "../components/universal/site-header/site-header.scss";
+
+// =============================================================================
+// 7. UTILITIES
+// =============================================================================
+// Helper classes, overrides (highest specificity)
+@use "07-utilities/spacing";
+@use "07-utilities/contrast-utilities";
+
+// Legacy utility imports (will be refactored)
+@use "../styles/base/utilities/hbs-aside";
+@use "../styles/base/utilities/hbs-topper-wrapper";
+@use "../styles/base/utilities/scrollbars";
+
+// =============================================================================
+// THEME SYSTEM
+// =============================================================================
+// Theme-specific overrides and custom properties
+@use "themes/themes" as themes;
+
+// =============================================================================
+// PRINT STYLES
+// =============================================================================
+// Print styles are handled by the main app globals.css
+
+// =============================================================================
+// DEVELOPMENT HELPERS
+// =============================================================================
+@if config.$debug-mode {
+  // Debug styles would go here
+  * {
+    outline: 1px solid red !important;
+  }
+}
+
+@if config.$show-baseline-grid {
+  // Baseline grid overlay would go here
+  body {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 100% 1.5rem;
+  }
+}

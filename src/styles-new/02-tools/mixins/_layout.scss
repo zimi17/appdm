@@ -1,0 +1,166 @@
+// Layout Mixins
+// =============================================================================
+// Mixins for common layout patterns
+
+@use "../functions/functions" as fn;
+
+// Container
+// -----------------------------------------------------------------------------
+@mixin container($max-width: 1200px, $padding: var(--space-6)) {
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-inline: $padding;
+}
+
+// Flexbox Utilities
+// -----------------------------------------------------------------------------
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+}
+
+// Grid Utilities
+// -----------------------------------------------------------------------------
+@mixin grid-auto-fit($min-width: 250px, $gap: var(--space-6)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+@mixin grid-auto-fill($min-width: 250px, $gap: var(--space-6)) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// Aspect Ratio
+// -----------------------------------------------------------------------------
+@mixin aspect-ratio($ratio: 16/9) {
+  aspect-ratio: $ratio;
+  
+  // Fallback for older browsers
+  @supports not (aspect-ratio: 1) {
+    position: relative;
+    
+    &::before {
+      content: '';
+      display: block;
+      padding-bottom: percentage(1 / $ratio);
+    }
+    
+    > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// Sticky Footer
+// -----------------------------------------------------------------------------
+@mixin sticky-footer($footer-height: auto) {
+  min-height: 100vh;
+  min-height: 100dvh; // Dynamic viewport height
+  display: flex;
+  flex-direction: column;
+  
+  > main {
+    flex: 1 0 auto;
+  }
+  
+  > footer {
+    flex-shrink: 0;
+    @if $footer-height != auto {
+      height: $footer-height;
+    }
+  }
+}
+
+// Full Viewport
+// -----------------------------------------------------------------------------
+@mixin full-viewport {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh; // Dynamic viewport height
+}
+
+// Breakout from Container
+// -----------------------------------------------------------------------------
+@mixin breakout($direction: both) {
+  @if $direction == both or $direction == left {
+    margin-left: calc(-50vw + 50%);
+  }
+  
+  @if $direction == both or $direction == right {
+    margin-right: calc(-50vw + 50%);
+  }
+  
+  @if $direction == both {
+    width: 100vw;
+  }
+}
+
+// Safe Area (for mobile notches)
+// -----------------------------------------------------------------------------
+@mixin safe-area-padding($property: padding, $direction: all) {
+  @if $direction == all {
+    #{$property}: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  } @else if $direction == top {
+    #{$property}-top: env(safe-area-inset-top);
+  } @else if $direction == right {
+    #{$property}-right: env(safe-area-inset-right);
+  } @else if $direction == bottom {
+    #{$property}-bottom: env(safe-area-inset-bottom);
+  } @else if $direction == left {
+    #{$property}-left: env(safe-area-inset-left);
+  }
+}
+
+// Sticky Header/Footer
+// -----------------------------------------------------------------------------
+@mixin sticky-element($position: top, $z-index: var(--z-index-sticky), $backdrop-blur: true) {
+  position: sticky;
+  #{$position}: 0;
+  z-index: $z-index;
+  
+  @if $backdrop-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+// Center Element
+// -----------------------------------------------------------------------------
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin center-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

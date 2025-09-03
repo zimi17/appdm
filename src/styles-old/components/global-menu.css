@@ -1,0 +1,46 @@
+.menu-item-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item-button::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 1px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+    z-index: 0;
+}
+
+/* Vertical position for Level 1 items */
+.menu-item-button[data-depth="1"]::after {
+    top: 55%;
+}
+
+/* Vertical position for Level 2 & 3 items */
+.menu-item-button[data-depth="2"]::after,
+.menu-item-button[data-depth="3"]::after {
+    top: 50%;
+}
+
+
+/* Animate line on hover or active */
+.menu-item-button:hover::after,
+.menu-item-button[data-active="true"]::after {
+    transform: scaleX(1);
+}
+
+/* Hide chevron icon on hover or active */
+.menu-item-button:hover .chevron-indicator,
+.menu-item-button[data-active="true"] .chevron-indicator {
+    opacity: 0;
+}
+
+.chevron-indicator {
+    transition: opacity 0.2s ease-in-out;
+}

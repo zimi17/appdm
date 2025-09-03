@@ -27,6 +27,8 @@ export default defineType({
                         type: 'image',
                         fields: [{ name: 'hint', type: 'string'}]
                     })
+                      {name: 'imageUrl', title: 'Legacy Image URL', type: 'string', hidden: true},
+                      {name: 'imageHint', title: 'Legacy Image Hint', type: 'string', hidden: true},
                 ]
             }
         ]

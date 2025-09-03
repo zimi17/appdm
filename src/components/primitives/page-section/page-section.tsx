@@ -8,7 +8,7 @@ import { ComponentHeader, type ComponentHeaderProps } from "@/components/primiti
 export interface PageSectionProps {
   header?: ComponentHeaderProps;
   children?: ReactNode;
-  theme?: 'light' | 'white' | 'dark' | 'black';
+  theme?: 'light' | 'white' | 'dark' | 'black' | 'high-contrast' | 'stie-primary' | 'stie-crimson';
   spacing?: 'both' | 'top' | 'bottom' | 'none';
   className?: string;
 }
@@ -28,10 +28,13 @@ export function PageSection({
   }
 
   const themeClasses = {
-      light: 'bg-muted text-foreground',
-      white: 'bg-background text-foreground',
-      dark: 'bg-card text-card-foreground',
-      black: 'bg-black text-white'
+      light: 'bg-contrast-primary text-contrast-primary',
+      white: 'bg-contrast-primary text-contrast-primary',
+      dark: 'bg-contrast-secondary text-contrast-primary',
+      black: 'bg-contrast-inverse text-contrast-inverse',
+      'high-contrast': 'bg-contrast-primary text-contrast-primary border-contrast-strong',
+      'stie-primary': 'bg-contrast-primary text-contrast-primary',
+      'stie-crimson': 'bg-contrast-primary text-contrast-primary'
   }
 
   return (
@@ -41,7 +44,8 @@ export function PageSection({
             spacingClasses[spacing],
             themeClasses[theme],
             className
-        )} 
+        )}
+        data-theme={theme}
     >
       <div className="max-w-screen-2xl mx-auto px-6">
         <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6">

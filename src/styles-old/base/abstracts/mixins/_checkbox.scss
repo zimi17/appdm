@@ -1,0 +1,50 @@
+@use '../variables' as *;
+@use './size' as *;
+@use './typography' as *;
+@use './link' as *;
+
+@mixin checkbox-box($bg: $c-white) {
+  align-items: center;
+  background-color: $bg;
+  border-radius: $border-radius;
+  border: $border;
+  border-color: $c-border-dark;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  position: relative;
+  transition:
+    background-color $transition,
+    border-color $transition;
+  vertical-align: middle;
+  @include size(1.2em);
+
+  [data-state="checked"] {
+    align-items: center;
+    display: flex;
+  }
+}
+
+@mixin checkbox-checked {
+  background-color: $c-spot;
+  border-color: transparent;
+  outline-offset: 2px;
+
+  + label {
+    font-weight: $fw-semibold;
+  }
+}
+
+@mixin checkbox-icon {
+  color: $c-bg;
+  @include size(12px, 10px);
+}
+
+@mixin checkbox-label($spacing: $spacing-xxs, $font-weight: $fw-reg) {
+  cursor: pointer;
+  font-weight: $font-weight;
+  margin-left: $spacing;
+  @include small-title;
+  @include subtle-link($c-text, $c-spot);
+}

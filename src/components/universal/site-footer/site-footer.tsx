@@ -6,22 +6,66 @@ import { SiteFooterBlock } from "./site-footer-block";
 import Link from "next/link";
 import { Logo } from "@/components/primitives/logo/logo";
 import { Facebook, Instagram, Linkedin, Youtube, Rss } from "lucide-react";
+import { SanitySiteSettings } from "@/lib/sanity-queries";
 
-export function SiteFooter() {
+interface SiteFooterProps {
+  siteSettings: SanitySiteSettings | null;
+}
+
+export function SiteFooter({ siteSettings }: SiteFooterProps) {
+  // Use Sanity data if available, fallback to static data
+  const primaryCta = siteSettings?.footerSettings?.primaryCta || {
+    title: "Daftar Sekarang",
+    description: "Mulai perjalanan Anda menuju karier yang pasti.",
+    href: "/pendaftaran"
+  };
+
+  const footerBlocks = siteSettings?.footerSettings?.footerBlocks || [
+    {
+      title: 'Tentang Kami',
+      items: [
+        { text: "Sejarah", href: "/tentang/sejarah" },
+        { text: "Visi & Misi", href: "/tentang/visi-misi" },
+      ]
+    },
+    {
+      title: 'Kontak',
+      items: [
+        { text: "Hubungi Kami", href: "/pendaftaran" },
+        { text: "Peta & Arah", href: "/layanan" }
+      ]
+    },
+  ];
+
+  const legalLinks = siteSettings?.footerSettings?.legalLinks || [
+    { text: 'Peta Situs', href: '/' },
+    { text: 'Karir', href: '/' },
+    { text: 'Merek Dagang', href: '/tentang' },
+    { text: 'Kebijakan', href: '/tentang' },
+    { text: 'Aksesibilitas', href: '/tentang' },
+    { text: 'Aksesibilitas Digital', href: '/tentang' }
+  ];
+
+  const contactInfo = siteSettings?.contactInfo || {
+    institutionName: "STIE Dwimulya",
+    address: "Jl. Kav. Sindangsari B1, Kec. Pabuaran, Serang 42163, Banten"
+  };
+
+  const socialMedia = siteSettings?.socialMedia;
   const socialLinks = [
-    { href: "#", icon: Instagram, label: "Instagram" },
-    { href: "#", icon: Rss, label: "TikTok" }, // Placeholder for TikTok
-    { href: "#", icon: Linkedin, label: "LinkedIn" },
-    { href: "#", icon: Facebook, label: "Facebook" },
-    { href: "#", icon: Youtube, label: "YouTube" },
+    { href: socialMedia?.instagram || "#", icon: Instagram, label: "Instagram" },
+    { href: socialMedia?.tiktok || "#", icon: Rss, label: "TikTok" }, // Using Rss as placeholder for TikTok
+    { href: socialMedia?.linkedin || "#", icon: Linkedin, label: "LinkedIn" },
+    { href: socialMedia?.facebook || "#", icon: Facebook, label: "Facebook" },
+    { href: socialMedia?.youtube || "#", icon: Youtube, label: "YouTube" },
   ];
 
   return (
-    <footer className="mt-auto">
+    <footer className="mt-auto" data-sanity={siteSettings?._id ? `siteSettings=${siteSettings._id};path=footerSettings` : undefined}>
       <SiteFooterPrimaryCta
-        title="Daftar Sekarang"
-        description="Mulai perjalanan Anda menuju karier yang pasti."
-        href="/pendaftaran"
+        title={primaryCta.title}
+        description={primaryCta.description}
+        href={primaryCta.href}
       />
       
       <div className="bg-brand-primary text-primary-foreground">
@@ -31,9 +75,9 @@ export function SiteFooter() {
               <Link href="/" aria-label="Beranda" className="mb-4">
                 <Logo theme="dark" className="h-16" />
               </Link>
-              <h3 className="font-bold text-lg text-white">STIE Dwimulya</h3>
+              <h3 className="font-bold text-lg text-white">{contactInfo.institutionName}</h3>
               <p className="text-muted-foreground mt-2 text-base">
-                Jl. Kav. Sindangsari B1, Kec. Pabuaran, Serang 42163, Banten
+                {contactInfo.address}
               </p>
             </div>
             
@@ -41,7 +85,7 @@ export function SiteFooter() {
               <SiteFooterBlock
                 key={i}
                 title={block.title}
-                items={block.items}
+                items={block.items.map(item => ({ children: item.text, href: item.href }))}
               />
             ))}
             
@@ -59,7 +103,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <SiteFooterLegal items={footerLegalItems} />
+      <SiteFooterLegal items={legalLinks.map(link => ({ children: link.text, href: link.href }))} />
     </footer>
   );
 }

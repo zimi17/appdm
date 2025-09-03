@@ -1,0 +1,184 @@
+// Responsive Mixins
+// =============================================================================
+// Modern responsive design utilities
+
+// Breakpoint Map
+// -----------------------------------------------------------------------------
+$breakpoints: (
+  'xs': 0,
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px,
+) !default;
+
+// Media Query Mixin
+// -----------------------------------------------------------------------------
+@mixin mq($breakpoint, $type: min) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+    
+    @if $type == min {
+      @if $value == 0 {
+        @content;
+      } @else {
+        @media (min-width: $value) {
+          @content;
+        }
+      }
+    } @else if $type == max {
+      @if $value == 0 {
+        // Don't output anything for max-width: 0
+      } @else {
+        @media (max-width: #{$value - 1px}) {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+// Between Breakpoints
+// -----------------------------------------------------------------------------
+@mixin mq-between($min-breakpoint, $max-breakpoint) {
+  $min-value: map-get($breakpoints, $min-breakpoint);
+  $max-value: map-get($breakpoints, $max-breakpoint);
+  
+  @if $min-value and $max-value {
+    @media (min-width: $min-value) and (max-width: #{$max-value - 1px}) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint(s): #{$min-breakpoint}, #{$max-breakpoint}";
+  }
+}
+
+// Container Queries (Modern approach)
+// -----------------------------------------------------------------------------
+@mixin container-query($size) {
+  @container (min-width: $size) {
+    @content;
+  }
+}
+
+// Responsive Font Size
+// -----------------------------------------------------------------------------
+@mixin responsive-font-size($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  font-size: clamp(#{$min-size}, #{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-width}) / (#{strip-unit($max-width)} - #{strip-unit($min-width)})), #{$max-size});
+}
+
+// Responsive Spacing
+// -----------------------------------------------------------------------------
+@mixin responsive-spacing($property, $min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  #{$property}: clamp(#{$min-size}, #{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-width}) / (#{strip-unit($max-width)} - #{strip-unit($min-width)})), #{$max-size});
+}
+
+// Hide/Show on Breakpoints
+// -----------------------------------------------------------------------------
+@mixin show-from($breakpoint) {
+  display: none;
+  
+  @include mq($breakpoint) {
+    display: initial;
+  }
+}
+
+@mixin hide-from($breakpoint) {
+  @include mq($breakpoint) {
+    display: none;
+  }
+}
+
+@mixin show-until($breakpoint) {
+  @include mq($breakpoint, max) {
+    display: initial;
+  }
+  
+  @include mq($breakpoint) {
+    display: none;
+  }
+}
+
+// Responsive Grid
+// -----------------------------------------------------------------------------
+@mixin responsive-grid($columns) {
+  display: grid;
+  gap: var(--space-6);
+  
+  @each $breakpoint, $cols in $columns {
+    @if $breakpoint == 'base' {
+      grid-template-columns: repeat($cols, 1fr);
+    } @else {
+      @include mq($breakpoint) {
+        grid-template-columns: repeat($cols, 1fr);
+      }
+    }
+  }
+}
+
+// Print Styles
+// -----------------------------------------------------------------------------
+@mixin print-only {
+  @media print {
+    @content;
+  }
+}
+
+@mixin screen-only {
+  @media screen {
+    @content;
+  }
+}
+
+// Reduced Motion
+// -----------------------------------------------------------------------------
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin motion-reduce {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// High Contrast
+// -----------------------------------------------------------------------------
+@mixin high-contrast {
+  @media (prefers-contrast: high) {
+    @content;
+  }
+}
+
+// Dark Mode
+// -----------------------------------------------------------------------------
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+@mixin light-mode {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+}
+
+// Hover Capability
+// -----------------------------------------------------------------------------
+@mixin hover-capable {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin touch-device {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}

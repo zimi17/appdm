@@ -1,5 +1,4 @@
-
-@import "../../../styles/abstracts/mixins/_hover.scss";
+@use "../../../styles/base/abstracts/mixins/hover" as *;
 
 .hbs-cta-link {
   align-items: baseline;

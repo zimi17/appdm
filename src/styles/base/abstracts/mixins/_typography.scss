@@ -1,0 +1,631 @@
+@use '../variables' as *;
+@use './fluid-size' as *;
+@use './mq' as *;
+@use './pseudo' as *;
+@use './shorthander' as *;
+
+@mixin baseline-text(
+  $font-family: $ff-sans,
+  $font-weight: $fw-reg,
+  $font-size: $fs-sm
+) {
+  font-size: $font-size;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-base;
+  letter-spacing: -0.01em;
+}
+
+@mixin body-text($font-family: $ff-serif, $font-weight: $fw-reg) {
+  & {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    line-height: $lh-lg;
+  }
+
+  @if $font-family ==$ff-sans {
+    & {
+      letter-spacing: -0.02em;
+    }
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-sm,
+      $bp-desktop-xl: $fs-md,
+    )
+  );
+}
+
+@mixin big-paragraph($font-family: $ff-sans, $font-weight: $fw-reg) {
+  & {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    line-height: $lh-h4;
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-md,
+      $bp-desktop-xl: $fs-xl,
+    )
+  );
+
+  @if $font-family == $ff-sans {
+    & {
+      letter-spacing: $ls-sans-small;
+    }
+
+    @include mq($bp-tablet) {
+      & {
+        letter-spacing: $ls-sans-large;
+      }
+    }
+  } @else {
+    & {
+      letter-spacing: $ls-serif-small;
+    }
+
+    @include mq($bp-tablet) {
+      & {
+        letter-spacing: $ls-serif-large;
+      }
+    }
+  }
+}
+
+@mixin small-text($font-family: $ff-sans, $font-weight: $fw-reg) {
+  font-size: $fs-xs;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-sm;
+
+  strong,
+  b {
+    font-weight: $fw-semibold;
+  }
+}
+
+@mixin body-title {
+  @include body-text($ff-sans, $fw-semibold);
+  line-height: $lh-sm;
+  letter-spacing: -0.01em;
+  transform: none;
+}
+
+@mixin small-title {
+  @include baseline-text($font-weight: $fw-semibold);
+  letter-spacing: -0.01em;
+  transform: none;
+}
+
+@mixin xs-title {
+  @include small-text($font-weight: $fw-semibold);
+  letter-spacing: -0.02em;
+  transform: none;
+}
+
+@mixin ginormous(
+  $font-family: $ff-sans,
+  $font-weight: $fw-light,
+  $visually-align: true
+) {
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xxxl,
+      $bp-desktop-xl: $fs-ginormous,
+    )
+  );
+  
+  & {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    line-height: $lh-h1;
+    letter-spacing: -0.06em;
+    text-indent: -0.03em;
+  }
+  
+  @if $visually-align {
+    & {
+      transform: translateX(-0.06em);
+    }
+  } @else {
+    & {
+      transform: none;
+    }
+  }
+}
+
+@mixin gargantuan(
+  $font-family: $ff-sans,
+  $font-weight: $fw-light,
+  $visually-align: true
+) {
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xxxxl,
+      $bp-desktop-xl: $fs-gargantuan,
+    )
+  );
+  
+  & {
+    font-family: $font-family;
+    font-weight: $fw-light;
+    line-height: $lh-h1;
+    letter-spacing: -0.065em;
+  }
+  
+  @if $visually-align {
+    & {
+      transform: translateX(-0.06em);
+    }
+  } @else {
+    & {
+      transform: none;
+    }
+  }
+}
+
+@mixin giant(
+  $font-family: $ff-sans,
+  $font-weight: $fw-bold,
+  $visually-align: true
+) {
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xxxl,
+      $bp-desktop-xl: $fs-giant,
+    )
+  );
+  
+  & {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    line-height: $lh-h1;
+    letter-spacing: -0.03em;
+  }
+  
+  @if $visually-align {
+    & {
+      transform: translateX(-0.06em);
+    }
+  } @else {
+    & {
+      transform: none;
+    }
+  }
+}
+
+@mixin h1(
+  $font-family: $ff-sans,
+  $font-weight: $fw-bold,
+  $visually-align: true,
+  $margin: false
+) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-h1;
+  letter-spacing: -0.03em;
+  
+  @if $visually-align {
+    transform: translateX(-0.06em);
+  } @else {
+    transform: none;
+  }
+
+  @if $margin {
+    margin: $font-margin-h1;
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xxl,
+      $bp-desktop-xl: $fs-xxxxl,
+    )
+  );
+}
+
+@mixin h2(
+  $font-family: $ff-sans,
+  $font-weight: $fw-semibold,
+  $visually-align: true,
+  $margin: false
+) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-h2;
+  letter-spacing: -0.03em;
+  
+  @if $visually-align {
+    transform: translateX(-0.06em);
+  } @else {
+    transform: none;
+  }
+
+  @if $margin {
+    margin: $font-margin-h2;
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xl,
+      $bp-desktop-xl: $fs-xxxl,
+    )
+  );
+}
+
+@mixin h3(
+  $font-family: $ff-sans,
+  $font-weight: $fw-semibold,
+  $visually-align: true,
+  $margin: false
+) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-h3;
+  letter-spacing: -0.035em;
+  
+  @if $font-weight == $fw-reg {
+    letter-spacing: -0.05em;
+  }
+
+  @if $visually-align {
+    transform: translateX(-0.06em);
+  } @else {
+    transform: none;
+  }
+
+  @if $margin {
+    margin: $font-margin-h3;
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-lg,
+      $bp-desktop-xl: $fs-xxl,
+    )
+  );
+}
+
+@mixin h4(
+  $font-family: $ff-sans,
+  $font-weight: $fw-semibold,
+  $visually-align: null,
+  $margin: false,
+  $small: false
+) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-h4;
+  letter-spacing: -0.03em;
+  
+  @if not ($visually-align == null) {
+    @if $visually-align {
+      transform: translateX(-0.06em);
+    } @else {
+      transform: none;
+    }
+  } @else {
+    transform: translateX(-0.06em);
+  }
+
+  @if $small {
+    @include fluid-type(
+      (
+        $bp-mobile: $fs-md,
+        $bp-desktop-xl: $fs-lg,
+      )
+    );
+  } @else {
+    @include fluid-type(
+      (
+        $bp-mobile: $fs-md,
+        $bp-desktop-xl: $fs-xl,
+      )
+    );
+  }
+
+  @if $margin {
+    margin: $font-margin-h4;
+  }
+}
+
+@mixin h5($font-family: $ff-sans, $margin: false) {
+  font-family: $font-family;
+  font-weight: $fw-semibold;
+  line-height: $lh-h5;
+  letter-spacing: -0.02em;
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-sm,
+      $bp-desktop-xl: $fs-md,
+    )
+  );
+
+  @if $margin {
+    margin: $font-margin-h5;
+  }
+}
+
+@mixin h6($font-family: $ff-sans, $margin: false) {
+  font-family: $font-family;
+  font-weight: $fw-reg;
+  line-height: $lh-h6;
+  letter-spacing: -0.02em;
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-sm,
+      $bp-desktop-xl: $fs-md,
+    )
+  );
+
+  @if $margin {
+    margin: $font-margin-h6;
+  }
+}
+
+// Article Headings
+@mixin h1-article(
+  $font-family: $ff-sans,
+  $font-weight: $fw-bold,
+  $visually-align: false
+) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-h1;
+  
+  @if $visually-align {
+    transform: translateX(-0.06em);
+  } @else {
+    transform: none;
+  }
+
+  @if $font-family == $ff-sans {
+    letter-spacing: $ls-sans-small;
+
+    @include mq($bp-tablet) {
+      letter-spacing: $ls-sans-large;
+    }
+  } @else {
+    letter-spacing: $ls-serif-small;
+
+    @include mq($bp-tablet) {
+      letter-spacing: $ls-serif-large;
+    }
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xxl-article,
+      $bp-desktop-xl: $fs-xxxxl-article,
+    )
+  );
+}
+
+@mixin h2-article(
+  $font-family: $ff-sans,
+  $font-weight: $fw-bold,
+  $visually-align: false
+) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-h2;
+  letter-spacing: -0.03em;
+  
+  @if $visually-align {
+    transform: translateX(-0.06em);
+  } @else {
+    transform: none;
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xl-article,
+      $bp-desktop-xl: $fs-xxxl-article,
+    )
+  );
+}
+
+@mixin h3-article(
+  $font-family: $ff-serif,
+  $font-weight: $fw-light,
+  $visually-align: false
+) {
+  font-family: $font-family;
+  font-weight: $font-weight;
+  line-height: $lh-h3;
+  letter-spacing: -0.035em;
+  
+  @if $visually-align {
+    transform: translateX(-0.06em);
+  } @else {
+    transform: none;
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-lg-article,
+      $bp-desktop-xl: $fs-xxl-article,
+    )
+  );
+}
+
+@mixin h4-article($font-family: $ff-sans) {
+  font-family: $font-family;
+  font-weight: $fw-semibold;
+  line-height: $lh-h5;
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-md-article,
+      $bp-desktop-xl: $fs-lg-article,
+    )
+  );
+}
+
+@mixin h5-article($font-family: $ff-sans) {
+  line-height: $lh-h6;
+  @include body-text($font-family, $fw-semibold);
+}
+
+@mixin h6-article($font-family: $ff-serif) {
+  line-height: $lh-h6;
+  @include body-text($font-family, $fw-semibold);
+}
+
+@mixin intro-text($font-family: $ff-sans, $visually-align: false) {
+  font-family: $font-family;
+  font-weight: $fw-reg;
+  letter-spacing: -0.01em;
+  
+  @if $visually-align {
+    transform: translateX(-0.06em);
+  } @else {
+    transform: none;
+  }
+
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-md,
+      $bp-desktop-xl: $fs-md,
+    )
+  );
+}
+
+// Lists
+@mixin ul-base($level: top) {
+  @if $level ==top {
+    list-style: disc;
+    padding-left: 0;
+
+    > li {
+      margin-left: 1.1em;
+
+      &::marker {
+        color: $c-spot;
+        line-height: 0;
+      }
+
+      &:not(:first-child) {
+        margin-top: $list-item-margin;
+      }
+    }
+  } @else if $level ==one {
+    > li {
+      list-style: circle;
+      margin-top: $list-item-margin;
+    }
+  } @else if $level ==two {
+    > li {
+      list-style: square;
+      margin-top: $list-item-margin;
+    }
+  }
+}
+
+@mixin ol-base($level: top) {
+  list-style: none;
+
+  @if $level == top {
+    padding-left: 0;
+    counter-reset: ol-counter;
+
+    > li {
+      counter-increment: ol-counter;
+      margin-left: 1em;
+      position: relative;
+
+      &:not(:first-child) {
+        margin-top: $list-item-margin;
+      }
+
+      &::before {
+        color: $c-spot;
+        content: counter(ol-counter) ".";
+        font-size: 0.7em;
+        padding-right: 0.6em;
+        padding-top: 0.3em;
+        font-family: $ff-sans;
+        font-variant-numeric: tabular-nums;
+        font-weight: $fw-semibold;
+        @include pseudo((x, 100%, x, x));
+      }
+    }
+  } @else if $level == one {
+    > li {
+      margin-top: $list-item-margin;
+    }
+  } @else if $level == two {
+    > li {
+      counter-increment: li-two-counter;
+      margin-top: $list-item-margin;
+
+      &::before {
+        content: counter(li-two-counter, lower-alpha) ". ";
+      }
+    }
+  } @else if $level == three {
+    > li {
+      counter-increment: li-three-counter;
+      margin-top: $list-item-margin;
+
+      &::before {
+        content: counter(li-three-counter, lower-roman) ". ";
+      }
+    }
+  }
+}
+
+@mixin ul {
+  @include ul-base;
+
+  ul {
+    @include ul-base(two);
+
+    ul {
+      @include ul-base(one);
+
+      ul {
+        @include ul-base(two);
+
+        ul {
+          @include ul-base(one);
+
+          ul {
+            @include ul-base(two);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ol($c-numeral: $c-spot) {
+  > li::before {
+    color: $c-numeral;
+  }
+
+  @include ol-base;
+
+  ol {
+    @include ol-base($level: two);
+
+    ol {
+      @include ol-base($level: three);
+
+      ol {
+        @include ol-base($level: one);
+
+        ol {
+          @include ol-base($level: two);
+
+          ol {
+            @include ol-base($level: three);
+          }
+        }
+      }
+    }
+  }
+}

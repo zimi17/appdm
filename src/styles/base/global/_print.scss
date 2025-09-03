@@ -1,0 +1,90 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/themes" as *;
+@use "../abstracts/mixins/size" as *;
+
+@media print {
+  // Set theme to white for everything
+  * {
+    @include theme-white;
+    background-color: $c-bg;
+    color: $c-text;
+  }
+
+  // General print styles
+  @page {
+    margin: 2cm;
+  }
+
+  h1 {
+    break-before: always;
+  }
+
+  pre,
+  blockquote,
+  p,
+  li {
+    page-break-inside: avoid;
+  }
+
+  table,
+  img,
+  svg {
+    break-inside: avoid;
+  }
+
+  img {
+    @include size(100%);
+    object-fit: cover;
+  }
+
+  video {
+    display: none;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+  }
+
+  // Specific component print styles
+
+  // Hide navs
+  .hbs-site-header,
+  .hbs-breadcrumbs,
+  .hbs-sibling-navigation {
+    display: none;
+  }
+
+  // Tease row
+  .hbs-tease-row.hbs-tease-row.hbs-tease-row {
+    flex-direction: column;
+  }
+
+  // CTAs
+  .hbs-component--cta,
+  .hbs-cta-card__inner,
+  .hbs-hero-tease__content,
+  .hbs-embed-wrapper {
+    border: $print-border;
+    break-inside: avoid;
+  }
+
+  // Statistics
+  .hbs-statistic {
+    page-break-inside: avoid;
+  }
+
+  // Article teases
+  .hbs-article-tease {
+    page-break-inside: avoid;
+  }
+
+  // Footer
+  .hbs-footer .hbs-footer-block:not(:first-child),
+  .hbs-footer__legal-nav {
+    display: none;
+  }
+
+  .hbs-footer {
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,64 @@
+@use 'sass:math';
+@use '../variables' as *;
+@use './pseudo' as *;
+@use './size' as *;
+@use './shorthander' as *;
+@use './mq' as *;
+
+
+@mixin border(
+  $dir: bottom,
+  $color: null,
+  $padding: 2,
+  $start: null,
+  $end: null
+) {
+  $position: (x, 0, 0, 0);
+  $end-margin: $end;
+  $start-margin: $start;
+  $end-margin-desktop: $end;
+  $start-margin-desktop: $start;
+
+  @if not $color {
+    $color: $c-border-light;
+  }
+
+  @if $dir ==top {
+    $position: (0, 0, x, 0);
+  }
+
+  @if not $start {
+    $start-margin: $grid-padding-mobile * $padding;
+    $start-margin-desktop: $grid-padding * $padding;
+  } @else {
+    $start-margin: calc(#{$start} + (#{$grid-padding-mobile} * #{$padding}));
+    $start-margin-desktop: calc(#{$start} + (#{$grid-padding} * #{$padding}));
+  }
+
+  @if not $end {
+    $end-margin: $grid-padding-mobile * $padding;
+    $end-margin-desktop: $grid-padding * $padding;
+  } @else {
+    $end-margin: calc(#{$end} + (#{$grid-padding-mobile} * #{$padding}));
+    $end-margin-desktop: calc(#{$end} + (#{$grid-padding} * #{$padding}));
+  }
+
+  &::after {
+    border-bottom: 1px solid currentColor;
+    color: $color;
+    pointer-events: none;
+    @include pseudo($position);
+    @include size(auto, 0);
+    @include margin((x, $end-margin, x, $start-margin));
+
+    @include mq($bp-full-grid) {
+      @include margin((x, $end-margin-desktop, x, $start-margin-desktop));
+    }
+  }
+}
+
+@mixin unborder {
+  &::after {
+    display: none;
+  }
+}

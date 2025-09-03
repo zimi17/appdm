@@ -47,6 +47,18 @@ export default defineType({
       ]
     }),
     defineField({
+      name: 'imageUrl',
+      title: 'Image URL',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'imageHint',
+      title: 'Image Hint',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Tanggal Publikasi',
       type: 'datetime',

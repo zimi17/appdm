@@ -1,4 +1,3 @@
-
 'use client';
 
 import * as React from 'react';
@@ -22,9 +21,10 @@ interface MissionTopperProps {
     imageUrl: string;
     imageHint?: string;
   }[];
+  theme?: 'light' | 'dark';
 }
 
-export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
+export function MissionTopper({ titleParts, slides, theme = 'light' }: MissionTopperProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [activeSlide, setActiveSlide] = React.useState(0);
 
@@ -32,9 +32,10 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
 
+
   React.useEffect(() => {
     if (!api) return;
-    
+
     const onSelect = () => {
       setActiveSlide(api.selectedScrollSnap());
     };
@@ -59,7 +60,7 @@ export function MissionTopper({ titleParts, slides }: MissionTopperProps) {
   let buttonIndex = -1;
 
   return (
-    <section className="hbs-mission-topper" data-theme="light" data-region="topper-mission">
+    <section className="hbs-mission-topper" data-theme={theme} data-region="topper-mission">
       <div className="hbs-mission-topper__content max-w-screen-2xl mx-auto">
         <h1 className="sr-only">STIE Dwimulya</h1>
         

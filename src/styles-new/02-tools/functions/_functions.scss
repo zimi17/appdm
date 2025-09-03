@@ -1,0 +1,79 @@
+// Functions
+// =============================================================================
+// Pure functions that return values
+
+@use "sass:math";
+@use "sass:string";
+@use "sass:list";
+@use "sass:map";
+
+// Spacing Function
+// -----------------------------------------------------------------------------
+@function space($multiplier: 1) {
+  @return calc(var(--space-unit) * #{$multiplier});
+}
+
+// rem conversion
+@function rem($pixels, $base-font-size: 16px) {
+  @return math.div($pixels, $base-font-size) * 1rem;
+}
+
+// em conversion
+@function em($pixels, $context: 16px) {
+  @return math.div($pixels, $context) * 1em;
+}
+
+// Strip units
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// Map Deep Get
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map.get($map, $key);
+  }
+  @return $map;
+}
+
+// Contrast Color Function
+@function contrast-color($background-color, $light: #ffffff, $dark: #000000) {
+  // Calculate relative luminance
+  $r: math.div(red($background-color), 255);
+  $g: math.div(green($background-color), 255);
+  $b: math.div(blue($background-color), 255);
+  
+  // Apply gamma correction
+  @if $r <= 0.03928 { $r: math.div($r, 12.92); }
+  @else { $r: math.pow(math.div($r + 0.055, 1.055), 2.4); }
+  
+  @if $g <= 0.03928 { $g: math.div($g, 12.92); }
+  @else { $g: math.pow(math.div($g + 0.055, 1.055), 2.4); }
+  
+  @if $b <= 0.03928 { $b: math.div($b, 12.92); }
+  @else { $b: math.pow(math.div($b + 0.055, 1.055), 2.4); }
+  
+  // Calculate luminance
+  $luminance: 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+  
+  @return if($luminance > 0.179, $dark, $light);
+}
+
+// Fluid Typography
+@function fluid-size($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  @return clamp(#{$min-size}, #{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-width}) / (#{strip-unit($max-width)} - #{strip-unit($min-width)})), #{$max-size});
+}
+
+// Generate CSS Custom Property Name
+@function css-var($name, $prefix: 'stie') {
+  @return --#{$prefix}-#{$name};
+}
+
+// Get CSS Custom Property
+@function get-css-var($name, $fallback: null, $prefix: 'stie') {
+  @if $fallback {
+    @return var(--#{$prefix}-#{$name}, #{$fallback});
+  } @else {
+    @return var(--#{$prefix}-#{$name});
+  }
+}

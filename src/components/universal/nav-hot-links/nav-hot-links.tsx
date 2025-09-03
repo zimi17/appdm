@@ -1,12 +1,23 @@
 
 import Link from 'next/link';
 import { hotLinks } from '@/lib/data/nav';
+import { SanitySiteSettings } from '@/lib/sanity-queries';
 
-export function NavHotLinks() {
+interface NavHotLinksProps {
+  siteSettings: SanitySiteSettings | null;
+}
+
+export function NavHotLinks({ siteSettings }: NavHotLinksProps) {
+  // Use Sanity data if available, fallback to static data
+  const links = siteSettings?.headerSettings?.hotLinks || hotLinks;
+
   return (
-    <nav className="ml-8 hidden md:block">
+    <nav 
+      className="ml-8 hidden md:block"
+      data-sanity={siteSettings?._id ? `siteSettings=${siteSettings._id};path=headerSettings.hotLinks` : undefined}
+    >
       <ol>
-        {hotLinks.map((link, index) => (
+        {links.map((link, index) => (
           <li key={index}>
             <a
               href={link.href}

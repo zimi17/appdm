@@ -4,11 +4,11 @@
 import { useState } from "react";
 import { SiteHeader } from "@/components/universal/site-header/site-header";
 import { SiteFooter } from "@/components/universal/site-footer/site-footer";
-import { HeroSection } from "@/components/blocks/hero-section/hero-section";
-import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets";
+import { CardTopper } from "@/components/toppers/card-topper/card-topper";
+import { ArchivePageFacets, type FacetItem as FacetItemType } from "@/components/primitives/archive-page-facets/archive-page-facets";
 import { newsPageData, mockNews } from "./berita-dan-acara-data";
-import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker";
-import { DateRangePicker } from "@/components/primitives/date-range-picker";
+import { AlphabeticalPicker } from "@/components/primitives/alphabetical-picker/alphabetical-picker";
+import { DateRangePicker } from "@/components/primitives/date-range-picker/date-range-picker";
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis } from "@/components/ui/pagination";
 import { Breadcrumbs } from "@/components/primitives/breadcrumbs/breadcrumbs";
 import { ArticleTease } from "@/components/primitives/article-tease/article-tease";
@@ -130,11 +130,16 @@ export default function NewsAndEventsPage() {
           <div className="px-6">
               <Breadcrumbs breadcrumbs={breadcrumbs}/>
           </div>
-            <HeroSection 
+            <CardTopper 
+              type="Card"
               title={hero.title}
-              description={hero.description}
-              imageUrl={hero.imageUrl}
-              imageHint={hero.imageHint}
+              subtitle={hero.description}
+              media={{
+                image: {
+                  src: hero.imageUrl,
+                  alt: hero.imageHint
+                }
+              }}
           />
           
           <div className="py-16 md:py-24">

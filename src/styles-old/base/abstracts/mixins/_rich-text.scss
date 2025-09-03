@@ -1,0 +1,291 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - -----------------------------
+// Rich Text Content
+//
+// FOR:    Styles rich text content areas like articles or CMS blocks.
+//         Handles consistent styling for headings, paragraphs, lists,
+//         quotes, links, and embedded media within the content flow.
+// PARAMS: None
+// USE:    Apply to a container element wrapping rich text HTML content.
+//         @include rich-text;
+//
+// - - - - - - - - - - - - - - - - - - - - - - - - - -----------------------------
+
+@use "sass:math";
+@use '../variables' as *;
+@use './typography' as *;
+@use './shorthander' as *;
+@use './mq' as *;
+@use './link' as *;
+@use './pseudo' as *;
+@use './layout' as *;
+
+@mixin hr {
+  border: 0px;
+  height: 1px;
+  background-color: $c-border;
+  @include margin(($spacing-xxl, x));
+}
+
+@mixin dropcap {
+  &::first-letter {
+    font-family: $ff-sans;
+    font-size: 2.98em;
+    font-weight: $fw-bold;
+    color: $c-spot;
+    float: left;
+    letter-spacing: -0.08em;
+    line-height: 0.95;
+    margin-right: clamp($spacing-sm, 2vw, $spacing-md);
+    margin-top: 0.05em;
+    margin-left: -0.06em;
+    margin-bottom: 0;
+  }
+}
+
+@mixin rich-text {
+  @include body-text($font-weight: $fw-light);
+
+  &:first-child > *:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child > *:last-child {
+    margin-bottom: 0;
+  }
+
+  // Headings
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    transform: translateX(-0.06em);
+
+    > a {
+      @include link($c-text);
+    }
+  }
+
+  > h1 {
+    margin: $font-margin-h1;
+    margin-top: 0;
+
+    &:not(:first-child) {
+      margin: $font-margin-h1;
+    }
+  }
+
+  > h2 {
+    margin: $font-margin-h2;
+  }
+
+  > h3 {
+    margin: $font-margin-h3;
+  }
+
+  > h4 {
+    margin: $font-margin-h4;
+  }
+
+  > h5 {
+    margin: $font-margin-h5;
+  }
+
+  > h6 {
+    margin: $font-margin-h6;
+  }
+
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    + h1,
+    + h2,
+    + h3,
+    + h4,
+    + h5,
+    + h6 {
+      margin-top: 0;
+    }
+
+    + p {
+      margin-top: $spacing-xs;
+    }
+  }
+
+  // Links
+  > a:not(.hbs-cta-link) {
+    @include link;
+  }
+
+  > h1,
+  > h2,
+  > h3,
+  > h4 {
+    a {
+      text-underline-offset: 0.1em;
+    }
+  }
+
+  // Paragraph
+  > ol,
+  > ul,
+  > p {
+    margin: $font-margin-base;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    li p {
+      display: inline;
+    }
+
+    @include mq($bp-tablet) {
+      max-width: 40em;
+    }
+  }
+
+  .hbs-global-align-left,
+  .hbs-global-align-right {
+    &:first-child + * {
+      margin-top: 0;
+    }
+  }
+
+  strong,
+  b {
+    font-weight: $fw-semibold;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  // Lists
+  ul {
+    @include ul;
+
+    ul {
+      @include margin((0, x));
+    }
+  }
+
+  ol {
+    @include ol;
+  }
+
+  // Horizontal Rule
+  > hr {
+    @include hr;
+  }
+
+  // Blockquote
+  .hbs-blockquote {
+    & {
+      border-left: 1px solid;
+      color: $c-text-light;
+      padding-left: $spacing-md;
+    }
+    
+    @include margin(($spacing-xl, x));
+
+    cite {
+      @include baseline-text($ff-sans);
+      
+      & {
+        align-items: center;
+        display: flex;
+        font-weight: $fw-reg;
+      }
+    }
+
+    @include mq($bp-tablet) {
+      & {
+        padding-left: $spacing-xl;
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 600;
+    }
+  }
+
+  .hbs-blockquote__text {
+    @include body-text($ff-sans);
+    
+    & {
+      position: relative;
+    }
+
+    p {
+      margin-bottom: $spacing-md;
+
+      &:first-child::before {
+        content: "\201C";
+        font-family: $ff-serif;
+        @include absolute((0, 100%, x, x));
+      }
+
+      &:last-of-type::after {
+        content: "\201D";
+        font-family: $ff-serif;
+      }
+    }
+  }
+
+  .hbs-media-asset,
+  .hbs-embed-align-wrapper {
+    @include margin(($spacing-xl, x));
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .hbs-media-asset--image {
+    margin-top: $block-spacing-lg;
+    margin-bottom: $block-spacing-lg;
+  }
+
+  h1 + .hbs-media-asset--image,
+  h2 + .hbs-media-asset--image,
+  h3 + .hbs-media-asset--image,
+  h4 + .hbs-media-asset--image,
+  h5 + .hbs-media-asset--image,
+  h6 + .hbs-media-asset--image {
+    margin-top: $spacing-lg;
+  }
+
+  .hbs-copy-link-heading__button + .hbs-media-asset--image {
+    margin-top: $spacing-md;
+  }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -----------------------------
+// Program Page Headings
+//
+// FOR:    Adjusts heading styles specifically for program pages where
+//         H2s styled like H3s, requiring subsequent headings to be smaller.
+// PARAMS: None
+// USE:    Apply to a container with specific heading hierarchy.
+//         @include program-page-headings;
+//
+// - - - - - - - - - - - - - - - - - - - - - - - - - -----------------------------
+
+@mixin program-page-headings {
+  > h3 {
+    @include h4;
+  }
+  > h4 {
+    @include h5;
+  }
+  > h5 {
+    @include h6;
+  }
+}

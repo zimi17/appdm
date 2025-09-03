@@ -1,0 +1,35 @@
+// Media Query Mixin
+@use '../variables' as vars;
+
+@mixin mq($type, $breakpoint: null) {
+  // Handle legacy single-argument calls: mq($breakpoint)
+  @if $breakpoint == null {
+    $breakpoint: $type;
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+  // Handle two-argument calls: mq("max", $breakpoint)
+  @else if $type == "min" {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else if $type == "max" {
+    @media (max-width: $breakpoint - 1px) {
+      @content;
+    }
+  }
+}
+
+// Accessibility Media Queries
+@mixin mq-reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin mq-motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}

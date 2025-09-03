@@ -1,0 +1,113 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins/mq" as *;
+@use "../abstracts/mixins/grid" as *;
+@use "../abstracts/mixins/shorthander" as *;
+@use "../abstracts/mixins/pseudo" as *;
+
+.hbs-aside-wrapper {
+  @include grid-child;
+
+  @media (max-width: $bp-desktop) {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @include mq($bp-desktop-xl) {
+    margin-left: $col-1;
+    width: $col-3;
+  }
+}
+
+.hbs-aside-left {
+  @include mq($bp-desktop) {
+    align-self: stretch;
+    width: $col-4;
+
+    .hbs-aside {
+      position: sticky;
+      top: calc(#{$grid-padding * 2} + #{$header-shift});
+    }
+  }
+
+  @include mq($bp-desktop-lg) {
+    margin-right: $col-1;
+    width: $col-3;
+
+    &.hbs-aside-full {
+      margin-right: 0;
+      width: $col-4;
+    }
+  }
+
+  @include mq($bp-desktop-xl) {
+    margin-left: 0;
+  }
+
+  .hbs-aside__content {
+    @include mq($bp-desktop) {
+      margin-top: -25px;
+    }
+  }
+
+  .hbs-aside__content:not(.program-page-leftrail) {
+    &:before {
+      content: "";
+      height: 25px;
+      z-index: $z-index-1;
+      pointer-events: none;
+      display: none;
+      background: linear-gradient($c-bg, transparent);
+      
+      @include pseudo((0, 0, x, 0));
+
+      @include mq($bp-desktop) {
+        display: block;
+      }
+    }
+
+    &:after {
+      content: "";
+      height: 25px;
+      z-index: $z-index-1;
+      pointer-events: none;
+      display: none;
+      background: linear-gradient(transparent, $c-bg);
+      
+      @include pseudo((x, 0, 0, 0));
+
+      @include mq($bp-desktop) {
+        display: block;
+      }
+    }
+
+    .hbs-sibling-navigation {
+      padding: 25px 5px 0px 5px;
+      margin: 0px -5px;
+    }
+  }
+}
+
+.hbs-aside-right {
+  margin-top: $spacing-xxl;
+
+  &:first-child {
+    border-top: $border-solid;
+  }
+
+  .hbs-aside .hbs-aside__content {
+    color: $c-text;
+  }
+
+  @include mq($bp-desktop) {
+    margin-left: $col-4;
+    margin-right: auto;
+    width: $col-9;
+  }
+
+  @include mq($bp-desktop-lg) {
+    margin-top: 0;
+    margin-left: $col-1;
+    width: $col-3;
+  }
+}

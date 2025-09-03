@@ -16,8 +16,8 @@ export const academicsPageData = {
     degreePrograms: {
       title: "Program Gelar Unggulan",
       items: [
-        { image: "https://placehold.co/768x576.png", hint: "business meeting", title: "Manajemen (S1)", description: "Program Manajemen kami membekali mahasiswa dengan keterampilan kepemimpinan dan strategis yang dibutuhkan untuk sukses di dunia bisnis yang dinamis. Dari keuangan hingga pemasaran, kurikulum kami mencakup semua aspek manajemen modern.", href: "/akademik", linkText: "Jelajahi Manajemen" },
-        { image: "https://placehold.co/768x576.png", hint: "accounting calculator", title: "Akuntansi (S1)", description: "Program Akuntansi kami memberikan landasan yang kuat dalam prinsip-prinsip akuntansi keuangan dan manajerial, audit, dan perpajakan, mempersiapkan mahasiswa untuk karir di bidang keuangan dan akuntansi.", href: "/akademik", linkText: "Jelajahi Akuntansi" },
+        { image: "https://res.cloudinary.com/dmadbfz58/video/upload/v1754358357/PXL_20240608_080413618_odhp1w.mp4", hint: "business meeting", title: "Manajemen (S1)", description: "Program Manajemen kami membekali mahasiswa dengan keterampilan kepemimpinan dan strategis yang dibutuhkan untuk sukses di dunia bisnis yang dinamis. Dari keuangan hingga pemasaran, kurikulum kami mencakup semua aspek manajemen modern.", href: "/akademik", linkText: "Jelajahi Manajemen" },
+        { image: "https://res.cloudinary.com/dmadbfz58/video/upload/v1754358357/PXL_20240608_080413618_odhp1w.mp4", hint: "accounting calculator", title: "Akuntansi (S1)", description: "Program Akuntansi kami memberikan landasan yang kuat dalam prinsip-prinsip akuntansi keuangan dan manajerial, audit, dan perpajakan, mempersiapkan mahasiswa untuk karir di bidang keuangan dan akuntansi.", href: "/akademik", linkText: "Jelajahi Akuntansi" },
       ]
     },
     kurikulum: {

@@ -1,3 +1,4 @@
+
 // Berisi semua variabel dan fungsi yang terkait dengan sistem tema dan warna.
 
 export type Theme = keyof typeof theme;

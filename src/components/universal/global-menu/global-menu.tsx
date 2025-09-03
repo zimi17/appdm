@@ -11,17 +11,25 @@ import { navLinks, quickLinks } from "@/lib/data/nav";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { DesktopLayout } from "./desktop-layout";
 import { MobileLayout } from "./mobile-layout";
+import { SanityNavigation } from "@/lib/sanity-queries";
 
-export function GlobalMenu({
-  isOpen,
-  onOpenChange,
-}: {
+interface GlobalMenuProps {
+  navigation: SanityNavigation | null;
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
-}) {
+}
+
+export function GlobalMenu({
+  navigation,
+  isOpen,
+  onOpenChange,
+}: GlobalMenuProps) {
   const [activeL1, setActiveL1] = useState<any | null>(null);
   const [activeL2, setActiveL2] = useState<any | null>(null);
   const isMobile = useIsMobile();
+
+  // Use Sanity data if available, fallback to static data
+  const menuItems = navigation?.menuItems || navLinks;
 
   useEffect(() => {
     if (!isOpen) {
@@ -93,19 +101,23 @@ export function GlobalMenu({
           </SheetClose>
         </div>
 
-        {isMobile ? (
-          <MobileLayout
-            activeL1={activeL1}
-            activeL2={activeL2}
-            handleNavLinkClick={handleNavLinkClick}
-          />
-        ) : (
-          <DesktopLayout
-            activeL1={activeL1}
-            activeL2={activeL2}
-            handleNavLinkClick={handleNavLinkClick}
-          />
-        )}
+        <div data-sanity={navigation?._id ? `navigation=${navigation._id};path=menuItems` : undefined}>
+          {isMobile ? (
+            <MobileLayout
+              activeL1={activeL1}
+              activeL2={activeL2}
+              handleNavLinkClick={handleNavLinkClick}
+              menuItems={menuItems}
+            />
+          ) : (
+            <DesktopLayout
+              activeL1={activeL1}
+              activeL2={activeL2}
+              handleNavLinkClick={handleNavLinkClick}
+              menuItems={menuItems}
+            />
+          )}
+        </div>
 
         <nav className="absolute bottom-0 left-0 right-0 bg-[#0e0e0e] border-t border-solid border-t-[#464a4f] text-white overflow-hidden z-[111]">
           <div className="overflow-x-auto whitespace-nowrap [-webkit-overflow-scrolling:touch] p-4 md:p-6 lg:px-10 lg:py-8">

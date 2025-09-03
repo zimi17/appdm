@@ -1,0 +1,50 @@
+@use '../variables' as *;
+@use './mq' as *;
+@use './shorthander' as *;
+
+@mixin grid-parent($prop: padding, $offset: false, $flex: true) {
+  @if $flex {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  @if $offset {
+    width: calc(100% + 2 * #{$grid-padding-mobile});
+    @include margin((x, #{-$grid-padding-mobile}));
+  } @else {
+    #{$prop}-left: $grid-padding-mobile;
+    #{$prop}-right: $grid-padding-mobile;
+  }
+
+  @include mq($bp-full-grid) {
+    @if $offset {
+      width: calc(100% + 2 * $grid-padding);
+      @include margin((x, #{-$grid-padding}));
+    } @else {
+      #{$prop}-left: $grid-padding;
+      #{$prop}-right: $grid-padding;
+    }
+  }
+}
+
+@mixin grid-child($prop: padding) {
+  #{$prop}-left: $grid-padding-mobile;
+  #{$prop}-right: $grid-padding-mobile;
+  width: 100%;
+
+  @include mq($bp-full-grid) {
+    #{$prop}-left: $grid-padding;
+    #{$prop}-right: $grid-padding;
+  }
+}
+
+@mixin ungrid {
+  width: calc(100% + 2 * #{$grid-padding-mobile});
+  @include padding((x, 0));
+  @include margin((x, #{-$grid-padding-mobile}));
+
+  @include mq($bp-tablet) {
+    width: calc(100% + 2 * $grid-padding);
+    @include margin((x, #{-$grid-padding}));
+  }
+}

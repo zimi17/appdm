@@ -1,0 +1,51 @@
+// Configuration Settings
+// =============================================================================
+// Global configuration and feature flags
+
+// Feature Flags
+// -----------------------------------------------------------------------------
+$enable-responsive: true !default;
+$enable-grid-classes: true !default;
+$enable-utility-classes: true !default;
+$enable-dark-mode: true !default;
+$enable-print-styles: true !default;
+$enable-reduced-motion: true !default;
+$enable-high-contrast: true !default;
+
+// Component Toggles
+$enable-buttons: true !default;
+$enable-forms: true !default;
+$enable-tables: true !default;
+$enable-navigation: true !default;
+$enable-cards: true !default;
+$enable-modals: true !default;
+
+// Browser Support
+// -----------------------------------------------------------------------------
+$support-ie11: false !default;
+$support-legacy-flexbox: false !default;
+$support-css-grid: true !default;
+$support-custom-properties: true !default;
+$support-container-queries: true !default;
+
+// Performance Options
+// -----------------------------------------------------------------------------
+$optimize-critical-css: true !default;
+$minimize-output: true !default;
+$enable-source-maps: true !default;
+
+// Namespace (for avoiding conflicts)
+// -----------------------------------------------------------------------------
+$namespace: '' !default; // Can be set to 'stie-' or similar
+
+// Global Prefix for CSS classes
+$class-prefix: $namespace !default;
+
+// CSS Custom Property Prefix
+$css-var-prefix: 'stie' !default;
+
+// Development Options
+// -----------------------------------------------------------------------------
+$debug-mode: false !default;
+$show-baseline-grid: false !default;
+$highlight-components: false !default;

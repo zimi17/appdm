@@ -2,20 +2,68 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Search, Menu, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { SanitySiteSettings } from "@/lib/sanity-queries";
 
-export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) => void }) {
+interface ActionButtonsProps {
+  siteSettings: SanitySiteSettings | null;
+  onMenuOpen: (isOpen: boolean) => void;
+}
+
+export function ActionButtons({ siteSettings, onMenuOpen }: ActionButtonsProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+
+  // Use Sanity data if available, fallback to static data
+  const ctaButton = siteSettings?.headerSettings?.ctaButton || { text: 'Daftar', href: '/pendaftaran' };
+  const globalAlert = siteSettings?.globalAlert || {
+    isEnabled: true,
+    title: 'Pemberitahuan',
+    description: 'Informasi penting.',
+    linkText: 'Kalender Akademik tahun ajaran 2025/2026 telah disesuaikan. Pelajari untuk informasi terkini.',
+    linkHref: '/kalender-akademik'
+  };
+  const searchSettings = siteSettings?.headerSettings?.searchSettings || {
+    placeholder: 'Pencarian',
+    quickLinkText: 'A to Z index',
+    quickLinkHref: '#'
+  };
+
+  const handleSearch = (query: string = searchQuery) => {
+    if (query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSearch();
+  };
 
   return (
-    <div className="flex items-center gap-2">
-      <Link href="/pendaftaran">
-        <Button variant="ghost" className="hidden md:inline-flex text-background hover:text-primary">Daftar</Button>
+    <div 
+      className="flex items-center gap-2"
+      data-sanity={siteSettings?._id ? `siteSettings=${siteSettings._id};path=headerSettings` : undefined}
+    >
+      <Link href={ctaButton.href}>
+        <Button variant="ghost" className="hidden md:inline-flex text-background hover:text-primary">
+          {ctaButton.text}
+        </Button>
       </Link>
       <div className="md:hidden">
         <Popover>
@@ -33,14 +81,14 @@ export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) =>
           <PopoverContent className="w-80 mr-4 z-[111]">
             <div className="grid gap-4">
               <div className="space-y-2">
-                <h4 className="font-medium leading-none">Pemberitahuan</h4>
+                <h4 className="font-medium leading-none">{globalAlert.title}</h4>
                 <p className="text-sm text-muted-foreground">
-                  Informasi penting.
+                  {globalAlert.description}
                 </p>
               </div>
               <div>
-                <Link href="/kalender-akademik" className="text-sm font-medium text-secondary hover:underline">
-                  Kalender Akademik tahun ajaran 2025/2026 telah disesuaikan. Pelajari untuk informasi terkini.
+                <Link href={globalAlert.linkHref || '#'} className="text-sm font-medium text-secondary hover:underline">
+                  {globalAlert.linkText}
                 </Link>
               </div>
             </div>
@@ -67,10 +115,22 @@ export function ActionButtons({ onMenuOpen }: { onMenuOpen: (isOpen: boolean) =>
           </Button>
         </div>
         <div className="flex flex-col items-center justify-center h-full -mt-16">
-          <input type="text" placeholder="Search Dwimulya Hub" className="bg-transparent border-b-2 border-white text-white text-3xl w-full max-w-2xl text-center placeholder-gray-400 outline-none pb-2" />
+          <form onSubmit={handleSearchSubmit} className="w-full max-w-2xl">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder={searchSettings.placeholder}
+              className="bg-transparent border-b-2 border-white text-white text-3xl w-full text-center placeholder-gray-400 outline-none pb-2"
+              autoFocus
+            />
+          </form>
           <div className="mt-8 text-center">
             <h4 className="text-gray-400 mb-4">Quick Links</h4>
-            <Link href="#" className="text-white text-lg font-semibold hover:text-primary">A to Z index</Link>
+            <Link href={searchSettings.quickLinkHref || '#'} className="text-white text-lg font-semibold hover:text-primary">
+              {searchSettings.quickLinkText}
+            </Link>
           </div>
         </div>
       </div>

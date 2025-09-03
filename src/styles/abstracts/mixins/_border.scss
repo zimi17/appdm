@@ -1,4 +1,0 @@
-// Border Mixin
-@mixin border($width: 1px, $style: solid, $color: hsl(var(--border))) {
-  border: $width $style $color;
-}

@@ -1,0 +1,68 @@
+@use "../../../styles/base/abstracts" as *;
+
+.hbs-split-topper-wrapper {
+  color: var(--topper-text-color, hsl(var(--foreground)));
+  background-color: var(--topper-bg-color, hsl(var(--background)));
+
+  &[data-theme="dark"],
+  &[data-theme="black"],
+  &[data-theme="crimson"] {
+    --topper-text-color: white;
+    --topper-link-color: white;
+  }
+}
+
+.hbs-split-topper {
+  @apply grid grid-cols-4 md:grid-cols-8 lg:grid-cols-16 gap-x-6 max-w-screen-2xl mx-auto;
+  min-height: clamp(30rem, 80vh, 45rem);
+}
+
+.hbs-split-topper__content {
+  @apply col-span-full lg:col-span-8 flex items-center py-16 md:py-24 px-6 lg:px-0;
+}
+
+.hbs-split-topper__content-child {
+  @apply w-full max-w-xl lg:ml-auto lg:pr-12;
+}
+
+.hbs-split-topper__overline {
+    @apply block text-sm font-semibold uppercase tracking-wider mb-4;
+    color: var(--topper-link-color, hsl(var(--primary)));
+
+    &:hover {
+      @apply underline;
+    }
+}
+
+.hbs-split-topper__title {
+  @apply font-headline text-5xl md:text-6xl font-bold;
+  line-height: 1.1;
+
+  &--long {
+    letter-spacing: -0.02em;
+  }
+}
+
+.hbs-split-topper__byline {
+    @apply mt-6;
+}
+
+.hbs-split-topper__subtitle {
+  @apply mt-6 text-lg opacity-90;
+  line-height: 1.6;
+}
+
+.hbs-split-topper__cta {
+  @apply mt-8;
+}
+
+.hbs-split-topper__media-podcast {
+  @apply col-span-full lg:col-span-8 relative hidden lg:block;
+
+  .hbs-media-asset,
+  .hbs-media-asset__wrapper,
+  img,
+  video {
+    @apply w-full h-full object-cover;
+  }
+}

@@ -1,0 +1,26 @@
+/*
+  Gaya scrollbar kustom untuk elemen yang dapat digulir,
+  khususnya untuk panel navigasi utama.
+*/
+
+/* Bekerja pada Firefox */
+.nav-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #464a4f #292c2f; /* thumb track */
+}
+
+/* Bekerja pada Chrome, Edge, and Safari */
+.nav-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.nav-scrollbar::-webkit-scrollbar-track {
+  background: #292c2f;
+}
+
+.nav-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #464a4f;
+  border-radius: 6px;
+  /* border: 3px solid #464a4f; */ /* Border solid dapat membuat thumb terlihat lebih tipis, kita sesuaikan agar lebih modern */
+}

@@ -1,0 +1,77 @@
+@use "../../../styles/base/abstracts" as *;
+
+.hbs-card-topper {
+    @apply relative grid items-end;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+
+    &__container {
+        @apply bg-background;
+    }
+
+    &__art {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        @apply relative h-full w-full;
+    }
+
+    &__content {
+        grid-column: 2 / span 4;
+        grid-row: 3 / span 4;
+        z-index: 1;
+
+        @include mq($bp-tablet) {
+            grid-column: 2 / span 6;
+        }
+
+        @include mq($bp-desktop) {
+            grid-column: 3 / span 5;
+        }
+    }
+
+    &__inner {
+        @apply p-8 bg-destructive text-destructive-foreground;
+        
+        &[data-theme="light"] {
+            @apply bg-muted text-muted-foreground;
+        }
+        &[data-theme="white"] {
+            @apply bg-background text-foreground;
+        }
+        &[data-theme="dark"] {
+            @apply bg-card text-card-foreground;
+        }
+        &[data-theme="black"] {
+            @apply bg-black text-white;
+        }
+        &[data-theme="crimson"] {
+            @apply bg-red-800 text-white;
+        }
+    }
+
+    &__heading {
+        @apply font-headline text-4xl font-bold;
+    }
+
+    &__subheading {
+        @apply mt-4 text-lg;
+    }
+
+    &__cta {
+        @apply mt-6;
+        .hbs-cta-list-item a {
+            @apply text-destructive-foreground;
+        }
+
+        [data-theme="dark"] & .hbs-cta-list-item a,
+        [data-theme="black"] & .hbs-cta-list-item a,
+        [data-theme="crimson"] & .hbs-cta-list-item a {
+            @apply text-white hover:text-gray-300;
+        }
+
+        [data-theme="light"] & .hbs-cta-list-item a,
+        [data-theme="white"] & .hbs-cta-list-item a {
+            @apply text-primary hover:text-primary/80;
+        }
+    }
+}

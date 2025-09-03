@@ -1,0 +1,139 @@
+@use "variables" as *;
+
+// Color Themes
+// ----------------------
+@mixin theme-light {
+  --c-bg: #{$c-cream};
+  --c-bg-transparent: #{rgba($c-cream, 0)};
+  --c-bg-inverse: #{$c-charcoal};
+  --c-bg-complementary: #{$c-white};
+  --c-solid: #{$c-black};
+  --c-solid-inverse: #{$c-white};
+  --c-spot: #{$c-crimson};
+  --c-accent-dark: #{$c-tertiary-dark};
+  --c-accent-light: #{$c-tertiary-light};
+  --c-text: #{$c-black-6};
+  --c-text-link: #{$c-black};
+  --c-text-light: #{$c-black-5};
+  --c-text-lighter: #{$theme-light-text-lighter};
+  --c-border-dark: #{$c-black-4};
+  --c-border: #{$c-black-3};
+  --c-border-light: #{$c-black-1};
+  --c-button-bg: #{$c-white};
+  --c-button-bg-subtle: #{$c-white-1};
+  --c-button-bg-strong: #{$c-crimson};
+  --c-submenu-bg: #{$c-white};
+  --c-highlight: #{$c-red};
+  --c-outline: #{$c-crimson};
+}
+
+@mixin theme-dark {
+  --c-bg: #{$c-charcoal};
+  --c-bg-transparent: #{rgba($c-charcoal, 0)};
+  --c-bg-inverse: #{$c-cream};
+  --c-bg-complementary: #{$c-black};
+  --c-solid: #{$c-white};
+  --c-solid-inverse: #{$c-black};
+  --c-spot: #{$c-bright-blue};
+  --c-accent-dark: #{$c-tertiary-dark};
+  --c-accent-light: #{$c-tertiary-light};
+  --c-text: #{rgba($c-white, 0.95)};
+  --c-text-link: #{rgba($c-white, 0.95)};
+  --c-text-light: #{$c-white-5};
+  --c-text-lighter: #{$c-white-4};
+  --c-border: #{$c-white-2};
+  --c-border-light: #{$c-white-1};
+  --c-border-dark: #{$c-white-4};
+  --c-button-bg: #{$c-black};
+  --c-button-bg-subtle: #{$c-white-1};
+  --c-button-bg-strong: #{$c-crimson};
+  --c-submenu-bg: #{$c-charcoal};
+  --c-highlight: #{$c-red};
+  --c-outline: #{$c-bright-blue};
+}
+
+@mixin theme-white {
+  @include theme-light;
+  --c-bg: #{$c-white};
+  --c-bg-transparent: #{rgba($c-white, 0)};
+  --c-bg-complementary: #{$c-cream};
+}
+
+@mixin theme-black {
+  @include theme-dark;
+  --c-bg: #{$c-black};
+  --c-bg-transparent: #{rgba($c-black, 0)};
+  --c-solid-inverse: #{$c-charcoal};
+  --c-bg-complementary: #{$c-charcoal};
+}
+
+@mixin theme-crimson {
+  @include theme-dark;
+  --c-bg: #{$c-crimson};
+  --c-bg-transparent: #{rgba($c-crimson, 0)};
+  --c-bg-complementary: #{$c-crimson-light};
+  --c-text: #{$c-white};
+  --c-spot: #{$c-white};
+  --c-text-light: #{$theme-crimson-text-light};
+  --c-text-lighter: #{$theme-crimson-text-lighter};
+  --c-border-light: #{$c-white-1};
+  --c-button-bg-subtle: #{$c-black-1};
+  --c-solid: #{$c-cream};
+  --c-solid-inverse: #{$c-black};
+  --c-outline: #{$c-white};
+}
+
+@mixin theme-purple {
+  @include theme-dark;
+  --c-bg: #{$c-tertiary-dark};
+  --c-bg-transparent: #{rgba($c-tertiary-dark, 0)};
+  --c-spot: #{$c-white};
+  --c-border-light: #{$c-white-1};
+  --c-bg-complementary: #{$c-purple};
+  --c-text: #{$c-white};
+  --c-text-light: #{$theme-purple-text-light};
+  --c-text-lighter: #{$theme-purple-text-lighter};
+  --c-outline: #{$c-white};
+}
+
+@mixin theme-blue {
+  @include theme-light;
+  --c-bg: #{$c-tertiary-light};
+  --c-bg-transparent: #{rgba($c-tertiary-light, 0)};
+  --c-spot: #{$c-charcoal};
+  --c-text-lighter: #{$theme-blue-text-lighter};
+  --c-bg-complementary: #{$c-white};
+  --c-outline: #{$c-charcoal};
+}
+
+@mixin theme-red {
+  @include theme-dark;
+  --c-bg: #{$c-red};
+  --c-bg-transparent: #{rgba($c-red, 0)};
+  --c-bg-complementary: #{$c-crimson};
+  --c-spot: #{$c-white};
+  --c-text: #{$c-white};
+  --c-text-light: #{$theme-red-text-light};
+  --c-text-lighter: #{$theme-red-text-lighter};
+  --c-border-light: #{$c-white-2};
+  --c-button-bg-subtle: #{$c-black-1};
+  --c-outline: #{$c-white};
+}
+
+@mixin theme-plain-light {
+  @include theme-light;
+  --c-text: #{$c-charcoal};
+  --c-spot: #{$c-charcoal};
+}
+
+@mixin theme-plain-dark {
+  @include theme-dark;
+  --c-text: #{$c-white};
+  --c-spot: #{$c-white};
+}
+
+// Make sure to add themes to the $themes array
+$themes: "light", "dark", "white", "black", "crimson", "purple", "blue", "red";
+
+// These are the themes that can be assigned a page bg colors
+$bg-themes: "light", "dark", "white", "black", "crimson";

@@ -1,0 +1,74 @@
+@use "../../../styles/base/abstracts" as *;
+
+.hbs-simple-page-topper {
+    --topper-text-color: hsl(var(--foreground));
+    --topper-link-color: hsl(var(--primary));
+
+    &[data-theme="dark"],
+    &[data-theme="black"],
+    &[data-theme="crimson"] {
+        --topper-text-color: white;
+        --topper-link-color: white;
+    }
+
+    @apply py-16 md:py-24;
+    color: var(--topper-text-color);
+}
+
+.hbs-simple-page-topper__content {
+    @apply grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-6 max-w-screen-xl mx-auto px-6;
+
+    .hbs-simple-page-topper--with-media & {
+        @include mq($bp-desktop) {
+            grid-template-columns: repeat(16, 1fr);
+            max-width: 100%;
+        }
+    }
+}
+
+.hbs-simple-page-topper__title {
+    @apply font-headline font-bold text-5xl md:text-7xl col-span-full;
+    line-height: 1.1;
+
+    .hbs-simple-page-topper--with-media & {
+        @include mq($bp-desktop) {
+            grid-column: 3 / span 6;
+            grid-row: 1;
+        }
+    }
+}
+
+.hbs-simple-page-topper__text {
+    @apply col-span-full mt-8;
+
+    .hbs-simple-page-topper--with-media & {
+        @include mq($bp-desktop) {
+            grid-column: 3 / span 5;
+            grid-row: 1;
+            margin-top: 10rem;
+        }
+    }
+}
+
+.hbs-simple-page-topper__intro {
+    @apply text-lg opacity-90;
+    line-height: 1.6;
+    max-width: 35em;
+}
+
+.hbs-simple-page-topper__cta {
+    @apply mt-8;
+}
+
+.hbs-simple-page-topper__title-media {
+    display: none;
+
+    .hbs-simple-page-topper--with-media & {
+        @apply block mt-12 col-span-full;
+        @include mq($bp-desktop) {
+            grid-column: 10 / span 6;
+            grid-row: 1;
+            margin-top: 0;
+        }
+    }
+}

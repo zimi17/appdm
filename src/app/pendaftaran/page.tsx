@@ -23,7 +23,7 @@ function SectionHeader({ title }: { title: string }) {
     return <h2 className="text-2xl font-bold text-foreground mt-8 border-b pb-2 mb-6">{title}</h2>
 }
 
-export default function AdmissionsPage() {
+export default function PendaftaranPage() {
     const { toast } = useToast()
     const form = useForm<z.infer<typeof admissionFormSchema>>({
         resolver: zodResolver(admissionFormSchema),

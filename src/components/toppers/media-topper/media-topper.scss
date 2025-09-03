@@ -1,0 +1,111 @@
+@use "../../../styles/base/abstracts" as *;
+
+.hbs-media-topper-wrapper {
+  --media-topper-text-color: hsl(var(--foreground));
+  --media-topper-link-color: hsl(var(--primary));
+
+  &[data-theme="dark"],
+  &[data-theme="black"],
+  &[data-theme="crimson"] {
+    --media-topper-text-color: white;
+    --media-topper-link-color: white;
+  }
+}
+
+.hbs-media-topper {
+  @apply grid gap-x-6 max-w-screen-2xl mx-auto px-6 py-12;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include mq($bp-tablet) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include mq($bp-desktop) {
+    grid-template-columns: repeat(16, 1fr);
+    gap-x: 2rem;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    color: var(--media-topper-text-color);
+    margin-bottom: 2rem;
+    
+    h1 {
+        @apply font-headline font-bold text-5xl md:text-6xl;
+        line-height: 1.1;
+    }
+
+    @include mq($bp-desktop) {
+        grid-column: 1 / span 5;
+        margin-bottom: 0;
+    }
+  }
+
+  &__child {
+    grid-column: 1 / -1;
+    color: var(--media-topper-text-color);
+    margin-bottom: 2rem;
+
+    @include mq($bp-desktop) {
+      grid-column: 7 / span 4;
+      margin-bottom: 0;
+    }
+  }
+
+  &__subtitle {
+    @apply text-lg opacity-90;
+    line-height: 1.6;
+    max-width: 35em;
+  }
+
+  &__cta {
+    margin-top: 1.5rem;
+  }
+
+  &__media {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 1.5rem;
+
+    @include mq($bp-desktop) {
+      gap: 2rem;
+    }
+  }
+
+  &--1,
+  &--2,
+  &--3 {
+    .hbs-media-topper__media {
+      @include mq($bp-tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+  &--1 {
+    .hbs-media-topper__media-asset {
+      &:first-child {
+        @include mq($bp-tablet) {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }
+
+  &--2 {
+    .hbs-media-topper__media-asset {
+        @apply h-full;
+        .hbs-media-asset, .hbs-media-asset__wrapper, img, video {
+            @apply h-full;
+        }
+    }
+  }
+
+  &--3 {
+    @include mq($bp-tablet) {
+        .hbs-media-topper__media {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+  }
+}

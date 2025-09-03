@@ -23,7 +23,7 @@ export default async function Academics() {
                 title={pageData.title + " - STIE Dwimulya"}
                 description={pageData.metaDescription}
                 image={heroImage ? { 
-                    src: urlFor(heroImage as SanityImageSource).width(1200).url(), 
+                    src: urlFor(heroImage as SanityImageSource).width(1200).toString(), 
                     alt: pageData.title 
                 } : undefined}
             />

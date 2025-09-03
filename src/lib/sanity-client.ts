@@ -14,7 +14,7 @@ if (!projectId || !dataset) {
 
 export const client = createClient({
   projectId: projectId || "3966wvah", // Fallback, ganti dengan ID Anda
-  dataset: dataset || "production",
+  dataset: dataset || "production", // Fixed: match with studio config
   apiVersion: apiVersion,
   useCdn: false, // Penting untuk pratinjau, selalu ambil data terbaru
 });
@@ -27,12 +27,39 @@ export function urlFor(source: SanityImageSource) {
     return {
       width: () => ({
         height: () => ({
-          url: () => "https://placehold.co/800x600.png"
+          toString: () => "https://res.cloudinary.com/dmadbfz58/video/upload/v1754358357/PXL_20240608_080413618_odhp1w.mp4",
+          url: () => "https://res.cloudinary.com/dmadbfz58/video/upload/v1754358357/PXL_20240608_080413618_odhp1w.mp4"
         })
       })
     };
   }
-  return builder.image(source)
+  
+  // Check if source is a valid Sanity image object
+  if (typeof source === 'object' && source._type === 'image' && source.asset) {
+    return builder.image(source);
+  }
+  
+  // If it's already a URL string, return a mock builder
+  if (typeof source === 'string') {
+    return {
+      width: () => ({
+        height: () => ({
+          toString: () => source,
+          url: () => source
+        })
+      })
+    };
+  }
+  
+  // Fallback for invalid sources
+  return {
+    width: () => ({
+      height: () => ({
+        toString: () => "https://res.cloudinary.com/dmadbfz58/video/upload/v1754358357/PXL_20240608_080413618_odhp1w.mp4",
+        url: () => "https://res.cloudinary.com/dmadbfz58/video/upload/v1754358357/PXL_20240608_080413618_odhp1w.mp4"
+      })
+    })
+  };
 }
 
 let previewClient: SanityClient | null = null;

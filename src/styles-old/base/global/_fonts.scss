@@ -1,0 +1,91 @@
+@use "../abstracts/mixins/typography" as *;
+
+@mixin font-face(
+  $family-name,
+  $file-name,
+  $font-weight: normal,
+  $font-style: normal
+) {
+  @font-face {
+    $font-path: "/static-assets/fonts/#{$file-name}";
+    font-display: swap;
+    font-family: "#{$family-name}";
+    font-style: $font-style;
+    font-weight: $font-weight;
+    src: url($font-path + ".woff2") format("woff2");
+  }
+}
+
+// Graphik
+// -------------------------------------------------
+// Graphik Bold
+@include font-face(
+  $family-name: Graphik,
+  $file-name: "Graphik/Graphik-Bold",
+  $font-weight: 700
+);
+
+@include font-face(
+  $family-name: Graphik,
+  $file-name: "Graphik/Graphik-BoldItalic",
+  $font-weight: 700,
+  $font-style: italic
+);
+
+// Graphik Semibold
+@include font-face(
+  $family-name: Graphik,
+  $file-name: "Graphik/Graphik-Semibold",
+  $font-weight: 600
+);
+
+@include font-face(
+  $family-name: Graphik,
+  $file-name: "Graphik/Graphik-SemiboldItalic",
+  $font-weight: 600,
+  $font-style: italic
+);
+
+// Graphik Regular
+@include font-face(
+  $family-name: Graphik,
+  $file-name: "Graphik/Graphik-Regular",
+  $font-weight: 400
+);
+
+@include font-face(
+  $family-name: Graphik,
+  $file-name: "Graphik/Graphik-RegularItalic",
+  $font-weight: 400,
+  $font-style: italic
+);
+
+// Tiempos Text
+// -------------------------------------------------
+// Tiempos Regular
+@include font-face(
+  $family-name: Tiempos,
+  $file-name: "Tiempos/tiempos-text-regular",
+  $font-weight: 400
+);
+
+@include font-face(
+  $family-name: Tiempos,
+  $file-name: "Tiempos/tiempos-text-regular-italic",
+  $font-weight: 400,
+  $font-style: italic
+);
+
+// Tiempos Medium
+@include font-face(
+  $family-name: Tiempos,
+  $file-name: "Tiempos/tiempos-text-medium",
+  $font-weight: 600
+);
+
+@include font-face(
+  $family-name: Tiempos,
+  $file-name: "Tiempos/tiempos-text-medium-italic",
+  $font-weight: 600,
+  $font-style: italic
+);

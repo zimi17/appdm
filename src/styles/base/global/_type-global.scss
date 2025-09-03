@@ -1,0 +1,155 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins/link" as *;
+@use "../abstracts/mixins/rich-text" as *;
+@use "../abstracts/mixins/typography" as *;
+
+a,
+a:active,
+a:hover {
+  cursor: pointer;
+  text-decoration-color: transparent;
+}
+
+a {
+  @include link;
+}
+
+// Address differences between Firefox and other browsers. Known issue:no IE 6/7 normalization.
+hr {
+  -moz-box-sizing: content-box;
+  /* stylelint-disable-line property-no-vendor-prefix */
+  box-sizing: content-box;
+  height: 0;
+}
+
+// Improve readability of pre-formatted text in all browsers.
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+// Address inconsistent and variable font size in all browsers.
+small {
+  font-size: 80%;
+}
+
+// Prevent `sub` and `sup` affecting `line-height` in all browsers.
+sub,
+sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+// remove margin from nested lists
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin: 0;
+}
+
+h1,
+.hbs-text-h1 {
+  @include h1;
+}
+
+h2,
+.hbs-text-h2 {
+  @include h2;
+}
+
+h3,
+.hbs-text-h3 {
+  @include h3;
+}
+
+h4,
+.hbs-text-h4 {
+  @include h4;
+}
+
+h5,
+.hbs-text-h5 {
+  @include h5;
+}
+
+h6,
+.hbs-text-h6 {
+  @include h6;
+}
+
+.h--giant {
+  @include giant;
+}
+
+.h--ginormous {
+  @include ginormous;
+}
+
+// Article Headings
+
+.hbs-rich-text {
+  @include rich-text;
+
+  h1,
+  .hbs-text-h1 {
+    @include h1-article;
+  }
+
+  h2,
+  .hbs-text-h2 {
+    @include h2-article;
+  }
+
+  h3,
+  .hbs-text-h3 {
+    @include h3-article;
+  }
+
+  h4,
+  .hbs-text-h4 {
+    @include h4-article;
+  }
+
+  h5,
+  .hbs-text-h5 {
+    @include h5-article;
+  }
+
+  h6,
+  .hbs-text-h6 {
+    @include h6-article;
+  }
+
+  :not(h1, h2, h3, h4, h5, h6) {
+    a {
+      color: var(--c-text);
+      font-family: $ff-sans;
+      font-size: 0.99em;
+      font-weight: $fw-semibold;
+      letter-spacing: -0.02em;
+    }
+  }
+}
+
+strong,
+b {
+  font-family: $ff-sans;
+  font-weight: $fw-semibold;
+  letter-spacing: -0.02em;
+}
+
+em,
+i {
+  font-style: italic;
+}

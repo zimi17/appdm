@@ -1,0 +1,167 @@
+@use "../abstracts/variables" as *;
+
+$height: var(
+  --radix-accordion-content-height,
+  var(--radix-collapsible-content-height)
+);
+
+@keyframes open {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+
+  to {
+    height: $height;
+    opacity: 1;
+  }
+}
+
+@keyframes close {
+  from {
+    height: $height;
+    opacity: 1;
+  }
+
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+// homepage
+
+@keyframes hpFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes hpFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes hpTextFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+//  sub nav items
+@keyframes showUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+// icons
+@keyframes rollDown {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(120%);
+  }
+  51% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes swipe {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(120%);
+  }
+  51% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+//  newsletter signup
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY($spacing-md);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dialogContentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

@@ -33,6 +33,18 @@ export default defineType({
         ],
         validation: (rule) => rule.required(),
     }),
+    defineField({
+        name: 'imageUrl',
+        title: 'Image URL',
+        type: 'string',
+        hidden: true,
+    }),
+    defineField({
+        name: 'imageHint',
+        title: 'Image Hint',
+        type: 'string',
+        hidden: true,
+    }),
   ],
   preview: {
     select: {

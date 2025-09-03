@@ -1,0 +1,200 @@
+// Contrast Utilities
+// =============================================================================
+// Utility classes for ensuring proper contrast across all themes
+
+// Text Contrast Utilities
+// -----------------------------------------------------------------------------
+.text-contrast-primary {
+  color: var(--color-text-primary) !important;
+}
+
+.text-contrast-secondary {
+  color: var(--color-text-secondary) !important;
+}
+
+.text-contrast-tertiary {
+  color: var(--color-text-tertiary) !important;
+}
+
+.text-contrast-inverse {
+  color: var(--color-text-inverse) !important;
+}
+
+// Background Contrast Utilities
+// -----------------------------------------------------------------------------
+.bg-contrast-primary {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.bg-contrast-secondary {
+  background-color: var(--color-bg-secondary) !important;
+}
+
+.bg-contrast-tertiary {
+  background-color: var(--color-bg-tertiary) !important;
+}
+
+.bg-contrast-inverse {
+  background-color: var(--color-bg-inverse) !important;
+}
+
+// Border Contrast Utilities
+// -----------------------------------------------------------------------------
+.border-contrast-light {
+  border-color: var(--color-border-light) !important;
+}
+
+.border-contrast-medium {
+  border-color: var(--color-border-medium) !important;
+}
+
+.border-contrast-strong {
+  border-color: var(--color-border-strong) !important;
+}
+
+// Link Contrast Utilities
+// -----------------------------------------------------------------------------
+.link-contrast {
+  color: var(--color-text-link) !important;
+  
+  &:hover {
+    color: var(--color-text-link-hover) !important;
+  }
+  
+  &:focus-visible {
+    outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+// High Contrast Mode Utilities
+// -----------------------------------------------------------------------------
+@media (prefers-contrast: high) {
+  .text-contrast-primary,
+  .text-contrast-secondary,
+  .text-contrast-tertiary {
+    color: #000000 !important;
+  }
+  
+  .text-contrast-inverse {
+    color: #ffffff !important;
+  }
+  
+  .bg-contrast-primary,
+  .bg-contrast-secondary,
+  .bg-contrast-tertiary {
+    background-color: #ffffff !important;
+  }
+  
+  .bg-contrast-inverse {
+    background-color: #000000 !important;
+  }
+  
+  .border-contrast-light,
+  .border-contrast-medium,
+  .border-contrast-strong {
+    border-color: #000000 !important;
+  }
+  
+  .link-contrast {
+    color: #0000ff !important;
+    
+    &:hover {
+      color: #ff0000 !important;
+    }
+  }
+}
+
+// Dark Theme Adjustments
+// -----------------------------------------------------------------------------
+[data-theme="dark"] {
+  .text-contrast-primary {
+    color: #ffffff !important;
+  }
+  
+  .text-contrast-secondary {
+    color: #e5e7eb !important;
+  }
+  
+  .text-contrast-tertiary {
+    color: #d1d5db !important;
+  }
+  
+  .text-contrast-inverse {
+    color: #111827 !important;
+  }
+  
+  .bg-contrast-primary {
+    background-color: #111827 !important;
+  }
+  
+  .bg-contrast-secondary {
+    background-color: #1f2937 !important;
+  }
+  
+  .bg-contrast-tertiary {
+    background-color: #374151 !important;
+  }
+  
+  .bg-contrast-inverse {
+    background-color: #ffffff !important;
+  }
+  
+  .border-contrast-light {
+    border-color: #4b5563 !important;
+  }
+  
+  .border-contrast-medium {
+    border-color: #6b7280 !important;
+  }
+  
+  .border-contrast-strong {
+    border-color: #9ca3af !important;
+  }
+  
+  .link-contrast {
+    color: #60a5fa !important;
+    
+    &:hover {
+      color: #93c5fd !important;
+    }
+  }
+}
+
+// High Contrast Theme Adjustments
+// -----------------------------------------------------------------------------
+[data-theme="high-contrast"] {
+  .text-contrast-primary,
+  .text-contrast-secondary,
+  .text-contrast-tertiary {
+    color: #000000 !important;
+  }
+  
+  .text-contrast-inverse {
+    color: #ffffff !important;
+  }
+  
+  .bg-contrast-primary,
+  .bg-contrast-secondary,
+  .bg-contrast-tertiary {
+    background-color: #ffffff !important;
+  }
+  
+  .bg-contrast-inverse {
+    background-color: #000000 !important;
+  }
+  
+  .border-contrast-light,
+  .border-contrast-medium,
+  .border-contrast-strong {
+    border-color: #000000 !important;
+  }
+  
+  .link-contrast {
+    color: #0000ff !important;
+    
+    &:hover {
+      color: #ff0000 !important;
+    }
+  }
+}

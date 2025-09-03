@@ -1,0 +1,127 @@
+@use "sass:list";
+
+// Shorthand method for common multi-value declarations such as absolute, padding, and margin. Can also be used as the basis to create new multi-value declarations that we haven't conceived.
+//
+// @name shorthander
+// $position - Takes name of attribute: margin, padding, absolute, fixed, relative, static.
+// $value - Takes 1-4 values, following convention of traditional CSS shorthand properties for margin, padding, etc. One notable improvement: You can use the shorthand and still leave some values blank. Do so by placing an 'n' in place of any numeral.
+//
+// @example scss - SCSS
+// .item {
+//   @include absolute(0 0 0 0);
+//   //@include relative(0 0 0 0);
+//   //@include fixed(0 0 0 0);
+//   //@include padding(0 0 0 0);
+//   //@include margin(0 0 0 0);
+// }
+
+@mixin shorthander($position, $value) {
+  $position-prefix: "";
+
+  @if $position == "margin" or $position == "padding" {
+    $position-prefix: $position + "-";
+  } @else if $position == "null" {
+    // do nothing
+  } @else {
+    // --- FIX START ---
+    // Wrapped in & {} to comply with modern Sass standards
+    & {
+      position: $position;
+    }
+    // --- FIX END ---
+  }
+
+  @if list.length($value) == 2 {
+    $value-y: list.nth($value, 1);
+    $value-x: list.nth($value, 2);
+
+    & {
+      #{$position-prefix}top: if($value-y == "n" or $value-y == "x" or $value-y == "null", unset, $value-y);
+      #{$position-prefix}bottom: if($value-y == "n" or $value-y == "x" or $value-y == "null", unset, $value-y);
+      #{$position-prefix}left: if($value-x == "n" or $value-x == "x" or $value-x == "null", unset, $value-x);
+      #{$position-prefix}right: if($value-x == "n" or $value-x == "x" or $value-x == "null", unset, $value-x);
+    }
+  }
+
+  @if list.length($value) ==
+    1 and
+    $value !=
+    "n" and
+    $value !=
+    "x" and
+    $value !=
+    "null"
+  {
+    & {
+      #{$position-prefix}top: $value;
+      #{$position-prefix}right: $value;
+      #{$position-prefix}bottom: $value;
+      #{$position-prefix}left: $value;
+    }
+  }
+
+  @if list.length($value) == 3 {
+    $value-y-top: list.nth($value, 1);
+    $value-x: list.nth($value, 2);
+    $value-y-bottom: list.nth($value, 3);
+
+    & {
+      #{$position-prefix}top: if($value-y-top == "n" or $value-y-top == "x" or $value-y-top == "null", unset, $value-y-top);
+      #{$position-prefix}right: if($value-x == "n" or $value-x == "x" or $value-x == "null", unset, $value-x);
+      #{$position-prefix}left: if($value-x == "n" or $value-x == "x" or $value-x == "null", unset, $value-x);
+      #{$position-prefix}bottom: if($value-y-bottom == "n" or $value-y-bottom == "x" or $value-y-bottom == "null", unset, $value-y-bottom);
+    }
+  }
+
+  @if list.length($value) == 4 {
+    $value-top: list.nth($value, 1);
+    $value-right: list.nth($value, 2);
+    $value-bottom: list.nth($value, 3);
+    $value-left: list.nth($value, 4);
+
+    & {
+      #{$position-prefix}top: if($value-top == "n" or $value-top == "x" or $value-top == "null", unset, $value-top);
+      #{$position-prefix}right: if($value-right == "n" or $value-right == "x" or $value-right == "null", unset, $value-right);
+      #{$position-prefix}bottom: if($value-bottom == "n" or $value-bottom == "x" or $value-bottom == "null", unset, $value-bottom);
+      #{$position-prefix}left: if($value-left == "n" or $value-left == "x" or $value-left == "null", unset, $value-left);
+    }
+  }
+}
+
+// Absolute
+@mixin absolute($value) {
+  @include shorthander(absolute, $value);
+}
+
+// Fixed
+@mixin fixed($value) {
+  @include shorthander(fixed, $value);
+}
+
+// Relative
+@mixin relative($value) {
+  @include shorthander(relative, $value);
+}
+
+// Sticky
+@mixin sticky($value) {
+  @include shorthander(sticky, $value);
+}
+
+// Padding
+@mixin padding($t, $r: null, $b: null, $l: null) {
+  @if $r == null {
+    @include shorthander(padding, $t);
+  } @else {
+    @include shorthander(padding, ($t, $r, $b, $l));
+  }
+}
+
+// Margin
+@mixin margin($t, $r: null, $b: null, $l: null) {
+  @if $r == null {
+    @include shorthander(margin, $t);
+  } @else {
+    @include shorthander(margin, ($t, $r, $b, $l));
+  }
+}

@@ -17,6 +17,7 @@ interface LazyImageProps {
   sizes?: string;
   priority?: boolean;
   'data-ai-hint'?: string;
+  style?: React.CSSProperties;
 }
 
 export function LazyImage({
@@ -31,6 +32,7 @@ export function LazyImage({
   sizes,
   priority = false,
   'data-ai-hint': dataAiHint,
+  style,
 }: LazyImageProps) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -52,6 +54,7 @@ export function LazyImage({
           isLoading ? 'opacity-0' : 'opacity-100',
           imageClassName
         )}
+        style={style}
         onLoad={() => setIsLoading(false)}
         sizes={sizes}
         priority={priority}

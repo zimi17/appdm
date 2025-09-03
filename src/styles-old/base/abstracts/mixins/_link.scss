@@ -1,0 +1,164 @@
+@use '../variables' as *;
+@use './hover' as *;
+@use './typography' as *;
+@use './shorthander' as *;
+
+@mixin default-link-styles(
+  $text-color: $c-text,
+  $underline: true,
+  $underline-color: $c-border
+) {
+  $text-decoration-color: $underline-color;
+  cursor: pointer;
+
+  @if not $underline {
+    $text-decoration-color: transparent;
+  }
+
+  color: $text-color;
+  text-decoration-color: $text-decoration-color;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition:
+    text-decoration-color $transition,
+    color $transition;
+}
+
+@mixin hover-link-styles(
+  $text-hover-color: $c-text-link,
+  $underline-color: $c-theme-solid
+) {
+  color: $text-hover-color;
+  text-decoration-color: $underline-color;
+}
+
+@mixin link(
+  $text-color: $c-theme-solid,
+  $text-hover-color: $c-spot,
+  $target: false,
+  $underline-color: $c-border-dark
+) {
+  @if $target {
+    #{$target} {
+      @include default-link-styles(
+        $text-color,
+        $underline-color: $underline-color
+      );
+    }
+
+    @include hover {
+      #{$target} {
+        @include hover-link-styles($text-hover-color, $text-hover-color);
+      }
+    }
+  } @else {
+    @include default-link-styles(
+      $text-color,
+      $underline-color: $underline-color
+    );
+
+    @include hover {
+      @include hover-link-styles($text-hover-color);
+    }
+  }
+}
+
+@mixin subtle-link(
+  $text-color: $c-text-light,
+  $text-hover-color: $c-spot,
+  $target: false,
+  $underline-color: $c-text
+) {
+  @if $target {
+    text-decoration: none;
+
+    #{$target} {
+      @include default-link-styles($text-color, $underline: false);
+    }
+
+    @include hover {
+      #{$target} {
+        @include hover-link-styles($text-hover-color, $underline-color);
+      }
+      
+      text-decoration: none;
+    }
+  } @else {
+    @include default-link-styles($text-color, $underline: false);
+
+    @include hover {
+      @include hover-link-styles($text-hover-color, $underline-color);
+    }
+  }
+}
+
+@mixin color-link(
+  $text-color: $c-theme-solid,
+  $text-hover-color: $c-spot,
+  $target: false,
+  $reverse: false
+) {
+  cursor: pointer;
+  text-decoration: none;
+
+  @if $reverse {
+    $text-color: $c-theme-solid;
+    $text-hover-color: $c-spot;
+  }
+
+  @if $target {
+    #{$target} {
+      color: $text-color;
+      transition: color $transition;
+    }
+
+    @include hover {
+      #{$target} {
+        color: $text-hover-color;
+      }
+    }
+  } @else {
+    color: $text-color;
+    transition: color $transition;
+
+    @include hover {
+      color: $text-hover-color;
+    }
+  }
+}
+
+@mixin fancy-link {
+  font-weight: $fw-semibold;
+  @include subtle-link;
+}
+
+@mixin unlink($target: false) {
+  @if $target {
+    #{$target} {
+      color: inherit;
+      text-decoration: none;
+    }
+  } @else {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@mixin cta-link($target: false) {
+  @if $target {
+    flex-shrink: 0;
+    font-weight: $fw-semibold;
+    margin-right: $spacing-xs;
+    @include body-text($ff-sans);
+    @include color-link;
+    @include padding(($spacing-xs, x));
+  } @else {
+    flex-shrink: 0;
+    font-weight: $fw-semibold;
+    @include body-text($ff-sans);
+    @include color-link;
+    @include padding(($spacing-xs, x));
+  }
+}

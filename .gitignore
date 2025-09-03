@@ -43,3 +43,67 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# IDE/editor
+.vscode/
+.idea/
+
+# local env variants (already ignore .env* but be explicit for common names)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# caches and build artifacts
+.cache/
+.parcel-cache/
+.turbo/
+dist/
+build/
+
+# logs
+logs/
+*.log
+
+# OS
+Thumbs.db
+
+# Sanity local studio data
+studio/.sanity
+studio/.cache
+.sanity
+
+# Development scripts (keep only essential ones for production)
+scripts/
+!scripts/README.md
+
+# Documentation files (not needed for production)
+docs/
+!docs/assets_cloudinary.json
+/docs/*
+
+# Sanity documents (used for seeding, not needed in production)
+sanity-documents/
+
+# Development and migration files
+*.tsbuildinfo
+comprehensive-sanity-check.ts
+fix-sanity-data-structure.ts
+fix-sanity-simple.ts
+cleanup-unused-blocks.sh
+HBS_MIGRATION_GUIDE.md
+SANITY_SETUP.md
+CHANGES_SUMMARY.md
+.modified
+.aiexclude
+
+# Firebase/App Hosting (if not using)
+apphosting.yaml
+.genkit/
+firebase-debug.log
+firestore-debug.log
+
+# Temporary and cache files
+.cache/
+.parcel-cache/
+.turbo/

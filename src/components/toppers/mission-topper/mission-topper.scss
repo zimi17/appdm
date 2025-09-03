@@ -1,6 +1,5 @@
 
-@import "../../../styles/abstracts/variables";
-@import "../../../styles/abstracts/mixins/fluid-size";
+@use "../../../styles/base/abstracts" as *;
 
 .hbs-mission-topper {
   .hbs-mission-topper__title {
@@ -10,9 +9,9 @@
     letter-spacing: -0.035em;
 
     @include fluid-type((
-      $bp-mobile: 36px,
-      $bp-tablet: 48px,
-      $bp-desktop-lg: 60px
+      #{$bp-mobile}: 36px,
+      #{$bp-tablet}: 48px,
+      #{$bp-desktop-lg}: 60px
     ));
   }
 

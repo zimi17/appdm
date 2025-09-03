@@ -1,0 +1,69 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - -----------------------------
+// Fluid Sizing
+//
+// FOR:    Dynamically tween the value of a property
+//         between a set of defined breakpoints.
+// PARAMS: $property:   the CSS property to assign the value
+//                      to (can also be a CSS variable)
+//         $vw-val-map: a map (in order from smallest to
+//                      largest) of screen-width breakpoints
+//                      to their associated values
+// REF:    https://github.com/Upstatement/hashed  
+// USE:    @include fluid(font-size, (
+//           $bp-mobile: 40px,
+//           $bp-tablet: 60px,
+//           $bp-desktop: 80px
+//         ));
+//
+// - - - - - - - - - - - - - - - - - - - - - - - - - ----------------------------
+
+@use "sass:math";
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+
+@function strip-unit($number) {
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
+    @return math.div($number, math.div($number, $number) * 1);
+  }
+  @return $number;
+}
+
+@mixin fluid($property, $vw-val-map: ()) {
+  $length: list.length($vw-val-map);
+  $keys: map.keys($vw-val-map);
+  $vals: map.values($vw-val-map);
+
+  @each $min-vw, $min-val in $vw-val-map {
+    $index: list.index($keys, $min-vw);
+
+    @if $index == 1 {
+      & {
+        #{$property}: $min-val;
+      }
+    }
+
+    @if ($index == 1 and $length == 2) or $index <= $length - 1 {
+      $next-index: $index + 1;
+      $max-vw: list.nth($keys, $next-index);
+      $max-val: list.nth($vals, $next-index);
+
+      @media screen and (min-width: $min-vw) and (max-width: $max-vw) {
+        $font-diff: strip-unit($max-val - $min-val);
+        $vw-diff: strip-unit($max-vw - $min-vw);
+        $value: calc(
+          #{$min-val} + #{$font-diff} * ((100vw - #{$min-vw}) / #{$vw-diff})
+        );
+        #{$property}: $value;
+      }
+    } @else if $index > 1 {
+      @media screen and (min-width: $min-vw) {
+        #{$property}: $min-val;
+      }
+    }
+  }
+}
+
+@mixin fluid-type($vw-val-map) {
+  @include fluid(font-size, $vw-val-map);
+}

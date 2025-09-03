@@ -1,0 +1,14 @@
+@mixin margin($t, $r, $b, $l) {
+  @if $t != x {
+    margin-top: $t;
+  }
+  @if $r != x {
+    margin-right: $r;
+  }
+  @if $b != x {
+    margin-bottom: $b;
+  }
+  @if $l != x {
+    margin-left: $l;
+  }
+}

@@ -1,0 +1,17 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins/shorthander" as *;
+@use "../abstracts/mixins/pseudo" as *;
+
+// This class should be added to all topper components to give default theme
+// color boilerplate and consistent space for the site navigation.
+.hbs-topper-wrapper {
+  background-color: $c-bg;
+  position: relative;
+
+  &::before {
+    content: "";
+    height: $nav-bg-height;
+    background-color: $c-bg;
+    @include pseudo((x, 0, 100%));
+  }
+}

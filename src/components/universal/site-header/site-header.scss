@@ -1,0 +1,726 @@
+// MODERNIZED: Use the module system for better encapsulation and dependency management.
+@use "sass:math";
+@use "../../../styles/base/abstracts" as *; // Using 'as *' for a smoother transition from @import.
+
+$header-unshift: $header-shift - $spacing-xxs;
+$wk-header-shift: 110px;
+$wk-header-unshift: $wk-header-shift - $spacing-xxs;
+
+.hbs-site-header.hbs-site-header {
+  background-color: transparent;
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-5;
+
+  &:hover,
+  &:focus-within {
+    z-index: $z-index-5 + 1;
+  }
+
+  // Enhanced features - ready for future implementation
+
+  @include mq($bp-desktop) {
+    position: sticky;
+
+    // Enhanced transition ready for future
+
+    // Most templates will have the site-header be sticky by default. On the few
+    // pages that need to undo that (e.g. Program Pages), this class prevents the
+    // sticky-by-default position.
+    // TODO: Refactor SiteHeader to more elegantly handle different layout and themes.
+    &.hbs-site-header--relative {
+      position: relative;
+    }
+
+    &.hbs-site-header--simple {
+      .hbs-local-navigation__section-title {
+        border-bottom: $border-light;
+        padding-bottom: $spacing-xs;
+      }
+    }
+
+    &.hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) {
+      @include theme-crimson;
+      background-color: $c-bg;
+      color: $c-text;
+      border-bottom: $border-light;
+      transform: translateY(calc(-#{$header-shift} - var(--banner-height, 0px)));
+    }
+
+    .hbs-page--ParticipantStoryTopper &,
+    .hbs-page--SplitTopper & {
+      &:not(.hbs-site-header--sticky) {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &::before {
+    content: "";
+    @include absolute(0 x 0 0);
+    opacity: 0;
+    transition: opacity $transition;
+  }
+
+  &.hbs-site-header--menu-is-open {
+    background-color: transparent;
+    transition-delay: 0s;
+
+    @include mq("max", $bp-desktop) {
+      z-index: auto;
+    }
+
+    @include mq($bp-desktop) {
+      transition-delay: $t-time-sm;
+
+      &::before {
+        background-color: $c-bg;
+        transition-delay: $t-time-sm;
+        width: calc(50% - 1vw);
+        opacity: 1;
+      }
+    }
+
+    @include mq($bp-desktop-lg) {
+      &::before {
+        width: calc(#{$col-6} - 1vw);
+      }
+    }
+  }
+}
+
+.hbs-site-header__wrapper {
+  @include site-max-width;
+  @include grid-parent;
+  @include padding($spacing-sm x);
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+
+  @include mq($bp-desktop) {
+    padding-bottom: 0;
+
+    .hbs-site-header--sticky &,
+    .hbs-home-page & {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.hbs-site-header__logo-wrapper {
+  @include grid-child;
+  flex-shrink: 0;
+  position: relative;
+  width: $col-4;
+  z-index: $z-index-3;
+
+  .hbs-site-header--sticky:not(.hbs-site-header--homepage) & {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .hbs-site-header--sticky.hbs-site-header--menu-is-open:not(
+      .hbs-site-header--homepage
+    ) & {
+    transition-delay: $t-time-sm;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Logo
+.hbs-site-header__logo {
+  min-width: 150px;
+  max-width: 180px;
+
+  a {
+    display: block;
+  }
+  svg {
+    overflow: visible;
+  }
+
+  @include mq($bp-desktop) {
+    max-width: 200px;
+
+    @include mq-reduced-motion {
+      transition: transform $transition, opacity $transition;
+    }
+
+    .hbs-logo__shield {
+      transform-origin: top left;
+
+      @include mq-reduced-motion {
+        transition: transform $transition;
+      }
+    }
+
+    .hbs-site-header--homepage.hbs-site-header--sticky:not(
+        .hbs-site-header--menu-is-open
+      ) & {
+      .hbs-logo__shield {
+        transform: translateY(calc(#{$header-shift} - #{$spacing-xs})) scale(0.5);
+      }
+
+      .hbs-logo__separator-wordmark {
+        opacity: 0;
+      }
+    }
+
+    .hbs-site-header--homepage.hbs-site-header--menu-is-open & {
+      .hbs-logo__separator-wordmark,
+      .hbs-logo__shield {
+        transition-delay: $t-time-sm;
+      }
+    }
+  }
+
+  @include mq($bp-desktop-lg) {
+    .hbs-site-header--homepage.hbs-site-header--sticky:not(
+        .hbs-site-header--menu-is-open
+      ) & {
+      .hbs-logo__shield {
+        transform: translateY(calc(#{$header-shift} - #{$spacing-sm})) scale(0.55);
+      }
+    }
+  }
+
+  @include mq($bp-desktop-xl) {
+    .hbs-site-header--homepage.hbs-site-header--sticky:not(
+        .hbs-site-header--menu-is-open
+      ) & {
+      .hbs-logo__shield {
+        transform: translateY(calc(#{$header-shift} - #{$spacing-sm})) scale(0.6);
+      }
+    }
+  }
+}
+
+.hbs-site-header__section-title {
+  @include baseline-text($ff-sans);
+  @include grid-parent;
+  @include size($col-4, 53px);
+  align-items: center;
+  align-self: flex-end;
+  display: flex;
+  flex-shrink: 0;
+  line-height: $lh-tiny;
+  opacity: 0;
+  position: absolute;
+  transition: opacity $transition;
+  visibility: hidden;
+  z-index: $z-index-9;
+
+  .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
+    @include mq($bp-desktop-lg) {
+      opacity: 1;
+      visibility: visible;
+      position: absolute;
+    }
+  }
+
+  .hbs-wk-site-header.hbs-site-header--sticky:not(
+      .hbs-site-header--menu-is-open
+    ) & {
+    transform: translateY(65px);
+  }
+}
+
+.hbs-site-header__section-title-link {
+  @include color-link;
+  padding-bottom: 1px;
+  font-weight: $fw-semibold;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+// Menu
+.hbs-site-header__menu {
+  @include grid-child;
+
+  @include mq-reduced-motion {
+    transition: opacity $transition;
+    transition-delay: $t-time-sm;
+  }
+
+  .hbs-site-header--menu-is-open & {
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0ms;
+  }
+
+  @include mq($bp-desktop) {
+    flex: 1;
+    margin-right: auto;
+    min-width: 0;
+
+    @include mq-reduced-motion {
+      transition: transform $transition, opacity $transition;
+    }
+
+    .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
+      transform: translateY(-8px);
+
+      .hbs-home-page & {
+        transform: translateY(calc(#{$header-shift} - #{$spacing-xxs}));
+      }
+    }
+  }
+
+  @include mq($bp-desktop-xl) {
+    .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
+      transform: translateY(-8px);
+
+      .hbs-home-page & {
+        // NOTE: The number `3` is a "magic number". Consider replacing it
+        // with a variable for better clarity and maintainability.
+        transform: translateY(calc(#{$header-shift} - #{$spacing-xxxs} - 3px));
+      }
+    }
+  }
+}
+
+// Fixes positioning of expanded menu on scroll
+.hbs-site-header--online.hbs-site-header--sticky:not(
+    .hbs-site-header--menu-is-open
+  ) {
+  .hbs-site-header__menu {
+    @include mq($bp-desktop) {
+      transform: none;
+      margin-top: -$spacing-xxs;
+    }
+
+    @include mq($bp-desktop-xl) {
+      transform: none;
+      margin-top: -$spacing-xs;
+    }
+  }
+}
+
+// Buttons
+.hbs-site-header__buttons {
+  @include grid-child;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: $col-8;
+  width: auto;
+  z-index: $z-index-3;
+
+  .hbs-site-header--menu-is-open & {
+    transition-delay: $t-time-sm;
+  }
+
+  @include mq("max", $bp-desktop) {
+    @include absolute($spacing-sm $grid-padding x x);
+  }
+
+  @include mq($bp-desktop) {
+    // Enhanced transition ready for future
+
+    .hbs-home-page .hbs-site-header & {
+      @include relative(auto);
+    }
+
+    .hbs-site-header:not(.hbs-site-header--sticky) & {
+      @include absolute($spacing-sm $grid-padding x x);
+    }
+
+    .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
+      transform: translateY($header-unshift);
+
+      @include mq-reduced-motion {
+        transition: transform $transition;
+        transition-delay: 0ms;
+      }
+
+      .hbs-home-page & {
+        transform: translateY(calc(#{$header-shift} - #{$spacing-xxs}));
+      }
+    }
+  }
+
+  @include mq($bp-desktop-xl) {
+    .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
+      transform: translateY(calc(#{$header-shift} - #{$spacing-xxs}));
+    }
+  }
+}
+
+.hbs-site-header__button {
+  @include reset-input;
+  @include padding($spacing-xs);
+  border-radius: $border-radius;
+  fill: $c-theme-solid;
+  margin-left: $spacing-xxs;
+  flex-shrink: 0;
+
+  @include mq-reduced-motion {
+    transition: $transition;
+  }
+
+  @include hover {
+    background-color: $c-theme-solid-inverse;
+    fill: $c-spot;
+  }
+
+  svg {
+    @include size($icon-size);
+  }
+}
+
+// Crest
+.hbs-site-header__crest {
+  @include size(calc(1em + #{$spacing-sm * 2}));
+  @include baseline-text;
+  background-color: $c-crimson;
+  display: none;
+
+  @include mq($bp-desktop) {
+    .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
+      display: block;
+    }
+  }
+}
+
+// Alert
+.hbs-header-alert__link-container {
+  @include mq($bp-desktop) {
+    &:not(.hbs-header-alert__link-container--with-banner) {
+      padding-bottom: $spacing-sm;
+    }
+  }
+
+  .hbs-page--ParticipantStoryTopper &,
+  .hbs-page--SplitTopper & {
+    padding-bottom: 0;
+  }
+}
+
+.hbs-header-alert__link {
+  @include color-link($c-theme-solid, $c-theme-solid);
+  display: block;
+  position: relative;
+  z-index: $z-index-3;
+
+  a {
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+  }
+  svg {
+    pointer-events: none;
+  }
+
+  &:focus:not(:hover) {
+    outline-offset: -3px !important;
+  }
+
+  @include mq-reduced-motion {
+    transition: background-color $transition;
+  }
+
+  @include hover {
+    --c-bg: #{$c-charcoal}; // Interpolation is necessary here for setting CSS custom properties
+
+    .hbs-header-alert__icon {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &.hbs-header-alert__link--menu-is-open {
+    @include theme-black;
+  }
+}
+
+.hbs-header-alert__title,
+.hbs-header-alert__description {
+  @include small-text($ff-sans);
+
+  @include mq($bp-tablet) {
+    @include baseline-text($ff-sans);
+  }
+
+  color: $c-white;
+}
+
+.hbs-header-alert__wrapper {
+  @include grid-parent;
+  @include site-max-width;
+  @include padding($spacing-sm x);
+  align-items: center;
+}
+
+.hbs-header-alert__title {
+  @include grid-child;
+  font-weight: $fw-semibold;
+  margin-bottom: 0;
+
+  @include mq($bp-desktop) {
+    width: $col-4;
+  }
+}
+
+.hbs-header-alert__description-text {
+  width: calc(100% - 2em);
+}
+
+.hbs-header-alert__description {
+  @include grid-child;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: $spacing-xs;
+
+  @include mq($bp-desktop) {
+    align-items: center;
+    margin-top: 0;
+    width: $col-12;
+  }
+}
+
+.hbs-header-alert__icon {
+  @include size(0.75em);
+  margin-left: $spacing-md;
+
+  @include mq($bp-desktop) {
+    @include size(1em);
+  }
+
+  @include mq-reduced-motion {
+    transition: transform $transition;
+  }
+}
+
+// Banner
+.hbs-header-banner {
+  position: relative;
+  z-index: $z-index-3;
+
+  @include mq($bp-desktop) {
+    padding-bottom: $spacing-sm;
+  }
+}
+
+.hbs-header-banner__container {
+  background: linear-gradient(
+    90deg,
+    #0c6b37 -0.5%,
+    #e4832e 28.29%,
+    #a52d50 99.97%
+  );
+
+  @include mq($bp-desktop) {
+    background: linear-gradient(
+      90deg,
+      #0c6b37 -0.5%,
+      #e87d1f 16.4%,
+      #e4832e 28.29%,
+      #aaccec 58.14%,
+      #a52d50 99.97%
+    );
+  }
+}
+
+.hbs-header-banner__wrapper {
+  @include grid-parent;
+  @include site-max-width;
+  @include padding($spacing-sm x);
+  gap: $spacing-sm;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.hbs-header-banner__title {
+  @include grid-child;
+  @include small-text;
+  font-weight: $fw-semibold;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hbs-header-banner__links {
+  @include grid-child;
+  align-items: center;
+  width: auto;
+  display: flex;
+  gap: $spacing-md;
+  flex-shrink: 0;
+}
+
+.hbs-header-banner__link {
+  white-space: nowrap;
+
+  .hbs-cta-link__text {
+    @include small-text;
+    font-weight: $fw-semibold;
+  }
+}
+
+.hbs-header-banner__notification {
+  position: relative;
+
+  &--active::after {
+    @include absolute(2px -2px x x);
+    background-color: $c-coral;
+    border-radius: 50%;
+    border: 2px solid #a52d50;
+    content: "";
+    display: block;
+    height: 10px;
+    width: 10px;
+  }
+}
+
+.hbs-header-banner__icon {
+  @include size(18px);
+}
+
+// Working Knowledge Site Header - Snowflake
+.hbs-site-header__wk-header {
+  text-align: center;
+  flex: 1;
+
+  @include mq($bp-tablet, "max") {
+    padding-top: $spacing-md;
+  }
+}
+
+.hbs-site-header__wk-title {
+  @include fluid-type(
+    (
+      $bp-mobile: $fs-xl,
+      $bp-desktop-xl: $fs-xxl,
+    )
+  );
+  text-decoration: none;
+  display: block;
+  padding-top: $spacing-sm;
+}
+
+.hbs-site-header__wk-subtitle {
+  @include baseline-text;
+  font-family: $ff-serif;
+  padding: $spacing-xs 0;
+
+  @include mq($bp-desktop) {
+    padding-bottom: 0;
+  }
+}
+
+.hbs-site-header__cta {
+  display: none;
+  font-weight: $fw-semibold;
+  text-decoration: none;
+
+  @include mq($bp-desktop) {
+    display: block;
+  }
+}
+
+.hbs-wk-site-header {
+  .hbs-site-header__logo-wrapper {
+    width: $col-16;
+    z-index: auto;
+
+    @include mq($bp-desktop) {
+      width: $col-4;
+    }
+  }
+
+  .hbs-site-header__logo {
+    min-width: unset;
+    position: relative;
+    z-index: $z-index-3;
+  }
+
+  .hbs-site-header__menu {
+    position: relative;
+    z-index: $z-index-3 - 1;
+  }
+
+  .hbs-local-navigation__accordion-header {
+    justify-content: center;
+    border-bottom: 1px solid var(--c-border-light);
+  }
+
+  .hbs-local-navigation__accordion-menu {
+    border-top: none;
+  }
+
+  .hbs-local-navigation__accordion-item:last-child {
+    .hbs-local-navigation__accordion-item-trigger {
+      border-bottom-color: transparent;
+    }
+  }
+
+  .hbs-local-navigation__item--hidden {
+    visibility: hidden;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  @include mq($bp-desktop) {
+    .hbs-site-header__wrapper {
+      padding-bottom: $spacing-lg;
+    }
+
+    &:not(.hbs-site-header--sticky) .hbs-site-header__buttons {
+      @include relative(auto);
+      width: $col-4;
+    }
+
+    .hbs-local-navigation__items {
+      justify-content: center;
+    }
+  }
+
+  &.hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) {
+    @include mq($bp-desktop) {
+      transform: translateY(-$wk-header-shift) !important;
+
+      .hbs-site-header__wk-header {
+        opacity: 0;
+      }
+
+      .hbs-logo__shield {
+        transform: translateY(calc(#{$wk-header-shift} - #{$spacing-md})) scale(0.55);
+      }
+
+      .hbs-site-header__menu {
+        transform: translateY(-$spacing-xxs);
+      }
+
+      .hbs-site-header__buttons {
+        transform: translateY(calc(#{$wk-header-shift} - #{$spacing-xxs}));
+      }
+    }
+
+    @include mq($bp-desktop-xl) {
+      .hbs-logo__shield {
+        transform: translateY(calc(#{$wk-header-shift} - #{$spacing-md})) scale(0.6);
+      }
+    }
+  }
+}
+
+// Search Highlight
+mark {
+  background-color: initial;
+  color: inherit;
+  font-weight: bold;
+}

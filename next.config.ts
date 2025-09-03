@@ -1,59 +1,44 @@
-
-import type {NextConfig} from 'next';
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'placehold.co',
+        hostname: 'res.cloudinary.com',
         port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'www.hbs.edu',
+        hostname: 'cdn.sanity.io',
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: "https",
-        hostname: "cloudinary.hbs.edu",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "images.pexels.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.sanity.io",
-        port: "",
-        pathname: "/**",
-      }
     ],
   },
-  async rewrites() {
+  async redirects() {
+    // Studio redirects are handled by Sanity's built-in routing
+    return []
+  },
+  // Enable static generation with revalidation for dynamic content
+  experimental: {
+    // Enable static generation for dynamic routes
+    staticPageGenerationTimeout: 120,
+  },
+  // Configure revalidation for Sanity content
+  async headers() {
     return [
       {
-        source: "/studio/:path*",
-        destination:
-          process.env.NODE_ENV === "development"
-            ? "http://localhost:3333/:path*"
-            : "/studio/index.html",
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=60, stale-while-revalidate=300',
+          },
+        ],
       },
     ]
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
