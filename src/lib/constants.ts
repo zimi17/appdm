@@ -12,3 +12,12 @@ export const KEYCODES = {
 export const KALTURA_PARTNER_ID = 1423662;
 export const KALTURA_UI_CONF_ID = 24701771;
 export const KALTURA_SCRIPT_SRC = `https://cdnapisec.kaltura.com/p/${KALTURA_PARTNER_ID}/sp/${KALTURA_PARTNER_ID}00/embedIframeJs/uiconf_id/${KALTURA_UI_CONF_ID}/partner_id/${KALTURA_PARTNER_ID}`;
+
+export const BREAKPOINTS = {
+  xs: 0,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536,
+} as const;

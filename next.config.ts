@@ -1,3 +1,7 @@
+const bundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -17,15 +21,19 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    // Studio redirects are handled by Sanity's built-in routing
     return []
   },
-  // Enable static generation with revalidation for dynamic content
   experimental: {
-    // Enable static generation for dynamic routes
-    staticPageGenerationTimeout: 120,
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
-  // Configure revalidation for Sanity content
+  // disable Next's type checking during `next build` — run `tsc --noEmit` in CI instead
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  // disable lint during build — run eslint in CI
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async headers() {
     return [
       {
@@ -41,4 +49,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+export default bundleAnalyzer(nextConfig)

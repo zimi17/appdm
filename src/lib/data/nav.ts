@@ -471,3 +471,20 @@ export const footerBlocks = [
     { label: "Karir", href: "/" },
     { label: "Alumni", href: "/kemahasiswaan" },
   ];
+
+  export const footerSections = [
+    {
+      title: 'Tentang Kami',
+      links: [
+        { text: "Sejarah", href: "/tentang/sejarah" },
+        { text: "Visi & Misi", href: "/tentang/visi-misi" },
+      ]
+    },
+    {
+      title: 'Kontak',
+      links: [
+        { text: "Hubungi Kami", href: "/pendaftaran" },
+        { text: "Peta & Arah", href: "/layanan" }
+      ]
+    },
+  ];

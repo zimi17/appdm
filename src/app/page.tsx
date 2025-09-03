@@ -87,7 +87,6 @@ export default async function Home() {
                   <MissionTopper 
                       titleParts={missionTopper.titleParts}
                       slides={missionTopper.slides}
-                      autoplay={true}
                       theme="light"
                   />
                 )}

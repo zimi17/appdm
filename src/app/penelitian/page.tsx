@@ -32,7 +32,7 @@ export default async function PenelitianPage() {
                     <Breadcrumbs breadcrumbs={breadcrumbs} />
                 </div>
             </div>
-            <RenderBlocks blocks={pageData.content} />
+            <RenderBlocks blocks={pageData.content || []} />
         </>
     );
 }

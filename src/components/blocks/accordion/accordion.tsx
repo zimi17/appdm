@@ -69,7 +69,7 @@ export function AccordionSection({ title, items, linkText, linkHref, className }
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
         >
-        <CtaLink href={linkHref} size="lg" className="rounded-full px-8 py-6 text-lg bg-secondary hover:bg-accent">
+        <CtaLink href={linkHref} className="rounded-full px-8 py-6 text-lg bg-secondary hover:bg-accent">
             {linkText}
         </CtaLink>
         </motion.div>

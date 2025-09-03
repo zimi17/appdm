@@ -14,6 +14,6 @@ export const contentGeneratorFlow = ai.defineFlow(
       model: 'googleai/gemini-2.0-flash',
     });
 
-    return llmResponse.text();
+    return llmResponse.text;
   }
 );

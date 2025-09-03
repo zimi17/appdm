@@ -1,0 +1,21 @@
+name = "appdm"
+compatibility_date = "2024-01-01"
+
+# Pages configuration
+[pages_build_config]
+# Build command
+build_command = "npm run build"
+# Build output directory
+destination_dir = ".next"
+# Root directory
+root_dir = "."
+# Build caching
+build_caching = true
+
+# Environment variables for production
+[vars]
+NODE_ENV = "production"
+
+# Optional: Custom domains (uncomment and modify if needed)
+# [[custom_domains]]
+# domain = "your-domain.com"

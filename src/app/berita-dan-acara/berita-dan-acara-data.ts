@@ -9,20 +9,11 @@ export const newsPageData = {
     facets: {
       title: "Filter Berdasarkan",
       items: [
-        { name: "Semua", value: "all", number: "300" },
-        { name: "Berita Kampus", value: "campus-news", number: "120" },
-        { 
-          name: "Acara", 
-          value: "events", 
-          number: "80",
-          items: [
-            { name: "Seminar", value: "seminar", number: "30" },
-            { name: "Workshop", value: "workshop", number: "25" },
-            { name: "Webinar", value: "webinar", number: "25" },
-          ]
-        },
-        { name: "Prestasi Mahasiswa", value: "student-achievements", number: "50" },
-        { name: "Penelitian", value: "research", number: "50" },
+        { label: "Semua", value: "all", count: 300 },
+        { label: "Berita Kampus", value: "campus-news", count: 120 },
+        { label: "Acara", value: "events", count: 80 },
+        { label: "Prestasi Mahasiswa", value: "student-achievements", count: 50 },
+        { label: "Penelitian", value: "research", count: 50 },
       ]
     }
   }

@@ -9,24 +9,23 @@
 'use client'
 
 import { NextStudio } from 'next-sanity/studio'
-
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { presentationTool } from 'sanity/presentation'
 
-// Define a minimal config for testing first
+// Minimal config to avoid version conflicts
 const config = defineConfig({
   basePath: '/studio',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '3966wvah',
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'website',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   title: 'STIE Dwimulya Website Studio',
   plugins: [
     structureTool(),
     visionTool(),
     presentationTool({
       previewUrl: {
-        origin: 'http://localhost:9002',
+        origin: typeof(window) !== 'undefined' ? window.location.origin.replace('/studio', '') : 'http://localhost:9002',
         draftMode: {
           enable: '/api/draft',
         },
@@ -37,8 +36,6 @@ const config = defineConfig({
     types: [],
   },
 })
-
-
 
 export default function StudioPage() {
   return <NextStudio config={config} />

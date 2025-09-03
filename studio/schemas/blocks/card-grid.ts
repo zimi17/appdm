@@ -23,12 +23,12 @@ export default defineType({
                     defineField({name: 'linkText', type: 'string'}),
                     defineField({name: 'href', type: 'string'}),
                     defineField({
-                        name: 'image', 
+                        name: 'image',
                         type: 'image',
                         fields: [{ name: 'hint', type: 'string'}]
-                    })
-                      {name: 'imageUrl', title: 'Legacy Image URL', type: 'string', hidden: true},
-                      {name: 'imageHint', title: 'Legacy Image Hint', type: 'string', hidden: true},
+                    }),
+                    {name: 'imageUrl', title: 'Legacy Image URL', type: 'string', hidden: true},
+                    {name: 'imageHint', title: 'Legacy Image Hint', type: 'string', hidden: true},
                 ]
             }
         ]

@@ -4,7 +4,7 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface ComponentHeaderProps {
+export interface ComponentHeaderProps {
   title: string;
   description?: string | React.ReactNode;
   className?: string;

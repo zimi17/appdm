@@ -7,11 +7,13 @@ $wk-header-shift: 110px;
 $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 .hbs-site-header.hbs-site-header {
-  background-color: transparent;
-  position: relative;
-  top: 0;
-  width: 100%;
-  z-index: $z-index-5;
+  & {
+    background-color: transparent;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: $z-index-5;
+  }
 
   &:hover,
   &:focus-within {
@@ -91,12 +93,14 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-site-header__wrapper {
-  @include site-max-width;
-  @include grid-parent;
-  @include padding($spacing-sm x);
-  align-items: flex-start;
-  justify-content: space-between;
-  position: relative;
+  & {
+    @include site-max-width;
+    @include grid-parent;
+    @include padding($spacing-sm x);
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+  }
 
   @include mq($bp-desktop) {
     padding-bottom: 0;
@@ -109,11 +113,13 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-site-header__logo-wrapper {
-  @include grid-child;
-  flex-shrink: 0;
-  position: relative;
-  width: $col-4;
-  z-index: $z-index-3;
+  & {
+    @include grid-child;
+    flex-shrink: 0;
+    position: relative;
+    width: $col-4;
+    z-index: $z-index-3;
+  }
 
   .hbs-site-header--sticky:not(.hbs-site-header--homepage) & {
     opacity: 0;
@@ -131,8 +137,10 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 // Logo
 .hbs-site-header__logo {
-  min-width: 150px;
-  max-width: 180px;
+  & {
+    min-width: 150px;
+    max-width: 180px;
+  }
 
   a {
     display: block;
@@ -198,19 +206,21 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-site-header__section-title {
-  @include baseline-text($ff-sans);
-  @include grid-parent;
-  @include size($col-4, 53px);
-  align-items: center;
-  align-self: flex-end;
-  display: flex;
-  flex-shrink: 0;
-  line-height: $lh-tiny;
-  opacity: 0;
-  position: absolute;
-  transition: opacity $transition;
-  visibility: hidden;
-  z-index: $z-index-9;
+  & {
+    @include baseline-text($ff-sans);
+    @include grid-parent;
+    @include size($col-4, 53px);
+    align-items: center;
+    align-self: flex-end;
+    display: flex;
+    flex-shrink: 0;
+    line-height: $lh-tiny;
+    opacity: 0;
+    position: absolute;
+    transition: opacity $transition;
+    visibility: hidden;
+    z-index: $z-index-9;
+  }
 
   .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
     @include mq($bp-desktop-lg) {
@@ -241,7 +251,9 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 // Menu
 .hbs-site-header__menu {
-  @include grid-child;
+  & {
+    @include grid-child;
+  }
 
   @include mq-reduced-motion {
     transition: opacity $transition;
@@ -304,14 +316,16 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 // Buttons
 .hbs-site-header__buttons {
-  @include grid-child;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: flex-end;
-  align-items: center;
-  max-width: $col-8;
-  width: auto;
-  z-index: $z-index-3;
+  & {
+    @include grid-child;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: $col-8;
+    width: auto;
+    z-index: $z-index-3;
+  }
 
   .hbs-site-header--menu-is-open & {
     transition-delay: $t-time-sm;
@@ -354,12 +368,14 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-site-header__button {
-  @include reset-input;
-  @include padding($spacing-xs);
-  border-radius: $border-radius;
-  fill: $c-theme-solid;
-  margin-left: $spacing-xxs;
-  flex-shrink: 0;
+  & {
+    @include reset-input;
+    @include padding($spacing-xs);
+    border-radius: $border-radius;
+    fill: $c-theme-solid;
+    margin-left: $spacing-xxs;
+    flex-shrink: 0;
+  }
 
   @include mq-reduced-motion {
     transition: $transition;
@@ -377,10 +393,12 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 // Crest
 .hbs-site-header__crest {
-  @include size(calc(1em + #{$spacing-sm * 2}));
-  @include baseline-text;
-  background-color: $c-crimson;
-  display: none;
+  & {
+    @include size(calc(1em + #{$spacing-sm * 2}));
+    @include baseline-text;
+    background-color: $c-crimson;
+    display: none;
+  }
 
   @include mq($bp-desktop) {
     .hbs-site-header--sticky:not(.hbs-site-header--menu-is-open) & {
@@ -391,23 +409,25 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 // Alert
 .hbs-header-alert__link-container {
+  .hbs-page--ParticipantStoryTopper &,
+  .hbs-page--SplitTopper & {
+    padding-bottom: 0;
+  }
+
   @include mq($bp-desktop) {
     &:not(.hbs-header-alert__link-container--with-banner) {
       padding-bottom: $spacing-sm;
     }
   }
-
-  .hbs-page--ParticipantStoryTopper &,
-  .hbs-page--SplitTopper & {
-    padding-bottom: 0;
-  }
 }
 
 .hbs-header-alert__link {
-  @include color-link($c-theme-solid, $c-theme-solid);
-  display: block;
-  position: relative;
-  z-index: $z-index-3;
+  & {
+    @include color-link($c-theme-solid, $c-theme-solid);
+    display: block;
+    position: relative;
+    z-index: $z-index-3;
+  }
 
   a {
     text-decoration: none;
@@ -445,13 +465,14 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 .hbs-header-alert__title,
 .hbs-header-alert__description {
-  @include small-text($ff-sans);
+  & {
+    @include small-text($ff-sans);
+    color: $c-white;
+  }
 
   @include mq($bp-tablet) {
     @include baseline-text($ff-sans);
   }
-
-  color: $c-white;
 }
 
 .hbs-header-alert__wrapper {
@@ -462,9 +483,11 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-header-alert__title {
-  @include grid-child;
-  font-weight: $fw-semibold;
-  margin-bottom: 0;
+  & {
+    @include grid-child;
+    font-weight: $fw-semibold;
+    margin-bottom: 0;
+  }
 
   @include mq($bp-desktop) {
     width: $col-4;
@@ -476,12 +499,14 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-header-alert__description {
-  @include grid-child;
-  display: inline-flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: $spacing-xs;
+  & {
+    @include grid-child;
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: $spacing-xs;
+  }
 
   @include mq($bp-desktop) {
     align-items: center;
@@ -491,8 +516,10 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-header-alert__icon {
-  @include size(0.75em);
-  margin-left: $spacing-md;
+  & {
+    @include size(0.75em);
+    margin-left: $spacing-md;
+  }
 
   @include mq($bp-desktop) {
     @include size(1em);
@@ -505,8 +532,10 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 // Banner
 .hbs-header-banner {
-  position: relative;
-  z-index: $z-index-3;
+  & {
+    position: relative;
+    z-index: $z-index-3;
+  }
 
   @include mq($bp-desktop) {
     padding-bottom: $spacing-sm;
@@ -514,12 +543,14 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-header-banner__container {
-  background: linear-gradient(
-    90deg,
-    #0c6b37 -0.5%,
-    #e4832e 28.29%,
-    #a52d50 99.97%
-  );
+  & {
+    background: linear-gradient(
+      90deg,
+      #0c6b37 -0.5%,
+      #e4832e 28.29%,
+      #a52d50 99.97%
+    );
+  }
 
   @include mq($bp-desktop) {
     background: linear-gradient(
@@ -563,7 +594,9 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-header-banner__link {
-  white-space: nowrap;
+  & {
+    white-space: nowrap;
+  }
 
   .hbs-cta-link__text {
     @include small-text;
@@ -572,7 +605,9 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-header-banner__notification {
-  position: relative;
+  & {
+    position: relative;
+  }
 
   &--active::after {
     @include absolute(2px -2px x x);
@@ -592,8 +627,10 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 
 // Working Knowledge Site Header - Snowflake
 .hbs-site-header__wk-header {
-  text-align: center;
-  flex: 1;
+  & {
+    text-align: center;
+    flex: 1;
+  }
 
   @include mq($bp-tablet, "max") {
     padding-top: $spacing-md;
@@ -613,9 +650,11 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-site-header__wk-subtitle {
-  @include baseline-text;
-  font-family: $ff-serif;
-  padding: $spacing-xs 0;
+  & {
+    @include baseline-text;
+    font-family: $ff-serif;
+    padding: $spacing-xs 0;
+  }
 
   @include mq($bp-desktop) {
     padding-bottom: 0;
@@ -623,9 +662,11 @@ $wk-header-unshift: $wk-header-shift - $spacing-xxs;
 }
 
 .hbs-site-header__cta {
-  display: none;
-  font-weight: $fw-semibold;
-  text-decoration: none;
+  & {
+    display: none;
+    font-weight: $fw-semibold;
+    text-decoration: none;
+  }
 
   @include mq($bp-desktop) {
     display: block;

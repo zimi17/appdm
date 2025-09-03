@@ -105,8 +105,8 @@ export default defineType({
         {name: 'title', title: 'Title', type: 'string'},
         {name: 'description', title: 'Description', type: 'text', rows: 4},
         {name: 'image', title: 'Image', type: 'image', options: {hotspot: true}},
-        {name: 'imageUrl', title: 'Image URL', type: 'string', hidden: true},
-        {name: 'imageHint', title: 'Image Hint', type: 'string'},
+        {name: 'imageUrl', title: 'Legacy Image URL', type: 'string', hidden: true},
+        {name: 'imageHint', title: 'Legacy Image Hint', type: 'string', hidden: true},
         {
           name: 'links',
           title: 'Links',

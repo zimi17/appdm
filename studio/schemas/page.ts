@@ -41,6 +41,19 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    // Backwards-compatible fields for legacy documents
+    defineField({
+      name: 'imageUrl',
+      title: 'Legacy Image URL',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'imageHint',
+      title: 'Legacy Image Hint',
+      type: 'string',
+      hidden: true,
+    }),
     defineField({
       name: 'topper',
       title: 'Page Topper',
